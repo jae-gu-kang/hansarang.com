@@ -75,12 +75,15 @@ h1.giant .row:nth-child(3) span{animation-delay:.4s}
   30%{opacity:1}
   to{transform:none;opacity:1}
 }
+h1.giant .blk{
+  color:var(--paper);padding:0 .12em;margin-left:-.04em;
+  letter-spacing:.01em;display:inline-block;
+}
+h1.giant .blk.o{background:var(--accent)}
+h1.giant .cyan{color:var(--accent2)}
 h1.giant .outline{
-  /* 싸이언 블록: 블록 위에 종이색 글자 */
-  color:var(--paper);
-  background:var(--accent);
-  padding:0 .12em;
-  margin-left:-.04em;
+  /* 테두리 타이포: 획 교차선이 보이지 않는 아웃라인 */
+  color:var(--paper);-webkit-text-stroke:4px var(--ink);paint-order:stroke fill;
   letter-spacing:.01em;
 }
 h1.giant .accent{color:var(--accent2)}
@@ -493,9 +496,9 @@ footer{margin-top:clamp(80px,12vh,140px);border-top:1.5px solid var(--line)}
   <div class="hero-type">
     <div class="hero-kicker"><span class="dot"></span>HANSARANG CHURCH — SINCE OUR FIRST LOVE</div>
     <h1 class="giant">
-      <span class="row"><span>변함없는</span></span>
-      <span class="row"><span class="outline">한&nbsp;사랑</span></span>
-      <span class="row"><span>바로 <span class="accent">당신</span></span></span>
+      <span class="row"><span><span class="blk o">한&nbsp;사랑</span>안에</span></span>
+      <span class="row"><span class="cyan">한&nbsp;사람</span></span>
+      <span class="row"><span>바로 <span class="outline">당신</span></span></span>
     </h1>
     <div class="hero-sub">
       <p><b>변함없는 한 사랑 안에서 함께할 한 사람, 바로 당신입니다.</b><br>
