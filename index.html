@@ -170,40 +170,45 @@ section{padding:clamp(80px,12vh,140px) clamp(16px,3vw,32px)}
 .reveal{opacity:0;transform:translateY(30px);transition:opacity .9s ease,transform .9s ease}
 .reveal.on{opacity:1;transform:none}
 
-/* ---------- story ---------- */
+/* ---------- story : 한 글자 이야기 — 이름의 이야기 + 일곱 가지 '한' (dark) ---------- */
+#story{background:var(--ink);color:var(--paper)}
+#story .sec-head{border-color:rgba(242,240,235,.9)}
+#story .sec-head h2{color:var(--paper)}
+#story .sec-head .en{color:rgba(242,240,235,.5)}
 #story .grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,64px)}
 @media(max-width:860px){#story .grid{grid-template-columns:1fr}}
 #story .statement{
   font-size:clamp(22px,3vw,34px);font-weight:700;line-height:1.55;letter-spacing:-.03em;
 }
-#story .statement mark{
-  background:none;color:var(--accent);
-  text-decoration:underline;text-decoration-thickness:3px;text-underline-offset:6px;
-}
-#story .body{color:var(--grey);font-size:15.5px;line-height:1.9;display:flex;flex-direction:column;gap:18px}
-#story .body b{color:var(--ink)}
+#story .body{color:rgba(242,240,235,.68);font-size:15.5px;line-height:1.9;display:flex;flex-direction:column;gap:18px}
+#story .body b{color:var(--paper)}
 #story .body b.hl-o{color:var(--accent)}
 .hl-o{color:var(--accent);text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:5px;text-decoration-color:var(--accent)}
-.fact .v-verse{
-  font-size:20px;font-weight:700;line-height:1.75;letter-spacing:-.02em;color:var(--ink);
+/* 이름 이야기 → 일곱 가지 '한' 으로 이어지는 소제목 */
+#story .seven-head{
+  margin-top:clamp(48px,8vh,84px);display:flex;align-items:center;gap:18px;
+  font-size:11px;font-weight:800;letter-spacing:.3em;color:rgba(242,240,235,.5);
 }
-.fact .v-ref{margin-top:10px;font-size:11px;letter-spacing:.22em;font-weight:800;color:var(--accent)}
+#story .seven-head b{color:var(--paper)}
+#story .seven-head::after{content:"";flex:1;height:1.5px;background:rgba(242,240,235,.35)}
+#story .index-list{margin-top:18px}
+.fact .v-verse{
+  font-size:20px;font-weight:700;line-height:1.75;letter-spacing:-.02em;color:var(--paper);
+}
+.fact .v-ref{margin-top:10px;font-size:11px;letter-spacing:.22em;font-weight:800;color:var(--accent2)}
 .fact-row{
   margin-top:clamp(40px,6vh,64px);
   display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-  border:1.5px solid var(--line);
+  border:1.5px solid rgba(242,240,235,.9);
 }
-.fact{padding:26px 24px;border-right:1.5px solid var(--line)}
+.fact{padding:26px 24px;border-right:1.5px solid rgba(242,240,235,.28)}
 .fact:last-child{border-right:none}
-@media(max-width:860px){.fact{border-right:none;border-bottom:1.5px solid var(--line)}.fact:last-child{border-bottom:none}}
-.fact .k{font-size:11px;font-weight:700;letter-spacing:.24em;color:var(--grey);margin-bottom:8px}
+@media(max-width:860px){.fact{border-right:none;border-bottom:1.5px solid rgba(242,240,235,.28)}.fact:last-child{border-bottom:none}}
+.fact .k{font-size:11px;font-weight:700;letter-spacing:.24em;color:rgba(242,240,235,.55);margin-bottom:8px}
 .fact .v{font-size:clamp(20px,2.4vw,28px);font-weight:800;letter-spacing:-.03em}
 .fact .v em{font-style:normal;color:var(--accent)}
 
-/* ---------- seven : index list ---------- */
-#seven{background:var(--ink);color:var(--paper)}
-#seven .sec-head{border-color:rgba(242,240,235,.9)}
-#seven .sec-head h2{color:var(--paper)}
+/* ---------- seven ones : index list ---------- */
 .index-list{counter-reset:one}
 .index-item{
   display:grid;grid-template-columns:64px 1fr auto 30px;gap:20px;align-items:center;
@@ -497,11 +502,11 @@ footer{margin-top:clamp(80px,12vh,140px);border-top:1.5px solid var(--line)}
 }
 /* ---------- accent2 : cyan rhythm ---------- */
 /* 섹션 번호 — 주황/싸이언 교차 리듬 */
-#story .sec-head .idx,#seven .sec-head .idx,#invite .sec-head .idx,#stories .sec-head .idx{color:var(--accent2)}
+#sermons .sec-head .idx,#invite .sec-head .idx,#stories .sec-head .idx{color:var(--accent2)}
 .stories-note{margin:-6px 0 26px;font-size:15px;line-height:1.8;color:var(--grey);max-width:560px}
 /* 마퀴 — 구절 출처 색 교차 */
 .marquee em:nth-of-type(even){color:var(--accent2)}
-/* 다크 배경(#seven) 위 구절 출처 — 싸이언이 더 선명 */
+/* 다크 배경(#story) 위 구절 출처 — 싸이언이 더 선명 */
 .index-body .vs{color:var(--accent2)}
 /* 예배 리스트 — 짝수 행 호버는 싸이언 */
 .w-row:nth-child(even):hover .w-time{color:var(--accent2);-webkit-text-stroke-color:var(--accent2)}
@@ -642,32 +647,11 @@ footer{margin-top:clamp(80px,12vh,140px);border-top:1.5px solid var(--line)}
   </div>
 </section>
 
-<!-- STORY -->
-<section id="story">
-  <div class="inner">
-    <div class="sec-head reveal">
-      <span class="idx">(02)</span><h2>한 글자 이야기</h2><span class="en">BRAND STORY</span>
-    </div>
-    <div class="grid">
-      <p class="statement reveal">어떤 이름은 지어지는 것이 아니라, <span class="hl-o">발견되는 것</span>입니다.</p>
-      <div class="body reveal">
-        <p>시작은 초라했습니다. 교회를 이전하던 넉넉지 않은 형편 속에서, '사랑교회' 앞에 <b>한 글자</b>를 더한 것은, 어쩌면 가장 현실적인 선택이었습니다.</p>
-        <p>그런데 시간이 지날수록 그 한 글자가 우리를 설명하기 시작했습니다. <b>한 분 하나님, 한 사람의 영혼, 하나 된 공동체.</b> 계획하지 않았던 우리 이름 속에, 계획하신 하나님의 뜻을 <b class="hl-o">발견</b>할 수 있었습니다.</p>
-      </div>
-    </div>
-    <div class="fact-row reveal">
-      <div class="fact"><div class="k">MISSION</div><div class="v">예배로 만나고<br><em>사랑으로</em> 세우다</div></div>
-      <div class="fact"><div class="k">VISION</div><div class="v">모든 세대가<br>함께 <em>성장</em></div></div>
-      <div class="fact"><div class="k">KEY VERSE</div><div class="v-verse">"내가 영원한 사랑으로 너를 사랑하기에<br>인자함으로 너를 이끌었다."</div><div class="v-ref">예레미야 31:3</div></div>
-    </div>
-  </div>
-</section>
-
 <!-- SERMONS : 유튜브 자동 갱신 -->
 <section id="sermons">
   <div class="inner">
     <div class="sec-head reveal">
-      <span class="idx">(03)</span><h2>Sermons</h2><span class="en">말씀 영상</span>
+      <span class="idx">(02)</span><h2>Sermons</h2><span class="en">말씀 영상</span>
     </div>
     <div class="player reveal" id="playerWrap">
       <div id="playerPoster">
@@ -691,12 +675,20 @@ footer{margin-top:clamp(80px,12vh,140px);border-top:1.5px solid var(--line)}
   </div>
 </section>
 
-<!-- SEVEN -->
-<section id="seven">
+<!-- STORY : 한 글자 이야기 — 이름의 이야기 + 일곱 가지 '한' -->
+<section id="story">
   <div class="inner">
     <div class="sec-head reveal">
-      <span class="idx" style="color:var(--accent)">(04)</span><h2>일곱 가지 '한'</h2><span class="en" style="color:rgba(242,240,235,.5)">SEVEN ONES</span>
+      <span class="idx">(03)</span><h2>한 글자 이야기</h2><span class="en">ONE LETTER STORY</span>
     </div>
+    <div class="grid">
+      <p class="statement reveal">어떤 이름은 지어지는 것이 아니라, <span class="hl-o">발견되는 것</span>입니다.</p>
+      <div class="body reveal">
+        <p>시작은 초라했습니다. 교회를 이전하던 넉넉지 않은 형편 속에서, '사랑교회' 앞에 <b>한 글자</b>를 더한 것은, 어쩌면 가장 현실적인 선택이었습니다.</p>
+        <p>그런데 시간이 지날수록 그 한 글자가 우리를 설명하기 시작했습니다. <b>한 분 하나님, 한 사람의 영혼, 하나 된 공동체.</b> 계획하지 않았던 우리 이름 속에, 계획하신 하나님의 뜻을 <b class="hl-o">발견</b>할 수 있었습니다.</p>
+      </div>
+    </div>
+    <div class="seven-head reveal"><b>일곱 가지 '한'</b>SEVEN ONES</div>
     <div class="index-list">
       <div class="index-item reveal">
         <span class="name">한 분</span><span class="desc">우리가 예배하는 오직 한 분 하나님</span><span class="plus">+</span>
@@ -727,6 +719,11 @@ footer{margin-top:clamp(80px,12vh,140px);border-top:1.5px solid var(--line)}
         <div class="index-body"><blockquote>"몸이 하나요 성령도 한 분이시니 이와 같이 너희가 부르심의 한 소망 안에서 부르심을 받았느니라"<span class="vs">에베소서 4:4</span></blockquote></div>
       </div>
     </div>
+    <div class="fact-row reveal">
+      <div class="fact"><div class="k">MISSION</div><div class="v">예배로 만나고<br><em>사랑으로</em> 세우다</div></div>
+      <div class="fact"><div class="k">VISION</div><div class="v">모든 세대가<br>함께 <em>성장</em></div></div>
+      <div class="fact"><div class="k">KEY VERSE</div><div class="v-verse">"내가 영원한 사랑으로 너를 사랑하기에<br>인자함으로 너를 이끌었다."</div><div class="v-ref">예레미야 31:3</div></div>
+    </div>
   </div>
 </section>
 
@@ -734,7 +731,7 @@ footer{margin-top:clamp(80px,12vh,140px);border-top:1.5px solid var(--line)}
 <section id="stories">
   <div class="inner">
     <div class="sec-head reveal">
-      <span class="idx">(05)</span><h2>우리들 이야기</h2><span class="en">OUR STORIES</span>
+      <span class="idx">(04)</span><h2>우리들 이야기</h2><span class="en">OUR STORIES</span>
     </div>
     <p class="stories-note reveal">캠프와 송구영신, 한 해의 결산과 교육부서의 소식까지 — 함께 지어온 시간들을 영상으로 만나보세요.</p>
     <div class="v-grid" id="storyGrid" aria-live="polite"></div>
@@ -748,7 +745,7 @@ footer{margin-top:clamp(80px,12vh,140px);border-top:1.5px solid var(--line)}
 <section id="map">
   <div class="inner">
     <div class="sec-head reveal">
-      <span class="idx">(06)</span><h2>오시는 길</h2><span class="en">DIRECTIONS</span>
+      <span class="idx">(05)</span><h2>오시는 길</h2><span class="en">DIRECTIONS</span>
     </div>
     <div class="map-grid reveal">
       <div class="addr">
@@ -774,7 +771,7 @@ footer{margin-top:clamp(80px,12vh,140px);border-top:1.5px solid var(--line)}
 <section id="building">
   <div class="inner">
     <div class="sec-head reveal">
-      <span class="idx">(07)</span><h2>새 성전 이야기</h2><span class="en">BUILDING JOURNEY</span>
+      <span class="idx">(06)</span><h2>새 성전 이야기</h2><span class="en">BUILDING JOURNEY</span>
     </div>
     <div class="b-grid">
       <div class="reveal">
