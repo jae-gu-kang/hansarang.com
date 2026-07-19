@@ -497,7 +497,8 @@ footer{margin-top:clamp(80px,12vh,140px);border-top:1.5px solid var(--line)}
 }
 /* ---------- accent2 : cyan rhythm ---------- */
 /* 섹션 번호 — 주황/싸이언 교차 리듬 */
-#story .sec-head .idx,#seven .sec-head .idx,#invite .sec-head .idx{color:var(--accent2)}
+#story .sec-head .idx,#seven .sec-head .idx,#invite .sec-head .idx,#stories .sec-head .idx{color:var(--accent2)}
+.stories-note{margin:-6px 0 26px;font-size:15px;line-height:1.8;color:var(--grey);max-width:560px}
 /* 마퀴 — 구절 출처 색 교차 */
 .marquee em:nth-of-type(even){color:var(--accent2)}
 /* 다크 배경(#seven) 위 구절 출처 — 싸이언이 더 선명 */
@@ -520,7 +521,7 @@ footer{margin-top:clamp(80px,12vh,140px);border-top:1.5px solid var(--line)}
   <ul>
     <li><a href="#worship">WORSHIP</a></li>
     <li><a href="#sermons">SERMONS</a></li>
-    <li><a href="#story">STORY</a></li>
+    <li><a href="#stories">STORY</a></li>
     <li><a href="#building">건축</a></li>
     <li><a href="#map">오시는 길</a></li>
     <li><a class="cta" href="#invite">한 걸음 →</a></li>
@@ -729,11 +730,25 @@ footer{margin-top:clamp(80px,12vh,140px);border-top:1.5px solid var(--line)}
   </div>
 </section>
 
+<!-- OUR STORIES / 우리들 이야기 -->
+<section id="stories">
+  <div class="inner">
+    <div class="sec-head reveal">
+      <span class="idx">(05)</span><h2>우리들 이야기</h2><span class="en">OUR STORIES</span>
+    </div>
+    <p class="stories-note reveal">캠프와 송구영신, 한 해의 결산과 교육부서의 소식까지 — 함께 지어온 시간들을 영상으로 만나보세요.</p>
+    <div class="v-grid" id="storyGrid" aria-live="polite"></div>
+    <div class="sermon-more reveal" id="storyMore">
+      <a href="https://www.youtube.com/@%ED%95%9C%EC%82%AC%EB%9E%91%EA%B5%90%ED%9A%8C%EA%B8%B0%EB%8F%85%EA%B5%90%EB%8C%80%ED%95%9C/videos" target="_blank" rel="noopener">유튜브 채널 전체 보기 ↗</a>
+    </div>
+  </div>
+</section>
+
 <!-- MAP / 오시는 길 -->
 <section id="map">
   <div class="inner">
     <div class="sec-head reveal">
-      <span class="idx">(05)</span><h2>오시는 길</h2><span class="en">DIRECTIONS</span>
+      <span class="idx">(06)</span><h2>오시는 길</h2><span class="en">DIRECTIONS</span>
     </div>
     <div class="map-grid reveal">
       <div class="addr">
@@ -759,7 +774,7 @@ footer{margin-top:clamp(80px,12vh,140px);border-top:1.5px solid var(--line)}
 <section id="building">
   <div class="inner">
     <div class="sec-head reveal">
-      <span class="idx">(06)</span><h2>새 성전 이야기</h2><span class="en">BUILDING JOURNEY</span>
+      <span class="idx">(07)</span><h2>새 성전 이야기</h2><span class="en">BUILDING JOURNEY</span>
     </div>
     <div class="b-grid">
       <div class="reveal">
@@ -977,6 +992,101 @@ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
       });
       if(grid) grid.remove();
     });
+})();
+
+/* ===== 우리들 이야기 : 고정 영상 + (캠프·송구영신·결산·교육부서) 신규 영상 자동 추가 ===== */
+(function(){
+  var CHANNEL_ID = 'UCw5lXZnen1NqmWFiziI1YZQ';
+  var KEEP = /캠프|수련회|송구영신|결산|교육부서/;
+  /* 항상 표시할 고정 영상 (업로드일 확인 후 최신순 정렬) */
+  var PINNED = [
+    {id:'zDXEU6QeRoM', d:'2026. 7. 11.'},   // 유초등부 1일캠프 보고영상
+    {id:'arcLpSuAL9M', d:'2025. 12. 31.'},  // 송구영신 결산영상
+    {id:'MZOETj4Zww0', d:'2025. 12. 31.'},  // 송구영신예배
+    {id:'-HY7me2-1pA', d:'2025. 12. 24.'},  // 성탄전야제 행사
+    {id:'7wU1e__EukA', d:'2025. 9. 13.'},   // 교육부서 여름사역보고
+    {id:'lhB3ZmfmiPc', d:'2025. 3. 8.'}     // 교육부서 겨울사역보고
+  ];
+  var grid = document.getElementById('storyGrid');
+  var note = document.querySelector('.stories-note');
+  if(!grid) return;
+  var feed = 'https://www.youtube.com/feeds/videos.xml?channel_id=' + CHANNEL_ID;
+
+  function vid(item){
+    var m = (item.link||'').match(/[?&]v=([\w-]{6,})/);
+    return m ? m[1] : ((item.guid||'').split(':').pop());
+  }
+  function play(id){
+    if(location.protocol === 'file:'){
+      window.open('https://www.youtube.com/watch?v=' + id, '_blank', 'noopener');
+      return;
+    }
+    var old = document.getElementById('storyPlayer');
+    if(old) old.remove();
+    var box = document.createElement('div');
+    box.id = 'storyPlayer';
+    box.className = 'player';
+    box.innerHTML = '<iframe src="https://www.youtube.com/embed/' + id +
+      '?rel=0&autoplay=1" title="한사랑교회 우리들 이야기" ' +
+      'allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" ' +
+      'referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>';
+    grid.parentNode.insertBefore(box, grid);
+    box.scrollIntoView({behavior:'smooth', block:'center'});
+  }
+  function pickThumb(id, img){
+    var cands = ['maxresdefault','sddefault','hqdefault','mqdefault'];
+    (function tryNext(i){
+      if(i >= cands.length){ img.src = 'https://i.ytimg.com/vi/' + id + '/hqdefault.jpg'; return; }
+      var t = new Image();
+      t.onload = function(){
+        if(t.naturalWidth > 130){ img.src = t.src; } else { tryNext(i+1); }
+      };
+      t.onerror = function(){ tryNext(i+1); };
+      t.src = 'https://i.ytimg.com/vi/' + id + '/' + cands[i] + '.jpg';
+    })(0);
+  }
+  function makeCard(id, title, dateStr){
+    var card = document.createElement('button');
+    card.type = 'button';
+    card.className = 'v-card';
+    card.dataset.vid = id;
+    card.innerHTML =
+      '<img class="thumb" loading="lazy" alt="">' +
+      '<div class="meta"><b>' + String(title||'우리들 이야기').replace(/</g,'&lt;') + '</b>' +
+      (dateStr ? '<time>' + dateStr + '</time>' : '') + '</div>';
+    pickThumb(id, card.querySelector('.thumb'));
+    card.addEventListener('click', function(){ play(id); });
+    return card;
+  }
+
+  /* 1) 고정 영상을 즉시 표시 — 제목은 oEmbed로 채움 */
+  PINNED.forEach(function(p){
+    var card = makeCard(p.id, '', p.d);
+    grid.appendChild(card);
+    fetch('https://noembed.com/embed?url=' + encodeURIComponent('https://www.youtube.com/watch?v=' + p.id))
+      .then(function(r){ return r.json(); })
+      .then(function(d){
+        if(d && d.title) card.querySelector('.meta b').textContent = d.title;
+      })
+      .catch(function(){});
+  });
+
+  /* 2) 채널 RSS에서 키워드 영상이 새로 올라오면 맨 앞에 자동 추가 */
+  fetch('https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent(feed))
+    .then(function(r){ if(!r.ok) throw 0; return r.json(); })
+    .then(function(data){
+      var items = ((data && data.items) || []).filter(function(it){
+        var id = vid(it);
+        var pinned = PINNED.some(function(p){ return p.id === id; });
+        return KEEP.test(it.title || '') && !pinned;
+      });
+      items.reverse().forEach(function(item){
+        var d = new Date(item.pubDate);
+        var dateStr = d.getFullYear() + '. ' + (d.getMonth()+1) + '. ' + d.getDate() + '.';
+        grid.insertBefore(makeCard(vid(item), item.title, dateStr), grid.firstChild);
+      });
+    })
+    .catch(function(){ /* RSS 실패 시에도 고정 영상은 그대로 표시됨 */ });
 })();
 </script>
 </body>
