@@ -69,8 +69,8 @@ h1.giant .row > span{display:inline-block;animation:fadeSoft 1s ease both}
 /* 1) 한 사랑 — 오른쪽에서 날아옴 */
 h1.giant .row:nth-child(1) > span{animation:slideIn 1.2s cubic-bezier(.18,.8,.22,1) .2s both;will-change:transform}
 /* 2) 한 사람 — 한 사랑 줄에서 아래로 밀려 나옴 (마스크 리빌) */
-h1.giant .row:nth-child(2){overflow:hidden}
-h1.giant .row:nth-child(2) > span{animation:emerge .9s cubic-bezier(.2,.8,.2,1) 1.5s both}
+h1.giant .row:nth-child(2){overflow:hidden;margin-top:-.04em}
+h1.giant .row:nth-child(2) > span{animation:emerge 1.2s cubic-bezier(.3,.9,.25,1) 1.5s both}
 /* 3) 바로 당신 — 마지막에 떠오름 */
 h1.giant .row:nth-child(3) > span{animation-delay:2.1s}
 @keyframes fadeSoft{from{opacity:0}to{opacity:1}}
@@ -81,13 +81,29 @@ h1.giant .row:nth-child(3) > span{animation-delay:2.1s}
   to{transform:none;opacity:1}
 }
 h1.giant .blk{
-  color:var(--paper);padding:0 .12em;margin-left:-.04em;
+  padding:0 .12em;margin-left:-.04em;
   letter-spacing:.01em;display:inline-block;
 }
 h1.giant .blk.o{background:var(--accent)}
+/* 한 사랑 글자: 주황 → 흰색이 위에서 아래로 슬라이드되며 채워짐 (한 사람 emerge와 동기화) */
+h1.giant .blk.o .wipe{
+  font-style:normal;
+  background-image:linear-gradient(to bottom,var(--paper) 49%,var(--accent) 51%);
+  background-size:100% 220%;
+  background-position:0 100%;
+  -webkit-background-clip:text;background-clip:text;
+  color:transparent;
+  animation:wipeDown 1.2s cubic-bezier(.3,.9,.25,1) 1.5s both;
+}
+@keyframes wipeDown{from{background-position:0 100%}to{background-position:0 0%}}
 h1.giant .cyan{
   color:var(--accent2);
   /* 한 사랑 블록 글자와 세로 정렬: 동일 자간 + 블록 안쪽 시작점(-.04em + .12em)만큼 들여쓰기 */
+  letter-spacing:.01em;
+  margin-left:.08em;
+}
+h1.giant .oj{
+  color:var(--accent);
   letter-spacing:.01em;
   margin-left:.08em;
 }
@@ -158,8 +174,9 @@ section{padding:clamp(80px,12vh,140px) clamp(16px,3vw,32px)}
 }
 #story .body{color:var(--grey);font-size:15.5px;line-height:1.9;display:flex;flex-direction:column;gap:18px}
 #story .body b{color:var(--ink)}
+.hl-o{color:var(--accent);text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:5px;text-decoration-color:var(--accent)}
 .fact .v-verse{
-  font-size:15px;font-weight:700;line-height:1.8;letter-spacing:-.02em;color:var(--ink);
+  font-size:17px;font-weight:700;line-height:1.8;letter-spacing:-.02em;color:var(--ink);
 }
 .fact .v-ref{margin-top:10px;font-size:11px;letter-spacing:.22em;font-weight:800;color:var(--accent)}
 .fact-row{
@@ -506,8 +523,8 @@ footer{margin-top:clamp(80px,12vh,140px);border-top:1.5px solid var(--line)}
   <div class="hero-type">
     <div class="hero-kicker"><span class="dot"></span>HANSARANG CHURCH — SINCE OUR FIRST LOVE</div>
     <h1 class="giant">
-      <span class="row"><span><span class="blk o">한&nbsp;사랑</span>안에</span></span>
-      <span class="row"><span class="blk o">한&nbsp;사람</span></span>
+      <span class="row"><span><span class="blk o"><i class="wipe">한&nbsp;사랑</i></span><span class="outline">안에</span></span></span>
+      <span class="row"><span class="oj">한&nbsp;사람</span></span>
       <span class="row"><span>바로 <span class="cyan">당신</span></span></span>
     </h1>
     <div class="hero-sub">
@@ -619,13 +636,13 @@ footer{margin-top:clamp(80px,12vh,140px);border-top:1.5px solid var(--line)}
 <section id="story">
   <div class="inner">
     <div class="sec-head reveal">
-      <span class="idx">(02)</span><h2>한 글자의 이야기</h2><span class="en">BRAND STORY</span>
+      <span class="idx">(02)</span><h2>한 글자 이야기</h2><span class="en">BRAND STORY</span>
     </div>
     <div class="grid">
-      <p class="statement reveal">어떤 이름은 지어지는 것이 아니라, 발견되는 것입니다. '한사랑'은 우리에게 그런 이름이였습니다.</p>
+      <p class="statement reveal">어떤 이름은 지어지는 것이 아니라, <span class="hl-o">발견되는 것</span>입니다. '한사랑'은 우리에게 그런 이름이였습니다.</p>
       <div class="body reveal">
         <p>시작은 초라했습니다. 교회를 이전하던 넉넉지 않은 형편 속에서, '사랑교회' 앞에 <b>한 글자</b>를 더한 것은, 어쩌면 가장 현실적인 선택이었습니다.</p>
-        <p>그런데 시간이 지날수록 그 한 글자가 우리를 설명하기 시작했습니다. <b>한 분 하나님, 한 사람의 영혼, 하나 된 공동체.</b> 계획하지 않았던 우리 이름 속에, 계획하신 하나님의 뜻을 발견할 수 있었습니다.</p>
+        <p>그런데 시간이 지날수록 그 한 글자가 우리를 설명하기 시작했습니다. <b>한 분 하나님, 한 사람의 영혼, 하나 된 공동체.</b> 계획하지 않았던 우리 이름 속에, 계획하신 하나님의 뜻을 <span class="hl-o">발견</span>할 수 있었습니다.</p>
       </div>
     </div>
     <div class="fact-row reveal">
