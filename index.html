@@ -852,7 +852,7 @@ footer{margin-top:clamp(80px,12vh,140px);border-top:1.5px solid var(--line)}
         <p>처음 오시는 분도, 오랜 신앙생활을 하신 분도, 신앙이 처음인 분도 모두 환영합니다. 한 걸음이 믿음의 시작입니다.</p>
       </div>
       <div class="right">
-        <a href="#"><span>WELCOME<br><small>NEW FAMILY</small></span><span class="arr">→</span></a>
+        <a href="#stories"><span>WELCOME<br><small>NEW FAMILY</small></span><span class="arr">→</span></a>
         <a href="#worship"><span>이번 주일에 만나요<br><small>SEE YOU SUNDAY</small></span><span class="arr">→</span></a>
         <a href="#map"><span>오시는 길<br><small>DIRECTIONS</small></span><span class="arr">→</span></a>
       </div>
@@ -945,7 +945,7 @@ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
   function isSunday(item){
     var t = item.title || '';
     if(/주일|1부 예배|2부 예배|주일예배/.test(t)) return true;
-    var d = new Date(item.pubDate);
+    var d = new Date(String(item.pubDate).replace(' ', 'T'));
     return d.getDay() === 0;
   }
 
@@ -969,8 +969,8 @@ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
         var card = document.createElement('button');
         card.type = 'button';
         card.className = 'v-card';
-        var d = new Date(item.pubDate);
-        var dateStr = d.getFullYear() + '. ' + (d.getMonth()+1) + '. ' + d.getDate() + '.';
+        var d = new Date(String(item.pubDate).replace(' ', 'T'));
+        var dateStr = isNaN(d) ? '' : d.getFullYear() + '. ' + (d.getMonth()+1) + '. ' + d.getDate() + '.';
         card.innerHTML =
           '<img class="thumb" loading="lazy" alt="">' +
           '<div class="meta"><b>' + String(item.title).replace(/</g,'&lt;') + '</b>' +
@@ -1080,8 +1080,8 @@ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
         return KEEP.test(it.title || '') && !pinned;
       });
       items.reverse().forEach(function(item){
-        var d = new Date(item.pubDate);
-        var dateStr = d.getFullYear() + '. ' + (d.getMonth()+1) + '. ' + d.getDate() + '.';
+        var d = new Date(String(item.pubDate).replace(' ', 'T'));
+        var dateStr = isNaN(d) ? '' : d.getFullYear() + '. ' + (d.getMonth()+1) + '. ' + d.getDate() + '.';
         grid.insertBefore(makeCard(vid(item), item.title, dateStr), grid.firstChild);
       });
     })
