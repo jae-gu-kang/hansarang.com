@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="color-scheme" content="light">
 <title>한사랑교회 — 시안 B · 韓 EDITORIAL</title>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" integrity="sha384-GIdEBaqGN9mNkDkMkzMHW8EKUqtpPIe/sLj1X7DIrnc9uPtLROJgmuDlh+3rBw0j" crossorigin="anonymous">
 <style>
 :root{
   --paper:#F4F1E8;
@@ -877,6 +877,28 @@ footer{margin-top:clamp(80px,12vh,140px);border-top:1.5px solid var(--line)}
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}}),{threshold:.12});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
+/* ===== 유튜브 영상 공용 헬퍼 (말씀 영상 · 우리들 이야기 두 섹션 공용) ===== */
+var CHANNEL_ID = 'UCw5lXZnen1NqmWFiziI1YZQ';
+var feed = 'https://www.youtube.com/feeds/videos.xml?channel_id=' + CHANNEL_ID;
+function vid(item){
+  var m = (item.link||'').match(/[?&]v=([\w-]{6,})/);
+  return m ? m[1] : ((item.guid||'').split(':').pop());
+}
+/* 라이브 영상은 대표 썸네일이 검은 화면인 경우가 있어 후보를 차례로 검사합니다 */
+function pickThumb(id, img){
+  var cands = ['maxresdefault','sddefault','hqdefault','mqdefault'];
+  (function tryNext(i){
+    if(i >= cands.length){ img.src = 'https://i.ytimg.com/vi/' + id + '/hqdefault.jpg'; return; }
+    var t = new Image();
+    t.onload = function(){
+      // 유튜브는 없는 해상도에 120x90 회색 이미지를 돌려줍니다
+      if(t.naturalWidth > 130){ img.src = t.src; } else { tryNext(i+1); }
+    };
+    t.onerror = function(){ tryNext(i+1); };
+    t.src = 'https://i.ytimg.com/vi/' + id + '/' + cands[i] + '.jpg';
+  })(0);
+}
+
 /* ===== Seven Ones : 스크롤에 따라 말씀이 자동으로 펼쳐짐 (클릭도 가능) ===== */
 (function(){
   var items=document.querySelectorAll('.index-item');
@@ -903,19 +925,12 @@ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 /* ===== 말씀 영상 자동 갱신 (YouTube 채널 RSS) =====
    새 영상이 올라오면 별도 수정 없이 자동 반영됩니다. */
 (function(){
-  var CHANNEL_ID = 'UCw5lXZnen1NqmWFiziI1YZQ';
   var grid   = document.getElementById('videoGrid');
   var wrap   = document.getElementById('playerWrap');
   var poster = document.getElementById('playerPoster');
   var pImg   = document.getElementById('posterImg');
   var pTitle = document.getElementById('posterTitle');
   var pTag   = document.getElementById('posterTag');
-  var feed   = 'https://www.youtube.com/feeds/videos.xml?channel_id=' + CHANNEL_ID;
-
-  function vid(item){
-    var m = (item.link||'').match(/[?&]v=([\w-]{6,})/);
-    return m ? m[1] : ((item.guid||'').split(':').pop());
-  }
   function play(id){
     // 파일을 직접 열었을 때(file://)는 유튜브가 임베드를 차단하므로 새 창에서 재생합니다.
     if(location.protocol === 'file:'){
@@ -927,20 +942,6 @@ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
       'allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" ' +
       'referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>';
     wrap.scrollIntoView({behavior:'smooth', block:'center'});
-  }
-  /* 라이브 영상은 대표 썸네일이 검은 화면인 경우가 있어 후보를 차례로 검사합니다 */
-  function pickThumb(id, img){
-    var cands = ['maxresdefault','sddefault','hqdefault','mqdefault'];
-    (function tryNext(i){
-      if(i >= cands.length){ img.src = 'https://i.ytimg.com/vi/' + id + '/hqdefault.jpg'; return; }
-      var t = new Image();
-      t.onload = function(){
-        // 유튜브는 없는 해상도에 120x90 회색 이미지를 돌려줍니다
-        if(t.naturalWidth > 130){ img.src = t.src; } else { tryNext(i+1); }
-      };
-      t.onerror = function(){ tryNext(i+1); };
-      t.src = 'https://i.ytimg.com/vi/' + id + '/' + cands[i] + '.jpg';
-    })(0);
   }
   function isSunday(item){
     var t = item.title || '';
@@ -973,8 +974,9 @@ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
         var dateStr = isNaN(d) ? '' : d.getFullYear() + '. ' + (d.getMonth()+1) + '. ' + d.getDate() + '.';
         card.innerHTML =
           '<img class="thumb" loading="lazy" alt="">' +
-          '<div class="meta"><b>' + String(item.title).replace(/</g,'&lt;') + '</b>' +
-          '<time>' + dateStr + '</time></div>';
+          '<div class="meta"><b></b><time></time></div>';
+        card.querySelector('.meta b').textContent = item.title || '';
+        card.querySelector('.meta time').textContent = dateStr;
         pickThumb(id, card.querySelector('.thumb'));
         card.addEventListener('click', function(){ play(id); });
         grid.appendChild(card);
@@ -995,7 +997,6 @@ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
 /* ===== 우리들 이야기 : 고정 영상 + (캠프·송구영신·결산·교육부서) 신규 영상 자동 추가 ===== */
 (function(){
-  var CHANNEL_ID = 'UCw5lXZnen1NqmWFiziI1YZQ';
   var KEEP = /캠프|수련회|송구영신|결산|교육부서/;
   /* 항상 표시할 고정 영상 (업로드일 확인 후 최신순 정렬) */
   var PINNED = [
@@ -1009,12 +1010,6 @@ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
   var grid = document.getElementById('storyGrid');
   var note = document.querySelector('.stories-note');
   if(!grid) return;
-  var feed = 'https://www.youtube.com/feeds/videos.xml?channel_id=' + CHANNEL_ID;
-
-  function vid(item){
-    var m = (item.link||'').match(/[?&]v=([\w-]{6,})/);
-    return m ? m[1] : ((item.guid||'').split(':').pop());
-  }
   function play(id){
     if(location.protocol === 'file:'){
       window.open('https://www.youtube.com/watch?v=' + id, '_blank', 'noopener');
@@ -1032,18 +1027,6 @@ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
     grid.parentNode.insertBefore(box, grid);
     box.scrollIntoView({behavior:'smooth', block:'center'});
   }
-  function pickThumb(id, img){
-    var cands = ['maxresdefault','sddefault','hqdefault','mqdefault'];
-    (function tryNext(i){
-      if(i >= cands.length){ img.src = 'https://i.ytimg.com/vi/' + id + '/hqdefault.jpg'; return; }
-      var t = new Image();
-      t.onload = function(){
-        if(t.naturalWidth > 130){ img.src = t.src; } else { tryNext(i+1); }
-      };
-      t.onerror = function(){ tryNext(i+1); };
-      t.src = 'https://i.ytimg.com/vi/' + id + '/' + cands[i] + '.jpg';
-    })(0);
-  }
   function makeCard(id, title, dateStr){
     var card = document.createElement('button');
     card.type = 'button';
@@ -1051,8 +1034,13 @@ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
     card.dataset.vid = id;
     card.innerHTML =
       '<img class="thumb" loading="lazy" alt="">' +
-      '<div class="meta"><b>' + String(title||'우리들 이야기').replace(/</g,'&lt;') + '</b>' +
-      (dateStr ? '<time>' + dateStr + '</time>' : '') + '</div>';
+      '<div class="meta"><b></b></div>';
+    card.querySelector('.meta b').textContent = title || '우리들 이야기';
+    if(dateStr){
+      var tEl = document.createElement('time');
+      tEl.textContent = dateStr;
+      card.querySelector('.meta').appendChild(tEl);
+    }
     pickThumb(id, card.querySelector('.thumb'));
     card.addEventListener('click', function(){ play(id); });
     return card;
