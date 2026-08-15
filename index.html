@@ -434,15 +434,15 @@ section{padding:clamp(80px,12vh,140px) clamp(16px,3vw,32px)}
 .why-head b{font-size:15px;font-weight:900;letter-spacing:-.02em}
 .why-head span{font-size:10.5px;font-weight:700;letter-spacing:.26em;color:var(--grey)}
 .why-grid{display:grid;grid-template-columns:repeat(3,1fr)}
-.why-item{padding:20px;border-right:1.5px solid var(--line);border-bottom:1.5px solid var(--line)}
+.why-item{padding:20px;border-right:1.5px solid var(--line)}
 @media(min-width:901px){
   .why-item:nth-child(3n){border-right:none}
-  .why-item:nth-child(n+7){border-bottom:none}
 }
 @media(max-width:900px){
   .why-grid{grid-template-columns:repeat(2,1fr)}
+  .why-item{border-bottom:1.5px solid var(--line)}
   .why-item:nth-child(2n){border-right:none}
-  .why-item:nth-child(n+9){border-bottom:none}
+  .why-item:nth-child(3){border-right:none;border-bottom:none}
 }
 @media(max-width:560px){
   .why-grid{grid-template-columns:1fr}
@@ -452,6 +452,62 @@ section{padding:clamp(80px,12vh,140px) clamp(16px,3vw,32px)}
 .why-item b{display:block;font-size:14.5px;font-weight:800;letter-spacing:-.02em;line-height:1.45}
 .why-item b em{font-style:normal;color:var(--accent)}
 .why-item p{margin-top:9px;font-size:12.5px;color:var(--grey);line-height:1.75}
+.why-more{
+  border-top:1.5px solid var(--line);padding:12px 20px;font-size:12.5px;color:var(--grey);
+  display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;
+}
+.why-more a{font-weight:800;color:var(--ink);border-bottom:1.5px solid var(--ink);padding-bottom:1px}
+.why-more a:hover{color:var(--accent);border-color:var(--accent)}
+/* 건축 CTA · 자료실 */
+.b-cta{
+  display:inline-flex;align-items:center;gap:12px;margin-top:26px;
+  padding:13px 22px;border:1.5px solid var(--ink);border-radius:999px;
+  font-size:13.5px;font-weight:800;letter-spacing:-.01em;transition:all .2s;
+}
+.b-cta .arr{font-size:18px;transition:transform .25s}
+.b-cta:hover{background:var(--ink);color:var(--paper)}
+.b-cta:hover .arr{transform:translateX(5px)}
+.b-archive{margin-top:clamp(40px,6vh,64px);border:1.5px solid var(--line)}
+.arch-lead{
+  display:grid;grid-template-columns:1fr auto;align-items:center;gap:20px;
+  padding:clamp(22px,3vw,34px) clamp(20px,3vw,32px);border-bottom:1.5px solid var(--line);
+  transition:background .2s,color .2s;
+}
+.arch-lead b{display:block;font-size:clamp(19px,2.4vw,26px);font-weight:900;letter-spacing:-.03em;line-height:1.3}
+.arch-lead p{margin-top:8px;font-size:13px;color:var(--grey);line-height:1.7;max-width:640px}
+.arch-lead .arr{font-size:34px;font-weight:300;line-height:1;transition:transform .25s}
+.arch-lead:hover{background:var(--accent);color:var(--paper)}
+.arch-lead:hover p{color:rgba(242,240,235,.85)}
+.arch-lead:hover .arr{transform:translateX(8px)}
+.arch-grid{display:grid;grid-template-columns:repeat(3,1fr)}
+.arch-item{
+  display:flex;flex-direction:column;padding:18px 20px 20px;
+  border-right:1.5px solid var(--line);border-bottom:1.5px solid var(--line);
+  transition:background .2s,color .2s;
+}
+.arch-item .k{font-size:10px;font-weight:800;letter-spacing:.22em;color:var(--grey)}
+.arch-item b{margin-top:8px;font-size:14px;font-weight:800;letter-spacing:-.02em;line-height:1.45}
+.arch-item span{margin-top:6px;font-size:12px;color:var(--grey);line-height:1.65}
+.arch-item .arr{margin-top:auto;padding-top:12px;font-size:16px;align-self:flex-end;transition:transform .25s}
+.arch-item:hover{background:var(--ink);color:var(--paper)}
+.arch-item:hover .k,.arch-item:hover span{color:rgba(242,240,235,.7)}
+.arch-item:hover .arr{transform:translateX(5px)}
+@media(min-width:901px){
+  .arch-item:nth-child(3n){border-right:none}
+  .arch-item:nth-child(n+4){border-bottom:none}
+}
+@media(max-width:900px){
+  .arch-lead{grid-template-columns:1fr}
+  .arch-lead .arr{display:none}
+  .arch-grid{grid-template-columns:repeat(2,1fr)}
+  .arch-item:nth-child(2n){border-right:none}
+  .arch-item:nth-child(n+5){border-bottom:none}
+}
+@media(max-width:560px){
+  .arch-grid{grid-template-columns:1fr}
+  .arch-item{border-right:none!important;border-bottom:1.5px solid var(--line)!important}
+  .arch-item:last-child{border-bottom:none!important}
+}
 
 /* ---------- invite ---------- */
 #invite{padding-bottom:0}
@@ -778,13 +834,14 @@ footer{margin-top:clamp(80px,12vh,140px);border-top:1.5px solid var(--line)}
     <div class="b-grid">
       <div class="reveal">
         <p class="b-statement">교회는 건물이 아니라, 하나님을 믿는 사람들의 공동체입니다. 그래서 우리는 단순히 건물을 짓고 마는 것이 아니라, 다음세대까지 이어질 <mark>믿음의 플랫폼</mark>을 준비합니다.</p>
-        <p class="b-note">능곡 5구역 재개발로 종교부지를 이전하며, 새 예배당을 준비하고 있습니다. <b>지상 5층, 연면적 약 230-250평</b> — 1층은 법정 주차를 위한 필로티, 2층은 다음세대 공간과 사무실, 5층은 대예배당으로 계획하고 있습니다.</p>
+        <p class="b-note">능곡 5구역 재개발로 종교부지를 이전하며, 새 예배당을 준비하고 있습니다. <b>지상 5층, 연면적 약 230평 내외</b> — 1층은 법정 주차를 위한 필로티, 2층은 다음세대 공간과 사무실, 5층은 대예배당으로 구상하고 있으며, 지금은 함께할 건축사를 찾고 있습니다.</p>
+        <a class="b-cta" href="building/">건축 이야기 전체 보기 <span class="arr">→</span></a>
       </div>
       <div class="floors reveal">
         <div class="floor"><span class="fl">RF</span><span class="fp"><b>옥상</b><span>설비 · 법정 조경</span></span><span class="fh">ROOFTOP</span></div>
         <div class="floor main"><span class="fl">5F</span><span class="fp"><b>대예배당</b><span>기둥 없는 예배 공간</span></span><span class="fh">MAIN CHAPEL</span></div>
         <div class="floor"><span class="fl">4F</span><span class="fp"><b>카페 · 식당</b><span>예배 전후 친교의 자리</span></span><span class="fh">FELLOWSHIP</span></div>
-        <div class="floor"><span class="fl">3F</span><span class="fp"><b>소예배실 · 목양실(당회실) · 성가대 연습실 · 소방설비실</b><span>기도와 섬김의 공간 · 설비</span></span><span class="fh">CHAPEL</span></div>
+        <div class="floor"><span class="fl">3F</span><span class="fp"><b>소예배실 · 목양실 · 성가대실 · 설비실</b><span>기도와 섬김의 공간 · 설비</span></span><span class="fh">CHAPEL</span></div>
         <div class="floor"><span class="fl">2F</span><span class="fp"><b>그물놀이터 · 다음세대 예배실 · 사무실</b><span>입체 그물놀이터 · 유리 칸막이 사무실</span></span><span class="fh">NEXT GEN</span></div>
         <div class="floor"><span class="fl">1F</span><span class="fp"><b>필로티 주차 · 외부 계단</b><span>법정 주차 최대 확보 공간</span></span><span class="fh">PILOTI</span></div>
       </div>
@@ -797,38 +854,15 @@ footer{margin-top:clamp(80px,12vh,140px);border-top:1.5px solid var(--line)}
           <p>기둥 없는 넓은 예배 공간은 최상층에 둘 때 가장 경제적입니다. 아래층에 두면 그 위 모든 층의 무게를 받아줄 큰 구조물이 따로 필요해 공사비가 크게 늘어납니다.</p>
         </div>
         <div class="why-item">
-          <b>식당은 왜 <em>본당 바로 아래</em>인가요?</b>
-          <p>예배가 끝나면 많은 인원이 한 번에 이동합니다. 식당을 본당(5층) 바로 아래인 4층에 두면 이동 거리가 짧아져 계단·엘리베이터의 병목을 줄이고 안전을 확보할 수 있습니다.</p>
-        </div>
-        <div class="why-item">
-          <b>왜 <em>그리드 구조</em>와 모듈 층고인가요?</b>
-          <p>기둥과 보를 일정한 간격으로 세우고, 층고를 거푸집 규격에 맞춰 통일하면 시공이 단순해집니다. 같은 예산으로 더 튼튼하게, 더 빠르게 지을 수 있는 방법입니다.</p>
-        </div>
-        <div class="why-item">
           <b>1층은 왜 <em>주차장만</em> 있나요?</b>
-          <p>고양시 주차 조례는 일반적인 기준(연면적 150㎡당 1대)의 두 배인 75㎡당 1대를 요구합니다. 법정 주차 10대를 확보해야 연면적 약 230평을 지을 수 있기에, 아쉽지만 1층은 주차 공간으로 쓸 수밖에 없습니다.</p>
-        </div>
-        <div class="why-item">
-          <b><em>지하</em>는 왜 안 만드나요?</b>
-          <p>지하는 방수와 습기 문제로 건전성을 지키기 가장 어려운 공간이고, 실제로 많은 교회 지하가 하자를 안고 있습니다. 또 지하는 용적률에는 잡히지 않지만 법정 주차 대수를 산정하는 면적에는 포함되어, 지하를 짓는 만큼 지상에 지을 수 있는 면적이 줄어듭니다.</p>
-        </div>
-        <div class="why-item">
-          <b>기존 건물을 사서 <em>리모델링</em>하면 안 되나요?</b>
-          <p>기존 건물은 시공 품질이 낮은 경우가 많고, 하자 이력이 공유되지 않아 매입 후 보수가 어려운 경우도 많습니다. 무엇보다 예배를 위해 필요한 '기둥 없고 층고가 확보된' 공간을 가진 기존 건물은 구하기가 쉽지 않습니다.</p>
-        </div>
-        <div class="why-item">
-          <b>착공은 <em>언제</em> 하나요?</b>
-          <p>부지에 전기·상하수도 등 기반 인프라가 조성된 이후에야 공사가 가능할 것으로 보수적으로 판단하고 있습니다. 분양공고 등을 통해 시점을 예측하며, 가능한 가장 빠른 시기에 건축을 계획하고 있습니다.</p>
+          <p>고양시 주차 조례는 일반 기준의 두 배인 75㎡당 1대를 요구합니다. 법정 주차 10대를 확보해야 연면적 약 230평을 지을 수 있기에, 아쉽지만 1층은 주차 공간으로 쓸 수밖에 없습니다.</p>
         </div>
         <div class="why-item">
           <b>왜 더 <em>화려하게</em> 꾸미지 않나요?</b>
-          <p>최근 건축비가 크게 올랐습니다. 우리는 건축 헌금에 매달리는 교회가 되기보다, 주어진 형편 안에서 최선을 다해 짓고 최선을 다해 준비하려 합니다. 그래서 나중에 바꾸기 어려운 구조체에 먼저 가치를 두고, 세월이 지나도 리모델링과 추가 공사로 얼마든지 개선할 수 있는 마감은 그다음 순서에 두었습니다.</p>
-        </div>
-        <div class="why-item">
-          <b>옥상은 왜 <em>비워 두나요</em>?</b>
-          <p>옥상에는 법정 조경과 냉난방·기계 설비가 우선 배치됩니다. 넓은 옥상 정원이나 각종 편의시설은 어려운 여건이라, 처음부터 기대를 드리지 않도록 미리 말씀드립니다.</p>
+          <p>건축 헌금에 매달리는 교회가 되기보다, 주어진 형편 안에서 최선을 다해 짓습니다. 나중에 바꾸기 어려운 구조체에 먼저 가치를 두고, 리모델링으로 개선할 수 있는 마감은 그다음 순서에 두었습니다.</p>
         </div>
       </div>
+      <div class="why-more"><span>식당 위치 · 지하를 만들지 않는 이유 · 리모델링 대신 신축 · 착공 시기 · 옥상 등 나머지 질문과 답</span><a href="building/#s04">건축 이야기에서 보기 →</a></div>
     </div>
     <div class="b-steps reveal">
       <div class="b-step done"><span class="no">01</span><b>부지 확정</b><span>능곡 5구역 종교부지</span></div>
@@ -838,8 +872,26 @@ footer{margin-top:clamp(80px,12vh,140px);border-top:1.5px solid var(--line)}
       <div class="b-step"><span class="no">05</span><b>착공</b><span>기반 인프라 조성 후 · 공사 약 10개월</span></div>
       <div class="b-step"><span class="no">06</span><b>입당</b><span>한 소망의 자리로</span></div>
     </div>
-    <p class="b-caveat reveal">* 전체 일정은 능곡 5구역 재개발 인프라 일정에 따라 조정될 수 있습니다.<br>
-    </p>
+    <p class="b-caveat reveal">* 전체 일정은 능곡 5구역 재개발 인프라 일정에 따라 조정될 수 있습니다.</p>
+
+    <div class="b-archive reveal">
+      <div class="why-head"><b>건축 자료실</b><span>BUILDING ARCHIVE</span></div>
+      <a class="arch-lead" href="building/">
+        <div>
+          <b>한사랑교회 건축 이야기 — 건축 상황 공유 자료</b>
+          <p>왜 짓는가에서 건축사 추천 요청까지, 8개 장으로 정리했습니다. 다음세대를 위한 건축의 이유, 능곡5구역 대지의 경계·지형, 지금까지의 검토안과 쟁점, 함께 풀어야 할 과제.</p>
+        </div>
+        <span class="arr">→</span>
+      </a>
+      <div class="arch-grid">
+        <a class="arch-item" href="building/건물외곽_검토.html"><span class="k">STUDY 03 · 최종 기준안</span><b>건물 외곽 검토 — F10</b><span>1층 주차 10대 · 필로티 기둥 · 코어 · 설비 · 층별 평면과 단면 — 아홉 차례 검토를 거친 내부 기준안</span><span class="arr">→</span></a>
+        <a class="arch-item" href="building/주차배치_시나리오.html"><span class="k">STUDY 01</span><b>주차 배치 시나리오</b><span>진입 방향과 주차 대수별 시나리오 비교 · 검토 종결</span><span class="arr">→</span></a>
+        <a class="arch-item" href="building/기둥모듈_검토.html"><span class="k">STUDY 02</span><b>기둥 모듈 검토 — 2대 vs 3대</b><span>필로티 기둥 간격과 구조 스팬 비교 · 검토 종결</span><span class="arr">→</span></a>
+        <a class="arch-item" href="building/건축보고_대지현황.html"><span class="k">SITE REPORT</span><b>대지 현황 보고</b><span>능곡5구역 종교시설 부지 — 위치 · 도로 · 지형 · 기반시설 종합</span><span class="arr">→</span></a>
+        <a class="arch-item" href="building/종교부지_경계치수.html"><span class="k">SITE DATA</span><b>종교부지 경계 · 치수 정보</b><span>꼭짓점 좌표 · 변 길이 · 방위각 · 내각 — 정비업체 CAD 도면 기준</span><span class="arr">→</span></a>
+        <a class="arch-item" href="mailto:rkdworn7@gmail.com?subject=%5B한사랑교회%5D%20설계%20브리프%20요청"><span class="k">DESIGN BRIEF</span><b>설계 브리프 v1.1 · 대지 자료</b><span>건축사님께는 요청하시면 브리프와 대지 분석 자료 일체를 바로 보내드립니다</span><span class="arr">✉</span></a>
+      </div>
+    </div>
   </div>
 </section>
 

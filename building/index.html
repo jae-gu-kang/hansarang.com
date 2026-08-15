@@ -1,0 +1,1259 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light">
+<title>한사랑교회 — 건축 이야기 · 다음세대를 세우는 집</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" integrity="sha384-GIdEBaqGN9mNkDkMkzMHW8EKUqtpPIe/sLj1X7DIrnc9uPtLROJgmuDlh+3rBw0j" crossorigin="anonymous">
+<style>
+:root{
+  --paper:#F4F1E8;
+  --ink:#111111;
+  --grey:#6F6C66;
+  --accent:#FF4D00;
+  --accent2:#0097B2;
+  --line:#111111;
+  --sans:'Pretendard Variable',Pretendard,-apple-system,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+::selection{background:var(--accent);color:var(--paper)}
+body{
+  background:var(--paper);color:var(--ink);
+  font-family:var(--sans);font-size:16px;line-height:1.65;
+  letter-spacing:-.015em;word-break:keep-all;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+a{color:inherit;text-decoration:none}
+
+/* ---------- top bar ---------- */
+.topbar{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:0 clamp(16px,3vw,32px);height:58px;
+  background:var(--paper);border-bottom:1.5px solid var(--line);
+}
+.topbar .logo{font-weight:800;font-size:16px;letter-spacing:-.02em}
+.topbar .logo sup{color:var(--accent);font-size:10px;margin-left:4px;letter-spacing:.1em}
+.topbar ul{display:flex;gap:2px;list-style:none;font-size:12px;font-weight:600;letter-spacing:.05em}
+.topbar ul a{display:block;padding:8px 14px;border:1.5px solid transparent;border-radius:999px;transition:all .2s}
+.topbar ul a:hover{border-color:var(--ink)}
+.topbar ul a.cta{background:var(--ink);color:var(--paper)}
+.topbar ul a.cta:hover{background:var(--accent);border-color:var(--accent)}
+@media(max-width:900px){.topbar ul li:not(:last-child){display:none}}
+
+/* ---------- hero ---------- */
+#hero{
+  height:100svh;min-height:600px;display:flex;flex-direction:column;
+  padding:58px 0 0;position:relative;overflow:hidden;
+}
+.hero-type{
+  flex:1;min-height:0;display:flex;flex-direction:column;justify-content:center;
+  padding:clamp(10px,2vh,36px) clamp(16px,3vw,32px);position:relative;
+}
+.hero-kicker{
+  display:flex;gap:14px;align-items:center;
+  font-size:12px;font-weight:700;letter-spacing:.3em;color:var(--grey);
+  margin-bottom:clamp(12px,2.2vh,26px);
+  white-space:nowrap;
+}
+@media(max-width:560px){
+  .hero-kicker{font-size:10px;letter-spacing:.16em;gap:10px}
+  .hero-kicker .dot{width:7px;height:7px;flex-shrink:0}
+}
+@media(max-width:380px){
+  .hero-kicker{font-size:9px;letter-spacing:.12em}
+}
+.hero-kicker .dot{width:9px;height:9px;border-radius:50%;background:var(--accent);animation:blink 1.6s steps(2) infinite}
+@keyframes blink{50%{opacity:.25}}
+h1.giant{
+  font-weight:900;
+  font-size:clamp(40px,min(11.5vw,14.5vh),150px);
+  line-height:.98;letter-spacing:-.05em;
+  text-transform:uppercase;
+}
+h1.giant .row{display:block}
+h1.giant .row > span{display:inline-block;animation:fadeSoft 1s ease both}
+h1.giant .row:nth-child(1) > span{animation:slideIn 1.2s cubic-bezier(.18,.8,.22,1) .2s both;will-change:transform}
+h1.giant .row:nth-child(2){overflow:hidden;margin-top:-.04em}
+h1.giant .row:nth-child(2) > span{animation:emerge 1.2s cubic-bezier(.3,.9,.25,1) 1.5s both}
+h1.giant .row:nth-child(3) > span{animation-delay:2.1s}
+@keyframes fadeSoft{from{opacity:0}to{opacity:1}}
+@keyframes emerge{from{transform:translateY(-108%)}to{transform:none}}
+@keyframes slideIn{
+  from{transform:translateX(112vw);opacity:0}
+  30%{opacity:1}
+  to{transform:none;opacity:1}
+}
+h1.giant .blk{
+  padding:0 .12em;margin-left:-.04em;
+  letter-spacing:.01em;display:inline-block;
+}
+h1.giant .blk.o{background:var(--accent)}
+h1.giant .blk.o .wipe{
+  font-style:normal;
+  background-image:linear-gradient(to bottom,var(--paper) 49%,var(--accent) 51%);
+  background-size:100% 220%;
+  background-position:0 100%;
+  -webkit-background-clip:text;background-clip:text;
+  color:transparent;
+  animation:wipeDown 1.2s cubic-bezier(.3,.9,.25,1) 1.5s both;
+}
+@keyframes wipeDown{from{background-position:0 100%}to{background-position:0 0%}}
+h1.giant .cyan{
+  color:var(--accent2);
+  letter-spacing:.01em;
+  margin-left:.08em;
+}
+h1.giant .outline{
+  color:var(--paper);-webkit-text-stroke:4px var(--ink);paint-order:stroke fill;
+  letter-spacing:.01em;
+}
+h1.giant .blk.o + .outline{margin-left:.12em}
+.hero-sub{
+  display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;
+  margin-top:clamp(14px,2.6vh,36px);
+}
+.hero-sub p{max-width:460px;font-size:15px;line-height:1.8;color:var(--grey)}
+.hero-sub p b{color:var(--ink)}
+.hero-meta{font-size:11.5px;font-weight:600;letter-spacing:.14em;line-height:2;text-align:right;color:var(--grey)}
+.hero-meta em{font-style:normal;color:var(--accent);display:inline-block;font-weight:800}
+.han-stamp{
+  position:absolute;right:clamp(10px,4vw,60px);top:50%;transform:translateY(-58%) rotate(6deg);
+  width:clamp(120px,18vw,230px);aspect-ratio:1;border-radius:50%;
+  border:1.5px solid var(--ink);
+  display:flex;align-items:center;justify-content:center;
+  font-weight:900;font-size:clamp(56px,9vw,120px);
+  animation:spinIn 1.4s .5s cubic-bezier(.2,.8,.2,1) both,
+            floaty 7s ease-in-out 1.9s infinite;
+  background:var(--paper);
+}
+@keyframes spinIn{from{opacity:0;transform:translateY(-58%) rotate(140deg) scale(.5)}to{opacity:1;transform:translateY(-58%) rotate(6deg) scale(1)}}
+@keyframes floaty{
+  0%,100%{transform:translateY(-58%) rotate(6deg)}
+  30%{transform:translateY(-58%) translateY(-36px) rotate(0deg)}
+  62%{transform:translateY(-58%) translateY(16px) rotate(11deg)}
+}
+@media(max-width:900px){.han-stamp{display:none}}
+
+/* ---------- marquee ---------- */
+.marquee{
+  border-top:1.5px solid var(--line);border-bottom:1.5px solid var(--line);
+  overflow:hidden;white-space:nowrap;background:var(--ink);color:var(--paper);
+  padding:13px 0;font-weight:700;font-size:14px;letter-spacing:.06em;
+}
+.marquee .track{display:inline-block;animation:mq 70s linear infinite}
+.marquee em{font-style:normal;color:var(--accent);margin:0 40px 0 16px;font-size:12px;letter-spacing:.14em;font-weight:800}
+.marquee em:nth-of-type(even){color:var(--accent2)}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+/* ---------- common ---------- */
+section{padding:clamp(80px,12vh,140px) clamp(16px,3vw,32px)}
+.inner{max-width:1280px;margin:0 auto}
+.sec-head{
+  display:grid;grid-template-columns:auto 1fr auto;gap:18px;align-items:baseline;
+  border-bottom:1.5px solid var(--line);padding-bottom:16px;margin-bottom:clamp(32px,5vh,56px);
+}
+.sec-head .idx{font-size:12px;font-weight:800;letter-spacing:.2em;color:var(--accent)}
+.sec-head h2{font-size:clamp(24px,3.6vw,42px);font-weight:900;letter-spacing:-.04em}
+.sec-head .en{font-size:11px;font-weight:600;letter-spacing:.3em;color:var(--grey)}
+#s02 .sec-head .idx,#s04 .sec-head .idx,#s06 .sec-head .idx,#s08 .sec-head .idx{color:var(--accent2)}
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .9s ease,transform .9s ease}
+.reveal.on{opacity:1;transform:none}
+.hl-o{color:var(--accent);text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:5px;text-decoration-color:var(--accent)}
+
+/* ---------- dark section (01 배경) ---------- */
+.dark{background:var(--ink);color:var(--paper)}
+.dark .sec-head{border-color:rgba(242,240,235,.9)}
+.dark .sec-head h2{color:var(--paper)}
+.dark .sec-head .en{color:rgba(242,240,235,.5)}
+.dark .grid2{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,64px)}
+@media(max-width:860px){.dark .grid2{grid-template-columns:1fr}}
+.dark .statement{
+  font-size:clamp(22px,3vw,34px);font-weight:700;line-height:1.55;letter-spacing:-.03em;
+}
+.dark .body{color:rgba(242,240,235,.68);font-size:15.5px;line-height:1.9;display:flex;flex-direction:column;gap:18px}
+.dark .body b{color:var(--paper)}
+.dark .body b.hl-o{color:var(--accent)}
+.sub-head{
+  margin-top:clamp(48px,8vh,84px);display:flex;align-items:center;gap:18px;
+  font-size:11px;font-weight:800;letter-spacing:.3em;color:rgba(242,240,235,.5);
+}
+.sub-head b{color:var(--paper)}
+.sub-head::after{content:"";flex:1;height:1.5px;background:rgba(242,240,235,.35)}
+.light-sub{color:var(--grey)}
+.light-sub b{color:var(--ink)}
+.light-sub::after{background:var(--line)}
+.fact-row{
+  margin-top:clamp(28px,4vh,44px);
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  border:1.5px solid rgba(242,240,235,.9);
+}
+.fact{padding:26px 24px;border-right:1.5px solid rgba(242,240,235,.28)}
+.fact:last-child{border-right:none}
+@media(max-width:860px){.fact{border-right:none;border-bottom:1.5px solid rgba(242,240,235,.28)}.fact:last-child{border-bottom:none}}
+.fact .k{font-size:11px;font-weight:700;letter-spacing:.24em;color:rgba(242,240,235,.55);margin-bottom:8px}
+.fact .v{font-size:clamp(26px,3.2vw,40px);font-weight:800;letter-spacing:-.03em}
+.fact .v em{font-style:normal;color:var(--accent)}
+.fact .s{margin-top:8px;font-size:12.5px;line-height:1.7;color:rgba(242,240,235,.55)}
+.src-note{margin-top:14px;font-size:12px;line-height:1.8;color:rgba(242,240,235,.45)}
+.dark .closing{
+  margin-top:clamp(48px,8vh,84px);
+  font-size:clamp(20px,2.6vw,30px);font-weight:700;line-height:1.6;letter-spacing:-.03em;
+  max-width:900px;
+}
+.dark .closing mark{background:none;color:var(--accent)}
+
+/* ---------- index list (말씀 아코디언) ---------- */
+.index-list{counter-reset:one;margin-top:18px}
+.index-item{
+  display:grid;grid-template-columns:64px 1fr auto 30px;gap:20px;align-items:center;
+  padding:22px 6px;border-bottom:1px solid rgba(242,240,235,.22);
+  transition:padding .3s;cursor:pointer;position:relative;
+}
+.index-item:hover{padding-left:24px}
+.index-item::before{
+  counter-increment:one;content:"0" counter(one);
+  font-size:12px;font-weight:700;letter-spacing:.16em;color:rgba(242,240,235,.5);
+}
+.index-item .name{
+  font-size:clamp(22px,3.6vw,40px);font-weight:900;letter-spacing:-.03em;
+  transition:color .25s;
+}
+.index-item:hover .name,.index-item.open .name{color:var(--accent)}
+.index-item .desc{
+  font-size:13px;color:rgba(242,240,235,.55);max-width:340px;text-align:right;
+}
+.index-item .plus{
+  font-size:22px;font-weight:300;line-height:1;text-align:center;
+  color:rgba(242,240,235,.5);transition:transform .4s,color .25s;
+}
+.index-item.open .plus{transform:rotate(45deg);color:var(--accent)}
+.index-body{
+  grid-column:1/-1;max-height:0;overflow:hidden;
+  transition:max-height .55s cubic-bezier(.2,.7,.2,1),margin .4s;
+}
+.index-item.open .index-body{max-height:320px;margin-top:8px}
+.index-body blockquote{
+  border-left:2px solid var(--accent);padding-left:20px;max-width:680px;
+  font-size:15px;line-height:1.9;color:rgba(242,240,235,.8);
+}
+.index-body .vs{display:block;margin-top:10px;font-size:11.5px;letter-spacing:.2em;font-weight:800;color:var(--accent2)}
+@media(max-width:720px){.index-item{grid-template-columns:48px 1fr 26px}.index-item .desc{display:none}}
+/* 밝은 배경용 변형 (07 과제) */
+.index-list.light .index-item{border-bottom-color:rgba(17,17,17,.18)}
+.index-list.light .index-item::before{color:var(--grey)}
+.index-list.light .index-item .name{font-size:clamp(19px,2.6vw,30px)}
+.index-list.light .index-item .desc{color:var(--grey)}
+.index-list.light .index-item .plus{color:var(--grey)}
+.index-list.light .index-body blockquote{color:var(--grey);border-left-color:var(--accent)}
+.index-list.light .index-body blockquote b{color:var(--ink)}
+.index-list.light .index-body .vs{color:var(--accent2)}
+.index-list.light .index-item.open .index-body{max-height:900px}
+
+/* ---------- 밝은 통계 스트립 ---------- */
+.stat-row{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  border:1.5px solid var(--line);margin-bottom:clamp(32px,5vh,52px);
+}
+.stat{padding:20px 20px 22px;border-right:1.5px solid rgba(17,17,17,.25)}
+.stat:last-child{border-right:none}
+@media(max-width:860px){.stat{border-right:none;border-bottom:1.5px solid rgba(17,17,17,.25)}.stat:last-child{border-bottom:none}}
+.stat .k{font-size:10.5px;font-weight:700;letter-spacing:.22em;color:var(--grey);margin-bottom:6px}
+.stat .v{font-size:clamp(19px,2.2vw,26px);font-weight:800;letter-spacing:-.03em}
+.stat .v em{font-style:normal;color:var(--accent)}
+.stat .s{margin-top:4px;font-size:12px;color:var(--grey);line-height:1.6}
+
+/* ---------- 지도 · 도면 ---------- */
+.zoom-rail{
+  display:flex;align-items:center;gap:8px;flex-wrap:wrap;
+  margin-bottom:26px;font-size:11.5px;font-weight:700;letter-spacing:.06em;
+}
+.zoom-rail .z{
+  border:1.5px solid var(--ink);border-radius:999px;padding:6px 14px;background:var(--paper);
+}
+.zoom-rail .z.onz{background:var(--ink);color:var(--paper)}
+.zoom-rail .arr{color:var(--grey);font-weight:400}
+.map-step{margin:0 0 clamp(44px,7vh,72px)}
+.map-head{
+  display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;
+  padding-bottom:10px;margin-bottom:14px;border-bottom:1.5px solid var(--line);
+}
+.map-head .chip{
+  font-size:10.5px;font-weight:800;letter-spacing:.22em;color:var(--paper);
+  background:var(--accent);border-radius:999px;padding:5px 14px;
+}
+.map-step:nth-of-type(even) .map-head .chip{background:var(--accent2)}
+.map-head b{font-size:clamp(17px,2.2vw,24px);font-weight:900;letter-spacing:-.03em}
+.map-head .mnote{margin-left:auto;font-size:11px;font-weight:600;letter-spacing:.2em;color:var(--grey)}
+.map-duo{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:860px){.map-duo{grid-template-columns:1fr}}
+.map-frame{position:relative;min-height:380px;border:1.5px solid var(--line);background:#fff}
+.map-frame iframe{
+  position:absolute;inset:0;width:100%;height:100%;border:0;
+  filter:grayscale(1) contrast(1.04);transition:filter .5s;
+}
+.map-frame:hover iframe{filter:none}
+.map-frame .tag{
+  position:absolute;left:0;top:0;z-index:2;background:var(--ink);color:var(--paper);
+  font-size:10.5px;font-weight:700;letter-spacing:.18em;padding:6px 14px;
+}
+.map-cap{margin-top:10px;font-size:13px;color:var(--grey);line-height:1.8;max-width:820px}
+.map-cap b{color:var(--ink)}
+figure.drawing{
+  border:1.5px solid var(--line);background:#fff;
+  padding:14px 14px 6px;overflow-x:auto;margin:0;
+}
+figure.drawing figcaption{
+  color:var(--grey);font-size:13px;line-height:1.75;padding:10px 6px 12px;
+  border-top:1px solid #e3e1db;margin-top:8px;
+}
+figure.drawing figcaption b{color:var(--ink)}
+/* 도면 SVG 전용 팔레트 — 원 보고서 팔레트를 이 페이지 브랜드 색으로 정합 */
+figure.drawing{
+  --panel:#ffffff; --ink:#1b1d20; --muted:#61666d; --line:#e3e1db;
+  --accent:#e04300; --accent-soft:#ff4d0016; --road:#a86400; --ctx:#a8b0ba; --ctx2:#c9ced6;
+  --ok:#1f7a45; --no:#c02b2b; --green:#2c7a4b; --blue:#0f89a0;
+  --xwA:#c8331f; --xwB:#1f6f9e; --xwC:#7a4bb5;
+}
+figure.drawing svg.plan, figure.drawing svg.prof{display:block; width:100%; min-width:620px; height:auto;}
+figure.drawing svg.plan .ctx polyline{fill:none; stroke:var(--ctx); stroke-width:1.1; opacity:.6;}
+figure.drawing svg.plan .ctx2 polyline{fill:none; stroke:var(--ctx2); stroke-width:1; opacity:.55;}
+figure.drawing svg.plan .district polyline{fill:none; stroke:var(--accent); stroke-width:1.6; stroke-dasharray:12 6; opacity:.5;}
+figure.drawing svg.plan .mark polyline{fill:none; stroke:var(--road); stroke-width:1.1; opacity:.5;}
+figure.drawing svg.plan .bike polyline{fill:none; stroke:#1f9e93; stroke-width:1.3; stroke-dasharray:7 5; opacity:.75;}
+figure.drawing svg.plan .cl polyline{fill:none; stroke:var(--road); stroke-width:1.8; stroke-dasharray:15 6 4 6; opacity:.9;}
+figure.drawing svg.plan .lot{fill:var(--accent-soft); stroke:var(--accent); stroke-width:3.2; stroke-linejoin:round;}
+figure.drawing svg.plan .lot.pale{fill:var(--accent-soft); stroke:none;}
+figure.drawing svg.plan .lotel{fill:url(#elg); stroke:var(--accent); stroke-width:2.6; stroke-linejoin:round;}
+figure.drawing svg.plan .vtx{fill:var(--accent);}
+figure.drawing svg.plan .vlab{fill:var(--accent); font-size:15px; font-weight:700;}
+figure.drawing svg.plan .lead{stroke:var(--ink); stroke-width:1.5; stroke-dasharray:5 4; fill:none;}
+figure.drawing svg.plan .dim rect{fill:var(--panel); stroke:var(--accent); stroke-width:1;}
+figure.drawing svg.plan .dim text{fill:var(--ink); font-size:14px; text-anchor:middle; font-variant-numeric:tabular-nums;}
+figure.drawing svg.plan .core{fill:var(--accent); font-size:16px; text-anchor:middle; font-weight:650;}
+figure.drawing svg.plan .core.big{font-size:26px; font-weight:780;}
+figure.drawing svg.plan .core.sub{font-size:13.5px; fill:var(--muted); font-weight:500;}
+figure.drawing svg.plan .note{fill:var(--muted); font-size:14.5px;}
+figure.drawing svg.plan .note.road{fill:var(--road);}
+figure.drawing svg.plan .note.tiny{font-size:12px;}
+figure.drawing svg.plan text{paint-order:stroke; stroke:var(--panel); stroke-width:3px; stroke-linejoin:round;}
+figure.drawing svg.plan .xwlab text, figure.drawing svg.plan .north text{stroke:none;}
+figure.drawing svg.plan .calo tspan{fill:var(--accent); font-weight:750;}
+figure.drawing svg.plan .calo{font-size:17px; text-anchor:middle;}
+figure.drawing svg.plan .loclab{font-size:14px; text-anchor:middle; fill:var(--ink);}
+figure.drawing svg.plan .loclab.fac{fill:var(--blue); font-weight:650;}
+figure.drawing svg.plan .loclab.green{fill:var(--green); font-weight:600;}
+figure.drawing svg.plan .loclab.apt{fill:var(--muted); font-weight:600;}
+figure.drawing svg.plan .loclab.old{fill:var(--muted); font-size:12.5px;}
+figure.drawing svg.plan .loclab.road{fill:var(--road); font-weight:650;}
+figure.drawing svg.plan .xw line{stroke-width:3.2; stroke-linecap:round;}
+figure.drawing svg.plan .xw.thin line{stroke-width:1.8;}
+figure.drawing svg.plan .xw.xA line{stroke:var(--xwA);}
+figure.drawing svg.plan .xw.xB line{stroke:var(--xwB);}
+figure.drawing svg.plan .xw.xC line{stroke:var(--xwC);}
+figure.drawing svg.plan .xwlab circle{stroke:var(--panel); stroke-width:2.5;}
+figure.drawing svg.plan .xwlab text{fill:#fff; font-size:16px; font-weight:750; text-anchor:middle;}
+figure.drawing svg.plan .xwlab.xA circle{fill:var(--xwA);}
+figure.drawing svg.plan .xwlab.xB circle{fill:var(--xwB);}
+figure.drawing svg.plan .xwlab.xC circle{fill:var(--xwC);}
+figure.drawing svg.plan .r5{fill:none; stroke:var(--no); stroke-width:2; stroke-dasharray:9 6; opacity:.85;}
+figure.drawing svg.plan .edge{stroke-width:7; stroke-linecap:butt;}
+figure.drawing svg.plan .edge.yes{stroke:var(--ok);}
+figure.drawing svg.plan .edge.no{stroke:var(--no);}
+figure.drawing svg.plan .edge.warn{stroke:var(--road);}
+figure.drawing svg.plan .edge.none{stroke:var(--ctx); stroke-width:4; stroke-dasharray:6 5;}
+figure.drawing svg.plan .glab{fill:var(--ok); font-size:14.5px; font-weight:700;}
+figure.drawing svg.plan .rlab{fill:var(--no); font-size:14.5px; font-weight:700;}
+figure.drawing svg.plan .wlab{fill:var(--road); font-size:13.5px; font-weight:700;}
+figure.drawing svg.plan .slope{stroke:var(--ink); stroke-width:3; opacity:.7;}
+figure.drawing svg.plan .slopelab{font-size:15px; font-weight:700; fill:var(--ink); text-anchor:middle;}
+figure.drawing svg.plan .ellab{font-size:15px; font-weight:750; fill:var(--ink); text-anchor:middle;}
+figure.drawing svg.plan .ellab.sub{font-size:11.5px; font-weight:500; fill:var(--muted);}
+figure.drawing svg.prof .grid{stroke:var(--line); stroke-width:1;}
+figure.drawing svg.prof .tick{fill:var(--muted); font-size:12.5px; font-variant-numeric:tabular-nums;}
+figure.drawing svg.prof .tick.sub{font-size:11px;}
+figure.drawing svg.prof .alab{fill:var(--muted); font-size:12.5px;}
+figure.drawing svg.prof .ln{fill:none; stroke-width:2.4; stroke-linejoin:round; stroke-linecap:round;}
+figure.drawing svg.prof .ln.gl{stroke:var(--blue); opacity:.8;}
+figure.drawing svg.prof .ln.fh{stroke:var(--accent);}
+figure.drawing svg.prof .mk.gl{fill:var(--blue);}
+figure.drawing svg.prof .mk.fh{fill:var(--accent);}
+figure.drawing svg.prof .dlab{font-size:12.5px; font-weight:700; fill:var(--ink); font-variant-numeric:tabular-nums;}
+figure.drawing svg.plan .north line{stroke:var(--ink); stroke-width:2.2;}
+figure.drawing svg.plan .north polygon{fill:var(--ink);}
+figure.drawing svg.plan .north text{fill:var(--ink); font-size:15px; font-weight:700; text-anchor:middle;}
+figure.drawing svg.plan .scale line, figure.drawing svg.prof .scale line{stroke:var(--ink); stroke-width:2;}
+figure.drawing svg.plan .scale text{fill:var(--ink); font-size:12.5px; text-anchor:middle;}
+
+/* ---------- 표 ---------- */
+.tablewrap{overflow-x:auto;border:1.5px solid var(--line);background:#fff;margin-top:16px}
+table.tbl{width:100%;border-collapse:collapse;font-size:13.5px;min-width:640px}
+table.tbl th{
+  text-align:left;font-size:10.5px;font-weight:800;letter-spacing:.14em;color:var(--grey);
+  padding:12px 14px;border-bottom:1.5px solid var(--line);white-space:nowrap;background:#fff;
+}
+table.tbl td{
+  padding:11px 14px;border-bottom:1px solid #e3e1db;vertical-align:top;
+  font-variant-numeric:tabular-nums;
+}
+table.tbl tr:last-child td{border-bottom:none}
+table.tbl td b{font-weight:800}
+table.tbl .num{text-align:right;white-space:nowrap}
+table.tbl .pt{font-weight:900;color:var(--accent)}
+table.tbl .dim2{color:var(--grey);font-size:12px}
+.tbl-cap{margin-top:8px;font-size:12px;color:var(--grey);line-height:1.7}
+
+/* ---------- 카드 3열 (지형 노트 등) ---------- */
+.note-grid{display:grid;grid-template-columns:repeat(3,1fr);border:1.5px solid var(--line);margin-top:16px}
+@media(max-width:860px){.note-grid{grid-template-columns:1fr}}
+.note-cell{padding:20px;border-right:1.5px solid var(--line)}
+.note-cell:last-child{border-right:none}
+@media(max-width:860px){.note-cell{border-right:none;border-bottom:1.5px solid var(--line)}.note-cell:last-child{border-bottom:none}}
+.note-cell b{display:block;font-size:14.5px;font-weight:800;letter-spacing:-.02em;line-height:1.45}
+.note-cell b em{font-style:normal;color:var(--accent)}
+.note-cell p{margin-top:9px;font-size:12.5px;color:var(--grey);line-height:1.75}
+
+/* ---------- 02 방향 ---------- */
+.b-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(28px,4vw,64px);align-items:start}
+@media(max-width:900px){.b-grid{grid-template-columns:1fr}}
+.b-statement{font-size:clamp(21px,2.8vw,32px);font-weight:700;line-height:1.6;letter-spacing:-.03em}
+.b-statement mark{background:none;color:var(--accent)}
+.b-note{margin-top:22px;color:var(--grey);font-size:14.5px;line-height:1.9;max-width:520px}
+.b-note b{color:var(--ink)}
+/* 가치 우선순위 스택 */
+.floors{border:1.5px solid var(--line)}
+.floor{
+  display:grid;grid-template-columns:58px 1fr auto;gap:14px;align-items:center;
+  padding:17px 20px;border-bottom:1.5px solid var(--line);transition:background .25s,padding-left .25s;
+}
+.floor:last-child{border-bottom:none}
+.floor:hover{background:#fff;padding-left:28px}
+.floor .fl{font-weight:900;font-size:21px;letter-spacing:-.02em}
+.floor .fp b{display:block;font-size:15px;font-weight:800;letter-spacing:-.02em}
+.floor .fp span{font-size:12.5px;color:var(--grey)}
+.floor .fh{font-size:10.5px;font-weight:700;letter-spacing:.16em;color:var(--grey);text-align:right}
+.floor.main{background:var(--ink);color:var(--paper)}
+.floor.main:hover{background:var(--ink);padding-left:28px}
+.floor.main .fp span,.floor.main .fh{color:rgba(242,240,235,.6)}
+.floor.main .fl{color:var(--accent)}
+
+/* ---------- why-grid (요구·아이디어 카드) ---------- */
+.why{margin-top:clamp(40px,6vh,64px);border:1.5px solid var(--line)}
+.why-head{
+  display:flex;align-items:baseline;gap:14px;
+  padding:15px 20px;border-bottom:1.5px solid var(--line);
+}
+.why-head b{font-size:15px;font-weight:900;letter-spacing:-.02em}
+.why-head span{font-size:10.5px;font-weight:700;letter-spacing:.26em;color:var(--grey)}
+.why-grid{display:grid;grid-template-columns:repeat(2,1fr)}
+.why-grid.c3{grid-template-columns:repeat(3,1fr)}
+.why-item{padding:20px;border-right:1.5px solid var(--line);border-bottom:1.5px solid var(--line)}
+.why-grid .why-item:nth-child(2n){border-right:none}
+.why-grid.c3 .why-item:nth-child(2n){border-right:1.5px solid var(--line)}
+.why-grid.c3 .why-item:nth-child(3n){border-right:none}
+@media(max-width:720px){
+  .why-grid,.why-grid.c3{grid-template-columns:1fr}
+  .why-item{border-right:none!important}
+}
+.why-item b{display:block;font-size:14.5px;font-weight:800;letter-spacing:-.02em;line-height:1.45}
+.why-item b em{font-style:normal;color:var(--accent)}
+.why-item p{margin-top:9px;font-size:12.5px;color:var(--grey);line-height:1.75}
+
+/* ---------- 관련 자료 (archive) ---------- */
+.arch{margin-top:clamp(40px,6vh,64px);border:1.5px solid var(--line)}
+.arch-grid{display:grid;grid-template-columns:repeat(3,1fr)}
+.arch-item{
+  display:flex;flex-direction:column;padding:18px 20px 20px;
+  border-right:1.5px solid var(--line);border-bottom:1.5px solid var(--line);
+  transition:background .2s,color .2s;
+}
+.arch-item .k{font-size:10px;font-weight:800;letter-spacing:.22em;color:var(--grey)}
+.arch-item b{margin-top:8px;font-size:14px;font-weight:800;letter-spacing:-.02em;line-height:1.45}
+.arch-item span{margin-top:6px;font-size:12px;color:var(--grey);line-height:1.65}
+.arch-item .arr{margin-top:auto;padding-top:12px;font-size:16px;align-self:flex-end;transition:transform .25s}
+.arch-item:hover{background:var(--ink);color:var(--paper)}
+.arch-item:hover .k,.arch-item:hover span{color:rgba(242,240,235,.7)}
+.arch-item:hover .arr{transform:translateX(5px)}
+.arch-item:nth-child(3n){border-right:none}
+.arch-imgs{display:flex;flex-wrap:wrap;gap:8px;padding:14px 20px;border-top:1.5px solid var(--line);font-size:12px;align-items:center}
+.arch-imgs .k{font-size:10px;font-weight:800;letter-spacing:.22em;color:var(--grey);margin-right:6px}
+.arch-imgs a{padding:6px 12px;border:1.5px solid var(--line);border-radius:999px;font-weight:700;transition:all .2s}
+.arch-imgs a:hover{background:var(--accent);border-color:var(--accent);color:var(--paper)}
+@media(max-width:860px){
+  .arch-grid{grid-template-columns:repeat(2,1fr)}
+  .arch-item:nth-child(3n){border-right:1.5px solid var(--line)}
+  .arch-item:nth-child(2n){border-right:none}
+}
+@media(max-width:560px){
+  .arch-grid{grid-template-columns:1fr}
+  .arch-item{border-right:none!important}
+}
+
+/* ---------- 05 trade-off ---------- */
+.to-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:860px){.to-grid{grid-template-columns:1fr}}
+.to-card{border:1.5px solid var(--line);background:var(--paper);display:flex;flex-direction:column}
+.to-card .th{
+  display:flex;align-items:baseline;gap:12px;padding:16px 20px;border-bottom:1.5px solid var(--line);
+}
+.to-card .th .no{font-size:11px;font-weight:800;letter-spacing:.2em;color:var(--accent)}
+.to-card .th b{font-size:clamp(16px,2vw,20px);font-weight:900;letter-spacing:-.03em}
+.to-card .pick{padding:14px 20px 4px;font-size:14px;line-height:1.8}
+.to-card .pick b{color:var(--accent)}
+.to-row{display:grid;grid-template-columns:86px 1fr;gap:12px;padding:10px 20px;font-size:13px;line-height:1.75;color:var(--grey)}
+.to-row:last-child{padding-bottom:18px}
+.to-row .lb{font-size:10.5px;font-weight:800;letter-spacing:.16em;padding-top:3px}
+.to-row .lb.gain{color:#1f7a45}
+.to-row .lb.cost{color:#c02b2b}
+
+/* ---------- 06 진행 단계 ---------- */
+.b-steps{
+  display:grid;grid-template-columns:repeat(4,1fr);border:1.5px solid var(--line);
+}
+@media(max-width:900px){.b-steps{grid-template-columns:repeat(2,1fr)}}
+.b-step{padding:20px 18px 24px;border-right:1.5px solid var(--line);border-bottom:1.5px solid var(--line)}
+.b-step:nth-child(4n){border-right:none}
+@media(max-width:900px){.b-step:nth-child(2n){border-right:none}}
+.b-step .no{font-size:10.5px;font-weight:800;letter-spacing:.2em;color:var(--grey)}
+.b-step b{display:block;margin-top:12px;font-size:15px;font-weight:800;letter-spacing:-.02em;line-height:1.4}
+.b-step span{display:block;margin-top:5px;font-size:12px;color:var(--grey);line-height:1.6}
+.b-step.done b::after{content:" ✓";color:var(--accent)}
+.b-step.now{background:var(--accent);color:var(--paper)}
+.b-step.now .no{color:rgba(242,240,235,.8)}
+.b-step.now span{color:rgba(242,240,235,.85)}
+.b-step.now .live{
+  display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--paper);
+  margin-right:7px;animation:blink 1.4s steps(2) infinite;
+}
+.b-caveat{margin-top:16px;font-size:12px;color:var(--grey);letter-spacing:.02em;line-height:1.9}
+.done-list{margin-top:clamp(36px,5vh,56px);border:1.5px solid var(--line)}
+.done-row{
+  display:grid;grid-template-columns:34px 1fr auto;gap:14px;align-items:baseline;
+  padding:15px 20px;border-bottom:1px solid rgba(17,17,17,.18);
+}
+.done-row:last-child{border-bottom:none}
+.done-row .ck{font-weight:900;color:var(--accent)}
+.done-row b{font-size:14.5px;font-weight:800;letter-spacing:-.02em}
+.done-row span{font-size:12.5px;color:var(--grey)}
+.done-row .dt{font-size:11px;font-weight:700;letter-spacing:.14em;color:var(--grey);white-space:nowrap}
+@media(max-width:640px){.done-row{grid-template-columns:28px 1fr}.done-row .dt{display:none}}
+
+/* ---------- 08 선정 기준 · 초대 ---------- */
+.crit{margin-top:8px;border:1.5px solid var(--line)}
+.crit-row{
+  display:grid;grid-template-columns:minmax(180px,340px) 1fr 64px;gap:16px;align-items:center;
+  padding:16px 20px;border-bottom:1.5px solid var(--line);
+}
+.crit-row:last-child{border-bottom:none}
+.crit-row .cl2{font-size:14.5px;font-weight:800;letter-spacing:-.02em}
+.crit-row .cl2 span{display:block;font-size:11px;font-weight:600;color:var(--grey);letter-spacing:.06em}
+.crit-row .bar{height:14px;background:#fff;border:1.5px solid var(--ink);position:relative;overflow:hidden}
+.crit-row .bar i{position:absolute;inset:0;width:0;background:var(--ink);transition:width 1.1s cubic-bezier(.2,.8,.2,1)}
+.crit-row:first-child .bar i{background:var(--accent)}
+.crit-row.on .bar i{width:var(--w)}
+.crit-row .pc{font-size:17px;font-weight:900;text-align:right;font-variant-numeric:tabular-nums}
+@media(max-width:640px){.crit-row{grid-template-columns:1fr 56px}.crit-row .bar{grid-column:1/-1;order:3}}
+.ask-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,56px);margin-top:clamp(40px,6vh,64px)}
+@media(max-width:860px){.ask-grid{grid-template-columns:1fr}}
+.ask-col h3{font-size:15px;font-weight:900;letter-spacing:-.02em;margin-bottom:12px}
+.ask-col h3 span{font-size:10.5px;font-weight:700;letter-spacing:.24em;color:var(--grey);margin-left:10px}
+.ask-col ul{list-style:none}
+.ask-col li{
+  padding:11px 2px;border-bottom:1px solid rgba(17,17,17,.16);
+  font-size:14px;line-height:1.7;
+}
+.ask-col li b{font-weight:800}
+.ask-col li small{display:block;font-size:12px;color:var(--grey)}
+.invite-box{
+  margin-top:clamp(48px,8vh,80px);
+  border:1.5px solid var(--line);
+  display:grid;grid-template-columns:1.3fr 1fr;
+}
+@media(max-width:860px){.invite-box{grid-template-columns:1fr}}
+.invite-box .left{padding:clamp(32px,5vw,64px);border-right:1.5px solid var(--line)}
+@media(max-width:860px){.invite-box .left{border-right:none;border-bottom:1.5px solid var(--line)}}
+.invite-box h2{font-size:clamp(30px,5vw,58px);font-weight:900;letter-spacing:-.045em;line-height:1.12;text-transform:uppercase}
+.invite-box h2 span{color:var(--paper);-webkit-text-stroke:3px var(--ink);paint-order:stroke fill}
+.invite-box p{margin-top:22px;color:var(--grey);font-size:15px;max-width:440px;line-height:1.85}
+.invite-box .right{display:flex;flex-direction:column}
+.invite-box .right a,.invite-box .right .plain{
+  flex:1;display:flex;align-items:center;justify-content:space-between;
+  padding:26px clamp(24px,3vw,40px);font-weight:800;font-size:17px;letter-spacing:-.02em;
+  border-bottom:1.5px solid var(--line);transition:all .25s;
+}
+.invite-box .right a:last-child,.invite-box .right .plain:last-child{border-bottom:none}
+.invite-box .right a small,.invite-box .right .plain small{font-weight:600;font-size:11px;letter-spacing:.22em;color:var(--grey)}
+.invite-box .right a .arr{font-size:22px;transition:transform .25s}
+.invite-box .right a:hover{background:var(--accent2);color:var(--paper)}
+.invite-box .right a:hover small{color:rgba(242,240,235,.7)}
+.invite-box .right a:hover .arr{transform:translateX(6px)}
+
+/* ---------- footer ---------- */
+footer{margin-top:clamp(80px,12vh,140px);border-top:1.5px solid var(--line)}
+.f-giant{
+  font-weight:900;font-size:clamp(38px,9.5vw,140px);letter-spacing:-.05em;
+  text-transform:uppercase;line-height:1;padding:clamp(28px,5vw,56px) clamp(16px,3vw,32px) 0;
+  color:var(--paper);-webkit-text-stroke:3px var(--ink);paint-order:stroke fill;
+  white-space:nowrap;overflow:hidden;
+}
+.f-grid{
+  display:flex;flex-wrap:wrap;gap:24px;justify-content:space-between;
+  padding:clamp(24px,4vw,40px) clamp(16px,3vw,32px) 32px;
+  font-size:13px;color:var(--grey);line-height:2;
+}
+.f-grid b{color:var(--ink);display:block;font-size:12px;letter-spacing:.2em;margin-bottom:4px}
+.f-bottom{
+  border-top:1.5px solid var(--line);padding:16px clamp(16px,3vw,32px);
+  display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
+  font-size:11px;letter-spacing:.08em;color:var(--grey);
+}
+
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  .reveal{opacity:1;transform:none}
+  .crit-row .bar i{width:var(--w)!important}
+  h1.giant .blk.o .wipe{background-position:0 0%}
+}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="logo" href="#hero">한사랑교회<sup>건축 REPORT</sup></a>
+  <ul>
+    <li><a href="../">홈</a></li>
+    <li><a href="#s01">배경</a></li>
+    <li><a href="#s02">방향</a></li>
+    <li><a href="#s03">대지</a></li>
+    <li><a href="#s04">구상</a></li>
+    <li><a href="#s05">쟁점</a></li>
+    <li><a href="#s06">진행</a></li>
+    <li><a href="#s07">과제</a></li>
+    <li><a class="cta" href="#s08">건축사 추천 →</a></li>
+  </ul>
+</header>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-type">
+    <div class="hero-kicker"><span class="dot"></span>HANSARANG CHURCH — BUILDING REPORT · 2026. 08</div>
+    <h1 class="giant">
+      <span class="row"><span><span class="blk o"><i class="wipe">한&nbsp;사랑</i></span><span class="outline">으로</span></span></span>
+      <span class="row"><span class="cyan">다음세대를</span></span>
+      <span class="row"><span><span class="outline">세우는</span> 집</span></span>
+    </h1>
+    <div class="hero-sub">
+      <p><b>능곡5구역 재개발로, 한사랑교회가 새 예배당을 준비하고 있습니다.</b><br>
+      이 자료는 지금까지 검토해 온 내용과 아직 풀지 못한 과제를 있는 그대로 나누고,
+      함께 이 집을 그려 갈 <b>좋은 건축사를 추천받기 위해</b> 만들었습니다.</p>
+      <div class="hero-meta">
+        SITE 348.78㎡ · 종교시설 획지 / 지상 5층 · 연면적 230–250평 구상 / 예산 20억 내외<br>
+        HAGGAI 1:8 — <em style="color:var(--accent2)">"너희는 산에 올라가서 나무를 가져다가 성전을 건축하라"</em>
+      </div>
+    </div>
+    <div class="han-stamp">한</div>
+  </div>
+  <div class="marquee">
+    <div class="track">
+      "너희는 산에 올라가서 나무를 가져다가 성전을 건축하라" <em>학개 1:8</em>
+      "여호와의 영예와 그의 능력과 그가 행하신 기이한 사적을 후대에 전하리로다" <em>시편 78:4</em>
+      "네 자녀에게 부지런히 가르치며" <em>신명기 6:7</em>
+      "여호와께서 집을 세우지 아니하시면 세우는 자의 수고가 헛되며" <em>시편 127:1</em>&nbsp;
+      "너희는 산에 올라가서 나무를 가져다가 성전을 건축하라" <em>학개 1:8</em>
+      "여호와의 영예와 그의 능력과 그가 행하신 기이한 사적을 후대에 전하리로다" <em>시편 78:4</em>
+      "네 자녀에게 부지런히 가르치며" <em>신명기 6:7</em>
+      "여호와께서 집을 세우지 아니하시면 세우는 자의 수고가 헛되며" <em>시편 127:1</em>&nbsp;
+    </div>
+  </div>
+</section>
+
+<!-- 01 건축 추진 배경 (dark) -->
+<section id="s01" class="dark">
+  <div class="inner">
+    <div class="sec-head reveal">
+      <span class="idx">(01)</span><h2>건축 추진 배경</h2><span class="en">WHY WE PREPARE</span>
+    </div>
+    <div class="grid2">
+      <p class="statement reveal">떠나야 하는 자리가,<br><span class="hl-o">지어야 하는 이유</span>가 되었습니다.</p>
+      <div class="body reveal">
+        <p>고양 <b>능곡5구역 재개발</b>로 지역 내 종교부지가 이전되면서, 한사랑교회는 재개발 계획이 정한 <b>종교시설 획지</b>에 새 예배당을 짓게 되었습니다. 우리가 계획해서 시작한 건축이 아니라, 주어진 상황을 부르심으로 받아 준비하는 건축입니다.</p>
+        <p>지금 우리는 화정 11단지 <b>상가 3층</b>에서 예배드립니다. 다음세대는 주일마다 상가의 <b>피아노 학원과 태권도장을 빌려</b> 예배드리는 형편입니다. 이번 건축은 우리 아이들에게 처음으로 <b class="hl-o">'우리의 예배 공간'</b>을 지어 줄 기회입니다.</p>
+        <p>새 부지는 신도시급으로 정비되는 능곡5구역의 남측 관문, 두 도로가 만나는 <b>코너 획지</b>입니다. 새로 들어설 수천 세대 아파트와 기존 마을 사이 — 지역과 다음세대를 섬기기에 좋은 자리입니다.</p>
+      </div>
+    </div>
+
+    <div class="sub-head reveal"><b>수치로 보는 다음세대</b>NEXT GENERATION IN NUMBERS</div>
+    <div class="fact-row reveal">
+      <div class="fact"><div class="k">합계출산율</div><div class="v"><em>0.75</em>명</div><div class="s">2024년, 통계청 — 세계에서 가장 낮은 수준. 다음세대의 수 자체가 줄고 있습니다.</div></div>
+      <div class="fact"><div class="k">20대 중 종교인 비율</div><div class="v"><em>22</em>%</div><div class="s">한국갤럽 「한국인의 종교」 2021 — 2004년 45%에서 절반 이하로 떨어졌습니다.</div></div>
+      <div class="fact"><div class="k">교회학교 학생 수</div><div class="v">약 <em>40</em>%↓</div><div class="s">최근 10년 사이 감소 폭 — 국내 최대 교단(예장통합) 교세통계 기준.</div></div>
+      <div class="fact"><div class="k">중고등부 없는 교회</div><div class="v">절반 <em>가까이</em></div><div class="s">예장통합 2022 — 다음세대 예배를 운영하지 못하는 교회가 절반에 이릅니다.</div></div>
+    </div>
+    <p class="src-note reveal">* 위 수치는 통계청 · 한국갤럽 「한국인의 종교 1984–2021」 · 대한예수교장로회(통합) 교세통계 등 공개 자료에서 널리 인용되는 값을 정리한 것입니다.</p>
+
+    <div class="sub-head reveal"><b>말씀이 말하는 다음세대</b>WHAT SCRIPTURE SAYS</div>
+    <div class="index-list">
+      <div class="index-item reveal">
+        <span class="name">잊어버린 세대</span><span class="desc">위기는 한 세대 만에 온다</span><span class="plus">+</span>
+        <div class="index-body"><blockquote>"그 세대의 사람도 다 그 조상들에게로 돌아갔고 그 후에 일어난 다른 세대는 여호와를 알지 못하며 여호와께서 이스라엘을 위하여 행하신 일도 알지 못하였더라"<span class="vs">사사기 2:10</span></blockquote></div>
+      </div>
+      <div class="index-item reveal">
+        <span class="name">전해야 할 세대</span><span class="desc">신앙은 전수될 때에만 이어진다</span><span class="plus">+</span>
+        <div class="index-body"><blockquote>"우리가 이를 그들의 자손에게 숨기지 아니하고 여호와의 영예와 그의 능력과 그가 행하신 기이한 사적을 후대에 전하리로다"<span class="vs">시편 78:4</span></blockquote></div>
+      </div>
+      <div class="index-item reveal">
+        <span class="name">가르치는 집</span><span class="desc">말씀은 '집에 앉았을 때' 전해진다</span><span class="plus">+</span>
+        <div class="index-body"><blockquote>"오늘 내가 네게 명하는 이 말씀을 너는 마음에 새기고 네 자녀에게 부지런히 가르치며 집에 앉았을 때에든지 길을 갈 때에든지 누워 있을 때에든지 일어날 때에든지 이 말씀을 강론할 것이며"<span class="vs">신명기 6:6–7</span></blockquote></div>
+      </div>
+      <div class="index-item reveal">
+        <span class="name">준비하는 세대</span><span class="desc">다음세대를 위해 오늘 기록하고 짓는다</span><span class="plus">+</span>
+        <div class="index-body"><blockquote>"이 일이 장래 세대를 위하여 기록되리니 창조함을 받을 백성이 여호와를 찬양하리로다"<span class="vs">시편 102:18</span></blockquote></div>
+      </div>
+    </div>
+
+    <p class="closing reveal">숫자는 위기를 경고하고, 말씀은 전수를 명령합니다.<br>
+    그래서 교회와 교회의 건축은 필연적으로 <mark>다음세대를 위한 것</mark>일 수밖에 없습니다.<br>
+    이 확신이 이번 건축의 모든 판단 기준입니다.</p>
+  </div>
+</section>
+
+<!-- 02 우리가 만들고자 하는 교회 -->
+<section id="s02">
+  <div class="inner">
+    <div class="sec-head reveal">
+      <span class="idx">(02)</span><h2>우리가 만들고자 하는 교회</h2><span class="en">PURPOSE &amp; DIRECTION</span>
+    </div>
+    <div class="b-grid">
+      <div class="reveal">
+        <p class="b-statement">교회는 건물이 아니라, 하나님을 믿는 사람들의 공동체입니다. 건물은 예배와 공동체를 위한 하나의 <mark>플랫폼</mark>입니다.</p>
+        <p class="b-note">우리는 화려한 기념물이 아니라, <b>다음세대까지 이어질 생명력을 담을 그릇</b>을 원합니다. 모던한 언어로 본질적인 가치를 담는 것 — 이것이 이번 설계의 핵심 질문이며, 그 답은 건축사에게 열려 있습니다.</p>
+        <p class="b-note"><b>예산은 20억 원 내외</b>(설계비·부대비용 포함), 연면적 목표는 약 230–250평입니다. 건축 헌금에 매달리는 교회가 되기보다, 주어진 형편 안에서 최선을 다해 짓기로 했습니다. Value Engineering 제안을 적극 환영합니다.</p>
+      </div>
+      <div class="reveal">
+        <div class="floors">
+          <div class="floor main"><span class="fl">1st</span><span class="fp"><b>장기 건전성</b><span>구조 · 방수 · 단열 — 나중에 바꾸기 어려운 것 먼저</span></span><span class="fh">DURABILITY</span></div>
+          <div class="floor"><span class="fl">2nd</span><span class="fp"><b>미적 공간감</b><span>본질을 담는 모던한 공간 언어</span></span><span class="fh">SPACE</span></div>
+          <div class="floor"><span class="fl">3rd</span><span class="fp"><b>인테리어 마감</b><span>입당 후에도 단계적으로 개선 가능하므로 후순위</span></span><span class="fh">FINISH</span></div>
+        </div>
+        <p class="b-caveat">가치 우선순위 — 이 순서 안에서의 예산 배분은 설계자의 제안에 맡깁니다.</p>
+      </div>
+    </div>
+    <div class="why reveal">
+      <div class="why-head"><b>양보할 수 없는 네 가지</b><span>NON-NEGOTIABLES</span></div>
+      <div class="why-grid">
+        <div class="why-item">
+          <b>기둥 없는 <em>대예배실</em></b>
+          <p>시야를 가리는 기둥이 없을 것. 수용 인원 최대화, 전면 대형 스크린, 자모실 포함. 설교(말씀 전달)의 명료도가 최우선입니다.</p>
+        </div>
+        <div class="why-item">
+          <b>다음세대 <em>그물놀이터</em></b>
+          <p>높은 층고를 입체적으로 활용하는 그물 놀이시설. 유초등 예배실을 겸하며, 건축법상 바닥면적에 산입되지 않는 시설물 형태로 계획합니다.</p>
+        </div>
+        <div class="why-item">
+          <b>법정 주차 <em>10대</em></b>
+          <p>교회 목표 10대. 확보 방식은 자유이며, 1층 필로티는 내부 검토안 중 하나일 뿐입니다.</p>
+        </div>
+        <div class="why-item">
+          <b><em>평일에도</em> 열린 교회</b>
+          <p>다음세대 공간과 사무 공간은 평일에도 독립적으로 개방·운영할 수 있어야 합니다. 지역의 아이들과 부모가 심리적 부담 없이 들어올 수 있는 교회를 꿈꿉니다.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 주어진 대지와 건축 조건 -->
+<section id="s03">
+  <div class="inner">
+    <div class="sec-head reveal">
+      <span class="idx">(03)</span><h2>주어진 대지와 건축 조건</h2><span class="en">SITE &amp; REGULATIONS</span>
+    </div>
+    <p class="b-note reveal" style="max-width:820px;margin:-18px 0 34px">
+    아래의 모든 도면과 수치는 조합 정비업체가 제공한 <b>CAD 계획도면에서 직접 추출·산출</b>한 것입니다.
+    넓은 지도에서 시작해 획지의 경계 치수, 그리고 땅의 높낮이까지 — 축척을 좁혀 가며 차례로 보여 드립니다.</p>
+
+    <div class="stat-row reveal">
+      <div class="stat"><div class="k">대지면적 (도면)</div><div class="v"><em>348.78</em> ㎡</div><div class="s">105.5평 · 7각형 / 공시 340㎡ — 확정치 확인 필요</div></div>
+      <div class="stat"><div class="k">용도</div><div class="v">종교부지</div><div class="s">능곡5구역 종교시설 획지</div></div>
+      <div class="stat"><div class="k">건폐율 60%</div><div class="v">≈ <em>204</em> ㎡</div><div class="s">최대 건축면적 약 61.7평</div></div>
+      <div class="stat"><div class="k">용적률 266.2%</div><div class="v">≈ <em>905</em> ㎡</div><div class="s">최대 연면적 약 273.7평</div></div>
+      <div class="stat"><div class="k">최고높이</div><div class="v">제한 없음</div><div class="s">일조 사선도 미적용 예상 (최종 확인 필요)</div></div>
+      <div class="stat"><div class="k">접도 · 고저</div><div class="v">2면 각지</div><div class="s">남 20.0m · 서 11.7m 도로 / 서→동 약 1.9m 경사</div></div>
+    </div>
+
+    <div class="zoom-rail reveal">
+      <span class="z onz">① 광역</span><span class="arr">→</span>
+      <span class="z">② 일대</span><span class="arr">→</span>
+      <span class="z">③ 구역</span><span class="arr">→</span>
+      <span class="z">④ 획지 경계</span><span class="arr">→</span>
+      <span class="z">⑤ 지형 고저</span><span class="arr">→</span>
+      <span class="z">⑥ 도로 · 횡단보도</span>
+    </div>
+
+    <!-- MAP 01 광역 · 02 일대 -->
+    <div class="map-step reveal">
+      <div class="map-head"><span class="chip">MAP 01–02</span><b>광역에서 일대까지 — 고양시 덕양구, 능곡</b><span class="mnote">WIDE → DISTRICT</span></div>
+      <div class="map-duo">
+        <div class="map-frame"><span class="tag">① 광역 — 고양시 남부</span>
+          <iframe src="https://www.google.com/maps?q=37.619331,126.828529&z=12&output=embed&hl=ko" title="부지 광역 위치 — 고양시 남부" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+        <div class="map-frame"><span class="tag">② 일대 — 능곡역 주변</span>
+          <iframe src="https://www.google.com/maps?q=37.619331,126.828529&z=16&output=embed&hl=ko" title="부지 일대 — 능곡역 주변" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+      <p class="map-cap">부지는 <b>능곡역(경의중앙선·서해선) 동북측</b>, 능곡5구역 재정비촉진구역 안에 있습니다. 한강과 행주산성이 가까운 고양시 남부 생활권으로, 화정·행신 지역과 이웃합니다. 지도의 표시점(37.61933 N, 126.82853 E)은 계획도면 좌표를 위경도로 환산한 부지 중심 위치입니다. 현재 지번 기준 주소는 행신동 650-38, 650-52 일원입니다.</p>
+    </div>
+
+    <!-- MAP 03 구역 -->
+    <div class="map-step reveal">
+      <div class="map-head"><span class="chip">MAP 03</span><b>능곡5구역 토지이용계획 — 구역 안에서 어디인가</b><span class="mnote">DISTRICT PLAN</span></div>
+      <figure class="drawing">
+        <svg class="plan" viewBox="0 0 1000 875" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="능곡5구역 내 종교시설 부지 위치도"><g class="ctx2"><polyline points="102.2,971.9 154.3,966.2 199.6,958.6 208.2,956.7 229.4,950.5 260.7,940.3 282.7,932.1 319.1,915.4 335.0,906.0 348.6,899.2 384.0,876.1"/><polyline points="484.4,268.5 446.5,402.3"/><polyline points="867.1,402.6 867.1,430.4"/><polyline points="392.5,411.7 356.2,401.6 356.2,401.6 322.1,392.2"/><polyline points="488.2,854.0 527.8,811.7 549.4,787.2 563.8,771.9 606.1,726.6 633.3,698.6 655.3,672.7 675.2,651.8 703.5,622.9 723.5,604.0 736.1,594.1 748.8,583.4 764.4,572.1"/><polyline points="215.9,403.5 229.4,407.2 238.9,409.8 273.1,419.2"/><polyline points="273.1,419.2 288.2,423.4 288.9,423.4 335.9,426.8 357.6,432.8 396.6,443.6"/><polyline points="-63.8,284.8 1.1,302.8 11.7,305.8 38.2,313.1 72.8,322.8 93.9,328.6 116.1,334.8 123.8,336.7"/><polyline points="226.6,365.9 322.1,392.2"/><polyline points="64.5,341.5 64.5,341.5 32.7,332.7 6.2,325.3 -12.4,320.1 -53.4,308.8"/><polyline points="64.9,340.0 33.1,331.2 6.7,323.8 -12.0,318.6 -67.7,303.2"/><polyline points="479.6,467.2 507.2,473.4 523.7,474.1 593.0,476.9 623.2,476.9 647.0,478.1 685.5,478.6"/><polyline points="473.8,467.5 507.0,475.0 523.6,475.6 592.9,478.4 623.2,478.4 647.0,479.6 677.2,480.1 701.4,545.7"/><polyline points="474.0,839.7 512.8,798.1 534.4,773.5 549.0,758.0 573.1,732.3 600.1,704.8 618.5,670.8 634.1,654.0 654.8,632.4 679.4,607.3 687.6,599.6 721.4,569.8"/><polyline points="588.1,701.3 633.0,653.0 653.7,631.3 678.3,606.2 686.5,598.4 721.0,568.0"/><polyline points="588.1,701.3 568.7,734.7 547.9,757.0 533.3,772.5 511.6,797.0 472.9,838.6"/><polyline points="684.1,459.8 733.3,487.3 743.5,503.3"/><polyline points="684.2,458.3 734.6,486.5 744.8,502.4"/><polyline points="1003.3,472.0 1148.6,473.3"/><polyline points="986.5,500.7 1030.0,501.9"/><polyline points="986.5,502.3 1030.0,503.5"/><polyline points="834.1,461.5 849.4,470.7 840.5,484.2"/><polyline points="839.3,461.2 853.8,470.0 845.8,482.2"/><polyline points="844.5,461.0 858.3,469.4 851.1,480.3"/><polyline points="850.4,460.8 863.4,468.6 857.1,478.1"/><polyline points="856.3,460.5 868.5,467.8 863.1,476.0"/><polyline points="862.3,460.2 873.5,467.1 869.0,474.0"/><polyline points="867.9,460.0 878.0,466.1 873.7,472.5"/><polyline points="789.9,506.1 851.8,480.0"/><polyline points="723.1,458.9 748.7,482.4 765.7,508.9"/><polyline points="-168.6,296.2 -167.0,296.6 -153.3,300.5 -153.3,300.5 -74.3,322.4 -9.3,340.5 1.2,343.4 27.7,350.8 62.3,360.4 83.4,366.3 107.2,372.9"/><polyline points="215.9,403.5 229.4,407.2 238.9,409.8 273.1,419.2"/><polyline points="-63.8,284.8 1.1,302.8 11.7,305.8 38.2,313.1 72.8,322.8 93.9,328.6 116.1,334.8 117.7,335.4"/><polyline points="-168.6,296.2 -167.0,296.6 -153.3,300.5 -153.3,300.5 -74.3,322.4 -9.3,340.5 1.2,343.4 27.7,350.8 62.3,360.4 83.4,366.3 107.2,372.9"/><polyline points="226.6,365.9 322.1,392.2"/><polyline points="64.5,341.5 112.3,354.8"/><polyline points="64.9,340.0 112.7,353.3"/><polyline points="389.6,422.2 342.5,409.2 328.9,407.5 310.1,407.9 296.7,406.2 261.7,396.6 234.4,389.1 221.0,385.4"/><polyline points="390.0,420.7 342.9,407.7 328.9,405.9 310.1,406.3 297.1,404.7 262.1,395.1 234.8,387.6 221.5,383.9"/><polyline points="485.5,447.7 509.9,453.2 524.5,453.8 593.4,456.5 623.7,456.5 647.7,457.8 684.2,458.3"/><polyline points="485.1,449.2 509.7,454.7 524.4,455.3 593.3,458.1 623.7,458.1 647.6,459.3 684.1,459.8"/></g><g class="ctx"><polyline points="-12.7,541.0 -36.8,512.2 -55.9,528.3 -31.8,557.0 -12.7,541.0"/><polyline points="-36.8,512.2 -12.7,541.0 -31.8,557.0 -55.9,528.3 -36.8,512.2"/><polyline points="-36.8,512.2 -12.7,541.0 -31.8,557.0 -55.9,528.3 -36.8,512.2"/><polyline points="56.1,526.7 29.5,553.3 47.2,570.9 73.7,544.4 56.1,526.7"/><polyline points="29.5,553.3 56.1,526.7 73.7,544.4 47.2,570.9 29.5,553.3"/><polyline points="29.5,553.3 56.1,526.7 73.7,544.4 47.2,570.9 29.5,553.3"/><polyline points="264.7,576.1 238.1,602.6 255.8,620.3 282.3,593.7 264.7,576.1"/><polyline points="238.1,602.6 264.7,576.1 282.3,593.7 255.8,620.3 238.1,602.6"/><polyline points="238.1,602.6 264.7,576.1 282.3,593.7 255.8,620.3 238.1,602.6"/><polyline points="331.0,597.8 306.8,569.1 287.7,585.2 311.8,613.9 331.0,597.8"/><polyline points="306.8,569.1 331.0,597.8 311.8,613.9 287.7,585.2 306.8,569.1"/><polyline points="306.8,569.1 331.0,597.8 311.8,613.9 287.7,585.2 306.8,569.1"/><polyline points="420.4,592.4 391.7,616.4 407.7,635.6 436.5,611.5 420.4,592.4"/><polyline points="391.7,616.4 420.4,592.4 436.5,611.5 407.7,635.6 391.7,616.4"/><polyline points="391.7,616.4 420.4,592.4 436.5,611.5 407.7,635.6 391.7,616.4"/><polyline points="64.1,303.2 27.8,293.5 23.0,311.6 59.2,321.4 64.1,303.2"/><polyline points="27.8,293.5 64.1,303.2 59.2,321.4 23.0,311.6 27.8,293.5"/><polyline points="27.8,293.5 64.1,303.2 59.2,321.4 23.0,311.6 27.8,293.5"/><polyline points="123.6,319.4 87.4,309.7 82.5,327.8 118.7,337.6 123.6,319.4"/><polyline points="87.4,309.7 123.6,319.4 118.7,337.6 82.5,327.8 87.4,309.7"/><polyline points="87.4,309.7 123.6,319.4 118.7,337.6 82.5,327.8 87.4,309.7"/><polyline points="294.9,367.1 258.6,357.4 253.8,375.5 290.0,385.2 294.9,367.1"/><polyline points="258.6,357.4 294.9,367.1 290.0,385.2 253.8,375.5 258.6,357.4"/><polyline points="258.6,357.4 294.9,367.1 290.0,385.2 253.8,375.5 258.6,357.4"/><polyline points="252.1,210.4 215.9,200.7 211.0,218.8 247.2,228.5 252.1,210.4"/><polyline points="215.9,200.7 252.1,210.4 247.2,228.5 211.0,218.8 215.9,200.7"/><polyline points="215.9,200.7 252.1,210.4 247.2,228.5 211.0,218.8 215.9,200.7"/><polyline points="307.9,225.4 271.7,215.7 266.9,233.8 303.1,243.5 307.9,225.4"/><polyline points="271.7,215.7 307.9,225.4 303.1,243.5 266.9,233.8 271.7,215.7"/><polyline points="271.7,215.7 307.9,225.4 303.1,243.5 266.9,233.8 271.7,215.7"/><polyline points="289.4,102.2 253.2,92.3 248.3,110.4 284.4,120.3 289.4,102.2"/><polyline points="253.2,92.3 289.4,102.2 284.4,120.3 248.3,110.4 253.2,92.3"/><polyline points="253.2,92.3 289.4,102.2 284.4,120.3 248.3,110.4 253.2,92.3"/><polyline points="357.7,120.9 321.5,111.0 316.6,129.1 352.7,139.0 357.7,120.9"/><polyline points="321.5,111.0 357.7,120.9 352.7,139.0 316.6,129.1 321.5,111.0"/><polyline points="321.5,111.0 357.7,120.9 352.7,139.0 316.6,129.1 321.5,111.0"/><polyline points="399.0,260.0 389.3,296.2 407.4,301.1 417.1,264.8 399.0,260.0"/><polyline points="389.3,296.2 399.0,260.0 417.1,264.8 407.4,301.1 389.3,296.2"/><polyline points="389.3,296.2 399.0,260.0 417.1,264.8 407.4,301.1 389.3,296.2"/><polyline points="430.1,144.6 420.1,180.7 438.1,185.7 448.1,149.6 430.1,144.6"/><polyline points="420.1,180.7 430.1,144.6 448.1,149.6 438.1,185.7 420.1,180.7"/><polyline points="420.1,180.7 430.1,144.6 448.1,149.6 438.1,185.7 420.1,180.7"/><polyline points="433.4,24.5 423.5,60.7 441.6,65.6 451.5,29.4 433.4,24.5"/><polyline points="423.5,60.7 433.4,24.5 451.5,29.4 441.6,65.6 423.5,60.7"/><polyline points="423.5,60.7 433.4,24.5 451.5,29.4 441.6,65.6 423.5,60.7"/><polyline points="142.5,560.8 116.1,534.1 102.8,547.3 129.2,574.0 142.5,560.8"/><polyline points="116.1,534.1 142.5,560.8 129.2,574.0 102.8,547.3 116.1,534.1"/><polyline points="116.1,534.1 142.5,560.8 129.2,574.0 102.8,547.3 116.1,534.1"/><polyline points="196.7,615.1 170.3,588.5 157.0,601.7 183.4,628.3 196.7,615.1"/><polyline points="170.3,588.5 196.7,615.1 183.4,628.3 157.0,601.7 170.3,588.5"/><polyline points="170.3,588.5 196.7,615.1 183.4,628.3 157.0,601.7 170.3,588.5"/><polyline points="60.5,254.0 56.4,269.3"/><polyline points="31.1,240.5 47.2,244.8"/><polyline points="60.5,254.0 56.2,270.0"/><polyline points="60.5,254.0 55.0,274.5 35.0,269.2 34.3,271.8 23.5,268.9 32.2,236.4 53.7,242.2 52.7,246.0 51.2,251.6 60.5,254.0"/><polyline points="24.7,264.4 35.2,267.2 36.0,264.6 56.2,270.0"/><polyline points="155.5,269.4 156.3,269.7 147.6,302.2 146.7,302.0"/><polyline points="52.3,241.8 55.0,231.6 76.5,237.3 73.7,247.5"/><polyline points="52.8,239.7 60.4,241.7 62.5,233.6"/><polyline points="52.8,239.7 62.5,233.6"/><polyline points="55.1,231.6 60.4,241.7"/><polyline points="74.1,246.4 59.5,242.5"/><polyline points="55.8,252.6 56.3,250.8 65.7,253.4 65.2,255.1"/><polyline points="55.8,252.6 65.7,253.4"/><polyline points="113.9,258.3 116.6,248.2 138.1,254.0 135.4,264.1"/><polyline points="114.5,256.1 122.0,258.1 124.1,250.3"/><polyline points="114.5,256.1 124.1,250.3"/><polyline points="116.6,248.2 122.0,258.1"/><polyline points="135.7,262.7 121.2,258.8"/><polyline points="117.4,269.1 117.9,267.4 127.3,269.9 126.9,271.7"/><polyline points="117.4,269.1 127.3,269.9"/><polyline points="60.5,254.0 56.4,269.3"/><polyline points="92.7,257.0 76.6,252.7"/><polyline points="60.5,254.0 56.2,270.0"/><polyline points="60.5,254.0 55.0,274.5 75.0,279.9 74.3,282.6 85.1,285.5 93.8,252.9 72.3,247.1 71.3,250.9 69.8,256.5 60.5,254.0"/><polyline points="86.3,280.9 75.7,278.1 76.5,275.4 56.2,270.0"/><polyline points="122.1,270.6 118.0,285.8"/><polyline points="154.4,273.5 138.2,269.2"/><polyline points="122.1,270.6 117.8,286.5"/><polyline points="122.1,270.6 116.6,291.0 136.6,296.4 135.9,299.1 146.7,302.0 155.5,269.4 133.9,263.7 132.9,267.4 131.4,273.0 122.1,270.6"/><polyline points="147.9,297.4 137.4,294.6 138.1,291.9 117.8,286.5"/><polyline points="122.1,270.6 118.0,285.8"/><polyline points="92.7,257.0 108.9,261.3"/><polyline points="122.1,270.6 117.8,286.5"/><polyline points="122.1,270.6 116.6,291.0 96.6,285.7 95.9,288.4 85.1,285.5 93.8,252.9 115.4,258.7 114.4,262.5 112.9,268.1 122.1,270.6"/><polyline points="86.3,280.9 96.9,283.8 97.6,281.1 117.8,286.5"/><polyline points="32.2,236.4 31.3,236.2 22.6,268.7 23.5,268.9"/><polyline points="76.4,237.3 64.9,234.2"/><polyline points="54.6,224.5 66.6,227.7"/><polyline points="66.6,227.7 78.2,230.8"/><polyline points="69.6,219.9 80.4,222.8"/><polyline points="67.9,225.8 57.8,223.1 59.0,218.4 64.8,219.9"/><polyline points="78.2,230.8 80.6,221.9 69.8,219.0"/><polyline points="234.2,168.1 230.1,183.3"/><polyline points="204.8,154.5 221.0,158.8"/><polyline points="234.2,168.1 230.0,184.0"/><polyline points="234.2,168.1 228.7,188.6 208.8,183.2 208.0,185.9 197.2,183.0 205.9,150.4 227.5,156.2 226.5,160.0 225.0,165.6 234.2,168.1"/><polyline points="198.4,178.4 209.0,181.3 209.7,178.6 230.0,184.0"/><polyline points="329.2,183.5 330.1,183.7 321.4,216.2 320.5,216.0"/><polyline points="226.0,155.8 228.7,145.6 250.2,151.3 247.5,161.4"/><polyline points="226.7,153.3 234.2,155.3 236.3,147.6"/><polyline points="226.7,153.3 236.3,147.6"/><polyline points="228.7,145.6 234.2,155.3"/><polyline points="247.8,160.4 233.3,156.5"/><polyline points="229.6,166.6 230.0,164.9 239.5,167.4 239.0,169.2"/><polyline points="229.6,166.6 239.5,167.4"/><polyline points="287.6,172.3 290.4,162.1 311.9,167.9 309.2,177.9"/><polyline points="288.2,170.3 295.7,172.3 297.9,164.1"/><polyline points="288.2,170.3 297.9,164.1"/><polyline points="290.5,162.1 295.7,172.3"/><polyline points="309.4,176.9 294.9,173.0"/><polyline points="298.6,174.0 297.5,178.1 306.9,180.6"/><polyline points="291.2,183.2 291.7,181.4 301.1,183.9 300.6,185.7"/><polyline points="291.2,183.2 301.1,183.9"/><polyline points="234.2,168.1 230.1,183.3"/><polyline points="266.5,171.0 250.3,166.7"/><polyline points="234.2,168.1 230.0,184.0"/><polyline points="234.2,168.1 228.7,188.6 248.7,193.9 248.0,196.6 258.8,199.5 267.6,166.9 246.0,161.2 245.0,164.9 243.5,170.5 234.2,168.1"/><polyline points="260.1,195.0 249.5,192.1 250.2,189.5 230.0,184.0"/><polyline points="295.9,184.6 291.8,199.8"/><polyline points="328.1,187.5 312.0,183.2"/><polyline points="295.9,184.6 291.6,200.5"/><polyline points="295.9,184.6 290.4,205.1 310.4,210.4 309.6,213.1 320.5,216.0 329.2,183.5 307.7,177.7 306.6,181.5 305.1,187.1 295.9,184.6"/><polyline points="321.7,211.5 311.1,208.6 311.8,206.0 291.6,200.5"/><polyline points="295.9,184.6 291.8,199.8"/><polyline points="266.5,171.0 282.6,175.3"/><polyline points="295.9,184.6 291.6,200.5"/><polyline points="295.9,184.6 290.4,205.1 270.4,199.7 269.7,202.4 258.8,199.5 267.6,166.9 289.1,172.7 288.1,176.5 286.6,182.1 295.9,184.6"/><polyline points="260.1,195.0 270.6,197.8 271.3,195.1 291.6,200.5"/><polyline points="205.9,150.4 205.0,150.2 196.3,182.7 197.2,183.0"/><polyline points="250.2,151.3 238.7,148.3"/><polyline points="228.4,138.5 240.3,141.7"/><polyline points="240.3,141.7 252.0,144.8"/><polyline points="243.4,134.0 254.1,136.8"/><polyline points="241.6,139.8 231.5,137.1 232.8,132.4 238.5,134.0"/><polyline points="251.9,145.0 254.4,135.9 243.6,133.1"/><polyline points="290.0,155.0 301.9,158.2"/><polyline points="301.9,158.2 313.6,161.4"/><polyline points="305.0,150.5 315.8,153.4"/><polyline points="303.3,156.3 293.2,153.6 294.4,148.9 300.1,150.5"/><polyline points="313.6,161.5 316.0,152.5 305.2,149.6"/><polyline points="34.8,528.7 15.5,544.8"/><polyline points="15.5,544.8 -2.1,523.8"/><polyline points="22.9,506.1 16.9,511.2 4.2,496.0 -11.8,509.5 -0.8,522.6"/><polyline points="31.2,531.7 26.6,526.1 29.4,523.7 23.9,517.1 28.8,513.1"/><polyline points="19.5,541.5 11.2,531.6 11.5,531.4 -9.0,507.1"/><polyline points="35.3,520.2 29.9,513.8 29.6,514.0 22.9,506.1"/><polyline points="-40.4,475.0 -29.4,488.2 -30.7,489.3 -13.6,509.7 7.9,491.6 5.1,488.3 7.2,486.5 -7.1,469.5 -8.8,470.9 -12.0,467.1 -16.6,470.9 -24.4,461.6 -40.4,475.0"/><polyline points="-9.7,506.4 -17.5,497.1 -17.3,496.9 -37.6,472.7"/><polyline points="-15.6,470.1 -10.8,475.8 -9.2,474.4 -3.0,481.8 -4.5,483.0 -2.8,485.0"/><polyline points="-2.8,485.0 0.8,489.3 -0.2,490.2 3.8,495.0"/><polyline points="41.0,513.0 54.2,501.9 55.3,503.3 75.7,486.2 57.6,464.7 54.3,467.4 52.5,465.3 35.5,479.6 36.9,481.3 33.1,484.6 36.9,489.2 27.6,497.0 41.0,513.0"/><polyline points="72.4,482.2 63.0,490.1 62.8,489.8 38.6,510.1"/><polyline points="36.1,488.2 41.8,483.4 40.4,481.7 47.8,475.5 49.0,477.0 51.0,475.4"/><polyline points="51.0,475.4 55.3,471.7 56.2,472.8 61.0,468.7"/><polyline points="19.0,491.3 19.1,491.5 12.2,497.4 7.6,491.9"/><polyline points="12.2,497.4 13.6,484.9"/><polyline points="7.0,490.4 19.1,491.5"/><polyline points="12.0,505.4 18.4,500.0 23.6,506.2"/><polyline points="16.9,511.2 18.4,500.0"/><polyline points="23.5,506.1 12.0,505.4"/><polyline points="34.2,527.9 34.8,528.7 15.5,544.8 14.9,544.1"/><polyline points="75.7,486.2 76.4,485.6 58.3,464.1 57.6,464.7"/><polyline points="-28.1,447.9 -17.8,439.3 -1.3,459.0 -11.6,467.6"/><polyline points="7.0,490.4 13.6,484.9 20.6,493.2 32.5,483.3 33.3,484.3"/><polyline points="-8.7,465.2 -25.2,445.6"/><polyline points="-25.2,445.6 -12.0,446.2"/><polyline points="35.3,520.2 30.3,514.3 37.2,508.5"/><polyline points="357.4,326.3 362.6,327.7 364.8,319.6 376.8,322.8 374.7,330.6 377.8,331.4 369.1,364.1 345.9,357.9 347.2,352.9 341.8,351.5 346.1,335.6 350.4,336.8 351.8,331.5 355.7,332.6 357.4,326.3"/><polyline points="348.3,352.6 355.6,354.6 355.2,356.3 365.5,359.1 367.7,351.1"/><polyline points="372.8,330.9 370.0,330.2 372.3,321.6"/><polyline points="367.7,351.1 367.4,351.0 372.8,330.9"/><polyline points="286.8,311.3 270.9,307.1 273.3,298.0"/><polyline points="271.3,305.5 266.1,296.1"/><polyline points="273.3,298.0 272.8,307.6"/><polyline points="345.5,335.5 341.4,350.7"/><polyline points="316.1,321.9 332.3,326.2"/><polyline points="345.5,335.5 341.3,351.4"/><polyline points="345.5,335.5 340.0,356.0 320.1,350.6 319.3,353.3 308.5,350.4 317.2,317.8 338.8,323.6 337.8,327.4 336.3,333.0 345.5,335.5"/><polyline points="309.7,345.9 320.3,348.7 321.0,346.0 341.2,351.4"/><polyline points="266.9,337.6 250.4,333.2 250.0,334.7 224.6,327.9 231.8,300.9 236.4,302.1 237.2,299.1 257.8,304.6 257.1,307.1 262.3,308.5 260.7,314.4 272.3,317.6 266.9,337.6"/><polyline points="226.0,323.0 237.1,326.0 237.2,325.7 267.9,334.0"/><polyline points="261.1,313.0 253.9,311.1 254.8,307.8 245.7,305.4 244.9,308.4 236.9,306.3 236.5,307.6 230.5,306.0"/><polyline points="266.9,337.6 283.5,342.1 283.1,343.6 308.5,350.4 315.7,323.3 311.2,322.1 312.0,319.2 291.4,313.6 290.7,316.1 285.6,314.7 284.0,320.7 272.3,317.6 266.9,337.6"/><polyline points="309.7,345.5 298.6,342.5 298.7,342.2 267.9,334.0"/><polyline points="284.3,319.2 291.5,321.1 292.4,317.9 301.5,320.3 300.6,323.4 308.7,325.5 308.3,326.8 314.4,328.4"/><polyline points="231.9,300.9 231.1,300.6 223.8,327.7 224.6,327.9"/><polyline points="338.5,323.5 341.4,312.6 353.0,315.7"/><polyline points="267.6,316.3 268.2,314.4 277.6,316.9 277.1,318.8"/><polyline points="276.2,308.5 275.4,311.5 286.0,314.3"/><polyline points="277.6,316.9 267.6,316.3"/><polyline points="339.4,320.1 346.6,322.1 346.2,323.6 357.4,326.6"/><polyline points="346.6,322.1 341.4,312.6"/><polyline points="348.6,314.6 348.9,324.3"/><polyline points="359.7,557.5 356.3,553.5 360.5,549.9 345.9,532.6 343.7,534.5 340.7,530.9 317.4,550.5 335.1,571.6 336.5,570.4 348.2,584.2 364.7,570.4 356.3,560.4 359.7,557.5"/><polyline points="336.4,534.6 340.7,539.6 341.5,538.9 346.6,545.1 349.0,543.1 355.5,550.9 351.1,554.6 356.1,560.6"/><polyline points="321.5,547.1 338.7,567.6"/><polyline points="338.7,567.6 338.9,567.4 351.1,581.8"/><polyline points="341.3,609.5 357.4,628.8"/><polyline points="357.4,628.8 378.5,611.1"/><polyline points="356.9,589.4 362.0,595.4 377.1,582.8 390.5,598.7 377.3,609.8"/><polyline points="344.3,613.1 349.8,608.5 347.4,605.6 354.0,600.1 349.9,595.2"/><polyline points="354.1,624.8 364.0,616.6 363.8,616.3 388.1,595.9"/><polyline points="342.3,601.1 348.7,595.7 348.9,596.0 356.9,589.4"/><polyline points="383.8,570.4 387.9,567.0 384.4,562.8 401.7,548.3 403.6,550.5 407.1,547.5 426.7,570.8 405.6,588.5 404.4,587.1 390.5,598.7 376.7,582.3 386.7,573.9 383.8,570.4"/><polyline points="410.7,551.8 405.7,556.1 405.0,555.3 398.8,560.4 396.9,558.1 389.1,564.6 392.8,569.1 386.8,574.0"/><polyline points="423.3,566.8 402.8,584.0"/><polyline points="402.8,584.0 402.6,583.7 388.1,595.9"/><polyline points="363.3,583.9 372.7,579.7"/><polyline points="364.2,560.6 375.4,573.9 382.4,568.1"/><polyline points="370.0,567.4 382.4,568.1"/><polyline points="375.4,573.9 376.9,561.6"/><polyline points="362.0,595.4 363.3,583.9"/><polyline points="368.4,590.0 356.9,589.3"/><polyline points="426.7,570.8 427.4,570.2 407.8,546.9 407.1,547.5"/><polyline points="317.4,550.5 316.8,549.8 340.2,530.2 340.7,530.9"/><polyline points="371.2,554.7 383.7,569.6"/><polyline points="336.6,570.4 348.8,585.0 351.1,583.0 356.3,589.2"/><polyline points="356.9,589.3 368.0,579.9"/><polyline points="364.2,560.6 376.9,561.6"/><polyline points="370.0,567.4 371.2,554.7"/><polyline points="400.8,157.4 416.1,161.5"/><polyline points="387.3,186.8 391.6,170.7"/><polyline points="400.8,157.4 416.8,161.7"/><polyline points="400.8,157.4 421.3,162.9 416.0,182.9 418.7,183.6 415.8,194.4 383.2,185.7 389.0,164.2 392.8,165.2 398.4,166.7 400.8,157.4"/><polyline points="411.2,193.2 414.1,182.6 411.4,181.9 416.8,161.7"/><polyline points="388.6,165.6 378.5,162.9 384.3,141.4 394.4,144.1"/><polyline points="386.7,165.1 388.7,157.6 380.5,155.4"/><polyline points="386.7,165.1 380.5,155.4"/><polyline points="378.5,162.9 388.7,157.6"/><polyline points="393.3,143.9 389.4,158.4"/><polyline points="399.1,162.6 397.6,162.2 400.2,152.8 401.6,153.2"/><polyline points="399.1,162.6 400.2,152.8"/><polyline points="400.8,157.4 416.1,161.5"/><polyline points="403.8,125.2 399.5,141.3"/><polyline points="400.8,157.4 416.8,161.7"/><polyline points="400.8,157.4 421.3,162.9 426.7,142.9 429.4,143.6 432.3,132.8 399.7,124.1 394.0,145.6 397.7,146.6 403.3,148.1 400.8,157.4"/><polyline points="427.7,131.6 424.9,142.1 422.2,141.4 416.8,161.7"/><polyline points="383.2,185.7 383.0,186.6 415.5,195.3 415.8,194.4"/><polyline points="399.7,124.1 400.0,123.2 432.5,131.9 432.3,132.8"/><polyline points="357.3,283.8 363.5,260.7"/><polyline points="359.3,276.6 348.3,281.4"/><polyline points="357.3,283.8 350.2,274.2"/><polyline points="350.2,274.2 359.8,274.7"/><polyline points="389.8,280.6 385.4,297.1 386.9,297.5 380.1,322.9 353.0,315.7 354.3,311.1 351.3,310.3 356.8,289.7 359.3,290.4 360.7,285.2 366.6,286.8 369.8,275.2 389.8,280.6"/><polyline points="375.2,321.5 378.2,310.4 377.9,310.3 386.2,279.6"/><polyline points="365.2,286.4 363.3,293.6 360.0,292.7 357.6,301.8 360.6,302.6 358.5,310.6 359.8,311.0 358.1,317.0"/><polyline points="389.8,280.6 394.3,264.0 395.8,264.4 402.6,239.0 375.5,231.8 374.3,236.3 371.4,235.5 365.8,256.1 368.3,256.8 366.9,261.9 372.9,263.5 369.8,275.2 389.8,280.6"/><polyline points="397.7,237.8 394.7,248.9 394.4,248.8 386.2,279.6"/><polyline points="371.4,263.2 373.3,256.0 370.1,255.1 372.5,246.0 375.5,246.9 377.7,238.8 379.0,239.2 380.6,233.1"/><polyline points="368.5,279.8 366.5,279.2 369.1,269.8 371.1,270.3"/><polyline points="360.7,271.3 363.7,272.1 366.5,261.5"/><polyline points="369.1,269.8 368.0,279.6"/><polyline points="375.5,231.8 375.7,231.0 402.8,238.2 402.6,239.0"/><polyline points="262.3,308.5 262.7,308.6 266.1,296.1 289.2,302.3 285.9,314.8"/><polyline points="360.7,285.2 360.8,284.8 348.3,281.4 354.4,258.3 367.0,261.6"/><polyline points="356.3,589.2 342.3,601.0"/><polyline points="351.1,583.0 350.8,582.7 362.3,573.1"/><polyline points="203.6,561.0 214.5,550.1 220.5,556.2 226.3,550.5 228.3,552.5"/><polyline points="270.8,549.5 271.4,548.8 249.9,527.3 249.3,528.0"/><polyline points="214.2,563.6 214.5,550.1"/><polyline points="207.6,557.0 221.0,556.7"/><polyline points="203.3,571.0 203.9,561.2"/><polyline points="198.7,566.4 208.5,565.8"/><polyline points="232.4,596.6 214.6,614.4"/><polyline points="214.6,614.4 195.2,595.0"/><polyline points="218.6,575.1 213.0,580.7 199.0,566.8 184.3,581.6 196.4,593.7"/><polyline points="229.1,599.9 224.0,594.8 226.6,592.2 220.5,586.1 225.0,581.6"/><polyline points="218.3,610.7 209.1,601.6 209.4,601.4 186.9,578.9"/><polyline points="232.1,588.1 226.2,582.2 225.9,582.5 218.6,575.1"/><polyline points="160.6,521.5 156.8,517.8 160.7,513.9 144.7,497.9 142.6,499.9 139.4,496.7 117.8,518.2 137.3,537.7 138.6,536.3 151.4,549.1 166.6,534.0 157.4,524.7 160.6,521.5"/><polyline points="135.4,500.7 140.1,505.3 140.8,504.6 146.5,510.2 148.6,508.1 155.8,515.3 151.8,519.4 157.2,524.9"/><polyline points="121.6,514.5 140.5,533.4"/><polyline points="140.5,533.4 140.7,533.2 154.1,546.5"/><polyline points="228.1,552.8 231.8,549.0 227.9,545.2 243.9,529.2 246.0,531.2 249.3,528.0 270.8,549.5 251.3,568.9 250.0,567.6 237.2,580.4 222.0,565.2 231.2,556.0 228.1,552.8"/><polyline points="253.2,531.9 248.6,536.6 247.8,535.9 242.1,541.5 240.0,539.4 232.8,546.6 236.8,550.7 231.4,556.1"/><polyline points="267.0,545.7 248.1,564.6"/><polyline points="248.1,564.6 247.9,564.4 234.5,577.8"/><polyline points="162.9,518.6 181.9,537.7"/><polyline points="162.9,518.7 176.1,518.2"/><polyline points="169.3,525.0 169.8,511.8"/><polyline points="162.4,530.0 164.8,527.6 173.0,535.8 170.6,538.2"/><polyline points="218.7,575.2 214.2,570.8 208.6,576.4"/><polyline points="179.0,540.0 182.8,543.8 186.7,539.9 202.7,555.9 200.6,558.0 203.9,561.2 182.4,582.7 162.9,563.3 164.2,562.0 151.4,549.1 166.6,534.0 175.9,543.2 179.0,540.0"/><polyline points="199.9,565.2 195.2,560.5 196.0,559.8 190.3,554.1 192.5,552.0 185.3,544.7 181.2,548.8 175.7,543.3"/><polyline points="186.1,579.0 167.2,560.1"/><polyline points="167.2,560.1 167.4,559.8 154.1,546.5"/><polyline points="188.8,530.8 169.8,511.8"/><polyline points="160.3,521.3 169.8,511.8"/><polyline points="117.8,518.2 117.2,517.6 138.7,496.0 139.4,496.7"/><polyline points="188.8,530.8 179.3,540.3"/><polyline points="-15.5,866.0 -5.3,854.6 1.1,860.3 6.5,854.3 8.7,856.3"/><polyline points="50.9,851.0 51.5,850.3 28.9,829.9 28.3,830.6"/><polyline points="-4.8,868.1 -5.3,854.6"/><polyline points="-11.8,861.8 1.6,860.8"/><polyline points="-15.4,876.0 -15.3,866.2"/><polyline points="-20.2,871.7 -10.4,870.6"/><polyline points="0.1,879.4 -5.2,885.2 -19.8,872.0 -33.8,887.5 -21.0,899.0"/><polyline points="11.9,903.6 6.6,898.7 9.0,896.0 2.6,890.2 6.9,885.5"/><polyline points="14.3,891.6 8.1,886.0 7.9,886.3 0.1,879.4"/><polyline points="8.4,856.6 12.0,852.6 7.9,848.9 23.1,832.1 25.2,834.0 28.3,830.6 50.9,851.0 32.5,871.4 31.1,870.2 19.0,883.6 3.0,869.3 11.8,859.6 8.4,856.6"/><polyline points="32.5,834.4 28.1,839.3 27.3,838.6 21.9,844.5 19.7,842.5 12.8,850.1 17.1,853.9 11.9,859.7"/><polyline points="47.0,847.4 29.1,867.3"/><polyline points="29.1,867.3 28.8,867.1 16.2,881.1"/><polyline points="0.2,879.4 -4.5,875.2 -9.8,881.1"/><polyline points="-41.2,846.3 -37.2,849.9 -33.6,845.8 -16.7,861.0 -18.7,863.1 -15.3,866.2 -35.6,888.8 -56.1,870.4 -54.8,869.0 -68.3,856.9 -53.9,840.9 -44.2,849.7 -41.2,846.3"/><polyline points="269.8,36.5 264.7,35.2 266.2,29.6 244.5,23.8 243.7,26.9 239.2,25.7 231.3,55.1 257.7,62.1 258.2,60.3 275.6,65.0 281.1,44.3 268.6,41.0 269.8,36.5"/><polyline points="268.6,41.1 260.6,38.9 262.2,33.2 253.4,30.9 252.5,34.3 244.3,32.1 244.1,32.8 237.8,31.1"/><polyline points="232.7,49.9 258.4,56.8"/><polyline points="258.4,56.5 276.6,61.4"/><polyline points="355.9,63.6 351.8,78.9"/><polyline points="326.5,50.1 342.6,54.4"/><polyline points="355.9,63.6 351.6,79.6"/><polyline points="355.9,63.6 350.4,84.1 330.4,78.8 329.7,81.4 318.9,78.5 327.6,46.0 349.2,51.8 348.1,55.5 346.6,61.1 355.9,63.6"/><polyline points="320.1,74.0 330.7,76.8 331.4,74.2 351.6,79.6"/><polyline points="294.9,43.3 300.0,44.6 301.5,39.0 323.1,44.8 322.3,48.0 326.7,49.2 318.9,78.5 292.5,71.5 293.0,69.7 275.6,65.0 281.1,44.3 293.7,47.7 294.9,43.3"/><polyline points="293.7,47.8 301.6,49.9 303.1,44.2 311.9,46.5 311.0,49.9 319.2,52.1 319.0,52.9 325.3,54.6"/><polyline points="320.3,73.4 294.6,66.5"/><polyline points="294.7,66.2 276.6,61.4"/><polyline points="408.6,38.3 408.8,37.4 376.3,28.7 376.1,29.6"/><polyline points="370.5,50.5 350.6,45.1 348.9,51.7"/><polyline points="374.7,52.3 372.5,60.7 348.5,54.3"/><polyline points="347.9,56.3 358.2,59.1 358.7,57.0"/><polyline points="369.4,59.9 364.9,48.9"/><polyline points="358.2,59.1 348.5,54.3"/><polyline points="347.9,56.3 358.7,57.0"/><polyline points="355.9,63.6 357.7,73.2"/><polyline points="360.0,64.7 361.7,74.3"/><polyline points="269.5,36.5 272.9,23.8 298.6,30.7 295.2,43.3"/><polyline points="286.3,45.7 287.2,42.4 276.8,39.6 276.0,42.9"/><polyline points="270.8,31.5 278.1,33.5 277.6,35.0 296.1,39.9"/><polyline points="282.2,36.2 280.1,25.9"/><polyline points="278.1,33.5 272.8,24.0"/><polyline points="231.4,55.1 230.6,54.9 238.4,25.5 239.2,25.7"/><polyline points="238.4,25.5 230.6,54.9"/><polyline points="377.2,62.9 392.4,67.0"/><polyline points="380.1,30.7 375.8,46.8"/><polyline points="377.2,62.9 393.1,67.2"/><polyline points="377.2,62.9 397.7,68.4 403.0,48.4 405.7,49.2 408.6,38.3 376.1,29.6 370.3,51.1 374.1,52.2 379.7,53.7 377.2,62.9"/><polyline points="404.1,37.1 401.2,47.7 398.6,47.0 393.1,67.2"/><polyline points="363.1,69.1 361.7,74.3 353.6,72.1 350.4,84.1 358.2,86.2 357.4,89.3 390.1,98.0 396.3,74.9 391.3,73.6 392.8,68.1 376.9,63.9 375.8,68.2 370.5,66.8 369.5,70.7 363.1,69.1"/><polyline points="390.5,74.3 388.6,81.7 390.3,82.1 387.5,92.5 379.5,90.3"/><polyline points="379.5,90.3 379.6,90.0 359.5,84.7"/><polyline points="276.7,17.9 288.6,21.1"/><polyline points="288.6,21.1 300.3,24.2"/><polyline points="291.7,13.3 302.4,16.2"/><polyline points="290.0,19.2 279.8,16.4 281.1,11.8 286.8,13.3"/><polyline points="300.2,24.4 302.7,15.3 291.9,12.4"/><polyline points="516.8,16.0 167.1,-81.0"/><polyline points="235.8,-19.7 228.1,-33.3 -83.4,-119.7 -97.1,-112.0 -158.0,98.8 -150.4,112.5 163.6,199.6 177.2,191.9 235.8,-19.7 235.8,-19.7"/><polyline points="-539.7,318.4 -411.1,318.4 -364.2,327.8 -281.2,327.8 -267.9,328.1 -258.5,294.4 -246.9,295.3 -241.2,296.0 -235.6,296.8 -230.0,297.7 -224.5,298.7 -218.9,299.9 -213.4,301.1 -207.9,302.4 -202.4,303.8 -196.7,305.4 -205.9,338.5 120.3,429.2 129.5,396.1 189.7,413.0 180.5,446.1 202.2,452.3 279.6,473.6 327.3,477.1 427.2,504.8 462.2,515.3 471.9,517.5 448.3,604.3 363.4,685.2 355.6,671.2 350.4,667.2 342.5,667.7 316.6,661.3 244.2,633.6 189.7,650.5 192.8,661.4 159.3,670.5 164.1,680.7 159.1,689.8 161.1,694.6 162.6,704.6 132.8,709.5 135.5,729.0 95.4,734.3 47.5,740.9 24.8,744.1 56.9,765.0 74.0,796.7 87.8,843.1 73.2,857.0 74.6,858.0 139.3,906.4 156.8,921.2 176.8,939.5 174.6,942.4 168.5,943.2 169.1,944.0 128.1,949.8 98.0,952.5 33.9,959.0 -22.9,965.2 -58.2,967.8 -283.8,993.1 -295.7,994.3 -307.6,996.5 -319.4,998.6 -331.1,1001.0 -342.8,1003.8 -354.4,1006.8 -365.9,1010.2 -377.3,1013.8 -385.5,1016.7 -423.9,1032.4 -432.7,1036.6 -443.5,1042.0 -454.0,1047.7 -464.4,1053.7 -474.7,1060.0 -484.7,1066.5 -494.6,1073.3 -504.3,1080.3 -507.8,1083.0 -543.8,1098.8 -560.7,1086.6 -557.7,889.1 -540.3,840.0 -539.7,793.2 -555.5,743.2 -554.6,683.6 -551.0,447.0 -541.0,409.4 -539.7,318.4"/><polyline points="-158.0,98.9 -150.4,112.5 40.7,165.5 5.5,287.0 -181.6,235.0 -189.2,221.4 -160.2,117.8 -158.0,98.9"/><polyline points="228.1,-33.3 480.3,36.7 478.6,42.7 382.0,391.7 5.5,287.0 40.7,165.5 163.6,199.6 177.2,191.9 235.8,-19.6 228.1,-33.3"/><polyline points="480.9,484.3 505.1,489.7 545.0,491.3 592.6,493.2 622.8,493.2 646.5,494.5 682.7,495.9 697.3,530.4 653.6,572.2 624.0,602.5 602.2,625.2 586.4,644.0 563.8,676.0 558.6,681.3 516.0,727.0 500.9,743.0 479.2,767.6 434.1,816.0 415.4,817.0 402.1,805.5 373.9,781.6 367.3,765.0 377.3,727.0 353.8,720.6 363.4,685.2 448.3,604.3 471.9,517.5 480.9,484.3"/><polyline points="572.5,255.2 607.4,255.2 652.0,255.9 691.7,256.2 794.0,255.7 808.4,255.6 827.9,256.0 842.5,256.6 852.5,268.4 851.3,309.9 850.8,330.0 849.3,421.6 839.5,433.7 808.4,434.1 776.8,435.1 744.6,433.4 648.5,432.0 624.4,430.7 593.9,430.7 525.5,428.0 538.8,379.4 572.5,255.2"/><polyline points="505.3,261.4 516.2,254.0 565.5,255.1 572.5,255.2 538.8,379.4 476.7,362.2 505.3,261.4"/><polyline points="476.7,362.2 538.8,379.4 525.5,428.0 513.3,427.5 486.9,421.5 472.5,417.2 465.0,403.5 476.7,362.2"/><polyline points="180.5,446.1 189.7,413.0 211.4,419.2 285.4,439.6 333.1,443.0 436.6,471.7 471.0,482.0 480.9,484.3 471.9,517.5 462.2,515.3 427.2,504.8 327.3,477.1 279.6,473.6 202.2,452.3 180.5,446.1"/><polyline points="478.6,42.7 513.2,52.3 520.9,65.9 430.1,393.5 416.5,401.3 382.0,391.7 478.6,42.7"/><polyline points="-196.7,305.4 129.5,396.1 120.3,429.2 -205.9,338.5 -196.7,305.4"/><polyline points="478.6,42.7 480.3,36.7 520.9,47.9 528.6,61.5 473.8,259.2 498.5,266.0 505.3,261.4 476.7,362.2 465.0,403.5 472.5,417.2 416.5,401.3 430.1,393.5 520.9,65.9 513.2,52.3 478.6,42.7"/><polyline points="353.8,720.6 377.3,727.0 367.3,765.0 373.9,781.6 344.3,756.4 353.8,720.6"/><polyline points="425.2,825.5 415.4,817.0 434.1,816.0 425.2,825.5"/><polyline points="697.3,530.4 663.3,566.7 611.1,623.4 584.7,654.5 563.8,676.0 586.4,644.0 602.2,625.2 624.0,602.5 653.6,572.2 697.3,530.4"/><polyline points="478.6,42.7 480.3,36.7 228.1,-33.3 235.8,-19.6 177.2,191.9 163.6,199.6 40.7,165.5 5.5,287.0 382.0,391.7 478.6,42.7"/><polyline points="303.6,985.7 341.4,969.8 423.5,924.0 441.9,910.3 449.1,905.0 477.5,884.1 537.1,820.1 558.7,795.6 573.0,780.4 615.2,735.1 642.5,707.0 669.6,675.1 720.6,619.8 760.8,576.8 761.5,576.0 780.0,555.9 789.0,546.1 796.8,536.2"/><polyline points="174.8,275.0 175.8,271.3 200.8,278.1 199.8,281.7 174.8,275.0"/><polyline points="209.4,246.1 205.7,259.6"/><polyline points="180.8,253.0 184.5,239.4"/><polyline points="209.2,246.0 205.6,259.6"/><polyline points="182.3,246.9 207.4,253.6 200.8,278.1 175.8,271.3 182.3,246.9"/><polyline points="182.4,247.1 207.2,253.7 200.7,277.9 175.9,271.2 182.4,247.1"/><polyline points="177.7,264.7 202.5,271.3"/><polyline points="177.7,264.8 202.4,271.5"/><polyline points="178.7,260.9 203.5,267.5"/><polyline points="178.7,261.0 203.4,267.7"/><polyline points="179.7,257.1 204.5,263.8"/><polyline points="179.7,257.3 204.4,263.9"/><polyline points="180.7,253.4 205.5,260.0"/><polyline points="180.7,253.5 205.4,260.1"/><polyline points="181.7,249.6 206.5,256.2"/><polyline points="181.7,249.7 206.5,256.4"/><polyline points="176.7,268.4 201.4,275.1"/><polyline points="176.7,268.6 201.4,275.2"/><polyline points="182.8,245.8 207.5,252.4"/><polyline points="182.7,246.0 207.5,252.6"/><polyline points="183.8,242.0 208.5,248.7"/><polyline points="183.7,242.2 208.5,248.8"/><polyline points="188.2,274.5 196.8,242.7"/><polyline points="188.4,274.6 196.9,242.7"/><polyline points="184.4,273.5 192.9,241.7"/><polyline points="184.5,273.5 193.1,241.7"/><polyline points="180.5,272.5 189.0,240.6"/><polyline points="184.4,273.5 192.9,241.7"/><polyline points="180.7,272.5 189.2,240.7"/><polyline points="180.7,272.5 189.2,240.7"/><polyline points="192.1,275.6 200.6,243.7"/><polyline points="192.3,275.6 200.8,243.8"/><polyline points="196.0,276.6 204.5,244.8"/><polyline points="196.1,276.6 204.7,244.8"/><polyline points="125.1,494.4 122.5,497.0 104.1,478.7 106.8,476.0 125.1,494.4"/><polyline points="104.6,514.9 83.1,536.3 64.8,518.0 86.2,496.6"/><polyline points="104.5,514.8 83.1,536.1 65.0,518.0 86.3,496.7"/><polyline points="104.6,514.9 86.2,496.6 104.1,478.7 122.5,497.0 104.6,514.9"/><polyline points="104.6,514.7 86.4,496.6 104.1,478.9 122.2,497.0 104.6,514.7"/><polyline points="117.4,501.8 99.3,483.7"/><polyline points="117.6,501.7 99.4,483.6"/><polyline points="114.7,504.6 96.6,486.5"/><polyline points="114.8,504.5 96.7,486.4"/><polyline points="111.9,507.3 93.8,489.2"/><polyline points="112.0,507.2 93.9,489.1"/><polyline points="109.2,510.1 91.0,492.0"/><polyline points="109.3,510.0 91.1,491.9"/><polyline points="106.4,512.9 88.3,494.8"/><polyline points="106.5,512.8 88.4,494.6"/><polyline points="120.2,499.1 102.1,480.9"/><polyline points="120.3,498.9 102.2,480.8"/><polyline points="103.6,515.6 85.5,497.5"/><polyline points="103.7,515.5 85.6,497.4"/><polyline points="100.9,518.4 82.7,500.3"/><polyline points="101.0,518.3 82.9,500.2"/><polyline points="98.1,521.2 80.0,503.0"/><polyline points="98.2,521.0 80.1,502.9"/><polyline points="95.3,523.9 77.2,505.8"/><polyline points="95.5,523.8 77.3,505.7"/><polyline points="92.6,526.7 74.5,508.6"/><polyline points="92.7,526.6 74.6,508.5"/><polyline points="89.8,529.4 71.7,511.3"/><polyline points="89.9,529.3 71.8,511.2"/><polyline points="87.1,532.2 68.9,514.1"/><polyline points="87.2,532.1 69.0,514.0"/><polyline points="84.3,535.0 66.2,516.8"/><polyline points="84.4,534.9 66.3,516.7"/><polyline points="113.2,488.0 74.1,527.1"/><polyline points="113.1,487.9 74.0,527.0"/><polyline points="116.1,490.8 77.0,530.0"/><polyline points="116.0,490.7 76.8,529.8"/><polyline points="118.9,493.7 79.8,532.8"/><polyline points="118.8,493.6 79.7,532.7"/><polyline points="110.4,485.2 71.3,524.3"/><polyline points="110.3,485.1 71.2,524.2"/><polyline points="107.6,482.4 68.5,521.5"/><polyline points="107.5,482.2 68.4,521.4"/><polyline points="180.7,252.9 184.3,239.4"/><polyline points="200.4,213.5 217.5,232.6"/><polyline points="200.4,213.3 217.7,232.6"/><polyline points="215.0,235.1 195.6,218.3"/><polyline points="214.9,235.2 195.5,218.4"/><polyline points="212.7,238.2 191.2,224.3"/><polyline points="212.6,238.3 191.1,224.4"/><polyline points="210.9,241.5 187.6,230.7"/><polyline points="210.8,241.6 187.6,230.8"/><polyline points="209.6,244.8 185.2,237.0"/><polyline points="209.6,244.6 185.2,236.8"/><polyline points="230.6,54.9 257.7,62.1"/><polyline points="258.2,60.3 293.0,69.7"/><polyline points="292.5,71.5 329.8,81.4"/><polyline points="330.5,78.8 358.1,86.2"/><polyline points="357.3,89.2 389.9,98.0"/><polyline points="389.9,98.0 396.1,75.1"/><polyline points="392.6,68.0 408.5,72.3"/><polyline points="104.5,443.8 182.7,465.6 184.8,458.1 106.6,436.3"/><polyline points="147.9,302.4 217.5,321.0"/><polyline points="149.9,294.8 207.5,310.3"/><polyline points="94.5,433.0 89.3,451.8 101.3,455.1 106.6,436.3 94.5,433.0"/><polyline points="217.5,321.0 222.5,302.0 210.5,298.9 205.5,317.8 217.5,321.0"/><polyline points="216.8,319.9 221.4,302.7 211.2,300.0 206.6,317.1 216.8,319.9"/><polyline points="95.2,434.1 90.4,451.1 100.7,454.0 105.4,437.0 95.2,434.1"/><polyline points="172.5,621.7 121.0,570.2 91.5,599.7 87.8,608.9 89.3,627.7 84.2,643.3 34.2,693.3 32.2,698.7 33.8,717.0 103.7,710.9 102.1,692.2 124.7,669.6 117.9,662.8 131.8,648.8 138.6,655.6 172.5,621.7"/><polyline points="171.2,621.7 121.0,571.6 92.2,600.4 88.7,608.8 90.3,627.6 84.8,644.0 34.8,694.0 33.2,698.6 34.7,716.0 102.7,710.0 101.1,691.8 123.3,669.6 116.5,662.8 131.8,647.5 138.6,654.3 171.2,621.7"/><polyline points="272.0,64.0 266.6,84.1 275.0,98.2 289.2,102.1 297.3,72.8"/><polyline points="272.9,64.3 267.5,84.2 275.3,97.3 288.6,101.0 296.4,72.5"/><polyline points="264.7,62.1 260.4,78.1 254.0,91.0 248.3,99.2 222.1,85.5 230.6,54.9"/><polyline points="263.8,61.8 259.5,77.8 253.2,90.5 248.0,98.0 223.2,85.0 231.5,55.1"/><polyline points="305.0,74.8 299.5,95.3 327.1,102.7 335.3,98.0 339.8,81.3"/><polyline points="305.9,75.0 300.6,94.7 327.3,101.8 334.4,97.7 338.9,81.0"/><polyline points="410.0,70.3 399.4,110.1 378.8,104.6 375.9,115.8 341.4,106.6 347.7,83.4"/><polyline points="409.1,70.0 398.7,109.0 378.2,103.5 375.2,114.6 342.6,105.9 348.6,83.6"/><polyline points="31.9,430.8 15.0,430.8"/><polyline points="31.9,430.7 15.0,430.7"/><polyline points="31.9,415.1 15.0,415.1"/><polyline points="14.1,416.4 14.1,429.5"/><polyline points="32.5,422.3 14.4,422.3"/><polyline points="14.4,423.6 32.5,423.6"/><polyline points="14.1,415.1 14.1,430.8 32.8,430.8 32.8,415.1 14.1,415.1"/><polyline points="13.6,802.3 -5.5,823.5"/><polyline points="-5.5,823.5 -20.6,840.3"/><polyline points="18.2,806.5 -24.5,854.0"/><polyline points="14.7,841.4 -0.7,827.5"/><polyline points="23.4,703.9 4.9,722.5"/><polyline points="23.6,705.9 6.5,723.0"/><polyline points="22.5,692.8 25.5,726.9"/><polyline points="25.5,726.9 51.4,724.6"/><polyline points="28.6,726.6 25.4,689.9"/><polyline points="31.7,726.3 28.2,687.0"/><polyline points="15.4,721.3 24.9,720.5"/><polyline points="19.8,709.8 20.7,720.8"/><polyline points="13.4,716.2 15.2,737.5"/><polyline points="14.8,714.7 16.8,737.4"/><polyline points="4.9,722.5 6.4,739.8"/><polyline points="6.5,723.0 7.8,738.1"/><polyline points="6.4,739.8 37.4,737.1"/><polyline points="7.8,738.1 35.7,735.7"/><polyline points="34.8,726.0 35.7,735.7"/><polyline points="36.4,725.9 37.4,737.1"/><polyline points="16.4,732.7 35.3,731.1"/><polyline points="16.3,731.2 35.1,729.5"/><polyline points="31.1,684.2 32.4,698.4"/><polyline points="106.6,436.3 117.6,439.4"/><polyline points="270.4,505.1 253.6,506.0"/><polyline points="270.4,505.1 253.6,506.0"/><polyline points="269.7,489.5 252.8,490.4"/><polyline points="251.9,491.7 252.6,504.8"/><polyline points="270.7,496.7 252.5,497.6"/><polyline points="252.6,498.8 270.7,497.9"/><polyline points="251.9,490.4 252.7,506.1 271.4,505.2 270.6,489.5 251.9,490.4"/><polyline points="289.2,504.2 272.3,505.1"/><polyline points="289.2,504.2 272.3,505.0"/><polyline points="288.4,488.6 271.5,489.5"/><polyline points="270.7,490.7 271.3,503.8"/><polyline points="289.4,495.7 271.3,496.7"/><polyline points="271.3,497.9 289.4,497.0"/><polyline points="270.6,489.5 271.4,505.2 290.1,504.2 289.3,488.6 270.6,489.5"/><polyline points="133.1,203.5 148.7,207.8 142.2,230.8"/><polyline points="255.3,273.4 262.0,249.3 251.5,246.4 244.8,270.5 255.3,273.4"/><polyline points="254.9,272.6 261.3,249.8 251.9,247.2 245.6,270.0 254.9,272.6"/><polyline points="254.7,272.3 260.9,250.0 252.1,247.5 245.9,269.8 254.7,272.3"/><polyline points="246.7,1.0 256.5,3.6 256.8,3.7 260.2,-9.0 250.1,-11.7 246.7,1.0"/><polyline points="247.4,0.5 256.3,2.9 259.4,-8.6 250.5,-11.0 247.4,0.5"/><polyline points="247.8,0.3 256.1,2.5 259.0,-8.4 250.7,-10.6 247.8,0.3"/><polyline points="30.3,200.9 62.0,209.4 68.8,184.0 150.6,206.7 143.8,231.2"/><polyline points="344.6,216.0 370.5,122.8"/><polyline points="350.6,217.7 376.6,124.4"/><polyline points="379.0,139.0 383.7,122.1"/><polyline points="432.4,76.3 446.0,27.2"/><polyline points="319.9,318.7 334.9,265.0"/><polyline points="356.6,219.4 379.0,139.0"/><polyline points="385.3,116.3 420.7,126.0"/><polyline points="399.1,111.2 412.0,114.7"/><polyline points="397.5,117.2 410.3,120.7"/><polyline points="402.3,99.1 415.3,102.7"/><polyline points="408.8,75.0 421.9,78.6"/><polyline points="108.7,196.7 76.7,187.8 76.4,188.9"/><polyline points="110.2,197.1 131.6,203.0"/><polyline points="73.0,201.6 70.4,211.6 143.8,231.2"/><polyline points="103.6,220.5 110.2,197.1"/><polyline points="146.4,216.0 107.9,205.3"/><polyline points="104.3,212.5 108.7,196.7"/><polyline points="104.3,212.5 72.5,203.7"/><polyline points="103.8,214.0 72.1,205.2"/><polyline points="145.9,217.5 124.4,211.6"/><polyline points="122.9,211.1 107.5,206.8"/><polyline points="122.9,211.1 119.2,224.7"/><polyline points="124.4,211.6 120.7,225.1"/><polyline points="318.8,360.8 274.9,348.6"/><polyline points="371.7,382.0 325.3,369.1"/><polyline points="236.4,337.9 222.1,333.9"/><polyline points="455.8,46.8 460.1,31.1"/><polyline points="409.7,123.0 415.6,101.5"/><polyline points="418.0,92.9 423.3,73.9"/><polyline points="413.5,124.1 427.2,74.9"/><polyline points="440.6,69.4 456.2,73.7"/><polyline points="437.1,24.3 423.3,73.9"/><polyline points="250.1,296.9 220.6,288.7"/><polyline points="399.1,126.4 383.7,122.1"/><polyline points="394.6,143.3 379.0,139.0"/><polyline points="431.0,22.6 427.8,34.3"/><polyline points="426.1,40.3 417.3,72.3"/><polyline points="218.6,346.3 220.4,339.9 234.7,343.9 232.9,350.2"/><polyline points="247.2,334.0 245.4,340.4 274.9,348.6"/><polyline points="317.1,366.8 243.7,346.4 242.0,352.7"/><polyline points="321.5,351.1 318.8,360.8"/><polyline points="329.7,353.3 327.0,363.1"/><polyline points="367.3,250.8 349.3,245.8"/><polyline points="368.2,247.1 350.3,242.2"/><polyline points="129.4,309.9 144.9,314.2"/><polyline points="440.6,69.4 451.8,28.8"/><polyline points="6.9,282.3 141.2,319.7"/><polyline points="378.4,357.9 371.7,382.0"/><polyline points="367.6,370.1 364.8,380.1"/><polyline points="138.1,253.8 141.3,242.0"/><polyline points="57.5,215.6 28.4,207.8"/><polyline points="155.1,262.7 143.6,259.8"/><polyline points="143.6,259.8 146.5,249.0"/><polyline points="267.6,234.0 262.3,253.0"/><polyline points="261.9,272.2 253.2,303.4"/><polyline points="173.8,218.1 169.4,234.4"/><polyline points="173.8,218.1 169.4,234.4"/><polyline points="158.7,214.0 154.3,230.3"/><polyline points="155.3,231.6 167.9,235.0"/><polyline points="165.8,215.3 161.1,232.8"/><polyline points="162.3,233.1 167.0,215.6"/><polyline points="154.1,231.2 169.2,235.3 174.1,217.2 158.9,213.1 154.1,231.2"/><polyline points="206.4,342.9 212.8,319.8"/><polyline points="212.5,344.5 218.9,321.4"/><polyline points="80.1,189.9 70.3,187.2 70.0,187.1 66.5,199.7 76.5,202.5 80.1,189.9"/><polyline points="79.3,190.3 70.4,187.9 67.2,199.3 76.1,201.8 79.3,190.3"/><polyline points="78.9,190.5 70.6,188.2 67.6,199.1 75.9,201.4 78.9,190.5"/><polyline points="408.0,40.4 424.7,45.0"/><polyline points="412.4,48.1 423.2,51.1"/><polyline points="257.9,132.0 256.5,137.4 269.6,140.9 271.0,135.5 257.9,132.0"/><polyline points="467.4,33.1 463.1,48.8"/><polyline points="463.1,48.8 456.2,73.7"/><polyline points="456.2,73.7 446.2,109.6"/><polyline points="446.2,109.6 437.9,139.9"/><polyline points="479.5,36.5 438.1,185.7"/><polyline points="367.8,24.7 426.1,40.3"/><polyline points="273.3,-0.6 267.9,19.5 241.9,12.5 249.0,-13.6 427.8,34.3"/><polyline points="370.9,48.9 356.4,45.0"/><polyline points="356.4,45.0 362.2,23.2"/><polyline points="362.2,23.2 260.5,-4.1"/><polyline points="244.7,2.1 257.9,5.6 260.5,-4.1"/><polyline points="269.7,-1.6 265.3,14.9 246.5,9.9 248.4,3.0"/><polyline points="225.3,87.4 216.1,120.7"/><polyline points="57.7,956.6 57.1,950.7 59.8,943.1 94.5,908.3 100.0,895.1 100.0,877.0"/><polyline points="72.2,861.3 78.3,864.8 87.8,881.1 87.8,889.6"/><polyline points="-4.3,805.0 -17.0,819.1"/><polyline points="250.5,625.5 208.2,638.7"/><polyline points="272.4,630.1 279.5,637.3 279.7,637.6 289.1,628.4 281.7,620.9 272.4,630.1"/><polyline points="273.3,630.1 279.7,636.7 288.2,628.3 281.7,621.8 273.3,630.1"/><polyline points="273.7,630.1 279.7,636.2 287.7,628.3 281.7,622.2 273.7,630.1"/><polyline points="138.3,263.7 138.8,264.8 142.6,250.3"/><polyline points="145.2,301.4 144.0,305.9 131.5,302.5 129.4,309.9"/><polyline points="127.4,293.8 123.4,308.2"/><polyline points="123.4,308.2 8.7,276.3"/><polyline points="408.2,43.5 407.1,44.0 421.6,47.8"/><polyline points="373.8,34.1 374.9,33.7 360.4,29.9"/><polyline points="382.0,391.6 421.4,249.4 403.9,218.7 372.3,209.9"/><polyline points="327.0,363.1 355.3,370.9 378.4,357.9 391.2,311.4"/><polyline points="391.2,311.4 406.9,254.9"/><polyline points="395.0,227.5 357.3,217.1"/><polyline points="143.8,231.2 148.4,243.1"/><polyline points="148.4,243.1 165.9,247.9"/><polyline points="80.6,221.8 139.5,237.5"/><polyline points="146.5,249.0 164.2,253.9"/><polyline points="83.1,218.0 82.0,218.4 96.5,222.3"/><polyline points="306.6,4.3 305.5,4.8 320.0,8.6"/><polyline points="95.4,590.5 81.1,576.0"/><polyline points="100.5,585.5 86.2,570.9"/><polyline points="115.7,570.2 102.8,557.0"/><polyline points="26.3,654.7 26.3,588.2"/><polyline points="272.4,636.4 329.2,658.1"/><polyline points="334.1,658.0 350.2,650.5"/><polyline points="280.6,597.4 291.3,608.1"/><polyline points="276.4,599.9 288.0,611.5"/><polyline points="281.3,618.2 288.6,625.5 290.4,630.6 289.1,642.8"/><polyline points="297.5,641.0 325.8,651.8"/><polyline points="292.3,622.6 301.8,621.1"/><polyline points="321.9,625.8 317.6,636.4"/><polyline points="354.3,157.8 338.6,214.4"/><polyline points="301.0,147.4 316.3,151.5"/><polyline points="216.1,120.7 240.3,127.2"/><polyline points="327.2,146.7 326.1,147.1 336.9,150.1"/><polyline points="240.5,121.5 257.1,125.9"/><polyline points="239.3,130.9 254.6,135.0"/><polyline points="238.7,124.6 239.8,124.2 228.9,121.3"/><polyline points="447.5,44.5 463.1,48.8"/><polyline points="409.1,60.6 412.4,48.1"/><polyline points="434.7,76.9 450.0,81.1"/><polyline points="445.9,99.5 436.4,96.9"/><polyline points="433.3,82.1 443.8,84.9"/><polyline points="433.5,81.5 444.0,84.3"/><polyline points="427.5,103.8 433.3,82.1"/><polyline points="426.5,104.3 433.9,76.7"/><polyline points="434.7,76.9 450.0,81.1"/><polyline points="438.9,78.1 450.0,81.1"/><polyline points="439.1,77.3 451.0,80.5"/><polyline points="436.1,88.5 448.0,91.7"/><polyline points="450.0,81.1 447.4,90.7"/><polyline points="436.3,87.7 447.4,90.7"/><polyline points="451.0,80.5 448.0,91.7"/><polyline points="443.4,108.8 433.9,106.3"/><polyline points="177.3,622.0 155.4,644.0 152.4,641.0"/><polyline points="426.5,104.3 420.7,126.0"/><polyline points="155.0,639.1 174.7,619.4"/><polyline points="150.4,477.9 46.1,582.2"/><polyline points="45.1,599.9 45.1,651.9"/><polyline points="118.4,518.8 55.6,581.5"/><polyline points="-1.4,707.8 29.7,676.8 38.8,654.7 38.8,599.9"/><polyline points="47.2,517.9 77.6,487.5"/><polyline points="77.6,461.0 65.4,448.8"/><polyline points="118.4,567.6 88.9,597.1"/><polyline points="84.0,609.1 85.5,626.9"/><polyline points="54.0,603.0 97.4,559.7"/><polyline points="172.6,271.1 185.5,222.9"/><polyline points="160.2,293.3 180.2,218.7"/><polyline points="154.5,290.2 174.1,217.0"/><polyline points="194.1,339.4 213.3,267.6"/><polyline points="200.1,341.1 206.3,318.0"/><polyline points="211.4,299.1 226.5,242.4"/><polyline points="217.4,300.7 221.8,284.2"/><polyline points="59.7,861.3 72.2,861.3"/><polyline points="-2.2,669.6 15.5,652.0 7.8,644.2 -9.9,661.9 -2.2,669.6"/><polyline points="-2.2,668.8 14.6,652.0 7.8,645.1 -9.0,661.9 -2.2,668.8"/><polyline points="-2.2,668.3 14.2,652.0 7.8,645.6 -8.6,661.9 -2.2,668.3"/><polyline points="407.5,219.6 391.3,215.1"/><polyline points="407.5,219.5 391.3,215.0"/><polyline points="411.7,204.5 395.4,200.0"/><polyline points="394.2,201.0 390.7,213.6"/><polyline points="410.4,211.6 392.9,206.8"/><polyline points="392.6,208.0 410.1,212.8"/><polyline points="394.5,199.8 390.3,214.9 408.4,219.9 412.6,204.8 394.5,199.8"/><polyline points="389.5,214.6 373.2,210.0"/><polyline points="389.5,214.5 373.2,210.0"/><polyline points="393.6,199.5 377.4,195.0"/><polyline points="376.1,195.9 372.6,208.6"/><polyline points="392.3,206.6 374.9,201.7"/><polyline points="374.5,202.9 392.0,207.8"/><polyline points="376.5,194.7 372.3,209.9 390.3,214.9 394.5,199.8 376.5,194.7"/><polyline points="77.6,487.5 110.9,454.2 115.7,445.9 117.6,439.4"/><polyline points="271.0,135.5 269.6,140.9 282.7,144.4 284.1,139.0 271.0,135.5"/><polyline points="39.9,210.8 38.4,216.3 51.5,219.8 53.0,214.4 39.9,210.8"/><polyline points="124.1,233.4 122.6,238.8 135.7,242.3 137.2,236.9 124.1,233.4"/><polyline points="362.2,23.2 356.8,21.7 353.3,34.8 358.7,36.3 362.2,23.2"/><polyline points="276.3,0.2 274.9,5.6 288.0,9.1 289.4,3.7 276.3,0.2"/><polyline points="36.2,687.1 32.2,683.1 41.8,673.5 45.8,677.5 36.2,687.1"/><polyline points="-15.6,657.4 -18.7,652.6 -19.1,645.2 -13.9,641.2 -7.5,637.7 -6.7,634.7 -6.7,627.7 -6.4,621.4 -0.5,614.1 6.5,612.2 6.5,607.2 2.3,602.4 -9.5,601.5 -18.2,601.7 -21.9,599.1 -22.8,592.3 -21.8,588.2 -14.0,595.9 -4.4,586.3 25.5,616.2 18.6,623.2 18.6,623.2 6.4,635.4 -15.6,657.4"/><polyline points="179.8,486.3 157.6,508.3"/><polyline points="-14.0,595.9 11.6,570.3"/><polyline points="-24.2,585.7 -8.1,569.6"/><polyline points="-22.0,587.9 -4.0,569.9"/><polyline points="-17.6,592.3 4.8,569.9"/><polyline points="-15.4,594.6 9.3,569.9"/><polyline points="26.3,617.0 -4.4,586.3"/><polyline points="26.3,611.5 -1.7,583.5"/><polyline points="-3.2,474.0 7.1,465.3 13.5,465.3 13.5,443.3"/><polyline points="41.2,474.8 33.2,465.3 19.8,465.3 19.8,443.3"/><polyline points="-15.4,731.2 -15.4,762.4"/><polyline points="-5.0,785.6 53.5,838.2"/><polyline points="-2.9,725.9 -2.9,762.4"/><polyline points="3.4,776.3 61.8,829.0"/><polyline points="72.2,852.2 72.2,871.4"/><polyline points="59.7,852.2 59.7,871.4"/><polyline points="-10.6,838.5 8.9,856.0"/><polyline points="174.3,476.3 148.6,502.0"/><polyline points="8.9,469.9 31.0,469.9"/><polyline points="-5.5,801.1 -13.0,794.3 -13.2,794.1 -22.0,803.8 -14.3,810.9 -5.5,801.1"/><polyline points="-6.4,801.1 -13.2,795.0 -21.1,803.8 -14.3,810.0 -6.4,801.1"/><polyline points="-6.8,801.2 -13.2,795.4 -20.7,803.8 -14.3,809.5 -6.8,801.2"/><polyline points="111.8,571.9 104.7,564.8 104.4,564.5 95.2,573.8 102.6,581.2 111.8,571.9"/><polyline points="111.0,571.9 104.4,565.4 96.0,573.8 102.6,580.3 111.0,571.9"/><polyline points="110.5,571.9 104.4,565.9 96.5,573.8 102.6,579.9 110.5,571.9"/><polyline points="7.6,569.9 -3.6,569.9"/><polyline points="-13.2,787.6 -40.6,806.3"/><polyline points="-79.8,461.0 -7.1,547.6"/><polyline points="7.2,554.3 19.9,554.3"/><polyline points="-8.0,434.2 -21.9,420.3"/><polyline points="52.1,443.3 14.1,443.3"/><polyline points="0.8,425.3 -13.1,411.5"/><polyline points="49.5,430.8 14.1,430.8"/><polyline points="261.2,559.0 271.5,569.2"/><polyline points="253.7,566.6 263.9,576.8"/><polyline points="208.2,532.4 193.5,546.8"/><polyline points="179.3,485.9 196.3,502.8"/><polyline points="184.2,508.3 204.9,529.0"/><polyline points="202.9,520.1 228.0,545.1"/><polyline points="204.9,529.0 190.2,543.4"/><polyline points="20.8,668.0 -2.4,691.2"/><polyline points="26.3,646.4 -10.4,683.2"/><polyline points="25.5,616.2 -25.9,667.7"/><polyline points="-46.3,563.6 -14.0,595.9"/><polyline points="-4.5,796.4 -22.0,778.9"/><polyline points="-15.4,717.0 -99.0,693.2"/><polyline points="-13.6,711.0 -99.0,686.7 -123.5,693.0 -141.3,710.8"/><polyline points="164.0,473.4 140.0,497.3"/><polyline points="174.5,467.6 189.7,413.0"/><polyline points="168.8,465.1 183.8,411.0"/><polyline points="420.3,532.0 334.8,515.6"/><polyline points="325.9,515.0 211.1,520.7"/><polyline points="422.6,519.8 337.2,503.3"/><polyline points="325.2,502.5 210.4,508.2"/><polyline points="117.6,439.4 129.6,396.1"/><polyline points="-216.6,390.3 -194.9,403.4 -191.0,403.4 -176.8,399.2 -156.8,385.8 -136.8,382.3 -29.1,409.3 -17.5,415.9 -10.5,422.9"/><polyline points="-25.9,667.7 -2.4,691.2"/><polyline points="299.6,599.9 270.8,628.7"/><polyline points="334.1,640.3 302.3,602.6"/><polyline points="363.6,549.6 363.4,550.7 374.8,541.1"/><polyline points="329.6,316.8 356.6,219.4"/><polyline points="241.7,333.5 242.6,332.7 238.6,347.2"/><polyline points="324.3,354.2 325.2,353.5 321.2,368.0"/><polyline points="444.8,140.9 443.9,141.6 447.9,127.1"/><polyline points="437.9,139.9 449.9,143.2"/><polyline points="441.9,125.5 453.9,128.8"/><polyline points="234.9,289.6 235.6,290.5 221.2,286.5"/><polyline points="254.6,292.3 253.6,293.0 259.6,271.6"/><polyline points="367.0,248.0 367.7,249.0 353.3,245.0"/><polyline points="396.1,133.9 396.8,134.9 381.3,130.6"/><polyline points="326.2,314.9 325.2,315.6 329.4,301.2"/><polyline points="360.5,549.9 373.3,539.2"/><polyline points="361.2,555.8 381.2,539.0"/><polyline points="357.0,519.9 373.3,539.2"/><polyline points="366.8,521.8 381.2,539.0"/><polyline points="324.9,568.8 326.1,568.7 314.6,578.4"/><polyline points="317.6,581.9 333.0,569.0"/><polyline points="20.1,918.7 54.2,884.6"/><polyline points="57.6,833.6 24.3,803.5"/><polyline points="65.9,871.4 65.9,852.2"/><polyline points="-19.8,590.1 0.4,569.9"/><polyline points="189.3,634.0 109.6,554.1"/><polyline points="198.0,616.2 116.2,534.2"/><polyline points="274.7,601.4 250.5,625.5"/><polyline points="331.0,597.8 329.4,615.4"/><polyline points="271.5,569.2 224.5,616.2"/><polyline points="-22.0,579.1 -11.9,569.0"/><polyline points="336.2,650.1 317.6,636.4"/><polyline points="299.5,606.6 301.8,621.1"/><polyline points="301.8,621.1 316.1,619.0"/><polyline points="317.6,636.4 313.4,647.0"/><polyline points="32.6,654.7 32.6,588.2"/><polyline points="2.0,695.6 25.2,672.4"/><polyline points="41.6,527.5 38.0,540.6"/><polyline points="82.0,492.0 115.3,458.6 121.8,447.6 122.6,444.5"/><polyline points="74.4,545.1 56.1,526.7"/><polyline points="122.6,444.5 135.6,397.8"/><polyline points="47.7,529.1 33.9,578.1"/><polyline points="51.7,522.3 82.0,492.0"/><polyline points="208.2,532.4 226.3,550.5"/><polyline points="116.2,534.2 96.3,554.1"/><polyline points="55.7,581.5 69.5,580.9"/><polyline points="69.5,580.9 96.3,554.1"/><polyline points="38.0,540.6 27.9,576.4"/><polyline points="51.3,651.9 51.3,609.6"/><polyline points="32.2,683.1 2.6,712.7"/><polyline points="76.9,643.1 60.9,659.1"/><polyline points="378.0,644.2 390.1,634.1"/><polyline points="390.1,634.1 407.7,635.6"/><polyline points="438.0,593.9 436.5,611.5"/><polyline points="343.6,632.3 329.4,615.4"/><polyline points="334.1,640.3 378.0,644.2"/><polyline points="370.0,634.6 432.1,582.6"/><polyline points="407.7,635.6 436.5,611.5"/><polyline points="315.7,227.5 206.7,198.3"/><polyline points="310.8,245.6 255.9,230.9"/><polyline points="233.4,276.8 236.7,265.2"/><polyline points="221.8,284.1 233.4,276.8"/><polyline points="312.4,239.5 251.1,223.1"/><polyline points="314.0,233.5 205.0,204.3"/><polyline points="221.8,284.1 232.6,244.0"/><polyline points="213.3,267.6 220.2,241.8"/><polyline points="251.4,292.4 221.8,284.2"/><polyline points="188.0,337.8 203.7,279.5"/><polyline points="257.3,270.9 251.4,292.4"/><polyline points="262.3,253.0 257.3,270.9"/><polyline points="261.9,272.2 321.7,288.9"/><polyline points="241.7,247.3 244.4,237.4"/><polyline points="236.7,265.2 241.7,247.3"/><polyline points="340.9,135.7 260.4,113.7"/><polyline points="301.9,143.8 317.2,147.9"/><polyline points="354.3,157.8 364.5,121.1"/><polyline points="317.2,147.9 354.3,157.8"/><polyline points="257.1,125.9 337.6,147.5"/><polyline points="255.6,131.3 301.9,143.8"/><polyline points="240.3,127.2 255.6,131.3"/><polyline points="265.2,259.7 279.9,263.7"/><polyline points="318.1,267.5 313.0,286.4"/><polyline points="281.6,257.3 327.0,269.9"/><polyline points="257.1,125.9 260.5,113.7"/><polyline points="260.4,113.7 243.9,109.2"/><polyline points="283.3,251.1 276.4,276.3"/><polyline points="336.5,258.9 272.0,241.6"/><polyline points="261.9,272.2 268.6,247.2"/><polyline points="328.8,263.3 268.6,247.2"/><polyline points="321.7,288.9 328.8,263.3"/><polyline points="336.5,258.9 341.7,240.3"/><polyline points="337.6,147.5 340.9,135.7"/><polyline points="333.5,101.0 330.9,110.9"/><polyline points="284.6,133.3 287.9,121.2"/><polyline points="306.7,139.2 310.0,127.3"/><polyline points="322.4,143.4 325.7,131.6"/><polyline points="266.7,128.5 270.0,116.3"/><polyline points="291.4,135.1 294.7,123.1"/><polyline points="240.5,121.5 243.9,109.2 227.1,104.5 223.6,116.9 240.5,121.5"/><polyline points="340.6,113.5 363.9,119.9"/><polyline points="420.1,180.7 438.1,185.7"/><polyline points="424.7,163.8 420.1,180.7"/><polyline points="298.6,102.2 330.9,110.9"/><polyline points="376.6,124.4 381.8,105.5"/><polyline points="260.0,115.2 243.5,110.7"/><polyline points="258.4,121.2 241.9,116.7"/><polyline points="257.9,122.7 241.5,118.2"/><polyline points="257.5,124.2 241.1,119.7"/><polyline points="239.9,120.3 242.8,109.8 227.7,105.7 224.8,116.3 239.9,120.3"/><polyline points="258.8,119.7 242.3,115.2"/><polyline points="259.6,116.7 243.1,112.2"/><polyline points="259.2,118.2 242.7,113.7"/><polyline points="339.4,114.1 364.5,121.1"/><polyline points="297.5,102.9 331.6,112.0"/><polyline points="335.3,98.0 331.6,112.0"/><polyline points="364.5,121.1 376.6,124.4"/><polyline points="286.9,133.8 290.2,121.8"/><polyline points="260.6,126.8 264.0,114.6"/><polyline points="328.5,145.1 331.8,133.2"/><polyline points="333.0,146.4 336.3,134.5"/><polyline points="289.2,516.8 327.0,561.9"/><polyline points="282.1,517.2 322.7,565.5 311.6,574.8"/><polyline points="271.5,569.2 306.9,569.2 331.0,597.8"/><polyline points="400.0,123.2 421.3,162.9"/><polyline points="402.6,157.9 432.5,131.9"/><polyline points="122.2,270.4 147.7,302.1"/><polyline points="156.4,269.5 116.7,290.9"/><polyline points="397.5,69.2 376.3,28.7"/><polyline points="377.2,62.9 408.8,37.4"/><polyline points="345.5,335.5 308.5,350.4"/><polyline points="317.2,317.8 340.8,356.2"/><polyline points="340.2,530.2 348.2,583.8"/><polyline points="316.8,549.8 362.4,571.8"/><polyline points="201.2,572.3 214.6,614.4"/><polyline points="184.3,581.6 232.4,596.6"/><polyline points="117.2,517.6 164.6,536.0"/><polyline points="151.4,549.1 138.7,496.0"/><polyline points="-12.6,510.0 -26.2,463.1"/><polyline points="-40.4,475.0 7.9,491.6"/><polyline points="33.5,495.2 76.4,485.6"/><polyline points="40.4,513.6 57.9,464.5"/><polyline points="51.5,850.3 5.2,871.2"/><polyline points="18.4,884.3 28.9,829.9"/><polyline points="151.4,549.1 203.9,561.2"/><polyline points="182.7,583.0 164.6,536.0"/><polyline points="271.5,548.8 222.0,565.2"/><polyline points="236.5,581.1 250.0,527.3"/><polyline points="231.1,300.6 266.9,337.6"/><polyline points="271.8,319.7 224.6,327.9"/><polyline points="-14.6,866.8 -68.3,856.9"/><polyline points="389.8,280.6 375.7,231.0"/><polyline points="371.9,275.7 402.8,238.2"/><polyline points="602.2,625.2 624.0,602.5 653.6,572.2 697.2,530.2 682.7,495.8 646.5,494.4 622.8,493.2 592.6,493.2 523.0,490.4 505.1,489.7 480.9,484.2 448.2,604.3 446.3,606.2 363.4,685.2 353.9,720.6 377.3,726.9 367.3,765.0 373.9,781.6 402.0,805.5 409.0,811.5 415.3,817.0 434.1,816.0 479.2,767.6 500.9,742.9 516.0,727.0 563.3,676.6 586.4,643.9 602.2,625.2"/><polyline points="353.2,448.6 333.1,443.0 287.7,439.7 285.5,439.6 252.4,430.5 225.1,422.9 211.4,419.2 207.8,418.2 189.7,413.0 180.5,446.1 180.5,446.1 198.4,451.2 202.2,452.3 215.9,456.1 243.3,463.6 279.6,473.6 285.3,474.0 327.2,477.0 344.1,481.7 406.9,499.1 427.2,504.8 434.4,506.9 462.2,515.3 470.5,517.1 471.9,517.4 480.9,484.2 479.5,483.9 471.0,482.0 444.2,473.9 436.6,471.7 416.1,466.0 353.2,448.6"/><polyline points="16.1,289.9 16.1,289.9 77.2,306.9 129.7,321.5 140.3,324.5 169.1,332.5 185.6,337.1 221.7,347.1 268.7,360.2 358.6,385.1 382.0,391.6 398.3,332.7 408.8,294.6 418.8,258.7 423.1,243.2 431.1,214.1 438.6,187.3 451.0,142.4 461.1,105.9 480.3,36.6 456.3,30.0 429.2,22.5 411.2,17.5 356.2,2.2 324.0,-6.6 291.8,-15.6 267.5,-22.3 228.1,-33.3 235.8,-19.7 177.2,191.9 163.6,199.6 49.7,168.0 40.6,165.5 5.5,287.0 16.1,289.9 16.1,289.9"/><polyline points="564.7,283.9 572.5,255.2 565.5,255.1 553.1,254.8 516.2,253.9 505.3,261.3 476.7,362.2 505.6,370.2 538.8,379.4 547.7,346.3 551.5,332.6 564.7,283.9 564.7,283.9"/><polyline points="850.8,330.0 851.3,309.9 852.3,274.7 852.5,268.3 842.5,256.6 827.9,256.0 808.4,255.6 794.0,255.7 759.2,255.7 691.6,255.9 663.0,255.9 652.0,255.9 607.4,255.2 572.5,255.2 564.7,283.9 551.5,332.6 547.7,346.3 538.8,379.4 526.7,423.7 525.5,428.0 593.9,430.7 624.4,430.7 648.5,431.9 701.4,432.7 744.6,433.4 776.8,435.1 780.3,435.0 780.3,435.0 808.4,434.1 839.5,433.7 845.4,426.4 845.7,426.0 849.3,421.6 849.7,399.5 850.8,330.0 850.8,330.0"/><polyline points="478.6,42.7 420.9,251.0 420.9,251.0 382.0,391.6 416.5,401.2"/><polyline points="382.0,391.6 416.5,401.2 430.1,393.5 443.5,345.2 453.0,310.8 463.9,271.5 467.8,257.5 476.0,227.9 483.8,199.8 496.2,154.9 506.3,118.5 513.8,91.3 520.9,65.9 513.2,52.3 478.6,42.7"/><polyline points="538.8,379.4 505.6,370.2 476.7,362.2 465.0,403.5 472.5,417.2 487.0,421.5 513.3,427.5 525.5,428.0 526.7,423.7 538.8,379.4"/><polyline points="235.8,-19.7 228.1,-33.3 -83.4,-119.7 -97.1,-112.0 -158.0,98.8 -150.4,112.5 163.6,199.6 177.2,191.9 235.8,-19.7 235.8,-19.7"/><polyline points="-181.6,235.0 -127.7,250.0 -45.1,272.9 5.5,287.0 40.6,165.5 -150.4,112.5 -158.0,98.8"/><polyline points="105.4,389.4 105.4,389.4 105.4,389.4 79.0,382.0 58.0,376.2 23.3,366.5 -3.2,359.2 -21.9,354.0 -63.5,342.4 -184.6,308.7 -196.6,305.4 -196.7,305.4 -205.9,338.5 -205.9,338.5 -193.8,341.8 -72.7,375.5 -31.1,387.1 -12.4,392.3 14.1,399.7 48.7,409.3 69.8,415.2 96.2,422.5 120.3,429.2 129.5,396.1 124.3,394.6 113.6,391.7 105.4,389.4"/><polyline points="344.3,756.4 344.3,756.4 353.9,720.6 377.3,726.9 367.3,765.0 373.9,781.6 373.9,781.6 373.9,781.6"/><polyline points="-539.7,318.4 -411.1,318.4 -364.2,327.7 -281.2,327.7 -268.2,328.1 -267.9,328.1 -258.5,294.4 -246.9,295.3 -202.4,303.8 -196.7,305.4 -205.9,338.5 -205.9,338.5 -193.8,341.8 -72.7,375.5 -31.1,387.1 -12.4,392.3 14.1,399.7 48.7,409.3 69.8,415.2 96.2,422.5 96.2,422.5 120.3,429.2 129.5,396.1 149.9,401.8 154.4,403.0 165.0,406.0 165.6,406.1 177.9,409.6 189.7,413.0 180.5,446.1 198.4,451.2 202.2,452.3 215.9,456.1 243.3,463.6 279.6,473.6 285.3,474.0 327.2,477.0 344.1,481.7 406.9,499.1 427.2,504.8 434.4,506.9 462.2,515.3 470.5,517.1 471.9,517.4"/><polyline points="-539.5,309.6 -540.3,362.1 -540.7,389.3 -541.0,409.4 -551.0,446.9 -551.1,451.0 -552.0,511.7 -553.3,600.6 -554.6,683.5 -555.5,743.2 -539.7,793.1 -540.4,840.0 -557.7,889.1 -559.5,1006.4 -560.0,1040.3 -560.7,1086.6 -543.8,1098.8 -536.3,1095.5 -507.8,1083.0 -504.4,1080.3 -494.6,1073.2 -492.3,1071.7 -484.7,1066.5 -474.7,1059.9 -464.4,1053.7 -457.2,1049.5 -454.0,1047.7 -449.9,1045.5 -443.5,1042.0 -432.8,1036.6 -423.9,1032.4 -385.5,1016.7 -377.3,1013.8 -365.9,1010.2 -354.4,1006.8 -342.8,1003.7 -336.6,1002.3 -331.1,1001.0 -319.4,998.6 -307.6,996.4 -294.8,994.5 -283.8,993.1 -241.0,988.3 -193.9,983.0 -160.1,979.2 -129.5,975.8 -58.3,967.7 -22.9,965.1 33.9,959.0 98.0,952.5 112.7,951.1 128.1,949.7 169.1,944.0 168.5,943.2 174.6,942.3 174.6,942.3 174.6,942.3 176.8,939.5 166.2,930.6 160.3,925.7 142.9,910.9 91.6,872.5 78.2,862.5 76.8,861.5 91.4,847.6 77.6,801.2 64.5,777.1 60.5,769.6 39.7,755.9 28.4,748.6 51.1,745.4 99.0,738.8 139.1,733.5 136.3,714.0 166.2,709.1 164.7,699.1 162.7,694.3 167.7,685.2 162.8,675.0 196.3,665.9 193.3,655.1 231.7,643.1 247.8,638.1 296.3,654.2 317.3,661.2 342.5,667.6 350.4,667.2 355.6,671.2 363.4,685.2"/><polyline points="344.3,756.4 344.3,756.4 363.4,685.2 355.6,671.2 350.4,667.2 342.5,667.6 317.3,661.2 247.8,638.1 242.5,639.7 193.3,655.1 196.3,665.9 162.8,675.0 167.7,685.2 162.7,694.3 164.7,699.1 166.2,709.1 136.3,714.0 139.1,733.5 99.0,738.8 51.1,745.4 28.4,748.6 39.7,755.9 60.5,769.6 64.5,777.1 77.6,801.2 91.4,847.6 76.9,861.5 91.6,872.5 142.9,910.9 160.3,925.7 166.2,930.6 179.1,941.4 204.7,936.1 254.2,921.1 264.5,917.5 307.1,899.5 381.0,858.3 395.4,847.6 397.8,838.4 398.5,835.6 340.6,781.4 338.2,779.1 338.2,779.0 344.3,756.4 344.3,756.4"/><polyline points="257.9,331.1 257.1,334.1 266.2,336.5 267.0,333.5 257.9,331.1"/><polyline points="257.1,334.1 267.0,333.5"/><polyline points="395.6,247.2 398.6,248.1 401.0,239.0 398.0,238.2 395.6,247.2"/><polyline points="398.6,248.1 398.0,238.2"/><polyline points="127.1,289.4 118.1,286.9 117.2,290.0 126.3,292.4 127.1,289.4"/><polyline points="117.2,290.0 127.1,289.4"/><polyline points="273.8,24.1 283.7,23.6"/><polyline points="85.2,900.9 76.4,892.2 79.7,888.9 88.5,897.6 85.2,900.9"/><polyline points="85.2,900.9 79.7,888.9"/><polyline points="46.7,186.2 47.8,182.2 59.8,185.5 58.8,189.4 46.7,186.2"/><polyline points="45.6,186.8 47.1,181.1 61.0,184.8 59.4,190.5 45.6,186.8"/><polyline points="46.7,186.2 59.8,185.5"/><polyline points="47.8,182.2 58.8,189.4"/><polyline points="344.0,302.2 338.5,300.7 341.0,291.7 346.4,293.1 344.0,302.2"/><polyline points="344.6,303.4 337.4,301.4 340.3,290.5 347.6,292.5 344.6,303.4"/><polyline points="344.0,302.2 341.0,291.7"/><polyline points="428.0,130.7 429.5,125.1 437.4,127.2 435.9,132.8 432.4,131.9"/><polyline points="428.0,130.7 437.4,127.2"/><polyline points="225.4,73.1 222.2,72.2 225.1,61.3 228.4,62.2"/><polyline points="225.1,74.0 221.0,72.9 224.4,60.2 228.6,61.3"/><polyline points="225.4,73.1 225.1,61.3"/><polyline points="222.2,72.2 228.4,62.2"/><polyline points="193.0,195.3 188.4,194.1 191.6,181.9 196.2,183.2 193.0,195.3"/><polyline points="193.6,196.5 187.2,194.7 190.9,180.8 197.4,182.5 193.6,196.5"/><polyline points="193.0,195.3 191.6,181.9"/><polyline points="188.4,194.1 196.2,183.2"/><polyline points="429.7,124.2 431.9,116.0 439.8,118.1 437.6,126.3 429.7,124.2"/><polyline points="429.7,124.2 439.8,118.1"/><polyline points="431.9,116.0 437.6,126.3"/><polyline points="432.0,115.5 434.4,106.6 442.4,108.7 440.0,117.6 432.0,115.5"/><polyline points="432.0,115.5 442.4,108.7"/><polyline points="434.4,106.6 440.0,117.6"/><polyline points="88.5,897.6 79.7,888.9 64.9,903.7 73.7,912.4 88.5,897.6"/><polyline points="89.8,897.6 79.7,887.6 63.6,903.7 73.7,913.8 89.8,897.6"/><polyline points="352.4,497.6 376.6,504.3"/><polyline points="350.2,502.0 351.7,496.5 377.7,503.7 376.2,509.2 350.2,502.0"/><polyline points="375.5,508.1 351.3,501.4"/><polyline points="44.2,452.6 34.3,461.0"/><polyline points="38.2,445.5 28.3,453.8"/><polyline points="33.4,449.5 44.2,452.6"/><polyline points="38.2,445.5 39.4,456.7"/><polyline points="28.3,453.8 39.1,457.0"/><polyline points="33.0,449.8 34.3,461.0"/><polyline points="34.2,825.5 45.0,836.4"/><polyline points="34.1,824.2 46.3,836.4"/><polyline points="274.9,606.1 281.3,612.5 272.2,621.5 265.8,615.1 274.9,606.1"/><polyline points="274.9,604.7 282.6,612.5 272.2,622.9 264.5,615.1 274.9,604.7"/><polyline points="34.2,462.3 26.9,453.7 38.3,444.1 45.5,452.8 34.2,462.3"/><polyline points="29.6,830.6 45.0,836.4"/><polyline points="40.8,840.6 34.2,825.5"/><polyline points="265.8,615.1 281.3,612.5"/><polyline points="274.9,606.1 272.2,621.5"/><polyline points="351.3,501.4 364.8,501.1"/><polyline points="352.4,497.6 363.8,504.8"/><polyline points="364.2,505.0 376.6,504.3"/><polyline points="365.3,501.2 375.5,508.1"/><polyline points="213.6,493.1 208.9,497.9 194.3,483.3 199.1,478.6 213.6,493.1"/><polyline points="215.0,493.1 208.9,499.2 193.0,483.3 199.1,477.2 215.0,493.1"/><polyline points="199.1,478.6 208.9,497.9"/><polyline points="194.3,483.3 213.6,493.1"/><polyline points="432.4,131.9 435.9,132.8 442.4,108.7 434.4,106.6 428.0,130.7"/><polyline points="432.3,132.8 436.6,134.0 443.5,108.1 433.8,105.4 427.1,130.4"/><polyline points="273.7,24.2 273.7,24.2 274.6,21.0 283.7,23.5 283.7,23.5"/><polyline points="272.8,24.0 273.9,19.9 284.0,22.6"/><polyline points="402.2,60.3 406.8,61.5 404.2,71.1 398.7,69.7 401.3,60.0 402.1,60.2"/><polyline points="228.3,310.8 223.8,309.5 226.3,300.5 230.8,301.7"/><polyline points="228.1,311.7 222.7,310.2 225.6,299.3 231.0,300.8"/><polyline points="228.3,310.8 226.3,300.5"/><polyline points="-23.4,501.6 -32.9,509.7 -22.8,521.6 -13.2,513.5 -23.4,501.6"/><polyline points="-0.4,529.5 -9.9,537.5 0.2,549.5 9.7,541.4 -0.4,529.5"/><polyline points="57.8,501.2 65.9,510.7 77.8,500.7 69.8,491.1 57.8,501.2"/><polyline points="255.9,564.4 264.7,573.2 275.8,562.1 266.9,553.3 255.9,564.4"/><polyline points="410.5,584.4 418.5,594.0 430.5,583.9 422.5,574.4 410.5,584.4"/><polyline points="357.5,628.8 365.5,638.3 377.5,628.3 369.5,618.7 357.5,628.8"/><polyline points="117.2,517.6 108.3,526.4 119.4,537.5 128.2,528.6 117.2,517.6"/><polyline points="173.0,573.4 164.1,582.3 175.2,593.3 184.0,584.5 173.0,573.4"/><polyline points="214.6,614.4 223.4,623.2 234.5,612.2 225.7,603.4 214.6,614.4"/><polyline points="316.8,549.8 307.2,557.8 317.3,569.8 326.9,561.8 316.8,549.8"/><polyline points="36.9,866.7 46.2,875.1 56.6,863.4 47.3,855.1 36.9,866.7"/><polyline points="223.8,327.7 220.6,339.8 235.8,343.7 238.9,331.7 223.8,327.7"/><polyline points="300.0,348.2 296.8,360.2 311.9,364.2 315.1,352.1 300.0,348.2"/><polyline points="369.1,364.1 381.1,367.3 385.1,352.2 373.0,349.0 369.1,364.1"/><polyline points="377.9,331.4 390.0,334.5 393.9,319.4 381.8,316.2 377.9,331.4"/><polyline points="397.1,259.5 409.1,262.7 413.1,247.6 401.0,244.4 397.1,259.5"/><polyline points="413.8,202.1 425.8,205.3 429.8,190.2 417.7,187.0 413.8,202.1"/><polyline points="429.2,144.6 441.3,147.8 445.3,132.7 433.2,129.5 429.2,144.6"/><polyline points="403.2,58.7 415.3,61.9 419.3,46.8 407.2,43.6 403.2,58.7"/><polyline points="368.8,92.5 365.6,104.5 380.7,108.5 383.9,96.4 368.8,92.5"/><polyline points="308.2,75.7 305.1,87.8 320.2,91.8 323.3,79.7 308.2,75.7"/><polyline points="231.3,55.1 228.2,67.2 243.3,71.1 246.4,59.0 231.3,55.1"/><polyline points="197.2,182.8 194.1,194.9 209.2,198.9 212.4,186.8 197.2,182.8"/><polyline points="248.2,196.5 245.1,208.6 260.2,212.6 263.3,200.5 248.2,196.5"/><polyline points="300.1,210.5 296.9,222.6 312.1,226.6 315.2,214.5 300.1,210.5"/><polyline points="12.5,265.9 9.3,277.9 24.4,282.0 27.6,269.9 12.5,265.9"/><polyline points="129.6,297.2 126.4,309.3 141.5,313.4 144.7,301.3 129.6,297.2"/><polyline points="72.1,281.8 68.9,293.9 84.0,297.9 87.2,285.9 72.1,281.8"/></g><g class="district"><polyline points="-1638.4,-315.7 -1617.3,-332.7 -1440.7,-477.7 -1334.6,-562.8 -1333.9,-563.4 -1253.9,-627.9 -1223.6,-652.1 -1208.3,-664.3 -1162.6,-701.3 -1112.3,-731.3 -1079.6,-745.0 -1017.9,-762.0 -1007.5,-763.2 -963.4,-767.2 -941.0,-768.6 -862.3,-768.8 -863.2,-767.9 -806.1,-765.8 -776.5,-767.1 -717.6,-766.5 -689.0,-766.2 -687.1,-721.4 -679.1,-721.3 -679.0,-677.9 -687.3,-675.5 -685.4,-670.2 -678.8,-652.0 -673.8,-636.3 -671.6,-630.9 -670.1,-627.2 -667.1,-609.8 -665.2,-600.3 -658.6,-560.8 -664.8,-561.2 -667.4,-544.3 -671.4,-514.0 -626.3,-494.3 -626.3,-477.4 -626.7,-441.3 -627.0,-414.1 -627.1,-404.8 -627.3,-387.8 -627.4,-375.7 -627.5,-372.5 -627.5,-369.5 -627.6,-359.5 -627.6,-356.0 -628.8,-335.6 -629.6,-297.0 -630.0,-259.2 -630.7,-221.0 -631.2,-184.5 -632.5,-134.2 -632.7,-115.4 -624.5,-108.7 -633.1,-100.2 -633.8,-66.3 -637.0,-66.4 -637.6,-27.3 -638.3,15.8 -638.9,61.0 -639.4,89.1 -639.8,115.8 -639.8,120.8 -640.3,149.4 -640.7,178.5 -641.1,206.7 -641.5,234.9 -642.0,263.1 -642.4,291.3 -643.0,331.4 -643.6,369.0 -643.8,387.8 -644.8,449.5 -645.7,510.3 -647.1,599.2 -649.2,742.8 -649.6,767.8 -650.2,807.1 -650.3,814.5 -650.8,847.2 -653.2,1004.9 -653.7,1038.8 -654.6,1096.1 -576.4,1094.8 -541.8,1109.3 -528.4,1098.9 -504.3,1080.3 -494.6,1073.2 -492.3,1071.7 -484.7,1066.5 -474.7,1059.9 -464.4,1053.7 -454.0,1047.7 -449.9,1045.5 -443.5,1042.0 -432.8,1036.6 -423.9,1032.4 -385.5,1016.7 -377.3,1013.8 -365.9,1010.2 -354.4,1006.8 -342.8,1003.7 -331.1,1001.0 -319.4,998.6 -307.6,996.4 -295.7,994.6 -294.8,994.5 -283.8,993.1 -241.0,988.3 -193.9,983.0 -160.0,979.2 -58.3,967.7 -22.9,965.1 33.9,959.0 98.0,952.5 112.7,951.1 128.1,949.7 169.1,944.0 168.5,943.2 174.6,942.3 204.7,936.1 254.2,921.1 264.5,917.5 307.1,899.5 381.0,858.3 395.4,847.6 402.7,842.2 425.2,825.5 479.2,767.6 500.9,742.9 516.0,727.0 558.6,681.3 584.7,654.5 611.0,623.3 663.3,566.6 703.7,523.4 704.2,523.0 722.5,503.1 729.4,495.5 776.8,435.1 808.4,434.1 839.5,433.7 845.4,426.4 845.7,426.0 849.3,421.6 849.7,399.5 850.8,330.0 851.3,309.9 852.3,274.7 852.5,268.3 842.5,256.6 827.9,256.0 808.4,255.6 794.0,255.7 663.0,255.9 652.0,255.9 607.4,255.2 565.5,255.1 553.1,254.8 516.2,253.9 504.5,261.9 498.5,266.0 501.2,256.4 504.4,242.5 510.7,220.2 517.1,197.4 530.0,151.1 540.2,112.0 549.0,79.3 563.5,34.3 538.5,27.2 526.6,23.8 501.9,16.9 340.5,-27.9 167.7,-75.9 -76.4,-143.7 -84.0,-157.3 -6.4,-425.8 -69.7,-486.4 -81.5,-497.6 -275.6,-683.0 -295.8,-667.8 -302.8,-662.5 -304.0,-666.1 -324.8,-710.3 -351.1,-768.8 -369.3,-785.0 -415.3,-826.2 -455.4,-863.0 -544.7,-945.2 -547.5,-947.7 -548.6,-1000.0 -549.2,-1025.6 -550.7,-1035.5"/><polyline points="471.9,517.5 462.2,515.3 427.2,504.8 327.3,477.1 279.6,473.6 202.2,452.3 180.5,446.1 189.7,413.0 129.5,396.1 120.3,429.2 -205.9,338.5 -196.7,305.4 -202.4,303.8 -207.9,302.4 -213.4,301.1 -218.9,299.9 -224.5,298.7 -230.0,297.7 -235.6,296.8 -241.2,296.0 -246.9,295.3 -258.5,294.4 -267.9,328.1 -281.2,327.8 -364.2,327.8 -411.1,318.4 -539.7,318.4 -541.0,409.4 -551.0,447.0 -554.6,683.6 -555.5,743.2 -539.7,793.2 -540.3,840.0 -557.7,889.1 -560.7,1086.6 -543.8,1098.8 -507.8,1083.0 -504.3,1080.3 -494.6,1073.3 -484.7,1066.5 -474.7,1060.0 -464.4,1053.7 -454.0,1047.7 -443.5,1042.0 -432.7,1036.6 -423.9,1032.4 -385.5,1016.7 -377.3,1013.8 -365.9,1010.2 -354.4,1006.8 -342.8,1003.8 -331.1,1001.0 -319.4,998.6 -307.6,996.5 -295.7,994.3 -283.8,993.1 -58.2,967.8 -22.9,965.2 33.9,959.0 98.0,952.5 128.1,949.8 169.1,944.0 168.5,943.2 174.6,942.4 176.8,939.5 156.8,921.2 139.3,906.4 74.6,858.0 73.2,857.0 87.8,843.1 74.0,796.7 56.9,765.0 24.8,744.1 47.5,740.9 95.4,734.3 135.5,729.0 132.8,709.5 162.6,704.6 161.1,694.6 159.1,689.8 164.1,680.7 159.3,670.5 192.8,661.4 189.7,650.5 244.2,633.6 316.6,661.3 342.5,667.7 350.4,667.2 355.6,671.2 363.4,685.2 448.3,604.3 471.9,517.5"/><polyline points="478.6,42.7 480.3,36.7 228.1,-33.3 235.8,-19.6 177.2,191.9 163.6,199.6 40.7,165.5 5.5,287.0 382.0,391.7 478.6,42.7"/></g><g class="cl"><polyline points="440.0,584.1 374.0,639.4 374.0,639.4 338.9,636.3 338.9,636.3 302.0,592.5 265.9,592.5 241.7,616.7 231.1,622.8 191.4,622.8 109.6,540.9"/><polyline points="258.3,221.8 313.2,236.5 347.6,216.9"/><polyline points="158.1,404.0 148.8,437.2"/><polyline points="175.5,334.2 187.8,290.3"/><polyline points="-181.1,534.3 -99.2,452.4 -18.2,548.9 4.6,560.5 12.0,560.5 35.7,560.5 35.7,654.7 27.5,674.6 4.2,697.8 -23.4,705.0 -111.8,679.8 -158.3,713.6"/><polyline points="758.8,458.0 593.3,458.0 509.6,454.7 485.0,449.1 389.5,422.1 342.4,409.1 328.9,407.4 310.1,407.8 296.9,405.3 259.1,394.8 212.1,381.8 175.9,371.7 159.5,367.1 120.1,356.2 67.6,341.5 -4.0,321.6 -54.7,307.5 -137.3,284.6 -194.2,268.8 -234.9,257.4 -381.1,257.4 -404.5,252.8 -538.7,252.8"/><polyline points="444.4,409.2 500.4,212.0 547.4,42.3 -90.5,-134.6"/><polyline points="365.6,723.8 350.7,774.6 413.0,833.5"/><polyline points="375.4,116.9 347.6,216.9"/><polyline points="-9.1,705.3 -9.1,762.4 -0.8,780.9 -0.8,780.9 24.3,803.5"/><polyline points="53.8,893.8 58.6,889.0 65.9,871.4 65.9,852.2 57.6,833.6 24.3,803.5"/></g><g class="xw xA thin"><line x1="461.6" y1="429.5" x2="420.1" y2="417.3"/><line x1="423.2" y1="411.7" x2="461.0" y2="422.8"/><line x1="429.5" y1="407.0" x2="458.1" y2="415.4"/><line x1="433.6" y1="401.7" x2="457.6" y2="408.8"/><line x1="434.9" y1="398.9" x2="458.0" y2="405.6"/><line x1="436.7" y1="392.9" x2="448.2" y2="396.2"/><line x1="448.6" y1="406.1" x2="446.8" y2="412.1"/><line x1="449.8" y1="413.0" x2="448.1" y2="419.0"/><line x1="454.6" y1="407.9" x2="452.8" y2="413.9"/><line x1="455.8" y1="414.8" x2="454.1" y2="420.8"/><line x1="443.8" y1="411.2" x2="442.1" y2="417.2"/><line x1="442.6" y1="404.4" x2="440.8" y2="410.4"/><line x1="437.8" y1="409.5" x2="436.1" y2="415.5"/><line x1="436.6" y1="402.6" x2="434.8" y2="408.6"/><line x1="431.8" y1="407.7" x2="430.1" y2="413.7"/></g><g class="xw xB thin"><line x1="452.1" y1="460.8" x2="462.8" y2="425.5"/><line x1="467.6" y1="463.6" x2="458.6" y2="460.9"/><line x1="458.1" y1="462.7" x2="467.9" y2="430.4"/><line x1="479.3" y1="457.4" x2="470.3" y2="454.7"/><line x1="467.6" y1="463.9" x2="476.5" y2="434.4"/><line x1="473.0" y1="445.7" x2="464.1" y2="443.0"/><line x1="476.1" y1="468.1" x2="485.6" y2="436.6"/><line x1="479.2" y1="468.7" x2="488.7" y2="437.2"/><line x1="482.9" y1="445.4" x2="474.0" y2="442.7"/><line x1="474.9" y1="439.7" x2="465.9" y2="437.0"/><line x1="484.7" y1="439.4" x2="475.8" y2="436.7"/><line x1="469.4" y1="457.7" x2="460.5" y2="454.9"/><line x1="481.1" y1="451.4" x2="472.1" y2="448.7"/><line x1="471.2" y1="451.7" x2="462.3" y2="449.0"/><line x1="477.5" y1="463.4" x2="468.5" y2="460.7"/><line x1="491.6" y1="449.1" x2="494.3" y2="440.1"/></g><g class="xw xC thin"><line x1="387.9" y1="440.1" x2="396.9" y2="442.6"/><line x1="421.5" y1="412.5" x2="411.3" y2="449.3"/><line x1="401.1" y1="427.6" x2="410.1" y2="430.1"/><line x1="414.5" y1="414.3" x2="405.3" y2="447.6"/><line x1="405.0" y1="413.5" x2="396.2" y2="445.1"/><line x1="392.9" y1="410.2" x2="384.2" y2="441.8"/><line x1="395.9" y1="411.0" x2="387.2" y2="442.6"/><line x1="391.2" y1="428.1" x2="400.2" y2="430.6"/><line x1="399.4" y1="433.6" x2="408.4" y2="436.1"/><line x1="397.7" y1="439.6" x2="406.8" y2="442.1"/><line x1="389.5" y1="434.1" x2="398.6" y2="436.6"/><line x1="392.9" y1="422.1" x2="401.9" y2="424.6"/><line x1="394.6" y1="416.0" x2="403.6" y2="418.5"/><line x1="402.8" y1="421.6" x2="411.8" y2="424.1"/><line x1="404.4" y1="415.5" x2="413.5" y2="418.0"/><line x1="383.6" y1="420.5" x2="378.6" y2="438.6"/></g><polygon class="lot" points="476.7,362.2 538.8,379.4 525.5,428.0 513.3,427.5 486.9,421.5 472.5,417.2 465.0,403.5"/><line class="lead" x1="532.8" y1="418.8" x2="617.0" y2="480.9"/><text class="calo" text-anchor="middle" x="675.0" y="496.9"><tspan x="675.0" dy="0">종교시설 부지 (교회)</tspan><tspan x="675.0" dy="18">348.8 ㎡ · 105.5 평</tspan></text><text class="loclab fac" text-anchor="middle" x="505.0" y="314.1"><tspan x="505.0" dy="0">주차장 부지</tspan></text><text class="loclab fac" text-anchor="middle" x="644.1" y="342.2"><tspan x="644.1" dy="0">능곡타운센터</tspan><tspan x="644.1" dy="18">(상업·업무)</tspan></text><text class="loclab green" text-anchor="middle" x="434.4" y="229.7"><tspan x="434.4" dy="0">연결녹지</tspan></text><text class="loclab green" text-anchor="middle" x="318.4" y="460.6"><tspan x="318.4" dy="0">연결녹지</tspan></text><text class="loclab apt" text-anchor="middle" x="237.5" y="350.0"><tspan x="237.5" dy="0">능곡5구역</tspan><tspan x="237.5" dy="18">신축 아파트(계획)</tspan></text><text class="loclab apt" text-anchor="middle" x="212.5" y="587.5"><tspan x="212.5" dy="0">능곡5구역</tspan><tspan x="212.5" dy="18">신축 아파트(계획)</tspan></text><text class="loclab old" text-anchor="middle" x="143.8" y="796.9"><tspan x="143.8" dy="0">벽산아파트(기존)</tspan></text><text class="loclab old" text-anchor="middle" x="68.8" y="50.0"><tspan x="68.8" dy="0">삼윤아파트(기존)</tspan></text><text class="loclab old" text-anchor="middle" x="806.2" y="150.0"><tspan x="806.2" dy="0">행신SKVIEW(기존)</tspan></text><text class="loclab old" text-anchor="middle" x="856.2" y="756.2"><tspan x="856.2" dy="0">무원마을10단지(기존)</tspan></text><text class="loclab road" text-anchor="middle" x="312.5" y="510.9"><tspan x="312.5" dy="0">남측 계획도로 · 폭 20 m</tspan></text><text class="loclab road" text-anchor="middle" x="520.3" y="234.4"><tspan x="520.3" dy="0">소로(국지) 2-28</tspan></text><text class="loclab road" text-anchor="middle" x="837.5" y="556.2"><tspan x="837.5" dy="0">중로(보조) 1-능1</tspan></text><g class="north"><line x1="954.0" y1="88" x2="954.0" y2="48"/><polygon points="954.0,40 947.5,54 960.5,54"/><text x="954.0" y="108">N</text></g><g class="scale"><line x1="40" y1="841.0" x2="196.2" y2="841.0"/><line x1="40" y1="835.0" x2="40" y2="847.0"/><line x1="196.2" y1="835.0" x2="196.2" y2="847.0"/><text x="118.1" y="830.0">50 m</text></g></svg>
+        <figcaption><b>능곡5구역 토지이용계획 위에 표시한 부지 위치(붉은 면).</b> 부지는 구역 남측 경계부의 T자 교차로 코너에 있습니다. 남쪽으로 폭 20m 계획도로, 서쪽으로 소로(국지) 2-28에 접하고, 북쪽은 공용 주차장 부지(약 784㎡), 동쪽은 능곡타운센터 획지(약 5,449㎡)와 맞닿습니다. 붉은 파선은 정비구역 경계, 주황 파선은 계획 도로중심선, 짧은 붉은 선들은 계획 횡단보도입니다.</figcaption>
+      </figure>
+      <div class="note-grid">
+        <div class="note-cell"><b>모퉁이 땅 <em>(각지)</em></b><p>두 도로가 만나는 코너라 어느 방향에서든 눈에 잘 띄는 자리입니다. 남측 20m 도로는 구역을 동서로 관통해 차량 접근성이 좋습니다.</p></div>
+        <div class="note-cell"><b>북측이 <em>주차장 부지</em></b><p>북쪽 이웃이 건물이 아니라 공용 주차장이라 북측 일조·개방감이 확보되고, 주일 주차 수요를 보완할 여지도 있습니다.</p></div>
+        <div class="note-cell"><b>동측은 <em>능곡타운센터</em></b><p>약 5,449㎡의 대형 상업·업무 획지가 접해 있습니다. 향후 이 획지 건물의 규모·이격에 따라 동측 채광 조건이 좌우됩니다.</p></div>
+      </div>
+    </div>
+
+    <!-- MAP 04 획지 경계 -->
+    <div class="map-step reveal">
+      <div class="map-head"><span class="chip">MAP 04</span><b>종교시설 획지 — 경계와 치수</b><span class="mnote">BOUNDARY &amp; DIMENSIONS</span></div>
+      <figure class="drawing">
+        <svg class="plan" viewBox="0 0 1000 894" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="종교시설 부지 경계·치수도"><g class="ctx"><polyline points="983.2,-539.3 1220.4,-538.8 1524.3,-534.4 1794.5,-532.5 2490.9,-535.6 2588.9,-536.5 2722.1,-533.3 2821.3,-529.3 2889.6,-449.5 2881.1,-166.7 2878.1,-29.5 2867.9,594.1 2800.6,676.1 2589.1,679.2 2374.0,685.6 2154.9,674.1 1500.6,664.4 1336.4,656.1 1128.5,656.1 663.2,637.5 753.2,306.5 983.2,-539.3"/><polyline points="525.7,-497.1 599.8,-547.6 935.1,-539.5 983.2,-539.3 753.2,306.5 330.6,189.5 525.7,-497.1"/><polyline points="330.6,189.5 753.2,306.5 663.2,637.5 579.8,634.1 400.4,593.5 302.1,563.7 250.9,470.5 330.6,189.5"/><polyline points="-1686.0,760.9 -1623.6,535.4 -1475.3,577.8 -971.5,716.3 -646.8,739.7 57.9,935.0 291.9,1005.2 359.4,1020.5 297.9,1246.7 232.1,1231.6 -6.2,1160.1 -686.8,971.6 -1011.3,948.0 -1538.5,803.1 -1686.0,760.9"/><polyline points="343.8,-1986.1 579.1,-1920.8 631.5,-1828.0 13.4,402.9 -79.1,455.4 -314.3,390.1 343.8,-1986.1"/><polyline points="343.8,-1986.1 355.1,-2026.9 631.5,-1950.3 683.8,-1857.6 311.1,-512.0 478.9,-465.4 525.7,-497.1 330.6,189.5 250.9,470.5 302.1,563.7 -79.1,455.4 13.4,402.9 631.5,-1828.0 579.1,-1920.8 343.8,-1986.1"/><polyline points="-509.9,777.6 -646.8,739.6 -955.9,717.3 -971.4,716.2 -1196.6,654.2 -1382.6,603.1 -1475.3,577.6 -1500.1,570.5 -1623.6,535.2 -1686.1,760.8 -1686.1,760.8 -1564.4,795.5 -1538.5,802.9 -1444.7,828.7 -1258.7,879.9 -1011.3,948.0 -972.7,950.7 -686.9,971.4 -572.3,1003.1 -144.6,1121.6 -6.1,1160.0 42.8,1174.3 232.2,1231.6 288.5,1244.4 297.8,1246.5 359.3,1020.4 350.0,1018.3 291.9,1005.2 109.5,950.0 58.0,934.9 -82.1,896.0 -509.9,777.6"/><polyline points="929.9,-343.4 983.2,-539.4 935.1,-539.5 850.8,-541.5 599.8,-547.6 525.6,-497.2 330.7,189.4 527.4,243.9 753.2,306.4 814.4,81.4 839.8,-11.9 929.9,-343.4 929.9,-343.4"/><polyline points="2877.9,-29.5 2880.9,-166.8 2888.2,-406.1 2889.6,-449.6 2821.3,-529.4 2722.0,-533.4 2588.8,-536.6 2490.8,-535.8 2254.4,-535.3 1793.7,-534.5 1598.8,-534.1 1524.3,-534.1 1220.3,-538.8 983.2,-539.4 929.9,-343.4 839.8,-11.9 814.4,81.4 753.2,306.4 671.2,607.9 663.2,637.3 1128.6,656.0 1336.4,656.0 1500.7,664.3 1860.5,669.6 2154.9,674.1 2374.0,685.5 2397.6,684.8 2397.6,684.8 2589.1,679.1 2800.5,676.1 2840.8,626.8 2843.4,623.8 2867.8,594.0 2870.2,443.3 2877.9,-29.5 2877.9,-29.5"/><polyline points="343.8,-1986.1 -49.0,-567.9 -49.0,-567.9 -314.1,389.6 -79.2,455.2"/><polyline points="-314.0,389.6 -79.2,455.2 13.4,402.8 104.5,73.6 169.2,-160.3 243.6,-428.4 269.9,-523.3 325.8,-725.2 378.8,-916.1 463.4,-1221.8 532.1,-1470.1 583.4,-1654.8 631.5,-1828.2 579.1,-1920.8 343.8,-1986.1"/><polyline points="753.2,306.4 527.4,243.9 330.7,189.4 250.9,470.5 302.2,563.7 400.6,593.5 579.7,633.9 663.2,637.3 671.2,607.9 753.2,306.4"/></g><g class="cl"><polyline points="111.0,509.3 492.2,-833.3 812.4,-1988.6 -3531.4,-3193.0"/></g><g class="xw xA thin"><line x1="228.1" y1="647.6" x2="-54.4" y2="564.6"/><line x1="-33.5" y1="526.4" x2="223.8" y2="602.0"/><line x1="9.7" y1="494.7" x2="204.3" y2="551.9"/><line x1="37.1" y1="458.5" x2="200.8" y2="506.6"/><line x1="46.5" y1="439.0" x2="203.4" y2="485.1"/><line x1="58.3" y1="398.2" x2="136.7" y2="421.2"/><line x1="139.4" y1="488.5" x2="127.4" y2="529.3"/><line x1="147.8" y1="535.3" x2="135.8" y2="576.2"/><line x1="180.2" y1="500.5" x2="168.2" y2="541.3"/><line x1="188.7" y1="547.3" x2="176.7" y2="588.2"/><line x1="107.0" y1="523.3" x2="95.0" y2="564.2"/><line x1="98.6" y1="476.5" x2="86.6" y2="517.3"/><line x1="66.2" y1="511.3" x2="54.2" y2="552.2"/><line x1="57.8" y1="464.5" x2="45.8" y2="505.4"/><line x1="25.3" y1="499.4" x2="13.4" y2="540.2"/></g><g class="xw xB thin"><line x1="163.5" y1="861.1" x2="236.3" y2="620.6"/><line x1="268.9" y1="880.2" x2="207.8" y2="861.7"/><line x1="204.3" y1="873.4" x2="270.7" y2="653.9"/><line x1="348.5" y1="837.6" x2="287.4" y2="819.1"/><line x1="268.4" y1="881.7" x2="329.1" y2="681.2"/><line x1="305.8" y1="758.0" x2="244.8" y2="739.5"/><line x1="326.5" y1="910.4" x2="391.4" y2="695.8"/><line x1="347.5" y1="914.4" x2="412.3" y2="700.1"/><line x1="373.1" y1="756.1" x2="312.0" y2="737.6"/><line x1="318.2" y1="717.2" x2="257.1" y2="698.7"/><line x1="385.4" y1="715.4" x2="324.3" y2="696.9"/><line x1="281.2" y1="839.4" x2="220.1" y2="820.9"/><line x1="360.8" y1="796.8" x2="299.7" y2="778.3"/><line x1="293.5" y1="798.7" x2="232.4" y2="780.2"/><line x1="336.2" y1="878.3" x2="275.1" y2="859.8"/><line x1="432.3" y1="780.9" x2="450.9" y2="719.7"/></g><g class="xw xC thin"></g><polygon class="lot" points="330.6,189.5 753.2,306.5 663.2,637.5 579.8,634.1 400.4,593.5 302.1,563.7 250.9,470.5"/><g class="dim"><rect x="522.0" y="174.5" width="74" height="23" rx="4"/><text x="559.0" y="191.5">20.61 m</text></g><g class="dim"><rect x="741.0" y="479.0" width="74" height="23" rx="4"/><text x="778.0" y="496.0">16.12 m</text></g><g class="dim"><rect x="585.9" y="687.6" width="66" height="23" rx="4"/><text x="618.9" y="704.6">3.92 m</text></g><g class="dim"><rect x="443.0" y="664.1" width="66" height="23" rx="4"/><text x="476.0" y="681.1">8.64 m</text></g><g class="dim"><rect x="299.8" y="627.7" width="66" height="23" rx="4"/><text x="332.8" y="644.7">4.83 m</text></g><g class="dim"><rect x="180.1" y="540.0" width="66" height="23" rx="4"/><text x="213.1" y="557.0">5.00 m</text></g><g class="dim"><rect x="184.2" y="298.2" width="74" height="23" rx="4"/><text x="221.2" y="315.2">13.73 m</text></g><circle class="vtx" cx="330.6" cy="189.5" r="5"/><text class="vlab" x="313.5" y="157.8" text-anchor="middle">P0</text><circle class="vtx" cx="753.2" cy="306.5" r="5"/><text class="vlab" x="787.4" y="290.0" text-anchor="middle">P1</text><circle class="vtx" cx="663.2" cy="637.5" r="5"/><text class="vlab" x="695.0" y="667.5" text-anchor="middle">P2</text><circle class="vtx" cx="579.8" cy="634.1" r="5"/><text class="vlab" x="604.0" y="671.5" text-anchor="middle">P3</text><circle class="vtx" cx="400.4" cy="593.5" r="5"/><text class="vlab" x="378.9" y="632.7" text-anchor="middle">P4</text><circle class="vtx" cx="302.1" cy="563.7" r="5"/><text class="vlab" x="265.6" y="586.0" text-anchor="middle">P5</text><circle class="vtx" cx="250.9" cy="470.5" r="5"/><text class="vlab" x="210.5" y="472.8" text-anchor="middle">P6</text><text class="core" text-anchor="middle" x="511.2" y="429.7"><tspan x="511.2" dy="0">종교시설 부지</tspan></text><text class="core big" text-anchor="middle" x="511.2" y="480.8"><tspan x="511.2" dy="0">348.78 ㎡</tspan></text><text class="core sub" text-anchor="middle" x="511.2" y="531.9"><tspan x="511.2" dy="0">105.5 평 · 둘레 72.9 m</tspan></text><text class="note" text-anchor="middle" x="425.5" y="87.2"><tspan x="425.5" dy="0">주차장 부지 (약 784 ㎡)</tspan></text><text class="note" text-anchor="middle" x="840.4" y="446.8"><tspan x="840.4" dy="0">능곡타운센터 획지</tspan></text><text class="note road" text-anchor="middle" x="627.7" y="819.1"><tspan x="627.7" dy="0">남측 계획도로 · 폭 20.0 m</tspan><tspan x="627.7" dy="18">경계 → 중심선 8.73 m</tspan></text><text class="note road" text-anchor="middle" x="117.0" y="287.2"><tspan x="117.0" dy="0">소로(국지) 2-28</tspan><tspan x="117.0" dy="18">폭 약 11.7 m</tspan></text><g class="north"><line x1="954.0" y1="88" x2="954.0" y2="48"/><polygon points="954.0,40 947.5,54 960.5,54"/><text x="954.0" y="108">N</text></g><g class="scale"><line x1="40" y1="859.6170212765958" x2="252.8" y2="859.6170212765958"/><line x1="40" y1="853.6170212765958" x2="40" y2="865.6170212765958"/><line x1="252.8" y1="853.6170212765958" x2="252.8" y2="865.6170212765958"/><text x="146.4" y="848.6170212765958">10 m</text></g></svg>
+        <figcaption><b>변별 길이와 접도 현황.</b> 획지는 7각형이지만 실제로는 거의 직사각형에 가까운 정형지입니다. 외곽 폭은 동서 약 23.6m × 남북 약 21.1m, 둘레 72.86m. 북동측 두 코너(P0·P1)가 거의 직각이고, 남측 세 변은 도로 선형을 따라 완만하게 꺾이며, 남서쪽 모서리에 가각(코너컷) 5.0m가 있습니다. 변점 P0→P6는 시계방향입니다.</figcaption>
+      </figure>
+
+      <div class="tablewrap">
+        <table class="tbl">
+          <thead><tr><th>변점</th><th class="num">도면좌표 X (mm)</th><th class="num">Y (mm)</th><th class="num">추정 TM E (m)</th><th class="num">N (m)</th><th>위도 · 경도 (환산)</th><th class="num">다음 점까지</th><th class="num">방위각</th><th class="num">내각</th></tr></thead>
+          <tbody>
+            <tr><td class="pt">P0</td><td class="num">752,540.0</td><td class="num">384,095.4</td><td class="num">184,855.33</td><td class="num">557,776.23</td><td class="dim2">37.619457, 126.828456</td><td class="num"><b>20.608 m</b></td><td class="num">105.48°</td><td class="num">90.37°</td></tr>
+            <tr><td class="pt">P1</td><td class="num">772,400.0</td><td class="num">378,595.4</td><td class="num">184,875.18</td><td class="num">557,770.67</td><td class="dim2">37.619407, 126.828681</td><td class="num"><b>16.125 m</b></td><td class="num">195.21°</td><td class="num">90.27°</td></tr>
+            <tr><td class="pt">P2</td><td class="num">768,170.0</td><td class="num">363,035.4</td><td class="num">184,870.89</td><td class="num">557,755.12</td><td class="dim2">37.619267, 126.828633</td><td class="num"><b>3.923 m</b></td><td class="num">272.34°</td><td class="num">102.87°</td></tr>
+            <tr><td class="pt">P3</td><td class="num">764,250.0</td><td class="num">363,195.4</td><td class="num">184,866.97</td><td class="num">557,755.29</td><td class="dim2">37.619268, 126.828588</td><td class="num"><b>8.644 m</b></td><td class="num">282.77°</td><td class="num">169.57°</td></tr>
+            <tr><td class="pt">P4</td><td class="num">755,820.0</td><td class="num">365,105.4</td><td class="num">184,858.55</td><td class="num">557,757.23</td><td class="dim2">37.619285, 126.828493</td><td class="num"><b>4.827 m</b></td><td class="num">286.86°</td><td class="num">175.91°</td></tr>
+            <tr><td class="pt">P5</td><td class="num">751,200.0</td><td class="num">366,505.4</td><td class="num">184,853.93</td><td class="num">557,758.65</td><td class="dim2">37.619298, 126.828440</td><td class="num"><b>4.999 m</b></td><td class="num">331.18°</td><td class="num">135.68°</td></tr>
+            <tr><td class="pt">P6</td><td class="num">748,790.0</td><td class="num">370,885.4</td><td class="num">184,851.54</td><td class="num">557,763.03</td><td class="dim2">37.619338, 126.828413</td><td class="num"><b>13.732 m</b></td><td class="num">15.85°</td><td class="num">135.33°</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="tbl-cap">변 길이·방위각(도북 기준)·내각은 도면 원좌표에서 직접 산출한 값입니다. TM 좌표와 위경도는 추정 정합값(RMS 약 0.8m)이므로 참고용이며, 인허가·계약 용도로는 실측 성과를 사용해야 합니다.</p>
+
+      <div class="tablewrap">
+        <table class="tbl">
+          <thead><tr><th>변</th><th>방향</th><th class="num">길이</th><th>구분</th><th>접하는 대상</th></tr></thead>
+          <tbody>
+            <tr><td class="pt">P0–P1</td><td>북</td><td class="num"><b>20.61 m</b></td><td>이웃 획지</td><td>공용 주차장 부지 (약 784㎡)</td></tr>
+            <tr><td class="pt">P1–P2</td><td>동</td><td class="num"><b>16.13 m</b></td><td>이웃 획지</td><td>능곡타운센터 획지 (약 5,449㎡)</td></tr>
+            <tr><td class="pt">P2–P3</td><td>남</td><td class="num"><b>3.92 m</b></td><td>접도</td><td>남측 계획도로 · 폭 20.0m</td></tr>
+            <tr><td class="pt">P3–P4</td><td>남</td><td class="num"><b>8.64 m</b></td><td>접도</td><td>남측 계획도로 · 폭 20.0m</td></tr>
+            <tr><td class="pt">P4–P5</td><td>남</td><td class="num"><b>4.83 m</b></td><td>접도</td><td>남측 계획도로 · 폭 20.0m</td></tr>
+            <tr><td class="pt">P5–P6</td><td>남서</td><td class="num"><b>5.00 m</b></td><td>가각</td><td>두 도로 교차부 코너컷</td></tr>
+            <tr><td class="pt">P6–P0</td><td>서</td><td class="num"><b>13.73 m</b></td><td>접도</td><td>소로(국지) 2-28 · 폭 약 11.7m</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="note-grid">
+        <div class="note-cell"><b>배치 효율이 <em>좋은 형상</em></b><p>최소외접 직사각형(17.4 × 20.8m) 대비 면적 손실이 3.7%뿐입니다. 건폐율 60% 적용 시 건축면적 최대 약 209㎡(63평)를 비교적 반듯하게 앉힐 수 있습니다.</p></div>
+        <div class="note-cell"><b>면적 <em>348.78㎡ vs 340㎡</em></b><p>도면에서 잰 면적은 348.78㎡이지만 조합 공시 자료에는 340㎡로 표기된 바 있습니다. 약 8.8㎡(2.6%) 차이로 건축 가능 면적이 달라지므로 확정치 확인이 필요합니다.</p></div>
+        <div class="note-cell"><b>도북과 <em>거의 일치</em></b><p>도면 +Y축이 도북과 거의 일치합니다(정합 회전 −0.19°). 위 방위각은 도북 기준입니다.</p></div>
+      </div>
+    </div>
+
+    <!-- MAP 05 지형 고저 -->
+    <div class="map-step reveal">
+      <div class="map-head"><span class="chip">MAP 05</span><b>땅의 높이 — 서쪽이 약 1.9m 높다</b><span class="mnote">TOPOGRAPHY</span></div>
+      <p class="map-cap" style="margin:0 0 14px">조성공사 후 부지 주변 도로의 계획 높이(계획고)는 <b>서쪽 모서리 EL 22.7m → 동쪽 모서리 EL 20.8m</b>로, 부지를 따라 <b>약 1.9m — 한 층 높이의 절반 이상</b> 내려갑니다. 1층 바닥을 어느 높이에 맞출지, 경사를 이용해 주차장 진입을 어느 쪽에서 받을지가 설계 초기의 핵심 결정 사항입니다.</p>
+      <figure class="drawing">
+        <svg class="plan" viewBox="0 0 1000 894" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="부지 표고 — 계획고와 현황 지반고"><defs><linearGradient id="elg" gradientUnits="userSpaceOnUse" x1="331" y1="189" x2="663" y2="638"><stop offset="0" stop-color="#d1603d" stop-opacity=".38"/><stop offset="1" stop-color="#3d7bd1" stop-opacity=".38"/></linearGradient><marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="context-stroke"/></marker></defs><g class="ctx"><polyline points="983.2,-539.3 1220.4,-538.8 1524.3,-534.4 1794.5,-532.5 2490.9,-535.6 2588.9,-536.5 2722.1,-533.3 2821.3,-529.3 2889.6,-449.5 2881.1,-166.7 2878.1,-29.5 2867.9,594.1 2800.6,676.1 2589.1,679.2 2374.0,685.6 2154.9,674.1 1500.6,664.4 1336.4,656.1 1128.5,656.1 663.2,637.5 753.2,306.5 983.2,-539.3"/><polyline points="525.7,-497.1 599.8,-547.6 935.1,-539.5 983.2,-539.3 753.2,306.5 330.6,189.5 525.7,-497.1"/><polyline points="330.6,189.5 753.2,306.5 663.2,637.5 579.8,634.1 400.4,593.5 302.1,563.7 250.9,470.5 330.6,189.5"/><polyline points="-1686.0,760.9 -1623.6,535.4 -1475.3,577.8 -971.5,716.3 -646.8,739.7 57.9,935.0 291.9,1005.2 359.4,1020.5 297.9,1246.7 232.1,1231.6 -6.2,1160.1 -686.8,971.6 -1011.3,948.0 -1538.5,803.1 -1686.0,760.9"/><polyline points="343.8,-1986.1 579.1,-1920.8 631.5,-1828.0 13.4,402.9 -79.1,455.4 -314.3,390.1 343.8,-1986.1"/><polyline points="343.8,-1986.1 355.1,-2026.9 631.5,-1950.3 683.8,-1857.6 311.1,-512.0 478.9,-465.4 525.7,-497.1 330.6,189.5 250.9,470.5 302.1,563.7 -79.1,455.4 13.4,402.9 631.5,-1828.0 579.1,-1920.8 343.8,-1986.1"/><polyline points="-509.9,777.6 -646.8,739.6 -955.9,717.3 -971.4,716.2 -1196.6,654.2 -1382.6,603.1 -1475.3,577.6 -1500.1,570.5 -1623.6,535.2 -1686.1,760.8 -1686.1,760.8 -1564.4,795.5 -1538.5,802.9 -1444.7,828.7 -1258.7,879.9 -1011.3,948.0 -972.7,950.7 -686.9,971.4 -572.3,1003.1 -144.6,1121.6 -6.1,1160.0 42.8,1174.3 232.2,1231.6 288.5,1244.4 297.8,1246.5 359.3,1020.4 350.0,1018.3 291.9,1005.2 109.5,950.0 58.0,934.9 -82.1,896.0 -509.9,777.6"/><polyline points="929.9,-343.4 983.2,-539.4 935.1,-539.5 850.8,-541.5 599.8,-547.6 525.6,-497.2 330.7,189.4 527.4,243.9 753.2,306.4 814.4,81.4 839.8,-11.9 929.9,-343.4 929.9,-343.4"/><polyline points="2877.9,-29.5 2880.9,-166.8 2888.2,-406.1 2889.6,-449.6 2821.3,-529.4 2722.0,-533.4 2588.8,-536.6 2490.8,-535.8 2254.4,-535.3 1793.7,-534.5 1598.8,-534.1 1524.3,-534.1 1220.3,-538.8 983.2,-539.4 929.9,-343.4 839.8,-11.9 814.4,81.4 753.2,306.4 671.2,607.9 663.2,637.3 1128.6,656.0 1336.4,656.0 1500.7,664.3 1860.5,669.6 2154.9,674.1 2374.0,685.5 2397.6,684.8 2397.6,684.8 2589.1,679.1 2800.5,676.1 2840.8,626.8 2843.4,623.8 2867.8,594.0 2870.2,443.3 2877.9,-29.5 2877.9,-29.5"/><polyline points="343.8,-1986.1 -49.0,-567.9 -49.0,-567.9 -314.1,389.6 -79.2,455.2"/><polyline points="-314.0,389.6 -79.2,455.2 13.4,402.8 104.5,73.6 169.2,-160.3 243.6,-428.4 269.9,-523.3 325.8,-725.2 378.8,-916.1 463.4,-1221.8 532.1,-1470.1 583.4,-1654.8 631.5,-1828.2 579.1,-1920.8 343.8,-1986.1"/><polyline points="753.2,306.4 527.4,243.9 330.7,189.4 250.9,470.5 302.2,563.7 400.6,593.5 579.7,633.9 663.2,637.3 671.2,607.9 753.2,306.4"/></g><polygon class="lotel" points="330.6,189.5 753.2,306.5 663.2,637.5 579.8,634.1 400.4,593.5 302.1,563.7 250.9,470.5"/><line class="slope" x1="357.4" y1="257.4" x2="606.4" y2="563.8" marker-end="url(#ah)"/><text class="slopelab" text-anchor="middle" x="497.9" y="391.5"><tspan x="497.9" dy="0">서고동저</tspan><tspan x="497.9" dy="18">약 1.9 m ↓</tspan></text><circle class="vtx" cx="330.6" cy="189.5" r="5"/><text class="ellab" text-anchor="middle" x="330.6" y="244.8"><tspan x="330.6" dy="0">EL 22.69</tspan></text><text class="ellab sub" text-anchor="middle" x="330.6" y="268.2"><tspan x="330.6" dy="0">P0 · 현황 22.25</tspan></text><circle class="vtx" cx="753.2" cy="306.5" r="5"/><text class="ellab sub" text-anchor="middle" x="806.4" y="276.7"><tspan x="806.4" dy="0">P1 · 현황 20.31</tspan></text><circle class="vtx" cx="663.2" cy="637.5" r="5"/><text class="ellab" text-anchor="middle" x="710.0" y="680.1"><tspan x="710.0" dy="0">EL 20.76</tspan></text><text class="ellab sub" text-anchor="middle" x="710.0" y="703.5"><tspan x="710.0" dy="0">P2 · 현황 20.16</tspan></text><circle class="vtx" cx="579.8" cy="634.1" r="5"/><text class="ellab" text-anchor="middle" x="588.3" y="689.5"><tspan x="588.3" dy="0">EL 20.95</tspan></text><text class="ellab sub" text-anchor="middle" x="588.3" y="712.9"><tspan x="588.3" dy="0">P3 · 현황 20.84</tspan></text><circle class="vtx" cx="400.4" cy="593.5" r="5"/><text class="ellab" text-anchor="middle" x="391.9" y="648.8"><tspan x="391.9" dy="0">EL 21.29</tspan></text><text class="ellab sub" text-anchor="middle" x="391.9" y="672.2"><tspan x="391.9" dy="0">P4 · 현황 21.74</tspan></text><circle class="vtx" cx="302.1" cy="563.7" r="5"/><text class="ellab" text-anchor="middle" x="255.3" y="610.5"><tspan x="255.3" dy="0">EL 21.44</tspan></text><text class="ellab sub" text-anchor="middle" x="255.3" y="633.9"><tspan x="255.3" dy="0">P5 · 현황 21.70</tspan></text><circle class="vtx" cx="250.9" cy="470.5" r="5"/><text class="ellab" text-anchor="middle" x="182.8" y="462.0"><tspan x="182.8" dy="0">EL 22.14</tspan></text><text class="ellab sub" text-anchor="middle" x="182.8" y="485.4"><tspan x="182.8" dy="0">P6 · 현황 21.75</tspan></text><text class="note tiny" text-anchor="end" x="840.4" y="797.9"><tspan x="840.4" dy="0">EL = 계획고(도로중심선 기준, m)</tspan><tspan x="840.4" dy="18">현황 = 재개발 전 지반고(추정)</tspan></text><g class="north"><line x1="954.0" y1="88" x2="954.0" y2="48"/><polygon points="954.0,40 947.5,54 960.5,54"/><text x="954.0" y="108">N</text></g><g class="scale"><line x1="40" y1="859.6170212765958" x2="252.8" y2="859.6170212765958"/><line x1="40" y1="853.6170212765958" x2="40" y2="865.6170212765958"/><line x1="252.8" y1="853.6170212765958" x2="252.8" y2="865.6170212765958"/><text x="146.4" y="848.6170212765958">10 m</text></g></svg>
+        <figcaption><b>모서리별 도로 계획고(EL)와 재개발 전 현황 지반고.</b> 색이 붉을수록 높고 푸를수록 낮습니다. P1(동북 모서리)은 도로에 접하지 않아 계획고가 없습니다.</figcaption>
+      </figure>
+      <figure class="drawing" style="margin-top:16px">
+        <svg class="prof" viewBox="0 0 1000 330" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="부지 둘레 표고 종단 — 현황과 계획고"><line class="grid" x1="64" y1="258.8" x2="976" y2="258.8"/><text class="tick" x="54" y="262.8" text-anchor="end">EL 20</text><line class="grid" x1="64" y1="182.5" x2="976" y2="182.5"/><text class="tick" x="54" y="186.5" text-anchor="end">EL 21</text><line class="grid" x1="64" y1="106.3" x2="976" y2="106.3"/><text class="tick" x="54" y="110.3" text-anchor="end">EL 22</text><line class="grid" x1="64" y1="30.0" x2="976" y2="30.0"/><text class="tick" x="54" y="34.0" text-anchor="end">EL 23</text><polyline class="ln gl" points="64.0,246.6 163.0,194.7 381.3,126.1 503.1,129.1 629.3,125.3 976.0,87.2"/><polyline class="ln fh" points="64.0,200.8 163.0,186.3 381.3,160.4 503.1,148.9 629.3,95.6 976.0,53.6"/><circle class="mk gl" cx="64.0" cy="246.6" r="4"/><circle class="mk fh" cx="64.0" cy="200.8" r="4"/><text class="dlab" x="72.0" y="190.8" text-anchor="start">20.76</text><text class="tick" x="64.0" y="294" text-anchor="middle">P2</text><text class="tick sub" x="64.0" y="311" text-anchor="middle">0 m</text><circle class="mk gl" cx="163.0" cy="194.7" r="4"/><circle class="mk fh" cx="163.0" cy="186.3" r="4"/><text class="dlab" x="163.0" y="176.3" text-anchor="middle">20.95</text><text class="tick" x="163.0" y="294" text-anchor="middle">P3</text><text class="tick sub" x="163.0" y="311" text-anchor="middle">4 m</text><circle class="mk gl" cx="381.3" cy="126.1" r="4"/><circle class="mk fh" cx="381.3" cy="160.4" r="4"/><text class="dlab" x="381.3" y="150.4" text-anchor="middle">21.29</text><text class="tick" x="381.3" y="294" text-anchor="middle">P4</text><text class="tick sub" x="381.3" y="311" text-anchor="middle">13 m</text><circle class="mk gl" cx="503.1" cy="129.1" r="4"/><circle class="mk fh" cx="503.1" cy="148.9" r="4"/><text class="dlab" x="503.1" y="138.9" text-anchor="middle">21.44</text><text class="tick" x="503.1" y="294" text-anchor="middle">P5</text><text class="tick sub" x="503.1" y="311" text-anchor="middle">17 m</text><circle class="mk gl" cx="629.3" cy="125.3" r="4"/><circle class="mk fh" cx="629.3" cy="95.6" r="4"/><text class="dlab" x="629.3" y="85.6" text-anchor="middle">22.14</text><text class="tick" x="629.3" y="294" text-anchor="middle">P6</text><text class="tick sub" x="629.3" y="311" text-anchor="middle">22 m</text><circle class="mk gl" cx="976.0" cy="87.2" r="4"/><circle class="mk fh" cx="976.0" cy="53.6" r="4"/><text class="dlab" x="976.0" y="43.6" text-anchor="middle">22.69</text><text class="tick" x="976.0" y="294" text-anchor="middle">P0</text><text class="tick sub" x="976.0" y="311" text-anchor="middle">36 m</text><text class="alab" x="520.0" y="326" text-anchor="middle">남동쪽 모서리 P2 → 남측 도로변 → 서측 도로변 → 북서쪽 모서리 P0 (둘레 36 m)</text></svg>
+        <figcaption><b>부지 둘레를 따라간 높이 변화</b> (남동 P2 → 남측 도로변 → 서측 도로변 → 북서 P0). 붉은 선이 조성 후 도로 계획고, 파란 선이 재개발 전 현황 지반고입니다.</figcaption>
+      </figure>
+      <div class="note-grid">
+        <div class="note-cell"><b>절토·성토는 <em>크지 않음</em></b><p>계획고와 현황 지반의 차이는 −0.45 ~ +0.60m 범위로, 부지 일대가 기존 지형과 큰 단차 없이 조성됩니다.</p></div>
+        <div class="note-cell"><b>경사를 <em>활용할 수 있음</em></b><p>서쪽이 높으므로 높은 서측(소로 쪽)에서 1층으로, 낮은 동남측에서 필로티 주차층으로 진입하는 단면 계획이 가능합니다. 반대로 1층 바닥을 한 높이로 통일하면 동측에 최대 1.9m의 단차 처리가 필요합니다.</p></div>
+        <div class="note-cell"><b>수치의 <em>한계</em></b><p>계획고는 도로 중심선 기준값을 부지 쪽으로 읽은 것이라 실제 경계부는 횡단경사만큼(약 0.15~0.2m) 낮고, 현황 지반고는 주변 표고점 보간값이라 ±0.3~0.5m 오차가 있습니다.</p></div>
+      </div>
+    </div>
+
+    <!-- MAP 06 도로 · 횡단보도 -->
+    <div class="map-step reveal">
+      <div class="map-head"><span class="chip">MAP 06</span><b>주변 도로와 횡단보도 계획</b><span class="mnote">ROADS &amp; CROSSWALKS</span></div>
+      <p class="map-cap" style="margin:0 0 14px">부지 남서쪽 교차로는 사거리가 아니라 <b>T자형 삼거리</b>입니다. 세 갈래 모두에 횡단보도가 신설 계획되어 있고(자전거횡단도 병설), 현재 이 일대에는 횡단보도가 없으므로 아래는 전부 <b>새로 생기는 것</b>입니다.</p>
+      <figure class="drawing">
+        <svg class="plan" viewBox="0 0 1000 755" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="교회 앞 T자 교차로와 계획 횡단보도 A·B·C"><g class="ctx"><polyline points="-93.6,35.1 -120.9,27.8"/><polyline points="-952.8,-2332.9 569.6,-1910.7 559.6,-1874.4 -24.0,232.7 -2296.8,-399.2 -2084.7,-1132.7 -1342.6,-926.9 -1260.4,-973.3 -906.4,-2250.7 -952.8,-2332.9"/><polyline points="573.4,791.8 719.2,824.8 960.6,834.4 1247.9,845.9 1430.2,845.9 1573.2,853.3 1791.5,861.8 1879.6,1070.3 1616.2,1322.9 1437.2,1505.6 1305.8,1642.9 1210.2,1755.9 1073.8,1949.1 1042.5,1981.4 785.3,2257.4 694.3,2353.7 563.2,2502.5 290.9,2794.6 177.7,2800.8 97.4,2731.2 -72.5,2586.9 -112.6,2487.1 -52.3,2257.1 -193.8,2219.0 -136.2,2004.8 376.2,1516.7 518.9,992.4 573.4,791.8"/><polyline points="1126.6,-591.4 1337.0,-591.0 1606.4,-587.1 1846.0,-585.4 2463.6,-588.2 2550.6,-589.0 2668.7,-586.1 2756.6,-582.6 2817.2,-511.8 2809.6,-261.0 2807.0,-139.3 2797.9,413.7 2738.3,486.3 2550.8,489.1 2360.0,494.8 2165.7,484.6 1585.5,475.9 1439.8,468.6 1255.5,468.6 842.8,452.2 922.6,158.6 1126.6,-591.4"/><polyline points="720.9,-554.1 786.6,-598.8 1084.0,-591.6 1126.6,-591.4 922.6,158.6 547.9,54.8 720.9,-554.1"/><polyline points="547.9,54.8 922.6,158.6 842.8,452.2 768.9,449.1 609.8,413.1 522.6,386.7 477.2,304.0 547.9,54.8"/><polyline points="-1240.4,561.6 -1185.1,361.6 -1053.6,399.1 -606.8,522.0 -318.9,542.7 306.0,715.9 513.6,778.2 573.4,791.8 518.9,992.4 460.6,979.0 249.2,915.6 -354.3,748.4 -642.1,727.4 -1109.6,599.0 -1240.4,561.6"/><polyline points="559.6,-1874.4 768.3,-1816.5 814.7,-1734.3 266.6,244.0 184.5,290.7 -24.0,232.7 559.6,-1874.4"/><polyline points="559.6,-1874.4 569.6,-1910.7 814.7,-1842.7 861.1,-1760.5 530.6,-567.3 679.4,-526.0 720.9,-554.1 547.9,54.8 477.2,304.0 522.6,386.7 184.5,290.7 266.6,244.0 814.7,-1734.3 768.3,-1816.5 559.6,-1874.4"/><polyline points="559.6,-1874.4 569.6,-1910.7 -952.8,-2332.9 -906.4,-2250.7 -1260.4,-973.3 -1342.6,-926.9 -2084.7,-1132.7 -2296.8,-399.2 -24.0,232.7 559.6,-1874.4"/><polyline points="-86.1,174.2 -366.0,96.4"/><polyline points="-45.8,28.7 -86.2,174.1"/><polyline points="-23.9,232.6 213.9,-626.2 108.7,-811.9 -82.5,-864.9"/><polyline points="-96.6,212.4 -86.1,174.2"/><polyline points="-355.8,60.0 -185.2,107.5 -45.7,28.6 31.9,-251.8"/><polyline points="1305.9,1642.8 1437.1,1505.6 1616.2,1322.9 1879.2,1069.2 1791.5,861.6 1573.2,853.1 1430.2,845.9 1247.9,845.9 827.7,829.0 719.2,824.6 573.3,791.7 376.2,1516.5 364.4,1527.7 -136.2,2004.8 -193.7,2218.9 -52.4,2256.9 -112.7,2487.0 -72.4,2586.9 97.3,2731.2 139.3,2767.8 177.6,2800.8 290.9,2794.6 563.1,2502.4 694.4,2353.5 785.2,2257.3 1071.1,1952.9 1210.1,1755.8 1305.9,1642.8"/><polyline points="-197.4,576.3 -318.8,542.7 -592.9,522.9 -606.7,521.9 -806.4,467.0 -971.4,421.6 -1053.6,399.0 -1075.6,392.7 -1185.0,361.4 -1240.5,561.4 -1240.5,561.4 -1132.6,592.2 -1109.6,598.8 -1026.4,621.7 -861.5,667.1 -642.1,727.4 -607.9,729.9 -354.4,748.2 -252.8,776.4 126.5,881.4 249.3,915.5 292.7,928.2 460.6,979.0 510.6,990.3 518.8,992.1 573.3,791.7 565.1,789.8 513.6,778.2 351.8,729.2 306.2,715.9 181.9,681.4 -197.4,576.3"/><polyline points="-2233.0,-381.8 -2233.0,-381.8 -1864.0,-279.1 -1546.8,-190.8 -1483.4,-173.1 -1309.1,-124.5 -1209.8,-96.8 -991.5,-36.2 -708.1,42.5 -164.8,193.3 -23.8,232.3 74.7,-123.4 138.3,-353.3 198.4,-570.3 224.2,-663.4 272.9,-839.3 317.7,-1001.2 392.8,-1272.3 453.8,-1492.4 569.7,-1910.9 425.1,-1951.1 261.3,-1996.4 152.2,-2026.6 -179.3,-2118.5 -373.8,-2172.2 -568.3,-2226.2 -715.1,-2267.0 -952.8,-2332.9 -906.4,-2250.8 -1260.4,-973.4 -1342.7,-927.0 -2030.4,-1117.8 -2084.8,-1132.9 -2296.7,-399.5 -2233.0,-381.8 -2233.0,-381.8"/><polyline points="1079.4,-417.7 1126.6,-591.5 1084.0,-591.6 1009.2,-593.4 786.7,-598.8 720.9,-554.1 548.0,54.7 722.4,103.0 922.6,158.5 976.9,-41.0 999.4,-123.8 1079.4,-417.7 1079.4,-417.7"/><polyline points="2806.9,-139.4 2809.5,-261.2 2816.0,-473.4 2817.2,-511.9 2756.6,-582.7 2668.6,-586.2 2550.4,-589.1 2463.5,-588.3 2253.9,-588.0 1845.4,-587.2 1672.6,-586.9 1606.4,-586.9 1336.9,-591.0 1126.6,-591.5 1079.4,-417.7 999.4,-123.8 976.9,-41.0 922.6,158.5 849.9,425.9 842.8,451.9 1255.5,468.5 1439.8,468.5 1585.5,475.9 1904.6,480.6 2165.7,484.6 2360.0,494.7 2380.9,494.1 2380.9,494.1 2550.7,489.1 2738.2,486.3 2773.9,442.6 2776.2,440.0 2797.9,413.6 2800.0,279.9 2806.9,-139.4 2806.9,-139.4"/><polyline points="559.6,-1874.5 211.3,-616.8 211.3,-616.8 -23.8,232.3 184.5,290.5"/><polyline points="-23.7,232.3 184.5,290.5 266.6,244.0 347.4,-48.0 404.7,-255.4 470.8,-493.1 494.1,-577.3 543.6,-756.3 590.6,-925.6 665.7,-1196.7 726.6,-1416.9 772.1,-1580.7 814.7,-1734.5 768.3,-1816.6 559.6,-1874.5"/><polyline points="922.6,158.5 722.4,103.0 548.0,54.7 477.2,304.1 522.7,386.7 610.0,413.1 768.7,449.0 842.8,451.9 849.9,425.9 922.6,158.5"/><polyline points="565.1,789.8 573.3,791.7"/><polyline points="-101.9,66.3 -28.9,85.4 -5.0,-5.8 -78.0,-25.0 -101.9,66.3"/></g><g class="mark"><polyline points="720.4,-553.5 477.2,304.3"/><polyline points="720.4,-553.5 706.0,-543.8 660.6,-481.0 438.3,303.3 550.2,491.8 757.0,538.5 839.2,541.8 1253.7,558.4 1437.5,558.4 1582.6,565.8 1903.2,570.4 2162.6,574.4 2359.0,584.6 2552.6,578.9 2685.3,577.0 2796.8,466.1 2797.9,413.6"/><polyline points="383.7,-37.7 301.6,259.5 115.9,364.8 -382.7,226.9"/><polyline points="-927.7,76.5 -921.7,54.7 -802.9,87.4 -683.3,79.0 -419.7,152.1 -321.2,220.4 66.1,327.5 60.0,349.3"/><polyline points="-309.0,194.4 73.6,300.2 66.1,327.5"/><polyline points="-615.2,519.8 -490.1,491.8 -312.2,504.7 -187.1,539.3 -26.9,583.7 -13.3,534.6"/><polyline points="566.6,698.6 555.4,748.3 724.3,786.4 740.4,787.0"/><polyline points="1252.0,807.4 1244.4,807.3 961.4,795.9 724.3,786.4 555.4,748.3 566.6,698.6 526.2,688.6 400.8,650.7 336.4,631.7 211.7,597.0 -13.3,534.6 -26.9,583.7 -312.2,504.7 -490.1,491.8 -615.2,519.8 -606.7,522.2 -318.9,543.0 114.9,663.1 322.4,720.9 513.7,778.5 719.2,824.9 1031.3,837.4 1247.9,846.1 1430.2,846.1 1573.2,853.4 1791.5,861.9 1879.2,1069.4"/><polyline points="530.6,690.4 731.0,735.7 831.3,739.7 1249.7,756.5 1432.5,756.5 1576.1,763.8 1808.6,767.2"/><polyline points="561.6,720.6 728.0,758.2 830.4,762.3 1249.3,779.1 1431.9,779.2 1575.3,786.4 1808.3,789.8"/><polyline points="724.3,786.4 829.2,790.6 1248.7,807.4 1431.2,807.5 1574.4,814.7 1807.8,818.1"/><polyline points="-490.6,440.7 -492.2,463.3 -307.4,476.6 -19.4,556.4 -13.3,534.6 -303.5,454.2 -490.6,440.7"/></g><g class="bike"><polyline points="-492.2,463.3 -307.4,476.6 -179.5,512.0 -19.4,556.4"/><polyline points="2359.0,584.6 2360.2,562.0 2359.2,562.0 2163.4,551.8 1903.5,547.8 1583.3,543.1 1438.1,535.8 1254.2,535.8 840.1,519.1 759.9,515.9 645.2,490.0 640.3,512.1"/><polyline points="2360.2,562.0 2361.6,533.8 2164.4,523.5 1904.0,519.5 1584.2,514.9 1438.8,507.5 1254.7,507.4 841.3,490.9 763.7,487.7 651.5,462.4 645.2,490.0"/><polyline points="561.6,720.6 728.0,758.2 741.6,758.8"/><polyline points="417.7,656.3 479.0,453.5"/><polyline points="462.4,443.3 211.5,369.6"/><polyline points="193.2,364.9 134.8,575.6"/></g><g class="cl"><polyline points="353.1,338.5 691.2,-852.2 975.1,-1876.7 -2876.9,-2944.7"/></g><g class="xw xA"><line x1="457.0" y1="461.1" x2="206.5" y2="387.5"/><line x1="225.0" y1="353.6" x2="453.2" y2="420.7"/><line x1="263.3" y1="325.5" x2="435.9" y2="376.3"/><line x1="287.6" y1="293.3" x2="432.8" y2="336.0"/><line x1="295.9" y1="276.1" x2="435.1" y2="317.0"/><line x1="306.4" y1="239.9" x2="375.9" y2="260.3"/><line x1="378.3" y1="320.0" x2="367.7" y2="356.2"/><line x1="385.8" y1="361.5" x2="375.2" y2="397.7"/><line x1="414.6" y1="330.6" x2="403.9" y2="366.9"/><line x1="422.0" y1="372.2" x2="411.4" y2="408.4"/><line x1="349.6" y1="350.9" x2="339.0" y2="387.1"/><line x1="342.1" y1="309.4" x2="331.5" y2="345.6"/><line x1="313.4" y1="340.3" x2="302.8" y2="376.5"/><line x1="305.9" y1="298.7" x2="295.3" y2="334.9"/><line x1="277.2" y1="329.6" x2="266.6" y2="365.8"/></g><g class="xw xB"><line x1="399.7" y1="650.4" x2="464.3" y2="437.1"/><line x1="493.1" y1="667.3" x2="439.0" y2="650.9"/><line x1="435.9" y1="661.3" x2="494.8" y2="466.6"/><line x1="563.7" y1="629.5" x2="509.6" y2="613.1"/><line x1="492.8" y1="668.7" x2="546.6" y2="490.9"/><line x1="525.9" y1="559.0" x2="471.8" y2="542.6"/><line x1="544.2" y1="694.1" x2="601.8" y2="503.8"/><line x1="562.9" y1="697.6" x2="620.4" y2="507.6"/><line x1="585.6" y1="557.3" x2="531.4" y2="540.9"/><line x1="536.9" y1="522.8" x2="482.7" y2="506.4"/><line x1="596.5" y1="521.2" x2="542.3" y2="504.8"/><line x1="504.1" y1="631.2" x2="449.9" y2="614.8"/><line x1="574.7" y1="593.4" x2="520.5" y2="577.0"/><line x1="515.0" y1="595.1" x2="460.8" y2="578.7"/><line x1="552.8" y1="665.7" x2="498.7" y2="649.3"/><line x1="638.1" y1="579.3" x2="654.5" y2="525.0"/></g><g class="xw xC"><line x1="11.7" y1="525.3" x2="66.3" y2="540.4"/><line x1="214.6" y1="358.4" x2="153.0" y2="580.7"/><line x1="91.4" y1="449.5" x2="146.0" y2="464.6"/><line x1="172.4" y1="369.3" x2="116.7" y2="570.6"/><line x1="115.0" y1="364.5" x2="62.1" y2="555.5"/><line x1="42.2" y1="344.4" x2="-10.6" y2="535.3"/><line x1="60.4" y1="349.4" x2="7.5" y2="540.4"/><line x1="31.9" y1="452.6" x2="86.4" y2="467.7"/><line x1="81.4" y1="485.9" x2="135.9" y2="501.0"/><line x1="71.3" y1="522.3" x2="125.9" y2="537.4"/><line x1="21.8" y1="489.0" x2="76.3" y2="504.1"/><line x1="41.9" y1="416.2" x2="96.5" y2="431.3"/><line x1="52.0" y1="379.9" x2="106.6" y2="395.0"/><line x1="101.5" y1="413.2" x2="156.1" y2="428.3"/><line x1="111.6" y1="376.8" x2="166.1" y2="391.9"/><line x1="-14.3" y1="407.0" x2="-44.6" y2="516.1"/></g><polygon class="lot" points="547.9,54.8 922.6,158.6 842.8,452.2 768.9,449.1 609.8,413.1 522.6,386.7 477.2,304.0"/><polyline class="lead" fill="none" points="435.1,317.0 477.2,304.1 624.5,328.3"/><g class="dim"><rect x="565.5" y="316.3" width="118" height="23" rx="4"/><text x="624.5" y="333.3">P6 → A  2.34 m</text></g><circle class="vtx" cx="547.9" cy="54.8" r="4"/><circle class="vtx" cx="922.6" cy="158.6" r="4"/><circle class="vtx" cx="842.8" cy="452.2" r="4"/><circle class="vtx" cx="768.9" cy="449.1" r="4"/><circle class="vtx" cx="609.8" cy="413.1" r="4"/><circle class="vtx" cx="522.6" cy="386.7" r="4"/><circle class="vtx" cx="477.2" cy="304.0" r="4"/><text class="vlab" x="453.2" y="307.0">P6</text><text class="vlab" x="516.6" y="406.7">P5</text><text class="vlab" x="523.9" y="46.8">P0</text><g class="xwlab xA"><circle cx="349.1" cy="294.3" r="14"/><text x="349.1" y="299.8">A</text></g><g class="xwlab xB"><circle cx="530.2" cy="573.6" r="14"/><text x="530.2" y="579.1">B</text></g><g class="xwlab xC"><circle cx="120.8" cy="454.7" r="14"/><text x="120.8" y="460.2">C</text></g><text class="core" text-anchor="middle" x="717.0" y="217.0"><tspan x="717.0" dy="0">종교시설 부지</tspan><tspan x="717.0" dy="18">348.78 ㎡</tspan></text><text class="note" text-anchor="middle" x="735.8" y="22.6"><tspan x="735.8" dy="0">주차장 부지</tspan></text><text class="note" text-anchor="middle" x="924.5" y="367.9"><tspan x="924.5" dy="0">능곡타운센터</tspan></text><text class="note road" text-anchor="middle" x="188.7" y="675.5"><tspan x="188.7" dy="0">남측 계획도로 · 폭 20.0 m</tspan></text><text class="note road" text-anchor="middle" x="235.8" y="122.6"><tspan x="235.8" dy="0">소로(국지) 2-28</tspan><tspan x="235.8" dy="18">폭 약 11.7 m</tspan></text><g class="north"><line x1="954.0" y1="88" x2="954.0" y2="48"/><polygon points="954.0,40 947.5,54 960.5,54"/><text x="954.0" y="108">N</text></g><g class="scale"><line x1="40" y1="46" x2="228.7" y2="46"/><line x1="40" y1="40" x2="40" y2="52"/><line x1="228.7" y1="40" x2="228.7" y2="52"/><text x="134.3" y="35">10 m</text></g></svg>
+        <figcaption><b>계획 횡단보도 A(붉음)·B(파랑)·C(보라).</b> A는 부지 서측 모서리 P6에서 불과 2.34m 거리입니다. 청록 파선은 자전거횡단도 유도선, 주황 파선은 도로중심선입니다.</figcaption>
+      </figure>
+      <div class="tablewrap">
+        <table class="tbl">
+          <thead><tr><th>기호</th><th>건너는 도로</th><th>위치</th><th class="num">횡단 연장</th><th class="num">부지 경계까지</th><th>교회에 미치는 영향</th></tr></thead>
+          <tbody>
+            <tr><td class="pt">A</td><td>소로 2-28 (11.7m)</td><td>부지 바로 앞</td><td class="num"><b>13.8 m</b></td><td class="num"><b>2.33 m</b></td><td>보행 접근에 유리 · 출입구 위치 협의에 영향</td></tr>
+            <tr><td class="pt">B</td><td>남측 도로 (20.0m)</td><td>교차로 동측</td><td class="num"><b>11.8 m</b></td><td class="num"><b>4.09 m</b></td><td>남측 변 서쪽 절반이 5m 이내가 됨</td></tr>
+            <tr><td class="pt">C</td><td>남측 도로 (20.0m)</td><td>교차로 서측</td><td class="num"><b>12.2 m</b></td><td class="num"><b>14.21 m</b></td><td>영향 없음</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <p class="b-caveat reveal">* 이 절의 바탕 도면은 토지이용계획 2018-03 반영, 2020-01 최종저장본입니다. 관리처분인가(2023-05) 이후 설계변경이 진행 중이므로 획지 경계·도로·횡단보도는 달라질 수 있으며, 최종 경계는 준공 무렵의 대지확정측량으로 확정됩니다(2029~30년경 예상). 그 전까지 모든 수치는 계획값입니다.</p>
+  </div>
+</section>
+
+<!-- 04 지금까지 검토한 건축 구상 -->
+<section id="s04">
+  <div class="inner">
+    <div class="sec-head reveal">
+      <span class="idx">(04)</span><h2>지금까지 검토한 건축 구상</h2><span class="en">INTERNAL STUDY</span>
+    </div>
+    <div class="b-grid">
+      <div class="reveal">
+        <p class="b-statement">지상 5층, 연면적 약 230–250평.<br>1층은 주차, 2층은 <mark>다음세대</mark>, 꼭대기는 예배.</p>
+        <p class="b-note">아래는 교회가 자체적으로 검토한 <b>하나의 구성안</b>입니다. 요구가 아니라 참고자료이며, 이 안의 장단점을 평가해 주셔도 좋고 전혀 다른 구성을 제안해 주셔도 좋습니다. 층수·층별 배치·층고는 모두 <b>설계자의 제안에 열려</b> 있습니다.</p>
+      </div>
+      <div class="floors reveal">
+        <div class="floor"><span class="fl">RF</span><span class="fp"><b>옥상</b><span>설비(가림 처리) · 법정 조경</span></span><span class="fh">ROOFTOP</span></div>
+        <div class="floor main"><span class="fl">5F</span><span class="fp"><b>대예배실 · 자모실</b><span>기둥 없는 예배 공간 · 60평 이상</span></span><span class="fh">MAIN CHAPEL</span></div>
+        <div class="floor"><span class="fl">4F</span><span class="fp"><b>식당 · 카페</b><span>예배 전후 친교의 자리 — 본당 바로 아래</span></span><span class="fh">FELLOWSHIP</span></div>
+        <div class="floor"><span class="fl">3F</span><span class="fp"><b>소예배실 · 목양실 · 성가대실 · 설비실</b><span>기도와 섬김의 공간 · 설비</span></span><span class="fh">CHAPEL</span></div>
+        <div class="floor"><span class="fl">2F</span><span class="fp"><b>그물놀이터 · 다음세대 예배실 · 사무실</b><span>입체 그물놀이터 · 가변형 사무 공간</span></span><span class="fh">NEXT GEN</span></div>
+        <div class="floor"><span class="fl">1F</span><span class="fp"><b>필로티 주차 · 외부 계단</b><span>법정 주차 확보 · '머무는 마당'의 시작</span></span><span class="fh">PILOTI</span></div>
+      </div>
+    </div>
+
+    <div class="tablewrap reveal" style="margin-top:clamp(40px,6vh,64px)">
+      <table class="tbl">
+        <thead><tr><th>공간</th><th class="num">규모</th><th>비고</th></tr></thead>
+        <tbody>
+          <tr><td><b>대예배실</b></td><td class="num">60평 이상</td><td>무주 공간 · 수용 인원 최대화 · 전면 대형 스크린 · 자모실 포함</td></tr>
+          <tr><td><b>소예배실</b></td><td class="num">약 20평</td><td>—</td></tr>
+          <tr><td><b>목양실</b></td><td class="num">약 10평</td><td>당회실 겸용</td></tr>
+          <tr><td><b>성가대실</b></td><td class="num">5–10평</td><td>미정</td></tr>
+          <tr><td><b>설비실</b></td><td class="num">미정</td><td>옥상 설비 배치와 종합 검토</td></tr>
+          <tr><td><b>다음세대 공간</b></td><td class="num">—</td><td>그물놀이터 겸 유초등 예배실</td></tr>
+          <tr><td><b>사무실</b></td><td class="num">2개소 이상</td><td>가변형 구획 (예: 유리 파티션)</td></tr>
+          <tr><td><b>식당 · 카페</b></td><td class="num">—</td><td>친교 및 예배 전후 대기 공간 — 본당과 가깝게</td></tr>
+          <tr><td><b>화장실</b></td><td class="num">층별 적정</td><td>—</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="tbl-cap reveal">공간 프로그램 — 필요한 기능의 목록이며, 층별 배치는 설계자의 제안에 맡깁니다.</p>
+
+    <div class="why reveal">
+      <div class="why-head"><b>이 안에 담았던 생각들</b><span>IDEAS WE EXPLORED</span></div>
+      <div class="why-grid c3">
+        <div class="why-item">
+          <b>'머무는 <em>마당</em>'이 되는 계단</b>
+          <p>1→2층 외부 계단을 크고 넓게 만들어, 지역의 아이들과 부모가 부담 없이 올라와 머무는 마당이자 건축의 상징 요소로 삼는 상상입니다. 이 환영의 제스처를 어떤 건축 언어로 구현할지는 열려 있습니다.</p>
+        </div>
+        <div class="why-item">
+          <b>예배 후 <em>흐르는</em> 동선</b>
+          <p>예배 직후 대규모 인원이 병목 없이 자연스럽게 친교 공간으로 흘러가도록, 식당·카페를 본당 바로 아래층에 두는 안입니다.</p>
+        </div>
+        <div class="why-item">
+          <b>오래 쓰는 <em>재료</em></b>
+          <p>외벽 적벽돌, 밝은 도끼다시 바닥, 오픈 천장과 라인 조명, 본당 원목마루 — 단기 미관보다 장기 내구성을 우선하는 방향입니다(MDF·필름 마감 지양).</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="why reveal" id="faq">
+      <div class="why-head"><b>이렇게 결정했습니다 — 자주 받는 질문</b><span>WHY WE BUILD THIS WAY</span></div>
+      <div class="why-grid c3">
+        <div class="why-item">
+          <b>본당은 왜 <em>맨 위층</em>인가요?</b>
+          <p>기둥 없는 넓은 예배 공간은 최상층에 둘 때 가장 경제적입니다. 아래층에 두면 그 위 모든 층의 무게를 받아줄 큰 구조물이 따로 필요해 공사비가 크게 늘어납니다.</p>
+        </div>
+        <div class="why-item">
+          <b>식당은 왜 <em>본당 바로 아래</em>인가요?</b>
+          <p>예배가 끝나면 많은 인원이 한 번에 이동합니다. 식당을 본당(5층) 바로 아래인 4층에 두면 이동 거리가 짧아져 계단·엘리베이터의 병목을 줄이고 안전을 확보할 수 있습니다.</p>
+        </div>
+        <div class="why-item">
+          <b>왜 <em>그리드 구조</em>와 모듈 층고인가요?</b>
+          <p>기둥과 보를 일정한 간격으로 세우고, 층고를 거푸집 규격에 맞춰 통일하면 시공이 단순해집니다. 같은 예산으로 더 튼튼하게, 더 빠르게 지을 수 있는 방법입니다.</p>
+        </div>
+        <div class="why-item">
+          <b>1층은 왜 <em>주차장만</em> 있나요?</b>
+          <p>고양시 주차 조례는 일반적인 기준(연면적 150㎡당 1대)의 두 배인 75㎡당 1대를 요구합니다. 법정 주차 10대를 확보해야 연면적 약 230평을 지을 수 있기에, 아쉽지만 1층은 주차 공간으로 쓸 수밖에 없습니다.</p>
+        </div>
+        <div class="why-item">
+          <b><em>지하</em>는 왜 안 만드나요?</b>
+          <p>지하는 방수와 습기 문제로 건전성을 지키기 가장 어려운 공간이고, 실제로 많은 교회 지하가 하자를 안고 있습니다. 또 지하는 용적률에는 잡히지 않지만 법정 주차 대수를 산정하는 면적에는 포함되어, 지하를 짓는 만큼 지상에 지을 수 있는 면적이 줄어듭니다.</p>
+        </div>
+        <div class="why-item">
+          <b>기존 건물을 사서 <em>리모델링</em>하면 안 되나요?</b>
+          <p>기존 건물은 시공 품질이 낮은 경우가 많고, 하자 이력이 공유되지 않아 매입 후 보수가 어려운 경우도 많습니다. 무엇보다 예배를 위해 필요한 '기둥 없고 층고가 확보된' 공간을 가진 기존 건물은 구하기가 쉽지 않습니다.</p>
+        </div>
+        <div class="why-item">
+          <b>착공은 <em>언제</em> 하나요?</b>
+          <p>부지에 전기·상하수도 등 기반 인프라가 조성된 이후에야 공사가 가능할 것으로 보수적으로 판단하고 있습니다. 분양공고 등을 통해 시점을 예측하며, 가능한 가장 빠른 시기에 건축을 계획하고 있습니다.</p>
+        </div>
+        <div class="why-item">
+          <b>왜 더 <em>화려하게</em> 꾸미지 않나요?</b>
+          <p>최근 건축비가 크게 올랐습니다. 우리는 건축 헌금에 매달리는 교회가 되기보다, 주어진 형편 안에서 최선을 다해 짓고 최선을 다해 준비하려 합니다. 그래서 나중에 바꾸기 어려운 구조체에 먼저 가치를 두고, 세월이 지나도 리모델링과 추가 공사로 얼마든지 개선할 수 있는 마감은 그다음 순서에 두었습니다.</p>
+        </div>
+        <div class="why-item">
+          <b>옥상은 왜 <em>비워 두나요</em>?</b>
+          <p>옥상에는 법정 조경과 냉난방·기계 설비가 우선 배치됩니다. 넓은 옥상 정원이나 각종 편의시설은 어려운 여건이라, 처음부터 기대를 드리지 않도록 미리 말씀드립니다.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 핵심 쟁점과 현실적인 한계 -->
+<section id="s05">
+  <div class="inner">
+    <div class="sec-head reveal">
+      <span class="idx">(05)</span><h2>핵심 쟁점과 현실적인 한계</h2><span class="en">TRADE-OFFS</span>
+    </div>
+    <p class="b-note reveal" style="max-width:820px;margin:-18px 0 34px">건축의 모든 결정은 맞바꿈(trade-off)입니다. 우리가 <b>무엇을 얻기 위해 무엇을 감수하기로 했는지</b>, 그 판단 과정을 투명하게 나눕니다. 이 판단들 역시 전문가의 검토 앞에 열려 있습니다.</p>
+    <div class="to-grid">
+      <div class="to-card reveal">
+        <div class="th"><span class="no">ISSUE 01</span><b>본당 — 왜 맨 위층인가</b></div>
+        <p class="pick">기둥 없는 넓은 예배 공간은 <b>최상층에 둘 때 가장 경제적</b>입니다. 아래층에 두면 그 위 모든 층의 무게를 받아줄 전이 구조가 따로 필요해 공사비가 크게 늘어납니다.</p>
+        <div class="to-row"><span class="lb gain">얻는 것</span><span>전이 구조 없는 경제적인 무주 대공간, 최상층의 높은 층고와 빛</span></div>
+        <div class="to-row"><span class="lb cost">감수하는 것</span><span>5층까지의 수직 동선 — 식당을 본당 직하층에 두고 계단·승강기 계획으로 보완</span></div>
+      </div>
+      <div class="to-card reveal">
+        <div class="th"><span class="no">ISSUE 02</span><b>주차 — 조례가 연면적을 정한다</b></div>
+        <p class="pick">고양시 주차 조례는 일반 기준(시설면적 150㎡당 1대)의 <b>두 배인 75㎡당 1대</b>를 요구합니다. 주차 10대를 확보해야 연면적 약 230평을 지을 수 있습니다.</p>
+        <div class="to-row"><span class="lb gain">얻는 것</span><span>연면적 230–250평 — 본당·다음세대·친교 공간을 담을 규모</span></div>
+        <div class="to-row"><span class="lb cost">감수하는 것</span><span>1층 대부분을 필로티 주차로 내어줌 — 아쉽지만 '머무는 마당' 계단으로 1층에 표정을 만듭니다</span></div>
+      </div>
+      <div class="to-card reveal">
+        <div class="th"><span class="no">ISSUE 03</span><b>구조 — 그리드와 모듈 층고</b></div>
+        <p class="pick">기둥과 보를 일정한 간격으로 세우고 층고를 거푸집 규격에 맞춰 통일하면 <b>시공이 단순</b>해집니다. 같은 예산으로 더 튼튼하게, 더 빠르게 짓는 방법입니다.</p>
+        <div class="to-row"><span class="lb gain">얻는 것</span><span>공사비 절감 · 공기 단축 · 시공 품질의 안정</span></div>
+        <div class="to-row"><span class="lb cost">감수하는 것</span><span>자유로운 형태의 제약 — 조형성은 재료와 디테일로 풀어야 합니다</span></div>
+      </div>
+      <div class="to-card reveal">
+        <div class="th"><span class="no">ISSUE 04</span><b>소방·피난 — 최상층 집회 공간의 대가</b></div>
+        <p class="pick">많은 인원이 모이는 공간을 최상층에 두면 <b>피난·소방 기준이 엄격</b>해집니다. 스프링클러, 피난 계단, 방염 성능이 설계 초기부터 반영되어야 합니다.</p>
+        <div class="to-row"><span class="lb gain">얻는 것</span><span>구조적으로 경제적인 본당 위치 (ISSUE 01)</span></div>
+        <div class="to-row"><span class="lb cost">감수하는 것</span><span>소방 설비·피난 계획의 비용과 면적 — 그물놀이터도 방염·스프링클러 배관을 함께 계획</span></div>
+      </div>
+      <div class="to-card reveal">
+        <div class="th"><span class="no">ISSUE 05</span><b>공사비 — 구조체 먼저, 마감은 다음에</b></div>
+        <p class="pick">최근 건축비가 크게 올랐습니다. 우리는 <b>나중에 바꾸기 어려운 구조체</b>(구조·방수·단열)에 먼저 가치를 두고, 리모델링으로 개선할 수 있는 마감은 다음 순서에 두었습니다.</p>
+        <div class="to-row"><span class="lb gain">얻는 것</span><span>예산 20억 내외 안에서의 장기 건전성 — 건축 헌금에 매달리지 않는 교회</span></div>
+        <div class="to-row"><span class="lb cost">감수하는 것</span><span>입당 시점의 화려함 — 마감은 입당 후 단계적으로 개선합니다. 옥상도 설비·법정 조경이 우선입니다</span></div>
+      </div>
+      <div class="to-card reveal">
+        <div class="th"><span class="no">ISSUE 06</span><b>지하 — 짓지 않는 방향</b></div>
+        <p class="pick">지하는 방수·습기 문제로 <b>건전성을 지키기 가장 어려운 공간</b>이고, 용적률에는 안 잡히지만 주차 대수를 산정하는 면적에는 포함되어 지상 가용 면적을 깎아 먹습니다.</p>
+        <div class="to-row"><span class="lb gain">얻는 것</span><span>방수 하자 위험 제거 · 지상 연면적 극대화</span></div>
+        <div class="to-row"><span class="lb cost">감수하는 것</span><span>지하 공간의 가능성 — 불가피하다면 기계·소방설비실 한정(지수판 적용)으로만 검토</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 06 현재까지의 진행 상황 -->
+<section id="s06">
+  <div class="inner">
+    <div class="sec-head reveal">
+      <span class="idx">(06)</span><h2>현재까지의 진행 상황</h2><span class="en">WHERE WE ARE</span>
+    </div>
+    <div class="b-steps reveal">
+      <div class="b-step done"><span class="no">01</span><b>부지 확정</b><span>능곡5구역 종교시설 획지</span></div>
+      <div class="b-step done"><span class="no">02</span><b>도면 확보 · 대지 분석</b><span>경계 · 표고 · 횡단보도 자체 분석</span></div>
+      <div class="b-step done"><span class="no">03</span><b>설계 브리프 작성</b><span>v1.1 · 2026. 07</span></div>
+      <div class="b-step now"><span class="no">04</span><b><span class="live"></span>건축사 찾기</b><span>지금, 추천을 받고 있습니다</span></div>
+      <div class="b-step"><span class="no">05</span><b>설계 · 인허가</b><span>기본 3개월+ · 실시·인허가 7개월+</span></div>
+      <div class="b-step"><span class="no">06</span><b>시공사 선정</b><span>설계도서 기준 입찰 · 검토</span></div>
+      <div class="b-step"><span class="no">07</span><b>착공</b><span>기반 인프라 조성 후 · 공사 10개월+</span></div>
+      <div class="b-step"><span class="no">08</span><b>입당</b><span>다음세대의 자리로</span></div>
+    </div>
+    <p class="b-caveat reveal">* 전체 일정은 능곡5구역 재개발 인프라 일정에 따라 조정됩니다. 구역 아파트 완공은 2029~30년 이후로 예상되며, 부지에 전기·상하수도 등 기반 인프라가 조성된 이후에야 착공이 가능할 것으로 보수적으로 판단하고 있습니다.</p>
+
+    <div class="sub-head light-sub reveal"><b>지금까지 검토를 마친 것</b>WHAT WE'VE DONE</div>
+    <div class="done-list reveal">
+      <div class="done-row"><span class="ck">✓</span><span><b>조합 정비업체 CAD 도면 6종 확보 · 변환</b><br><span>도로계획평면도 · 도로종평면도 · 우수계획평면도 · 현황도 · 지하 관망도 2종 — 브라우저 도면뷰어 구축</span></span><span class="dt">2026. 07</span></div>
+      <div class="done-row"><span class="ck">✓</span><span><b>획지 경계 · 치수 산출</b><br><span>7각형 348.78㎡ · 변별 길이 · 변점 좌표(도면·TM·위경도) · 방위각 · 내각</span></span><span class="dt">2026. 07</span></div>
+      <div class="done-row"><span class="ck">✓</span><span><b>지형 고저 분석</b><br><span>접도부 계획고 서 EL 22.7m → 동 EL 20.8m (약 1.9m) · 현황 지반고 대비 절토·성토 검토</span></span><span class="dt">2026. 08</span></div>
+      <div class="done-row"><span class="ck">✓</span><span><b>횡단보도 · 주차 출입구 검토</b><br><span>계획 횡단보도 3개소 제원 · 출입구 관련 법령 관계 정리 · 가능 구간 도출</span></span><span class="dt">2026. 08</span></div>
+      <div class="done-row"><span class="ck">✓</span><span><b>법규 기초 확인</b><br><span>건폐율 60% · 용적률 266.2% · 높이 제한 없음 · 일조 사선 미적용 예상 — 고양시 담당 부서 문의</span></span><span class="dt">2026. 07</span></div>
+      <div class="done-row"><span class="ck">✓</span><span><b>설계 브리프 v1.1</b><br><span>철학 · 필수 요구 · 공간 프로그램 · 성능 기준 · 정보요청 사항 · 선정 기준 — 건축사에게 전달할 문서</span></span><span class="dt">2026. 07</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 07 이제 건축사와 함께 풀어야 할 과제 -->
+<section id="s07">
+  <div class="inner">
+    <div class="sec-head reveal">
+      <span class="idx">(07)</span><h2>이제 건축사와 함께 풀 과제</h2><span class="en">OPEN QUESTIONS</span>
+    </div>
+    <p class="b-note reveal" style="max-width:820px;margin:-18px 0 10px">우리는 조건과 요구를 정리했을 뿐, <b>답은 정하지 않았습니다.</b> 아래는 전문 설계의 영역으로 남겨 둔 질문들입니다. 항목을 누르면 설명이 열립니다.</p>
+    <div class="index-list light">
+      <div class="index-item reveal">
+        <span class="name">층별 구성</span><span class="desc">내부안은 참고일 뿐 — 전혀 다른 구성 환영</span><span class="plus">+</span>
+        <div class="index-body"><blockquote>1층 필로티 ~ 5층 본당의 내부 검토안은 교회의 고민 과정을 보여드리는 자료이지 따라야 할 답이 아닙니다. 층수·배치·층고 모두 <b>설계자의 제안</b>에 맡깁니다.</blockquote></div>
+      </div>
+      <div class="index-item reveal">
+        <span class="name">1.9m 경사의 활용</span><span class="desc">1층 레벨과 진입 방향의 결정</span><span class="plus">+</span>
+        <div class="index-body"><blockquote>서쪽이 약 1.9m 높은 땅입니다. 높은 서측에서 1층으로, 낮은 동남측에서 주차층으로 진입하는 단면도 가능하고, 1층 바닥을 한 높이로 통일하면 동측 단차 처리가 필요합니다. <b>경사를 문제로 볼지 재료로 볼지</b>가 설계의 출발점입니다.</blockquote></div>
+      </div>
+      <div class="index-item reveal">
+        <span class="name">주차 10대의 확보 방식</span><span class="desc">필로티는 하나의 안일 뿐</span><span class="plus">+</span>
+        <div class="index-body"><blockquote>법정 주차 충족(목표 10대)은 필수이지만 방식은 자유입니다. 필로티, 배치의 묘, 그 외 어떤 방식이든 — <b>연면적과 1층 표정 사이의 균형점</b>을 함께 찾고 싶습니다.</blockquote></div>
+      </div>
+      <div class="index-item reveal">
+        <span class="name">주차장 출입구 위치</span><span class="desc">횡단보도 A가 경계에서 2.3m</span><span class="plus">+</span>
+        <div class="index-body"><blockquote>법령상 출입구 설치가 금지되는 구간은 없습니다('모퉁이·횡단보도 5m'는 주정차 금지 규정이고, 노외주차장 기준은 부설주차장에 준용되지 않습니다). 다만 심의·교통 협의에서 조정 요구가 나올 수 있어 <b>설계 초기에 미리 협의</b>해 두는 것이 안전합니다. 무난 구간은 서측 10.4m·남측 9.4m 연속으로, 출입구 최소 너비 3.5m를 넉넉히 충족합니다. 아래 도면을 참고해 주세요.</blockquote></div>
+      </div>
+      <div class="index-item reveal">
+        <span class="name">본당 음향</span><span class="desc">말씀의 명료도 — RT 1.0초 이하 목표</span><span class="plus">+</span>
+        <div class="index-body"><blockquote>대예배실은 설교(말씀 전달)의 명료도가 최우선입니다. 잔향시간 RT 1.0초 이하 수준을 목표로 하되, 준공 후 실측 검증까지 요구하지는 않습니다. <b>음향판 브래킷 등은 구조체 단계에서 미리 매립</b>되기를 바랍니다.</blockquote></div>
+      </div>
+      <div class="index-item reveal">
+        <span class="name">방수 · 건전성 디테일</span><span class="desc">하자를 도면 단계에서 막는다</span><span class="plus">+</span>
+        <div class="index-body"><blockquote>평지붕, 화장실·주방 등 습식 공간, 창호 접합부에서 하자를 예방하는 디테일(이중배수, 기밀·후레싱, 두겁·물끊기 등)이 <b>실시설계 도면에 포함</b>되기를 요청합니다. 구체 공법은 설계자의 표준안을 제안해 주십시오.</blockquote></div>
+      </div>
+      <div class="index-item reveal">
+        <span class="name">확인이 남은 것들</span><span class="desc">면적 · 일조 · 최신 인가도서</span><span class="plus">+</span>
+        <div class="index-body"><blockquote>확정 대지면적(도면 348.78㎡ vs 공시 340㎡), 일조 사선 미적용의 최종 확인(건축법 시행령 제86조 2항), 관리처분인가 이후 최신 인가도서와의 대조 — <b>설계 착수 전 조합·고양시에 확인</b>할 사항들입니다.</blockquote></div>
+      </div>
+    </div>
+
+    <div class="map-step reveal" style="margin-top:clamp(40px,6vh,64px)">
+      <div class="map-head"><span class="chip">REF</span><b>주차장 출입구 — 검토해 둔 가능 구간</b><span class="mnote">ENTRY STUDY</span></div>
+      <figure class="drawing">
+        <svg class="plan" viewBox="0 0 1000 882" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="주차장 출입구 위치 검토 — 횡단보도 인접 유의 구간"><g class="ctx"><polyline points="1197.4,-907.2 1525.3,-906.6 1945.3,-900.5 2318.8,-897.8 3281.5,-902.2 3417.1,-903.4 3601.2,-899.0 3738.2,-893.4 3832.6,-783.1 3820.9,-392.2 3816.8,-202.5 3802.6,659.5 3709.7,772.8 3417.4,777.2 3120.0,786.0 2817.1,770.1 1912.6,756.6 1685.6,745.1 1398.2,745.1 755.0,719.5 879.4,261.9 1197.4,-907.2"/><polyline points="565.0,-849.0 667.4,-918.7 1130.9,-907.5 1197.4,-907.2 879.4,261.9 295.3,100.1 565.0,-849.0"/><polyline points="295.3,100.1 879.4,261.9 755.0,719.5 639.7,714.8 391.8,658.7 255.9,617.5 185.0,488.7 295.3,100.1"/><polyline points="313.5,-2907.2 638.8,-2816.9 711.2,-2688.7 -143.2,395.1 -271.2,467.8 -596.2,377.5 313.5,-2907.2"/><polyline points="313.5,-2907.2 329.1,-2963.7 711.2,-2857.8 783.5,-2729.6 268.2,-869.6 500.3,-805.2 565.0,-849.0 295.3,100.1 185.0,488.7 255.9,617.5 -271.2,467.8 -143.2,395.1 711.2,-2688.7 638.8,-2816.9 313.5,-2907.2"/><polyline points="1123.7,-636.4 1197.4,-907.4 1130.9,-907.5 1014.3,-910.4 667.4,-918.7 564.9,-849.1 295.4,100.0 567.3,175.3 879.4,261.8 964.0,-49.2 999.1,-178.2 1123.7,-636.4 1123.7,-636.4"/><polyline points="3816.6,-202.6 3820.7,-392.4 3830.8,-723.2 3832.7,-783.3 3738.3,-893.6 3601.0,-899.1 3416.9,-903.5 3281.4,-902.4 2954.7,-901.8 2317.8,-900.6 2048.4,-900.1 1945.3,-900.1 1525.1,-906.6 1197.4,-907.4 1123.7,-636.4 999.1,-178.2 964.0,-49.2 879.4,261.8 766.0,678.6 755.0,719.2 1398.3,745.0 1685.6,745.0 1912.7,756.6 2410.1,763.8 2817.1,770.1 3120.0,785.9 3152.6,784.9 3152.6,784.9 3417.2,777.1 3709.6,772.8 3765.2,704.7 3768.8,700.6 3802.6,659.4 3805.9,451.0 3816.6,-202.6 3816.6,-202.6"/><polyline points="-595.8,376.9 -271.2,467.5 -143.2,395.1 -17.3,-60.1 72.1,-383.4 175.0,-754.0 211.3,-885.2 288.6,-1164.2 361.8,-1428.1 478.9,-1850.7 573.8,-2193.9 644.7,-2449.3 711.2,-2689.0 638.7,-2817.0 313.5,-2907.3"/><polyline points="879.4,261.8 567.3,175.3 295.4,100.0 185.1,488.7 256.0,617.5 392.0,658.6 639.5,714.6 755.0,719.2 766.0,678.6 879.4,261.8"/></g><g class="mark"><polyline points="564.2,-848.2 185.1,489.1"/><polyline points="564.2,-848.2 541.8,-833.0 470.9,-735.0 124.4,487.6 298.9,781.3 621.2,854.1 749.4,859.2 1395.5,885.1 1682.0,885.1 1908.1,896.6 2407.9,903.9 2812.3,910.1 3118.4,926.1 3420.3,917.1 3627.1,914.1 3800.9,741.3 3802.6,659.4"/><polyline points="39.4,-44.0 -88.7,419.2 -378.2,583.3 -1155.4,368.4"/><polyline points="1392.9,1273.4 1381.0,1273.1 939.8,1255.3 570.2,1240.6 307.0,1181.1 324.5,1103.6 261.4,1088.2 65.9,1029.0 -34.4,999.4 -228.8,945.4 -579.6,848.0 -600.8,924.6 -1045.5,801.4 -1322.8,781.4 -1517.7,825.0 -1504.6,828.7 -1055.9,861.1 -379.7,1048.4 -56.3,1138.5 241.9,1228.2 562.3,1300.6 1048.7,1320.1 1386.5,1333.7 1670.6,1333.7 1893.5,1345.0 2233.8,1358.2 2370.5,1681.8"/></g><g class="cl"><polyline points="-8.4,542.3 518.7,-1313.7 961.2,-2910.7 -5043.4,-4575.6"/></g><g class="xw xA"><line x1="153.6" y1="733.5" x2="-236.9" y2="618.8"/><line x1="-208.1" y1="565.9" x2="147.6" y2="670.4"/><line x1="-148.4" y1="522.2" x2="120.7" y2="601.2"/><line x1="-110.5" y1="472.0" x2="115.8" y2="538.5"/><line x1="-97.5" y1="445.1" x2="119.4" y2="508.9"/><line x1="-81.1" y1="388.6" x2="27.2" y2="420.5"/><line x1="31.0" y1="513.5" x2="14.4" y2="570.0"/><line x1="42.6" y1="578.3" x2="26.0" y2="634.7"/><line x1="87.4" y1="530.1" x2="70.8" y2="586.6"/><line x1="99.0" y1="594.9" x2="82.4" y2="651.3"/><line x1="-13.8" y1="561.7" x2="-30.4" y2="618.1"/><line x1="-25.5" y1="497.0" x2="-42.1" y2="553.4"/></g><g class="xw xB"><line x1="64.3" y1="1028.5" x2="164.9" y2="696.1"/><line x1="120.6" y1="1045.6" x2="212.4" y2="742.1"/><line x1="209.3" y1="1057.0" x2="293.2" y2="779.9"/><line x1="261.0" y1="886.0" x2="176.6" y2="860.5"/><line x1="289.5" y1="1096.7" x2="379.3" y2="800.1"/><line x1="318.6" y1="1102.2" x2="408.2" y2="806.0"/><line x1="354.0" y1="883.4" x2="269.5" y2="857.9"/><line x1="278.1" y1="829.7" x2="193.6" y2="804.2"/><line x1="371.0" y1="827.1" x2="286.6" y2="801.6"/><line x1="337.0" y1="939.7" x2="252.5" y2="914.2"/><line x1="244.0" y1="942.3" x2="159.5" y2="916.8"/><line x1="435.8" y1="917.7" x2="461.5" y2="833.1"/></g><g class="xw xC"></g><polygon class="lot pale" points="295.3,100.1 879.4,261.9 755.0,719.5 639.7,714.8 391.8,658.7 255.9,617.5 185.0,488.7"/><line class="edge none" x1="879.4" y1="261.8" x2="567.3" y2="175.3"/><line class="edge none" x1="567.3" y1="175.3" x2="295.4" y2="100.0"/><line class="edge yes" x1="295.4" y1="100.0" x2="211.8" y2="394.6"/><line class="edge warn" x1="211.8" y1="394.6" x2="185.1" y2="488.7"/><line class="edge warn" x1="185.1" y1="488.7" x2="256.0" y2="617.5"/><line class="edge warn" x1="256.0" y1="617.5" x2="360.4" y2="649.1"/><line class="edge yes" x1="360.4" y1="649.1" x2="373.9" y2="653.2"/><line class="edge warn" x1="373.9" y1="653.2" x2="392.0" y2="658.6"/><line class="edge warn" x1="392.0" y1="658.6" x2="482.7" y2="679.1"/><line class="edge yes" x1="482.7" y1="679.1" x2="639.5" y2="714.6"/><line class="edge yes" x1="639.5" y1="714.6" x2="755.0" y2="719.2"/><line class="edge none" x1="755.0" y1="719.2" x2="766.0" y2="678.6"/><line class="edge none" x1="766.0" y1="678.6" x2="879.4" y2="261.8"/><circle class="vtx" cx="295.3" cy="100.1" r="4"/><text class="vlab" x="285.3" y="91.1">P0</text><circle class="vtx" cx="879.4" cy="261.9" r="4"/><text class="vlab" x="890.4" y="254.9">P1</text><circle class="vtx" cx="755.0" cy="719.5" r="4"/><text class="vlab" x="766.0" y="712.5">P2</text><circle class="vtx" cx="639.7" cy="714.8" r="4"/><text class="vlab" x="650.7" y="707.8">P3</text><circle class="vtx" cx="391.8" cy="658.7" r="4"/><text class="vlab" x="402.8" y="651.7">P4</text><circle class="vtx" cx="255.9" cy="617.5" r="4"/><text class="vlab" x="229.9" y="620.5">P5</text><circle class="vtx" cx="185.0" cy="488.7" r="4"/><text class="vlab" x="159.0" y="491.7">P6</text><g class="xwlab xA"><circle cx="73.5" cy="391.2" r="12"/><text x="73.5" y="396.2">A</text></g><g class="xwlab xB"><circle cx="132.4" cy="770.6" r="12"/><text x="132.4" y="775.6">B</text></g><text class="core" text-anchor="middle" x="485.3" y="426.5"><tspan x="485.3" dy="0">종교시설 부지</tspan></text><text class="glab" text-anchor="end" x="91.2" y="170.6"><tspan x="91.2" dy="0">무난 10.4 m</tspan></text><text class="glab" text-anchor="middle" x="617.6" y="811.8"><tspan x="617.6" dy="0">무난 9.4 m (연속)</tspan></text><text class="wlab" text-anchor="end" x="226.5" y="702.9"><tspan x="226.5" dy="0">횡단보도 5 m 이내</tspan><tspan x="226.5" dy="18">(심의 시 유의)</tspan></text><g class="north"><line x1="954.0" y1="88" x2="954.0" y2="48"/><polygon points="954.0,40 947.5,54 960.5,54"/><text x="954.0" y="108">N</text></g><g class="scale"><line x1="40" y1="848.3529411764705" x2="187.1" y2="848.3529411764705"/><line x1="40" y1="842.3529411764705" x2="40" y2="854.3529411764705"/><line x1="187.1" y1="842.3529411764705" x2="187.1" y2="854.3529411764705"/><text x="113.5" y="837.3529411764705">5 m</text></g></svg>
+        <figcaption><b>경계선의 초록 = 무난한 구간, 주황 = 계획 횡단보도에서 5m 이내라 협의 시 유의할 구간</b>(법정 금지 아님), 회색 파선 = 도로에 접하지 않는 변. 도로 위 사다리 표시는 계획 횡단보도 A(붉은색)·B(파란색)입니다.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- 08 건축사 추천 요청 및 향후 계획 -->
+<section id="s08">
+  <div class="inner">
+    <div class="sec-head reveal">
+      <span class="idx">(08)</span><h2>건축사 추천 요청 · 향후 계획</h2><span class="en">RECOMMEND AN ARCHITECT</span>
+    </div>
+    <div class="b-grid">
+      <div class="reveal">
+        <p class="b-statement">건물이 아니라 <mark>공동체의 다음 30년</mark>을 함께 설계할 분을 찾습니다.</p>
+        <p class="b-note">규모는 작지만 생각은 깊은 프로젝트입니다. 예산의 한계를 탓하기보다 <b>"지금 무엇에 투자하고 무엇을 다음으로 미룰지"</b>를 함께 고민해 줄 건축사 — 그런 분을 알고 계시다면 소개해 주세요. 정리된 설계 브리프(v1.1)와 대지 분석 자료 일체를 바로 전달드릴 수 있습니다.</p>
+      </div>
+      <div class="reveal">
+        <div class="crit">
+          <div class="crit-row" style="--w:31%"><span class="cl2">미적 공간 설계 역량<span>AESTHETIC DESIGN</span></span><span class="bar"><i></i></span><span class="pc">31%</span></div>
+          <div class="crit-row" style="--w:29%"><span class="cl2">지속 건전성 기술 역량<span>DURABILITY ENGINEERING</span></span><span class="bar"><i></i></span><span class="pc">29%</span></div>
+          <div class="crit-row" style="--w:21%"><span class="cl2">비용 현실성 · VE 역량<span>COST REALITY / VALUE ENG.</span></span><span class="bar"><i></i></span><span class="pc">21%</span></div>
+          <div class="crit-row" style="--w:19%"><span class="cl2">커뮤니케이션 역량<span>COMMUNICATION</span></span><span class="bar"><i></i></span><span class="pc">19%</span></div>
+        </div>
+        <p class="b-caveat">설계사무소 선정 기준 — 설계 브리프 v1.1에 공개한 가중치 그대로입니다.</p>
+      </div>
+    </div>
+
+    <div class="ask-grid reveal">
+      <div class="ask-col">
+        <h3>추천해 주실 때, 저희가 여쭙는 것<span>WHAT WE ASK</span></h3>
+        <ul>
+          <li><b>설계비 산정 방식과 대략적인 범위</b><small>이 단계에서 가격 제안을 요청하는 것은 아닙니다</small></li>
+          <li><b>예상 설계 기간</b><small>교회 일정은 재개발 인프라 일정에 따라 유동적입니다</small></li>
+          <li><b>포트폴리오</b><small>웹에서 확인 가능하면 충분 — 유사 프로젝트, 공간 기획 경험</small></li>
+          <li><b>건축 건전성 예시 자료</b><small>방수·후레싱·물끊기 등 디테일 수행 여부를 볼 수 있는 예시 도면</small></li>
+          <li><b>업무 범위</b><small>디테일 도면 · 인허가 · 구조/설비 · 개략 공사비 · 감리 포함 여부 등</small></li>
+        </ul>
+      </div>
+      <div class="ask-col">
+        <h3>앞으로의 계획<span>WHAT'S NEXT</span></h3>
+        <ul>
+          <li><b>건축사 추천 접수 · 만남</b><small>지금 — 브리프 전달, 방향과 생각을 듣는 자리</small></li>
+          <li><b>설계사무소 선정</b><small>선정 기준 4개 항목의 가중 평가</small></li>
+          <li><b>기본설계 3개월 이상 → 실시설계·인허가 7개월 이상</b><small>확정 면적·일조 등 행정 확인 병행</small></li>
+          <li><b>시공사 선정 → 착공</b><small>기반 인프라 조성 후 · 공사 10개월 이상</small></li>
+          <li><b>입당</b><small>능곡5구역 정비 일정(아파트 완공 2029~30년 이후 예상)에 연동</small></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="arch reveal" id="archive">
+      <div class="why-head"><b>관련 자료 — 내부 검토 문서</b><span>BUILDING ARCHIVE</span></div>
+      <div class="arch-grid">
+        <a class="arch-item" href="건물외곽_검토.html"><span class="k">STUDY 03 · 최종 기준안</span><b>건물 외곽 검토 — F10</b><span>1층 주차 10대 · 필로티 기둥 · 코어 · 설비 슬롯 · 기준층/본당층 평면 · 단면 — 아홉 차례 검토를 거친 내부 기준안과 열린 확인 항목</span><span class="arr">→</span></a>
+        <a class="arch-item" href="주차배치_시나리오.html"><span class="k">STUDY 01 · 검토 종결</span><b>주차 배치 시나리오</b><span>남측·서측 진입, 8–10대 시나리오의 기하 비교 — 서측 진입으로 수렴한 근거</span><span class="arr">→</span></a>
+        <a class="arch-item" href="기둥모듈_검토.html"><span class="k">STUDY 02 · 검토 종결</span><b>기둥 모듈 검토 — 2대 vs 3대</b><span>필로티 기둥 간격과 스팬 비교 — 등스팬 그리드로 수렴한 근거</span><span class="arr">→</span></a>
+        <a class="arch-item" href="건축보고_대지현황.html"><span class="k">SITE REPORT</span><b>대지 현황 보고</b><span>능곡5구역 종교시설 부지 — 위치 · 도로 · 지형 · 기반시설 종합 (정비업체 CAD 도면 6종 분석)</span><span class="arr">→</span></a>
+        <a class="arch-item" href="종교부지_경계치수.html"><span class="k">SITE DATA</span><b>종교부지 경계 · 치수 정보</b><span>꼭짓점 좌표(도면·TM·위경도) · 변 길이 · 방위각 · 내각 · 가각 — 도면 기준 계획값</span><span class="arr">→</span></a>
+        <a class="arch-item" href="../"><span class="k">HOME</span><b>한사랑교회 홈페이지</b><span>예배 안내 · 설교 영상 · 오시는 길 — 교회 홈페이지로 돌아가기</span><span class="arr">→</span></a>
+      </div>
+      <div class="arch-imgs"><span class="k">도면 이미지</span>
+        <a href="img/건물외곽_F10_기준안.png" target="_blank" rel="noopener">1층 배치 F10</a>
+        <a href="img/건물단면_F9.png" target="_blank" rel="noopener">단면</a>
+        <a href="img/상층평면_기준층_본당층.png" target="_blank" rel="noopener">기준층 · 본당층 평면</a>
+        <a href="img/설비위치_비교.png" target="_blank" rel="noopener">설비 위치 비교</a>
+        <a href="img/종교부지_경계치수도.png" target="_blank" rel="noopener">경계 치수도</a>
+      </div>
+    </div>
+
+    <div class="invite-box reveal">
+      <div class="left">
+        <h2>ONE<br><span>ARCHITECT</span></h2>
+        <p>좋은 건축사 한 분을 알고 계신가요? 다음세대를 세우는 이 집의 이야기를 함께 그려 갈 분을 기다립니다. 짧은 소개 한 줄이면 충분합니다.</p>
+      </div>
+      <div class="right">
+        <a href="mailto:rkdworn7@gmail.com?subject=%5B한사랑교회%5D%20건축사%20추천"><span>이메일로 추천하기<br><small>RECOMMEND VIA EMAIL</small></span><span class="arr">→</span></a>
+        <a href="#archive"><span>내부 검토 문서 · 도면<br><small>BUILDING ARCHIVE</small></span><span class="arr">→</span></a>
+        <a href="#s03"><span>대지 조건 다시 보기<br><small>SITE &amp; REGULATIONS</small></span><span class="arr">→</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="f-giant">NEXT GENERATION</div>
+  <div class="f-grid">
+    <div><b>PROJECT</b>한사랑성결교회 신축 — 고양 능곡5구역 종교시설 획지<br>지상 5층 · 연면적 230–250평 구상 · 예산 20억 내외</div>
+    <div><b>SOURCES</b>능곡5구역 정비업체 제공 CAD 도면 6종 (2020-01 저장본)<br>통계청 · 한국갤럽 「한국인의 종교」 · 예장통합 교세통계</div>
+    <div><b>DOCUMENT</b>건축 상황 공유 자료 · 2026. 08<br>설계 브리프 v1.1 (2026. 07) 기반</div>
+  </div>
+  <div class="f-bottom">
+    <span>© HANSARANG CHURCH — BUILDING JOURNEY</span>
+    <span>모든 도면 수치는 계획값입니다 · 인허가·계약 용도로는 실측 성과를 사용해야 합니다</span>
+  </div>
+</footer>
+
+<script>
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+document.querySelectorAll('.crit-row').forEach(el=>io.observe(el));
+
+/* ===== 아코디언 : 클릭 토글 + 화면 중앙 자동 열림 (다크 섹션 말씀 목록만 자동) ===== */
+(function(){
+  document.querySelectorAll('.index-list').forEach(function(list){
+    var items=list.querySelectorAll('.index-item');
+    items.forEach(function(item){
+      item.addEventListener('click',function(){
+        var was=item.classList.contains('open');
+        items.forEach(function(i){i.classList.remove('open')});
+        if(!was) item.classList.add('open');
+      });
+    });
+    if(list.classList.contains('light')) return;
+    var centerIO=new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if(e.isIntersecting){
+          items.forEach(function(i){i.classList.remove('open')});
+          e.target.classList.add('open');
+        }
+      });
+    },{rootMargin:'-42% 0px -42% 0px',threshold:0});
+    items.forEach(function(i){centerIO.observe(i)});
+  });
+})();
+</script>
+</body>
+</html>
