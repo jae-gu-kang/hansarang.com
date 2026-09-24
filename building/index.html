@@ -241,6 +241,19 @@ section{padding:clamp(80px,12vh,140px) clamp(16px,3vw,32px)}
 }
 .index-body .vs{display:block;margin-top:10px;font-size:11.5px;letter-spacing:.2em;font-weight:800;color:var(--accent2)}
 @media(max-width:720px){.index-item{grid-template-columns:48px 1fr 26px}.index-item .desc{display:none}}
+/* 말씀 목록 — 모두 펼친 상태 */
+.index-list.all-open .index-item{cursor:default}
+.index-list.all-open .index-item:hover{padding-left:6px}
+.index-list.all-open .index-item .plus{display:none}
+.index-list.all-open .index-body{max-height:none;overflow:visible;margin-top:10px}
+.index-list.all-open .index-body blockquote{font-size:15px;line-height:1.85}
+@media(min-width:900px){
+  .index-list.all-open{display:grid;grid-template-columns:1fr 1fr;column-gap:48px;align-items:start}
+  .index-list.all-open .index-item{grid-template-columns:44px 1fr;row-gap:2px;align-items:baseline;padding:20px 4px}
+  .index-list.all-open .index-item .name{font-size:clamp(22px,2.3vw,30px)}
+  .index-list.all-open .index-item .desc{grid-column:2;text-align:left;max-width:none}
+  .index-list.all-open .index-body{margin-top:12px}
+}
 /* 밝은 배경용 변형 (07 과제) */
 .index-list.light .index-item{border-bottom-color:rgba(17,17,17,.18)}
 .index-list.light .index-item::before{color:var(--grey)}
@@ -801,7 +814,7 @@ body.present .key-hint{display:none}
 
     <div class="slide">
     <div class="sub-head reveal"><b>말씀이 말하는 다음세대</b>WHAT SCRIPTURE SAYS</div>
-    <div class="index-list">
+    <div class="index-list all-open">
       <div class="index-item reveal">
         <span class="name">잊어버린 세대</span><span class="desc">위기는 한 세대 만에 온다</span><span class="plus">+</span>
         <div class="index-body"><blockquote>"그 세대의 사람도 다 그 조상들에게로 돌아갔고 그 후에 일어난 다른 세대는 여호와를 알지 못하며 여호와께서 이스라엘을 위하여 행하신 일도 알지 못하였더라"<span class="vs">사사기 2:10</span></blockquote></div>
@@ -1414,6 +1427,7 @@ document.querySelectorAll('.crit-row').forEach(el=>io.observe(el));
 /* ===== 아코디언 : 클릭 토글 + 화면 중앙 자동 열림 (다크 섹션 말씀 목록만 자동) ===== */
 (function(){
   document.querySelectorAll('.index-list').forEach(function(list){
+    if(list.classList.contains('all-open')) return;   /* 말씀 목록은 항상 펼쳐 둠 */
     var items=list.querySelectorAll('.index-item');
     items.forEach(function(item){
       item.addEventListener('click',function(){
@@ -1453,7 +1467,7 @@ document.querySelectorAll('.crit-row').forEach(el=>io.observe(el));
   /* 한 화면에 다 들어오지 않는 장은 살짝 축소 (펼쳐지는 목록 높이까지 감안) */
   function accordionExtra(inn){
     var max=0,open=0;
-    inn.querySelectorAll('.index-body').forEach(function(b){
+    inn.querySelectorAll('.index-list:not(.all-open) .index-body').forEach(function(b){
       max=Math.max(max,b.scrollHeight+8);
       if(b.parentNode.classList.contains('open')) open=Math.max(open,b.offsetHeight);
     });
