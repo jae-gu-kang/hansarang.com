@@ -657,6 +657,34 @@ section[id],.slide{scroll-margin-top:var(--top)}
   .slide .index-list.light .index-item .desc{max-width:220px;font-size:12px}
   #s01 .slide .closing{font-size:clamp(24px,3vw,38px)}
 }
+/* 마무리 · 감사 */
+.ty-kicker{display:flex;gap:12px;align-items:center;font-size:12px;font-weight:700;letter-spacing:.3em;color:rgba(242,240,235,.55)}
+.ty-kicker .dot{width:9px;height:9px;border-radius:50%;background:var(--accent);animation:blink 1.6s steps(2) infinite}
+.ty-lead{margin-top:clamp(20px,3.5vh,40px);font-size:clamp(26px,3.6vw,48px);font-weight:800;line-height:1.4;letter-spacing:-.035em}
+.ty-lead mark{background:none;color:var(--accent)}
+.ty-body{margin-top:clamp(14px,2.4vh,26px);max-width:760px;font-size:clamp(15px,1.3vw,18px);line-height:1.9;color:rgba(242,240,235,.68)}
+.ty-body b{color:var(--paper)}
+.ty-giant{
+  margin-top:clamp(28px,5vh,60px);font-weight:900;line-height:1;letter-spacing:-.05em;
+  font-size:clamp(64px,min(13vw,19vh),200px);white-space:nowrap;
+}
+.ty-giant .blk{background:var(--accent);color:var(--paper);padding:0 .1em;margin-right:.06em}
+.ty-giant .outline{color:var(--ink);-webkit-text-stroke:3px var(--paper);paint-order:stroke fill}
+.ty-foot{
+  margin-top:clamp(24px,4vh,48px);padding-top:16px;border-top:1.5px solid rgba(242,240,235,.35);
+  display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
+  font-size:13px;color:rgba(242,240,235,.6);letter-spacing:.02em;
+}
+.ty-foot em{font-style:normal;color:var(--accent2);font-weight:800;letter-spacing:.12em;margin-left:8px}
+.ty-foot .sign{font-weight:700;letter-spacing:.24em;font-size:11px}
+#thanks .ty-lead.reveal{transition-delay:.15s}
+#thanks .ty-body.reveal{transition-delay:.55s}
+#thanks .ty-giant.reveal{transition:opacity 1.2s ease 1s,transform 1.2s cubic-bezier(.2,.8,.2,1) 1s;transform:translateY(60px) scale(.96)}
+#thanks .ty-giant.reveal.on{transform:none}
+#thanks .ty-foot.reveal{transition-delay:1.7s}
+@media(max-width:560px){.ty-giant{font-size:clamp(48px,15vw,80px)}.ty-giant .outline{-webkit-text-stroke:2px var(--paper)}}
+@media(min-width:900px) and (min-height:560px){#thanks{padding-top:0;padding-bottom:0}}
+
 /* 발표 모드 */
 body.present .topbar{display:none}
 body.present .inner{max-width:calc(1280px * var(--pz,1))}
@@ -1374,6 +1402,22 @@ body.present .key-hint{display:none}
         <a href="#s03"><span>대지 조건 다시 보기<br><small>SITE &amp; REGULATIONS</small></span><span class="arr">→</span></a>
       </div>
     </div>
+    </div>
+  </div>
+</section>
+
+<!-- 마무리 · 감사 -->
+<section id="thanks" class="dark">
+  <div class="inner">
+    <div class="slide">
+      <div class="ty-kicker reveal"><span class="dot"></span>CLOSING — 한사랑교회 건축 이야기</div>
+      <p class="ty-lead reveal">우리가 짓는 것은 한 채의 건물이지만,<br>세워지는 것은 <mark>다음세대</mark>입니다.</p>
+      <p class="ty-body reveal">지금 우리 아이들은 상가 학원 교실을 빌려 예배드립니다. 언젠가 이 집에서 아이들이 마음껏 뛰놀며 하나님을 만나는 날을 꿈꿉니다.<br>오늘 이 이야기를 함께 들어 주신 한 분 한 분이, <b>이 집을 세우는 첫 벽돌</b>입니다.</p>
+      <h2 class="ty-giant reveal"><span class="blk">감사</span><span class="outline">합니다</span></h2>
+      <div class="ty-foot reveal">
+        <span class="verse">"여호와께서 집을 세우지 아니하시면 세우는 자의 수고가 헛되며" <em>시편 127:1</em></span>
+        <span class="sign">HANSARANG CHURCH · THANK YOU</span>
+      </div>
     </div>
   </div>
 </section>
