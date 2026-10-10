@@ -471,6 +471,30 @@ table.tbl .dim2{color:var(--grey);font-size:12px}
 .floor.main .fp span,.floor.main .fh{color:rgba(242,240,235,.6)}
 .floor.main .fl{color:var(--accent)}
 
+/* ---------- must (꼭 필요한 세 가지) ---------- */
+.must{display:flex;flex-direction:column;border:1.5px solid var(--line);background:var(--paper)}
+.must-head{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;padding:18px 24px;border-bottom:1.5px solid var(--line)}
+.must-head b{font-size:clamp(20px,2.2vw,28px);font-weight:900;letter-spacing:-.03em}
+.must-head span{font-size:10.5px;font-weight:700;letter-spacing:.26em;color:var(--grey)}
+.must-grid{flex:1;display:grid;grid-template-columns:repeat(3,1fr)}
+.must-item{display:flex;flex-direction:column;padding:clamp(22px,3vw,40px);border-right:1.5px solid var(--line)}
+.must-item:last-child{border-right:none}
+.must-top{display:flex;align-items:center;justify-content:space-between}
+.must-item .no{font-size:clamp(56px,6.4vw,96px);font-weight:900;line-height:.9;letter-spacing:-.04em;color:transparent;-webkit-text-stroke:1.5px var(--ink)}
+.must-item .tag{font-size:12px;font-weight:800;letter-spacing:.08em;padding:5px 14px;border-radius:999px;border:1.5px solid var(--ink);color:var(--ink)}
+.must-item .tag.req{background:var(--accent);border-color:var(--accent);color:#fff}
+.must-item h3{margin:clamp(24px,4vh,44px) 0 0;font-size:clamp(28px,3.3vw,48px);font-weight:900;line-height:1.22;letter-spacing:-.04em}
+.must-item h3 em{font-style:normal;color:var(--accent)}
+.must-item p{margin-top:auto;padding-top:clamp(20px,3vh,32px);border-top:1.5px solid var(--line);margin-bottom:0;font-size:clamp(14px,1.15vw,16.5px);color:var(--ink);line-height:1.75;min-height:calc(3.5em + clamp(20px,3vh,32px))}
+@media(max-width:860px){
+  .must-grid{grid-template-columns:1fr}
+  .must-item{border-right:none;border-bottom:1.5px solid var(--line)}
+  .must-item:last-child{border-bottom:none}
+  .must-item p{margin-top:22px;min-height:0}
+}
+@media(min-width:900px) and (min-height:560px){
+  .must{min-height:min(580px,calc(100svh - var(--top) - 160px))}
+}
 /* ---------- why-grid (요구·아이디어 카드) ---------- */
 .why{margin-top:clamp(40px,6vh,64px);border:1.5px solid var(--line)}
 .why-head{
@@ -904,20 +928,23 @@ body.present .key-hint{display:none}
     </div>
     </div>
     <div class="slide">
-    <div class="why reveal">
-      <div class="why-head"><b>꼭 필요한 세 가지</b><span>MUST-HAVES &amp; NEEDS</span></div>
-      <div class="why-grid c3">
-        <div class="why-item">
-          <b>기둥 없는 <em>대예배실</em></b>
-          <p><b>필수</b> — 시야를 가리는 기둥이 없을 것. 최대 수용 인원을 고려합니다. 설교(말씀 전달)의 명료도가 최우선입니다.</p>
+    <div class="must reveal">
+      <div class="must-head"><b>꼭 필요한 세 가지</b><span>MUST-HAVES &amp; NEEDS</span></div>
+      <div class="must-grid">
+        <div class="must-item">
+          <div class="must-top"><span class="no">01</span><span class="tag req">필수</span></div>
+          <h3>기둥 없는<br><em>대예배실</em></h3>
+          <p>시야를 가리는 기둥이 없을 것. 최대 수용 인원을 고려합니다. 설교(말씀 전달)의 명료도가 최우선입니다.</p>
         </div>
-        <div class="why-item">
-          <b>법정 주차 <em>10대</em></b>
-          <p><b>필수</b> — 교회 목표 10대. 확보 방식은 자유입니다.</p>
+        <div class="must-item">
+          <div class="must-top"><span class="no">02</span><span class="tag req">필수</span></div>
+          <h3>법정 주차<br><em>10대</em></h3>
+          <p>교회 목표 10대. 확보 방식은 자유입니다.</p>
         </div>
-        <div class="why-item">
-          <b>3층 <em>보이드</em> 공간의 활용</b>
-          <p><b>필요</b> — 높게 비운 3층 보이드 공간을 다음세대를 위해 활용하는 방안. 그물이나 트램펄린은 여러 안 중 하나일 뿐입니다.</p>
+        <div class="must-item">
+          <div class="must-top"><span class="no">03</span><span class="tag">필요</span></div>
+          <h3>3층 <em>보이드</em><br>공간의 활용</h3>
+          <p>높게 비운 3층 보이드 공간을 다음세대를 위해 활용하는 방안. 그물이나 트램펄린은 여러 안 중 하나일 뿐입니다.</p>
         </div>
       </div>
     </div>
