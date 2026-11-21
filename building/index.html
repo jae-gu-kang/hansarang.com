@@ -479,10 +479,9 @@ table.tbl .dim2{color:var(--grey);font-size:12px}
 .floor.main .fl{color:var(--accent)}
 .floor .fh em{display:block;font-style:normal;font-size:11.5px;letter-spacing:0;color:var(--ink);margin-top:3px}
 .floor.main .fh em{color:var(--paper)}
-.floor.part{position:relative;background:repeating-linear-gradient(45deg,rgba(255,255,255,0) 0 5px,rgba(0,0,0,.09) 5px 10px) right center/50% 100% no-repeat}
-.floor.part:hover{background:repeating-linear-gradient(45deg,rgba(255,255,255,0) 0 5px,rgba(0,0,0,.09) 5px 10px) right center/50% 100% no-repeat,#fff;padding-left:28px}
-.floor.part .void-tag{position:absolute;right:50%;top:50%;transform:translate(50%,-50%);font-size:11px;font-weight:800;color:var(--ink);background:var(--paper);border:1.5px solid var(--ink);padding:3px 8px;text-align:center;line-height:1.15;pointer-events:none}
-.floor.part .void-tag small{display:block;font-size:9px;font-weight:600;color:var(--grey)}
+.floor.part{background:repeating-linear-gradient(45deg,rgba(255,255,255,0) 0 5px,rgba(0,0,0,.06) 5px 10px) right center/50% 100% no-repeat}
+.floor.part:hover{background:repeating-linear-gradient(45deg,rgba(255,255,255,0) 0 5px,rgba(0,0,0,.06) 5px 10px) right center/50% 100% no-repeat,#fff;padding-left:28px}
+.floor .fh em.vt{font-size:10px;font-weight:700;color:var(--grey);margin-top:2px}
 
 /* ---------- must (꼭 필요한 세 가지) ---------- */
 .must{display:flex;flex-direction:column;border:1.5px solid var(--line);background:var(--paper)}
@@ -1164,7 +1163,7 @@ body.present .key-hint{display:none}
         <div class="floor"><span class="fl">RF</span><span class="fp"><b>옥상</b><span>설비(가림 처리) · 법정 조경</span></span><span class="fh">ROOFTOP<em>—</em></span></div>
         <div class="floor main"><span class="fl">5F</span><span class="fp"><b>대예배실 · 자모실</b><span>기둥 없는 예배 공간 · 60평 이상 (코어 포함)</span></span><span class="fh">MAIN CHAPEL<em>약 200㎡ · 60평</em></span></div>
         <div class="floor"><span class="fl">4F</span><span class="fp"><b>소예배실 · 목양실 · 사무실 · 성가대실</b><span>기도와 섬김의 공간 · 층별 화장실</span></span><span class="fh">CHAPEL<em>약 200㎡ · 60평</em></span></div>
-        <div class="floor part"><span class="fl">3F</span><span class="fp"><b>유초등 예배실 — 부분층</b><span>바닥은 절반만 두고, 나머지 절반은 2층 위로 열린 보이드 — 그물놀이터 겸 활동실</span></span><span class="fh">NEXT GEN<em>약 100㎡ · 30평</em></span><span class="void-tag">보이드<small>2층 상부 오픈</small></span></div>
+        <div class="floor part"><span class="fl">3F</span><span class="fp"><b>유초등 예배실 — 부분층</b><span>바닥은 절반만 두고, 나머지 절반은 2층 위로 열린 보이드 — 그물놀이터 겸 활동실</span></span><span class="fh">NEXT GEN<em>약 100㎡ · 30평</em><em class="vt">빗금 = 보이드 · 2층 상부 오픈</em></span></div>
         <div class="floor"><span class="fl">2F</span><span class="fp"><b>식당 · 카페</b><span>예배 전후 친교의 자리 · 화장실 — 절반은 3층 보이드 아래 두 개 층 높이</span></span><span class="fh">FELLOWSHIP<em>약 200㎡ · 60평</em></span></div>
         <div class="floor"><span class="fl">1F</span><span class="fp"><b>필로티 주차</b><span>법정 주차 10대 · 코어·현관만 실내</span></span><span class="fh">PILOTI<em>주차 (면적 제외)</em></span></div>
       </div>
