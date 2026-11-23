@@ -347,12 +347,22 @@ figure.drawing{
   --xwA:#c8331f; --xwB:#1f6f9e; --xwC:#7a4bb5;
 }
 figure.drawing svg.plan, figure.drawing svg.prof{display:block; width:100%; min-width:620px; height:auto;}
-.prof .rg{stroke:#e04300;stroke-width:1;stroke-dasharray:4 4;opacity:.55}
-.prof .ra{stroke:#1b1d20;stroke-width:1.6}
-.prof .rh{fill:#1b1d20}
-.prof .rb{fill:#fff;stroke:#1b1d20;stroke-width:1.2;opacity:.94}
-.prof .rt{font-size:16px;font-weight:800;fill:#1b1d20}
-.prof .rs{font-size:11.5px;fill:#61666d}
+.prof .range .rg{stroke:#e04300;stroke-width:1.2;stroke-dasharray:5 4;transform-box:fill-box;transform:scaleX(0);transition:transform .9s cubic-bezier(.2,.7,.2,1)}
+.prof .range .rg-hi{transform-origin:left center}
+.prof .range .rg-lo{transform-origin:left center;transition-delay:.15s}
+.prof .range .rbar{transform-box:fill-box;transform-origin:center bottom;transform:scaleY(0);transition:transform .9s cubic-bezier(.2,.7,.2,1) .8s}
+.prof .range .rbar line{stroke:#e04300;stroke-width:2.6}
+.prof .range .rbar polygon{fill:#e04300}
+.prof .range text{opacity:0;transition:opacity .6s ease}
+.prof .range .rhi,.prof .range .rlo{font-size:13px;font-weight:800;fill:#1b1d20}
+.prof .range .rhs{font-size:10.5px;fill:#61666d}
+.prof .range .rnum{font-size:40px;font-weight:900;fill:#e04300;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.prof .range .ru{font-size:20px;font-weight:800}
+.prof .range .rcap{font-size:12px;font-weight:700;fill:#1b1d20}
+.prof.on .range .rg,.prof.on .range .rbar{transform:none}
+.prof.on .range .rhi,.prof.on .range .rlo,.prof.on .range .rhs{opacity:1;transition-delay:.5s}
+.prof.on .range .rnum,.prof.on .range .rcap{opacity:1;transition-delay:1.2s}
+@media (prefers-reduced-motion:reduce){.prof .range *{transition:none!important}}
 figure.drawing svg.plan .ctx polyline{fill:none; stroke:var(--ctx); stroke-width:1.1; opacity:.6;}
 figure.drawing svg.plan .ctx2 polyline{fill:none; stroke:var(--ctx2); stroke-width:1; opacity:.55;}
 figure.drawing svg.plan .district polyline{fill:none; stroke:var(--accent); stroke-width:1.6; stroke-dasharray:12 6; opacity:.5;}
@@ -1155,7 +1165,7 @@ body.present .key-hint{display:none}
     <div class="map-step reveal">
       <div class="map-head"><span class="chip">MAP 05</span><b>부지 둘레를 따라간 높이 변화</b><span class="mnote">PROFILE</span></div>
       <figure class="drawing">
-        <svg class="prof" viewBox="0 0 1000 330" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="부지 둘레 표고 종단 — 현황과 계획고"><line class="grid" x1="64" y1="258.8" x2="976" y2="258.8"/><text class="tick" x="54" y="262.8" text-anchor="end">EL 20</text><line class="grid" x1="64" y1="182.5" x2="976" y2="182.5"/><text class="tick" x="54" y="186.5" text-anchor="end">EL 21</text><line class="grid" x1="64" y1="106.3" x2="976" y2="106.3"/><text class="tick" x="54" y="110.3" text-anchor="end">EL 22</text><line class="grid" x1="64" y1="30.0" x2="976" y2="30.0"/><text class="tick" x="54" y="34.0" text-anchor="end">EL 23</text><polyline class="ln gl" points="64.0,246.6 163.0,194.7 381.3,126.1 503.1,129.1 629.3,125.3 976.0,87.2"/><polyline class="ln fh" points="64.0,200.8 163.0,186.3 381.3,160.4 503.1,148.9 629.3,95.6 976.0,53.6"/><circle class="mk gl" cx="64.0" cy="246.6" r="4"/><circle class="mk fh" cx="64.0" cy="200.8" r="4"/><text class="dlab" x="72.0" y="190.8" text-anchor="start">20.76</text><text class="tick" x="64.0" y="294" text-anchor="middle">P2</text><text class="tick sub" x="64.0" y="311" text-anchor="middle">0 m</text><circle class="mk gl" cx="163.0" cy="194.7" r="4"/><circle class="mk fh" cx="163.0" cy="186.3" r="4"/><text class="dlab" x="163.0" y="176.3" text-anchor="middle">20.95</text><text class="tick" x="163.0" y="294" text-anchor="middle">P3</text><text class="tick sub" x="163.0" y="311" text-anchor="middle">4 m</text><circle class="mk gl" cx="381.3" cy="126.1" r="4"/><circle class="mk fh" cx="381.3" cy="160.4" r="4"/><text class="dlab" x="381.3" y="150.4" text-anchor="middle">21.29</text><text class="tick" x="381.3" y="294" text-anchor="middle">P4</text><text class="tick sub" x="381.3" y="311" text-anchor="middle">13 m</text><circle class="mk gl" cx="503.1" cy="129.1" r="4"/><circle class="mk fh" cx="503.1" cy="148.9" r="4"/><text class="dlab" x="503.1" y="138.9" text-anchor="middle">21.44</text><text class="tick" x="503.1" y="294" text-anchor="middle">P5</text><text class="tick sub" x="503.1" y="311" text-anchor="middle">17 m</text><circle class="mk gl" cx="629.3" cy="125.3" r="4"/><circle class="mk fh" cx="629.3" cy="95.6" r="4"/><text class="dlab" x="629.3" y="85.6" text-anchor="middle">22.14</text><text class="tick" x="629.3" y="294" text-anchor="middle">P6</text><text class="tick sub" x="629.3" y="311" text-anchor="middle">22 m</text><circle class="mk gl" cx="976.0" cy="87.2" r="4"/><circle class="mk fh" cx="976.0" cy="53.6" r="4"/><text class="dlab" x="976.0" y="43.6" text-anchor="middle">22.69</text><text class="tick" x="976.0" y="294" text-anchor="middle">P0</text><text class="tick sub" x="976.0" y="311" text-anchor="middle">36 m</text><g class="range"><line class="rg" x1="64" y1="53.6" x2="976" y2="53.6"/><line class="rg" x1="64" y1="200.8" x2="976" y2="200.8"/><line class="ra" x1="110" y1="56.6" x2="110" y2="197.8"/><polygon class="rh" points="110,53.6 104.5,65 115.5,65"/><polygon class="rh" points="110,200.8 104.5,189.4 115.5,189.4"/><rect class="rb" x="122" y="104" width="232" height="50" rx="6"/><text class="rt" x="134" y="126">최고–최저 약 1.9 m</text><text class="rs" x="134" y="145">계획고 22.69(P0) − 20.76(P2) = 1.93 m</text></g><text class="alab" x="520.0" y="326" text-anchor="middle">남동쪽 모서리 P2 → 남측 도로변 → 서측 도로변 → 북서쪽 모서리 P0 (둘레 36 m)</text></svg>
+        <svg class="prof" viewBox="0 0 1190 330" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="부지 둘레 표고 종단 — 현황과 계획고"><line class="grid" x1="64" y1="258.8" x2="976" y2="258.8"/><text class="tick" x="54" y="262.8" text-anchor="end">EL 20</text><line class="grid" x1="64" y1="182.5" x2="976" y2="182.5"/><text class="tick" x="54" y="186.5" text-anchor="end">EL 21</text><line class="grid" x1="64" y1="106.3" x2="976" y2="106.3"/><text class="tick" x="54" y="110.3" text-anchor="end">EL 22</text><line class="grid" x1="64" y1="30.0" x2="976" y2="30.0"/><text class="tick" x="54" y="34.0" text-anchor="end">EL 23</text><polyline class="ln gl" points="64.0,246.6 163.0,194.7 381.3,126.1 503.1,129.1 629.3,125.3 976.0,87.2"/><polyline class="ln fh" points="64.0,200.8 163.0,186.3 381.3,160.4 503.1,148.9 629.3,95.6 976.0,53.6"/><circle class="mk gl" cx="64.0" cy="246.6" r="4"/><circle class="mk fh" cx="64.0" cy="200.8" r="4"/><text class="dlab" x="72.0" y="190.8" text-anchor="start">20.76</text><text class="tick" x="64.0" y="294" text-anchor="middle">P2</text><text class="tick sub" x="64.0" y="311" text-anchor="middle">0 m</text><circle class="mk gl" cx="163.0" cy="194.7" r="4"/><circle class="mk fh" cx="163.0" cy="186.3" r="4"/><text class="dlab" x="163.0" y="176.3" text-anchor="middle">20.95</text><text class="tick" x="163.0" y="294" text-anchor="middle">P3</text><text class="tick sub" x="163.0" y="311" text-anchor="middle">4 m</text><circle class="mk gl" cx="381.3" cy="126.1" r="4"/><circle class="mk fh" cx="381.3" cy="160.4" r="4"/><text class="dlab" x="381.3" y="150.4" text-anchor="middle">21.29</text><text class="tick" x="381.3" y="294" text-anchor="middle">P4</text><text class="tick sub" x="381.3" y="311" text-anchor="middle">13 m</text><circle class="mk gl" cx="503.1" cy="129.1" r="4"/><circle class="mk fh" cx="503.1" cy="148.9" r="4"/><text class="dlab" x="503.1" y="138.9" text-anchor="middle">21.44</text><text class="tick" x="503.1" y="294" text-anchor="middle">P5</text><text class="tick sub" x="503.1" y="311" text-anchor="middle">17 m</text><circle class="mk gl" cx="629.3" cy="125.3" r="4"/><circle class="mk fh" cx="629.3" cy="95.6" r="4"/><text class="dlab" x="629.3" y="85.6" text-anchor="middle">22.14</text><text class="tick" x="629.3" y="294" text-anchor="middle">P6</text><text class="tick sub" x="629.3" y="311" text-anchor="middle">22 m</text><circle class="mk gl" cx="976.0" cy="87.2" r="4"/><circle class="mk fh" cx="976.0" cy="53.6" r="4"/><text class="dlab" x="976.0" y="43.6" text-anchor="middle">22.69</text><text class="tick" x="976.0" y="294" text-anchor="middle">P0</text><text class="tick sub" x="976.0" y="311" text-anchor="middle">36 m</text><g class="range" aria-label="최고–최저 높이 차 약 1.9 m"><line class="rg rg-hi" x1="976" y1="53.6" x2="1032" y2="53.6"/><line class="rg rg-lo" x1="64" y1="200.8" x2="1032" y2="200.8"/><g class="rbar"><line x1="1032" y1="57" x2="1032" y2="197.4"/><polygon points="1032,53.6 1026,65 1038,65"/><polygon points="1032,200.8 1026,189.4 1038,189.4"/></g><text class="rhi" x="1046" y="50">최고 EL 22.69</text><text class="rhs" x="1046" y="66">P0 · 북서 모서리</text><text class="rnum" x="1046" y="138"><tspan class="rn" data-to="1.93">0.00</tspan><tspan class="ru"> m</tspan></text><text class="rcap" x="1046" y="160">높이 차 약 1.9 m</text><text class="rlo" x="1046" y="198">최저 EL 20.76</text><text class="rhs" x="1046" y="214">P2 · 남동 모서리</text></g><text class="alab" x="520.0" y="326" text-anchor="middle">남동쪽 모서리 P2 → 남측 도로변 → 서측 도로변 → 북서쪽 모서리 P0 (둘레 36 m)</text></svg>
         <figcaption><b>부지 둘레를 따라간 높이 변화</b> (남동 P2 → 남측 도로변 → 서측 도로변 → 북서 P0). 붉은 선이 조성 후 도로 계획고, 파란 선이 재개발 전 현황 지반고입니다.</figcaption>
       </figure>
     </div>
@@ -1794,6 +1804,19 @@ document.querySelectorAll('.crit-row').forEach(el=>io.observe(el));
     es.forEach(function(en){en.isIntersecting?en.target._run():en.target._reset()});
   },{threshold:.6});
   els.forEach(function(el){io.observe(el)});
+})();
+
+/* ===== 부지 둘레 높이 그래프 — 최고–최저 높이 차 애니메이션 ===== */
+(function(){
+  var sv=document.querySelector('svg.prof'); if(!sv) return;
+  var num=sv.querySelector('.range .rn'), to=+num.getAttribute('data-to'), raf=0, tm=0;
+  var reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+  function count(){var t0=performance.now(),d=1100;cancelAnimationFrame(raf);
+    (function f(now){var k=Math.min(1,(now-t0)/d),e=1-Math.pow(1-k,3);num.textContent=(to*e).toFixed(2);if(k<1)raf=requestAnimationFrame(f)})(t0);clearTimeout(num._fin);num._fin=setTimeout(function(){num.textContent=to.toFixed(2)},d+80)}
+  function on(){sv.classList.add('on'); if(reduce){num.textContent=to.toFixed(2);return} clearTimeout(tm); tm=setTimeout(count,1200)}
+  function off(){sv.classList.remove('on'); clearTimeout(tm); cancelAnimationFrame(raf); num.textContent='0.00'}
+  if(!('IntersectionObserver' in window)){on();return}
+  new IntersectionObserver(function(es){es.forEach(function(e){if(e.intersectionRatio>=.5)on();else if(!e.isIntersecting)off()})},{threshold:[0,.5]}).observe(sv);
 })();
 
 /* ===== MAP 05 : 평면(2D) → 높낮이(3D) ===== */
