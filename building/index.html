@@ -2038,7 +2038,9 @@ document.addEventListener('DOMContentLoaded',function(){
   var sc=sun.shadow.camera; sc.left=-30;sc.right=30;sc.top=30;sc.bottom=-30;sc.near=1;sc.far=120; sun.shadow.bias=-.0005; scene.add(sun);
   /* 카메라 · 조작 */
   var cam=new T.PerspectiveCamera(32,W/H,.3,500), C3=new T.Vector3(); world.updateMatrixWorld(); C3.copy(world.localToWorld(V(cx,cy,21.4)));
-  var TOP=C3.clone().add(new T.Vector3(0,62,.01)), HOME=C3.clone().add(new T.Vector3(-14,15,30));
+  /* 처음 각도: 북측 경계(P0–P1)와 나란히 남쪽 정면에서 — 수평인 바닥판 모서리는 화면에서도 수평, 기운 땅은 기울어 보임 */
+  var SOUTH=new T.Vector3(0,0,1).applyQuaternion(world.quaternion);
+  var TOP=C3.clone().add(new T.Vector3(0,62,0)).add(SOUTH.clone().multiplyScalar(.01)), HOME=C3.clone().add(SOUTH.clone().multiplyScalar(46)).add(new T.Vector3(0,16,0));
   cam.position.copy(TOP); cam.lookAt(C3);
   var ctl=new T.OrbitControls(cam,R.domElement); ctl.target.copy(C3); ctl.enableDamping=true; ctl.dampingFactor=.09; ctl.enablePan=false; ctl.enableZoom=false;
   if('enableKeys' in ctl) ctl.enableKeys=false; ctl.maxPolarAngle=Math.PI/2-.03; ctl.rotateSpeed=.7; ctl.update();
