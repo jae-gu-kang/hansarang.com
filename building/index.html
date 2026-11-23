@@ -347,6 +347,12 @@ figure.drawing{
   --xwA:#c8331f; --xwB:#1f6f9e; --xwC:#7a4bb5;
 }
 figure.drawing svg.plan, figure.drawing svg.prof{display:block; width:100%; min-width:620px; height:auto;}
+.prof .rg{stroke:#e04300;stroke-width:1;stroke-dasharray:4 4;opacity:.55}
+.prof .ra{stroke:#1b1d20;stroke-width:1.6}
+.prof .rh{fill:#1b1d20}
+.prof .rb{fill:#fff;stroke:#1b1d20;stroke-width:1.2;opacity:.94}
+.prof .rt{font-size:16px;font-weight:800;fill:#1b1d20}
+.prof .rs{font-size:11.5px;fill:#61666d}
 figure.drawing svg.plan .ctx polyline{fill:none; stroke:var(--ctx); stroke-width:1.1; opacity:.6;}
 figure.drawing svg.plan .ctx2 polyline{fill:none; stroke:var(--ctx2); stroke-width:1; opacity:.55;}
 figure.drawing svg.plan .district polyline{fill:none; stroke:var(--accent); stroke-width:1.6; stroke-dasharray:12 6; opacity:.5;}
@@ -575,6 +581,32 @@ table.tbl .dim2{color:var(--grey);font-size:12px}
 .to-row .lb{font-size:10.5px;font-weight:800;letter-spacing:.16em;padding-top:3px}
 .to-row .lb.gain{color:#1f7a45}
 .to-row .lb.cost{color:#c02b2b}
+.to-fig{flex:1;display:flex;flex-direction:column;justify-content:center;margin:6px 20px 8px;padding:10px 12px 8px;background:#fff;border:1px solid #e3e1db}
+.to-fig svg{display:block;width:100%;height:auto;max-height:190px}
+.to-fig figcaption{font-size:11.5px;color:var(--grey);text-align:center;margin-top:4px;line-height:1.5}
+.to-fig .t{font-size:11px;font-weight:800;fill:#111;text-anchor:middle}
+.to-fig .s{font-size:9.5px;font-weight:600;fill:#6F6C66;text-anchor:middle}
+.to-fig .s.w{fill:#fff}
+.to-fig .ok{font-size:10px;font-weight:800;fill:#1f7a45;text-anchor:middle}
+.to-fig .no{font-size:10px;font-weight:800;fill:#c02b2b;text-anchor:middle}
+.to-fig .fl{fill:#F4F1E8;stroke:#111;stroke-width:1}
+.to-fig .hall{fill:#FF4D0022;stroke:#FF4D00;stroke-width:1.6}
+.to-fig .col{stroke:#111;stroke-width:2.4}
+.to-fig .bm{stroke:#111;stroke-width:1.2}
+.to-fig .tr{fill:#c02b2b}
+.to-fig .gl{stroke:#111;stroke-width:1.6}
+.to-fig .car{fill:#fff;stroke:#111;stroke-width:1.2}
+.to-fig .pil{fill:#e6e1d6;stroke:#111;stroke-width:1}
+.to-fig .arr{stroke:#111;stroke-width:1.6;fill:none}
+.to-fig .dim{stroke:#FF4D00;stroke-width:1.2;fill:none}
+.to-fig .pl{fill:#F4F1E8;stroke:#1f7a45;stroke-width:1.8}
+.to-fig .pl.bad{stroke:#c02b2b}
+.to-fig .st{fill:#fff;stroke:#111;stroke-width:1.2}
+.to-fig .st.add{stroke:#c02b2b;stroke-dasharray:3 2}
+.to-fig .lay.a{fill:#111}.to-fig .lay.b{fill:#6F6C66}.to-fig .lay.c{fill:#fff;stroke:#111;stroke-dasharray:4 3}
+.to-fig .base{fill:#dfe9f2;stroke:#0f89a0;stroke-width:1.4}
+.to-fig .drop{fill:#0f89a0}
+
 
 /* ---------- 06 진행 단계 ---------- */
 .b-steps{
@@ -796,7 +828,14 @@ figure.drawing .el-stage svg.el3d{position:absolute;inset:0;width:100%;height:10
 .el3d .cap3{font-size:12.5px;fill:#61666d}
 .el3d .nor line{stroke:#1b1d20;stroke-width:2.2}
 .el3d .nor text{font-size:15px;font-weight:700;fill:#1b1d20;text-anchor:middle;stroke:none}
-.el-toggle{position:absolute;left:10px;top:10px;z-index:2;display:flex;border:1.5px solid #1b1d20;border-radius:999px;overflow:hidden;background:#fff}
+.el-gl{position:absolute;inset:0;z-index:1;opacity:0;pointer-events:none;transition:opacity .6s}
+.el-gl canvas{width:100%!important;height:100%!important;display:block;cursor:grab;touch-action:none}
+.el-gl canvas:active{cursor:grabbing}
+.el-ui{position:absolute;left:10px;bottom:10px;z-index:3;display:none;gap:6px;align-items:center}
+.el-ui button{font:inherit;font-size:13px;font-weight:800;width:30px;height:30px;border-radius:999px;border:1.5px solid #1b1d20;background:rgba(255,255,255,.92);color:#1b1d20;cursor:pointer;line-height:1}
+.el-ui button:hover{background:#1b1d20;color:#fff}
+.el-ui span{font-size:10.5px;font-weight:700;color:#61666d;background:rgba(255,255,255,.88);padding:3px 8px;border-radius:999px}
+.el-toggle{position:absolute;left:10px;top:10px;z-index:4;display:flex;border:1.5px solid #1b1d20;border-radius:999px;overflow:hidden;background:#fff}
 .el-toggle button{font:inherit;font-size:11px;font-weight:700;letter-spacing:.06em;padding:6px 12px;border:0;background:none;color:#1b1d20;cursor:pointer}
 .el-toggle button.on{background:#1b1d20;color:#fff}
 
@@ -1116,7 +1155,7 @@ body.present .key-hint{display:none}
     <div class="map-step reveal">
       <div class="map-head"><span class="chip">MAP 05</span><b>부지 둘레를 따라간 높이 변화</b><span class="mnote">PROFILE</span></div>
       <figure class="drawing">
-        <svg class="prof" viewBox="0 0 1000 330" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="부지 둘레 표고 종단 — 현황과 계획고"><line class="grid" x1="64" y1="258.8" x2="976" y2="258.8"/><text class="tick" x="54" y="262.8" text-anchor="end">EL 20</text><line class="grid" x1="64" y1="182.5" x2="976" y2="182.5"/><text class="tick" x="54" y="186.5" text-anchor="end">EL 21</text><line class="grid" x1="64" y1="106.3" x2="976" y2="106.3"/><text class="tick" x="54" y="110.3" text-anchor="end">EL 22</text><line class="grid" x1="64" y1="30.0" x2="976" y2="30.0"/><text class="tick" x="54" y="34.0" text-anchor="end">EL 23</text><polyline class="ln gl" points="64.0,246.6 163.0,194.7 381.3,126.1 503.1,129.1 629.3,125.3 976.0,87.2"/><polyline class="ln fh" points="64.0,200.8 163.0,186.3 381.3,160.4 503.1,148.9 629.3,95.6 976.0,53.6"/><circle class="mk gl" cx="64.0" cy="246.6" r="4"/><circle class="mk fh" cx="64.0" cy="200.8" r="4"/><text class="dlab" x="72.0" y="190.8" text-anchor="start">20.76</text><text class="tick" x="64.0" y="294" text-anchor="middle">P2</text><text class="tick sub" x="64.0" y="311" text-anchor="middle">0 m</text><circle class="mk gl" cx="163.0" cy="194.7" r="4"/><circle class="mk fh" cx="163.0" cy="186.3" r="4"/><text class="dlab" x="163.0" y="176.3" text-anchor="middle">20.95</text><text class="tick" x="163.0" y="294" text-anchor="middle">P3</text><text class="tick sub" x="163.0" y="311" text-anchor="middle">4 m</text><circle class="mk gl" cx="381.3" cy="126.1" r="4"/><circle class="mk fh" cx="381.3" cy="160.4" r="4"/><text class="dlab" x="381.3" y="150.4" text-anchor="middle">21.29</text><text class="tick" x="381.3" y="294" text-anchor="middle">P4</text><text class="tick sub" x="381.3" y="311" text-anchor="middle">13 m</text><circle class="mk gl" cx="503.1" cy="129.1" r="4"/><circle class="mk fh" cx="503.1" cy="148.9" r="4"/><text class="dlab" x="503.1" y="138.9" text-anchor="middle">21.44</text><text class="tick" x="503.1" y="294" text-anchor="middle">P5</text><text class="tick sub" x="503.1" y="311" text-anchor="middle">17 m</text><circle class="mk gl" cx="629.3" cy="125.3" r="4"/><circle class="mk fh" cx="629.3" cy="95.6" r="4"/><text class="dlab" x="629.3" y="85.6" text-anchor="middle">22.14</text><text class="tick" x="629.3" y="294" text-anchor="middle">P6</text><text class="tick sub" x="629.3" y="311" text-anchor="middle">22 m</text><circle class="mk gl" cx="976.0" cy="87.2" r="4"/><circle class="mk fh" cx="976.0" cy="53.6" r="4"/><text class="dlab" x="976.0" y="43.6" text-anchor="middle">22.69</text><text class="tick" x="976.0" y="294" text-anchor="middle">P0</text><text class="tick sub" x="976.0" y="311" text-anchor="middle">36 m</text><text class="alab" x="520.0" y="326" text-anchor="middle">남동쪽 모서리 P2 → 남측 도로변 → 서측 도로변 → 북서쪽 모서리 P0 (둘레 36 m)</text></svg>
+        <svg class="prof" viewBox="0 0 1000 330" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="부지 둘레 표고 종단 — 현황과 계획고"><line class="grid" x1="64" y1="258.8" x2="976" y2="258.8"/><text class="tick" x="54" y="262.8" text-anchor="end">EL 20</text><line class="grid" x1="64" y1="182.5" x2="976" y2="182.5"/><text class="tick" x="54" y="186.5" text-anchor="end">EL 21</text><line class="grid" x1="64" y1="106.3" x2="976" y2="106.3"/><text class="tick" x="54" y="110.3" text-anchor="end">EL 22</text><line class="grid" x1="64" y1="30.0" x2="976" y2="30.0"/><text class="tick" x="54" y="34.0" text-anchor="end">EL 23</text><polyline class="ln gl" points="64.0,246.6 163.0,194.7 381.3,126.1 503.1,129.1 629.3,125.3 976.0,87.2"/><polyline class="ln fh" points="64.0,200.8 163.0,186.3 381.3,160.4 503.1,148.9 629.3,95.6 976.0,53.6"/><circle class="mk gl" cx="64.0" cy="246.6" r="4"/><circle class="mk fh" cx="64.0" cy="200.8" r="4"/><text class="dlab" x="72.0" y="190.8" text-anchor="start">20.76</text><text class="tick" x="64.0" y="294" text-anchor="middle">P2</text><text class="tick sub" x="64.0" y="311" text-anchor="middle">0 m</text><circle class="mk gl" cx="163.0" cy="194.7" r="4"/><circle class="mk fh" cx="163.0" cy="186.3" r="4"/><text class="dlab" x="163.0" y="176.3" text-anchor="middle">20.95</text><text class="tick" x="163.0" y="294" text-anchor="middle">P3</text><text class="tick sub" x="163.0" y="311" text-anchor="middle">4 m</text><circle class="mk gl" cx="381.3" cy="126.1" r="4"/><circle class="mk fh" cx="381.3" cy="160.4" r="4"/><text class="dlab" x="381.3" y="150.4" text-anchor="middle">21.29</text><text class="tick" x="381.3" y="294" text-anchor="middle">P4</text><text class="tick sub" x="381.3" y="311" text-anchor="middle">13 m</text><circle class="mk gl" cx="503.1" cy="129.1" r="4"/><circle class="mk fh" cx="503.1" cy="148.9" r="4"/><text class="dlab" x="503.1" y="138.9" text-anchor="middle">21.44</text><text class="tick" x="503.1" y="294" text-anchor="middle">P5</text><text class="tick sub" x="503.1" y="311" text-anchor="middle">17 m</text><circle class="mk gl" cx="629.3" cy="125.3" r="4"/><circle class="mk fh" cx="629.3" cy="95.6" r="4"/><text class="dlab" x="629.3" y="85.6" text-anchor="middle">22.14</text><text class="tick" x="629.3" y="294" text-anchor="middle">P6</text><text class="tick sub" x="629.3" y="311" text-anchor="middle">22 m</text><circle class="mk gl" cx="976.0" cy="87.2" r="4"/><circle class="mk fh" cx="976.0" cy="53.6" r="4"/><text class="dlab" x="976.0" y="43.6" text-anchor="middle">22.69</text><text class="tick" x="976.0" y="294" text-anchor="middle">P0</text><text class="tick sub" x="976.0" y="311" text-anchor="middle">36 m</text><g class="range"><line class="rg" x1="64" y1="53.6" x2="976" y2="53.6"/><line class="rg" x1="64" y1="200.8" x2="976" y2="200.8"/><line class="ra" x1="110" y1="56.6" x2="110" y2="197.8"/><polygon class="rh" points="110,53.6 104.5,65 115.5,65"/><polygon class="rh" points="110,200.8 104.5,189.4 115.5,189.4"/><rect class="rb" x="122" y="104" width="232" height="50" rx="6"/><text class="rt" x="134" y="126">최고–최저 약 1.9 m</text><text class="rs" x="134" y="145">계획고 22.69(P0) − 20.76(P2) = 1.93 m</text></g><text class="alab" x="520.0" y="326" text-anchor="middle">남동쪽 모서리 P2 → 남측 도로변 → 서측 도로변 → 북서쪽 모서리 P0 (둘레 36 m)</text></svg>
         <figcaption><b>부지 둘레를 따라간 높이 변화</b> (남동 P2 → 남측 도로변 → 서측 도로변 → 북서 P0). 붉은 선이 조성 후 도로 계획고, 파란 선이 재개발 전 현황 지반고입니다.</figcaption>
       </figure>
     </div>
@@ -1127,11 +1166,11 @@ body.present .key-hint{display:none}
       <div class="map-head"><span class="chip">MAP 05</span><b>땅의 높이 — 서쪽이 약 1.9m 높다</b><span class="mnote">TOPOGRAPHY</span></div>
       <div class="split">
       <figure class="drawing">
-        <div class="el-stage"><svg class="plan" viewBox="0 0 1000 894" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="부지 표고 — 계획고와 현황 지반고"><defs><linearGradient id="elg" gradientUnits="userSpaceOnUse" x1="331" y1="189" x2="663" y2="638"><stop offset="0" stop-color="#d1603d" stop-opacity=".38"/><stop offset="1" stop-color="#3d7bd1" stop-opacity=".38"/></linearGradient><marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="context-stroke"/></marker></defs><g class="ctx"><polyline points="983.2,-539.3 1220.4,-538.8 1524.3,-534.4 1794.5,-532.5 2490.9,-535.6 2588.9,-536.5 2722.1,-533.3 2821.3,-529.3 2889.6,-449.5 2881.1,-166.7 2878.1,-29.5 2867.9,594.1 2800.6,676.1 2589.1,679.2 2374.0,685.6 2154.9,674.1 1500.6,664.4 1336.4,656.1 1128.5,656.1 663.2,637.5 753.2,306.5 983.2,-539.3"/><polyline points="525.7,-497.1 599.8,-547.6 935.1,-539.5 983.2,-539.3 753.2,306.5 330.6,189.5 525.7,-497.1"/><polyline points="330.6,189.5 753.2,306.5 663.2,637.5 579.8,634.1 400.4,593.5 302.1,563.7 250.9,470.5 330.6,189.5"/><polyline points="-1686.0,760.9 -1623.6,535.4 -1475.3,577.8 -971.5,716.3 -646.8,739.7 57.9,935.0 291.9,1005.2 359.4,1020.5 297.9,1246.7 232.1,1231.6 -6.2,1160.1 -686.8,971.6 -1011.3,948.0 -1538.5,803.1 -1686.0,760.9"/><polyline points="343.8,-1986.1 579.1,-1920.8 631.5,-1828.0 13.4,402.9 -79.1,455.4 -314.3,390.1 343.8,-1986.1"/><polyline points="343.8,-1986.1 355.1,-2026.9 631.5,-1950.3 683.8,-1857.6 311.1,-512.0 478.9,-465.4 525.7,-497.1 330.6,189.5 250.9,470.5 302.1,563.7 -79.1,455.4 13.4,402.9 631.5,-1828.0 579.1,-1920.8 343.8,-1986.1"/><polyline points="-509.9,777.6 -646.8,739.6 -955.9,717.3 -971.4,716.2 -1196.6,654.2 -1382.6,603.1 -1475.3,577.6 -1500.1,570.5 -1623.6,535.2 -1686.1,760.8 -1686.1,760.8 -1564.4,795.5 -1538.5,802.9 -1444.7,828.7 -1258.7,879.9 -1011.3,948.0 -972.7,950.7 -686.9,971.4 -572.3,1003.1 -144.6,1121.6 -6.1,1160.0 42.8,1174.3 232.2,1231.6 288.5,1244.4 297.8,1246.5 359.3,1020.4 350.0,1018.3 291.9,1005.2 109.5,950.0 58.0,934.9 -82.1,896.0 -509.9,777.6"/><polyline points="929.9,-343.4 983.2,-539.4 935.1,-539.5 850.8,-541.5 599.8,-547.6 525.6,-497.2 330.7,189.4 527.4,243.9 753.2,306.4 814.4,81.4 839.8,-11.9 929.9,-343.4 929.9,-343.4"/><polyline points="2877.9,-29.5 2880.9,-166.8 2888.2,-406.1 2889.6,-449.6 2821.3,-529.4 2722.0,-533.4 2588.8,-536.6 2490.8,-535.8 2254.4,-535.3 1793.7,-534.5 1598.8,-534.1 1524.3,-534.1 1220.3,-538.8 983.2,-539.4 929.9,-343.4 839.8,-11.9 814.4,81.4 753.2,306.4 671.2,607.9 663.2,637.3 1128.6,656.0 1336.4,656.0 1500.7,664.3 1860.5,669.6 2154.9,674.1 2374.0,685.5 2397.6,684.8 2397.6,684.8 2589.1,679.1 2800.5,676.1 2840.8,626.8 2843.4,623.8 2867.8,594.0 2870.2,443.3 2877.9,-29.5 2877.9,-29.5"/><polyline points="343.8,-1986.1 -49.0,-567.9 -49.0,-567.9 -314.1,389.6 -79.2,455.2"/><polyline points="-314.0,389.6 -79.2,455.2 13.4,402.8 104.5,73.6 169.2,-160.3 243.6,-428.4 269.9,-523.3 325.8,-725.2 378.8,-916.1 463.4,-1221.8 532.1,-1470.1 583.4,-1654.8 631.5,-1828.2 579.1,-1920.8 343.8,-1986.1"/><polyline points="753.2,306.4 527.4,243.9 330.7,189.4 250.9,470.5 302.2,563.7 400.6,593.5 579.7,633.9 663.2,637.3 671.2,607.9 753.2,306.4"/></g><polygon class="lotel" points="330.6,189.5 753.2,306.5 663.2,637.5 579.8,634.1 400.4,593.5 302.1,563.7 250.9,470.5"/><line class="slope" x1="357.4" y1="257.4" x2="606.4" y2="563.8" marker-end="url(#ah)"/><text class="slopelab" text-anchor="middle" x="497.9" y="391.5"><tspan x="497.9" dy="0">서고동저</tspan><tspan x="497.9" dy="18">약 1.9 m ↓</tspan></text><circle class="vtx" cx="330.6" cy="189.5" r="5"/><text class="ellab" text-anchor="middle" x="330.6" y="244.8"><tspan x="330.6" dy="0">EL 22.69</tspan></text><text class="ellab sub" text-anchor="middle" x="330.6" y="268.2"><tspan x="330.6" dy="0">P0 · 현황 22.25</tspan></text><circle class="vtx" cx="753.2" cy="306.5" r="5"/><text class="ellab sub" text-anchor="middle" x="806.4" y="276.7"><tspan x="806.4" dy="0">P1 · 현황 20.31</tspan></text><circle class="vtx" cx="663.2" cy="637.5" r="5"/><text class="ellab" text-anchor="middle" x="710.0" y="680.1"><tspan x="710.0" dy="0">EL 20.76</tspan></text><text class="ellab sub" text-anchor="middle" x="710.0" y="703.5"><tspan x="710.0" dy="0">P2 · 현황 20.16</tspan></text><circle class="vtx" cx="579.8" cy="634.1" r="5"/><text class="ellab" text-anchor="middle" x="588.3" y="689.5"><tspan x="588.3" dy="0">EL 20.95</tspan></text><text class="ellab sub" text-anchor="middle" x="588.3" y="712.9"><tspan x="588.3" dy="0">P3 · 현황 20.84</tspan></text><circle class="vtx" cx="400.4" cy="593.5" r="5"/><text class="ellab" text-anchor="middle" x="391.9" y="648.8"><tspan x="391.9" dy="0">EL 21.29</tspan></text><text class="ellab sub" text-anchor="middle" x="391.9" y="672.2"><tspan x="391.9" dy="0">P4 · 현황 21.74</tspan></text><circle class="vtx" cx="302.1" cy="563.7" r="5"/><text class="ellab" text-anchor="middle" x="255.3" y="610.5"><tspan x="255.3" dy="0">EL 21.44</tspan></text><text class="ellab sub" text-anchor="middle" x="255.3" y="633.9"><tspan x="255.3" dy="0">P5 · 현황 21.70</tspan></text><circle class="vtx" cx="250.9" cy="470.5" r="5"/><text class="ellab" text-anchor="middle" x="182.8" y="462.0"><tspan x="182.8" dy="0">EL 22.14</tspan></text><text class="ellab sub" text-anchor="middle" x="182.8" y="485.4"><tspan x="182.8" dy="0">P6 · 현황 21.75</tspan></text><text class="note tiny" text-anchor="end" x="840.4" y="797.9"><tspan x="840.4" dy="0">EL = 계획고(도로중심선 기준, m)</tspan><tspan x="840.4" dy="18">현황 = 재개발 전 지반고(추정)</tspan></text><g class="north"><line x1="954.0" y1="88" x2="954.0" y2="48"/><polygon points="954.0,40 947.5,54 960.5,54"/><text x="954.0" y="108">N</text></g><g class="scale"><line x1="40" y1="859.6170212765958" x2="252.8" y2="859.6170212765958"/><line x1="40" y1="853.6170212765958" x2="40" y2="865.6170212765958"/><line x1="252.8" y1="853.6170212765958" x2="252.8" y2="865.6170212765958"/><text x="146.4" y="848.6170212765958">10 m</text></g></svg><svg class="plan el3d" viewBox="0 0 1000 894" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"></svg><div class="el-toggle" role="group" aria-label="보기 전환"><button type="button" data-m="0" class="on">① 2D 평면</button><button type="button" data-m="1">② 3D 높이</button><button type="button" data-m="2">③ 바닥 기초</button></div></div>
+        <div class="el-stage"><svg class="plan" viewBox="0 0 1000 894" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="부지 표고 — 계획고와 현황 지반고"><defs><linearGradient id="elg" gradientUnits="userSpaceOnUse" x1="331" y1="189" x2="663" y2="638"><stop offset="0" stop-color="#d1603d" stop-opacity=".38"/><stop offset="1" stop-color="#3d7bd1" stop-opacity=".38"/></linearGradient><marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="context-stroke"/></marker></defs><g class="ctx"><polyline points="983.2,-539.3 1220.4,-538.8 1524.3,-534.4 1794.5,-532.5 2490.9,-535.6 2588.9,-536.5 2722.1,-533.3 2821.3,-529.3 2889.6,-449.5 2881.1,-166.7 2878.1,-29.5 2867.9,594.1 2800.6,676.1 2589.1,679.2 2374.0,685.6 2154.9,674.1 1500.6,664.4 1336.4,656.1 1128.5,656.1 663.2,637.5 753.2,306.5 983.2,-539.3"/><polyline points="525.7,-497.1 599.8,-547.6 935.1,-539.5 983.2,-539.3 753.2,306.5 330.6,189.5 525.7,-497.1"/><polyline points="330.6,189.5 753.2,306.5 663.2,637.5 579.8,634.1 400.4,593.5 302.1,563.7 250.9,470.5 330.6,189.5"/><polyline points="-1686.0,760.9 -1623.6,535.4 -1475.3,577.8 -971.5,716.3 -646.8,739.7 57.9,935.0 291.9,1005.2 359.4,1020.5 297.9,1246.7 232.1,1231.6 -6.2,1160.1 -686.8,971.6 -1011.3,948.0 -1538.5,803.1 -1686.0,760.9"/><polyline points="343.8,-1986.1 579.1,-1920.8 631.5,-1828.0 13.4,402.9 -79.1,455.4 -314.3,390.1 343.8,-1986.1"/><polyline points="343.8,-1986.1 355.1,-2026.9 631.5,-1950.3 683.8,-1857.6 311.1,-512.0 478.9,-465.4 525.7,-497.1 330.6,189.5 250.9,470.5 302.1,563.7 -79.1,455.4 13.4,402.9 631.5,-1828.0 579.1,-1920.8 343.8,-1986.1"/><polyline points="-509.9,777.6 -646.8,739.6 -955.9,717.3 -971.4,716.2 -1196.6,654.2 -1382.6,603.1 -1475.3,577.6 -1500.1,570.5 -1623.6,535.2 -1686.1,760.8 -1686.1,760.8 -1564.4,795.5 -1538.5,802.9 -1444.7,828.7 -1258.7,879.9 -1011.3,948.0 -972.7,950.7 -686.9,971.4 -572.3,1003.1 -144.6,1121.6 -6.1,1160.0 42.8,1174.3 232.2,1231.6 288.5,1244.4 297.8,1246.5 359.3,1020.4 350.0,1018.3 291.9,1005.2 109.5,950.0 58.0,934.9 -82.1,896.0 -509.9,777.6"/><polyline points="929.9,-343.4 983.2,-539.4 935.1,-539.5 850.8,-541.5 599.8,-547.6 525.6,-497.2 330.7,189.4 527.4,243.9 753.2,306.4 814.4,81.4 839.8,-11.9 929.9,-343.4 929.9,-343.4"/><polyline points="2877.9,-29.5 2880.9,-166.8 2888.2,-406.1 2889.6,-449.6 2821.3,-529.4 2722.0,-533.4 2588.8,-536.6 2490.8,-535.8 2254.4,-535.3 1793.7,-534.5 1598.8,-534.1 1524.3,-534.1 1220.3,-538.8 983.2,-539.4 929.9,-343.4 839.8,-11.9 814.4,81.4 753.2,306.4 671.2,607.9 663.2,637.3 1128.6,656.0 1336.4,656.0 1500.7,664.3 1860.5,669.6 2154.9,674.1 2374.0,685.5 2397.6,684.8 2397.6,684.8 2589.1,679.1 2800.5,676.1 2840.8,626.8 2843.4,623.8 2867.8,594.0 2870.2,443.3 2877.9,-29.5 2877.9,-29.5"/><polyline points="343.8,-1986.1 -49.0,-567.9 -49.0,-567.9 -314.1,389.6 -79.2,455.2"/><polyline points="-314.0,389.6 -79.2,455.2 13.4,402.8 104.5,73.6 169.2,-160.3 243.6,-428.4 269.9,-523.3 325.8,-725.2 378.8,-916.1 463.4,-1221.8 532.1,-1470.1 583.4,-1654.8 631.5,-1828.2 579.1,-1920.8 343.8,-1986.1"/><polyline points="753.2,306.4 527.4,243.9 330.7,189.4 250.9,470.5 302.2,563.7 400.6,593.5 579.7,633.9 663.2,637.3 671.2,607.9 753.2,306.4"/></g><polygon class="lotel" points="330.6,189.5 753.2,306.5 663.2,637.5 579.8,634.1 400.4,593.5 302.1,563.7 250.9,470.5"/><line class="slope" x1="357.4" y1="257.4" x2="606.4" y2="563.8" marker-end="url(#ah)"/><text class="slopelab" text-anchor="middle" x="497.9" y="391.5"><tspan x="497.9" dy="0">서고동저</tspan><tspan x="497.9" dy="18">약 1.9 m ↓</tspan></text><circle class="vtx" cx="330.6" cy="189.5" r="5"/><text class="ellab" text-anchor="middle" x="330.6" y="244.8"><tspan x="330.6" dy="0">EL 22.69</tspan></text><text class="ellab sub" text-anchor="middle" x="330.6" y="268.2"><tspan x="330.6" dy="0">P0 · 현황 22.25</tspan></text><circle class="vtx" cx="753.2" cy="306.5" r="5"/><text class="ellab sub" text-anchor="middle" x="806.4" y="276.7"><tspan x="806.4" dy="0">P1 · 현황 20.31</tspan></text><circle class="vtx" cx="663.2" cy="637.5" r="5"/><text class="ellab" text-anchor="middle" x="710.0" y="680.1"><tspan x="710.0" dy="0">EL 20.76</tspan></text><text class="ellab sub" text-anchor="middle" x="710.0" y="703.5"><tspan x="710.0" dy="0">P2 · 현황 20.16</tspan></text><circle class="vtx" cx="579.8" cy="634.1" r="5"/><text class="ellab" text-anchor="middle" x="588.3" y="689.5"><tspan x="588.3" dy="0">EL 20.95</tspan></text><text class="ellab sub" text-anchor="middle" x="588.3" y="712.9"><tspan x="588.3" dy="0">P3 · 현황 20.84</tspan></text><circle class="vtx" cx="400.4" cy="593.5" r="5"/><text class="ellab" text-anchor="middle" x="391.9" y="648.8"><tspan x="391.9" dy="0">EL 21.29</tspan></text><text class="ellab sub" text-anchor="middle" x="391.9" y="672.2"><tspan x="391.9" dy="0">P4 · 현황 21.74</tspan></text><circle class="vtx" cx="302.1" cy="563.7" r="5"/><text class="ellab" text-anchor="middle" x="255.3" y="610.5"><tspan x="255.3" dy="0">EL 21.44</tspan></text><text class="ellab sub" text-anchor="middle" x="255.3" y="633.9"><tspan x="255.3" dy="0">P5 · 현황 21.70</tspan></text><circle class="vtx" cx="250.9" cy="470.5" r="5"/><text class="ellab" text-anchor="middle" x="182.8" y="462.0"><tspan x="182.8" dy="0">EL 22.14</tspan></text><text class="ellab sub" text-anchor="middle" x="182.8" y="485.4"><tspan x="182.8" dy="0">P6 · 현황 21.75</tspan></text><text class="note tiny" text-anchor="end" x="840.4" y="797.9"><tspan x="840.4" dy="0">EL = 계획고(도로중심선 기준, m)</tspan><tspan x="840.4" dy="18">현황 = 재개발 전 지반고(추정)</tspan></text><g class="north"><line x1="954.0" y1="88" x2="954.0" y2="48"/><polygon points="954.0,40 947.5,54 960.5,54"/><text x="954.0" y="108">N</text></g><g class="scale"><line x1="40" y1="859.6170212765958" x2="252.8" y2="859.6170212765958"/><line x1="40" y1="853.6170212765958" x2="40" y2="865.6170212765958"/><line x1="252.8" y1="853.6170212765958" x2="252.8" y2="865.6170212765958"/><text x="146.4" y="848.6170212765958">10 m</text></g></svg><svg class="plan el3d" viewBox="0 0 1000 894" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"></svg><div class="el-toggle" role="group" aria-label="보기 전환"><button type="button" data-m="0" class="on">① 2D 평면</button><button type="button" data-m="1">② 3D 지형</button><button type="button" data-m="2">③ 바닥 기초</button></div></div>
       </figure>
       <div class="side">
       <p class="map-cap">조성공사 후 부지 주변 도로의 계획 높이(계획고)는 <b>서쪽 모서리 EL 22.7m → 동쪽 모서리 EL 20.8m</b>로, 부지를 따라 <b>약 1.9m — 한 층 높이의 절반 이상</b> 내려갑니다. 1층 바닥을 어느 높이에 맞출지, 경사를 이용해 주차장 진입을 어느 쪽에서 받을지가 설계 초기의 핵심 결정 사항입니다.</p>
-        <p class="fig-note"><b>모서리별 도로 계획고(EL)와 재개발 전 현황 지반고.</b> 색이 붉을수록 높고 푸를수록 낮습니다. P1(동북 모서리)은 도로에 접하지 않아 계획고가 없습니다. <b>① 2D → ② 3D → ③ 바닥 기초</b> 순서로 보여 줍니다(버튼으로 다시 보기). 높이는 과장 없이 실제 비율로 그렸고, P1은 나머지 여섯 점의 경사면으로 추정한 값(약 21.66m)입니다. ③은 1층 바닥을 서측 차량 출입구 높이 EL 22.35에 맞춰 대지 경계까지 평평하게 올렸을 때 모서리마다 기초가 얼마나 올라오는지를, 남·서측 도로(계획고)와 주변 땅 높이(일곱 모서리의 경사면으로 추정)와 함께 보여 줍니다.</p>
+        <p class="fig-note"><b>모서리별 도로 계획고(EL)와 재개발 전 현황 지반고.</b> 색이 붉을수록 높고 푸를수록 낮습니다. P1(동북 모서리)은 도로에 접하지 않아 계획고가 없습니다. <b>① 2D → ② 3D 지형 → ③ 바닥 기초</b> 순서로 보여 주며, 3D는 <b>마우스로 끌어 돌려볼 수 있습니다</b>(＋/－ 확대, ⟲ 처음 각도). 남측 인도에 <b>키 160 cm 성인 여성</b>을 세워 기초 높이를 비교할 수 있게 했습니다. 높이는 과장 없이 실제 비율로 그렸고, P1은 나머지 여섯 점의 경사면으로 추정한 값(약 21.66m)입니다. ③은 1층 바닥을 서측 차량 출입구 높이 EL 22.35에 맞춰 대지 경계까지 평평하게 올렸을 때 모서리마다 기초가 얼마나 올라오는지를, 남·서측 도로(계획고)와 주변 땅 높이(일곱 모서리의 경사면으로 추정)와 함께 보여 줍니다.</p>
       <div class="note-grid">
         <div class="note-cell"><b>절토·성토는 <em>크지 않음</em></b><p>계획고와 현황 지반의 차이는 −0.45 ~ +0.60m 범위로, 부지 일대가 기존 지형과 큰 단차 없이 조성됩니다.</p></div>
         <div class="note-cell"><b>바닥 기초는 <em>동·남측을 올림</em></b><p>1층 바닥을 서측 차량 출입구 도로 높이(EL 22.35)로 통일하고 대지 경계까지 평평하게 하면, 낮은 동·남측은 기초를 올려야 합니다 — 동남 모서리 P2에서 약 1.6m, 남측 도로변 0.9~1.4m. 그래야 남측 마당에도 차를 댈 수 있고, 남측 인도에서는 외부계단(6~8단)으로 오릅니다. 높은 북서 모서리 P0만 약 0.3m 깎습니다.</p></div>
@@ -1218,18 +1257,21 @@ body.present .key-hint{display:none}
       <div class="to-card reveal">
         <div class="th"><span class="no">ISSUE 01</span><b>본당 — 왜 맨 위층인가</b></div>
         <p class="pick">기둥 없는 넓은 예배 공간은 <b>최상층에 둘 때 가장 경제적</b>입니다. 아래층에 두면 그 위 모든 층의 무게를 받아줄 전이 구조가 따로 필요해 공사비가 크게 늘어납니다.</p>
+        <figure class="to-fig"><svg viewBox="0 0 320 150" role="img" aria-label="본당을 맨 위에 두면 위층 무게를 받는 전이보가 필요 없습니다"><defs><marker id="tfa" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#111"/></marker></defs><text class="t" x="80" y="14">본당을 맨 위에 ✓</text><rect class="fl" x="30" y="112" width="100" height="16"/><rect class="fl" x="30" y="96" width="100" height="16"/><rect class="fl" x="30" y="80" width="100" height="16"/><rect class="fl" x="30" y="64" width="100" height="16"/><rect class="hall" x="30" y="32" width="100" height="32"/><text class="s" x="80" y="52">무주 본당</text><line class="col" x1="34" y1="64" x2="34" y2="128"/><line class="col" x1="64" y1="64" x2="64" y2="128"/><line class="col" x1="96" y1="64" x2="96" y2="128"/><line class="col" x1="126" y1="64" x2="126" y2="128"/><text class="t" x="240" y="14">본당을 아래에 ✗</text><rect class="fl" x="190" y="80" width="100" height="16"/><rect class="fl" x="190" y="64" width="100" height="16"/><rect class="fl" x="190" y="48" width="100" height="16"/><rect class="fl" x="190" y="32" width="100" height="16"/><rect class="hall" x="190" y="96" width="100" height="32"/><text class="s" x="240" y="116">본당</text><line class="col" x1="194" y1="32" x2="194" y2="92"/><line class="col" x1="224" y1="32" x2="224" y2="92"/><line class="col" x1="256" y1="32" x2="256" y2="92"/><line class="col" x1="286" y1="32" x2="286" y2="92"/><rect class="tr" x="186" y="90" width="108" height="7"/><text class="no" x="240" y="146">위층 기둥을 받는 전이보 → 공사비↑</text><line class="gl" x1="20" y1="128" x2="300" y2="128"/></svg><figcaption>본당을 맨 위에 두면 위층 무게를 받는 전이보가 필요 없습니다</figcaption></figure>
         <div class="to-row"><span class="lb gain">얻는 것</span><span>전이 구조 없는 경제적인 무주 대공간, 최상층의 높은 층고와 빛</span></div>
         <div class="to-row"><span class="lb cost">감수하는 것</span><span>5층까지의 수직 동선 — 예배 후 인원 이동을 계단·승강기 계획으로 보완</span></div>
       </div>
       <div class="to-card reveal">
         <div class="th"><span class="no">ISSUE 02</span><b>주차 — 조례가 연면적을 정한다</b></div>
         <p class="pick">고양시 주차 조례는 일반 기준(시설면적 150㎡당 1대)의 <b>두 배인 75㎡당 1대</b>를 요구합니다. 주차 10대를 확보해야 연면적 약 230평을 지을 수 있습니다.</p>
+        <figure class="to-fig"><svg viewBox="0 0 320 150" role="img" aria-label="주차 10대(75㎡당 1대)가 지을 수 있는 연면적을 정합니다"><text class="t" x="80" y="20">1층 필로티 주차 10대</text><rect class="car" x="22" y="40" width="20" height="34" rx="3"/><rect class="car" x="46" y="40" width="20" height="34" rx="3"/><rect class="car" x="70" y="40" width="20" height="34" rx="3"/><rect class="car" x="94" y="40" width="20" height="34" rx="3"/><rect class="car" x="118" y="40" width="20" height="34" rx="3"/><rect class="car" x="22" y="82" width="20" height="34" rx="3"/><rect class="car" x="46" y="82" width="20" height="34" rx="3"/><rect class="car" x="70" y="82" width="20" height="34" rx="3"/><rect class="car" x="94" y="82" width="20" height="34" rx="3"/><rect class="car" x="118" y="82" width="20" height="34" rx="3"/><path class="arr" d="M150 80 H192" marker-end="url(#tfa)"/><rect class="fl" x="205" y="113" width="90" height="17"/><rect class="fl" x="205" y="96" width="90" height="17"/><rect class="fl" x="205" y="79" width="90" height="17"/><rect class="fl" x="205" y="62" width="90" height="17"/><rect class="fl" x="205" y="45" width="90" height="17"/><rect class="pil" x="205" y="113" width="90" height="17"/><text class="t" x="250" y="20">연면적 ≈ 230평</text><text class="s" x="171" y="72">75㎡당 1대</text><line class="gl" x1="200" y1="130" x2="300" y2="130"/></svg><figcaption>주차 10대(75㎡당 1대)가 지을 수 있는 연면적을 정합니다</figcaption></figure>
         <div class="to-row"><span class="lb gain">얻는 것</span><span>연면적 230–250평 — 본당·다음세대·친교 공간을 담을 규모</span></div>
         <div class="to-row"><span class="lb cost">감수하는 것</span><span>1층 대부분을 필로티 주차로 내어줌 — 1층의 표정은 설계자와 함께 풀 과제입니다</span></div>
       </div>
       <div class="to-card reveal">
         <div class="th"><span class="no">ISSUE 03</span><b>구조 — 그리드와 모듈 층고</b></div>
         <p class="pick">기둥과 보를 일정한 간격으로 세우고 층고를 거푸집 규격에 맞춰 통일하면 <b>시공이 단순</b>해집니다. 같은 예산으로 더 튼튼하게, 더 빠르게 짓는 방법입니다.</p>
+        <figure class="to-fig"><svg viewBox="0 0 320 150" role="img" aria-label="기둥 간격과 층고를 통일하면 거푸집을 반복해 쓸 수 있습니다"><line class="col" x1="60" y1="30" x2="60" y2="130"/><line class="col" x1="120" y1="30" x2="120" y2="130"/><line class="col" x1="180" y1="30" x2="180" y2="130"/><line class="col" x1="240" y1="30" x2="240" y2="130"/><line class="bm" x1="50" y1="30" x2="250" y2="30"/><line class="bm" x1="50" y1="55" x2="250" y2="55"/><line class="bm" x1="50" y1="80" x2="250" y2="80"/><line class="bm" x1="50" y1="105" x2="250" y2="105"/><line class="bm" x1="50" y1="130" x2="250" y2="130"/><text class="t" x="150" y="18">같은 간격 · 같은 층고</text><path class="dim" d="M60 140 H120"/><text class="s" x="90" y="149">일정한 기둥 간격</text><path class="dim" d="M262 55 V80"/><text class="s" x="290" y="71">층고 3.6</text><text class="s" x="290" y="96">반복</text></svg><figcaption>기둥 간격과 층고를 통일하면 거푸집을 반복해 쓸 수 있습니다</figcaption></figure>
         <div class="to-row"><span class="lb gain">얻는 것</span><span>공사비 절감 · 공기 단축 · 시공 품질의 안정</span></div>
         <div class="to-row"><span class="lb cost">감수하는 것</span><span>자유로운 형태의 제약 — 조형성은 재료와 디테일로 풀어야 합니다</span></div>
       </div>
@@ -1240,18 +1282,21 @@ body.present .key-hint{display:none}
       <div class="to-card reveal">
         <div class="th"><span class="no">ISSUE 04</span><b>소방·피난 — 한 층 200㎡를 넘을 수 없는 이유</b></div>
         <p class="pick">지하든 지상이든 한 층의 바닥면적이 <b>200㎡(약 60평)</b>를 넘으면 종교시설은 직통계단을 하나 더, 즉 <b>비상계단 2개소</b>를 두어야 합니다(건축법 시행령 34조②). 이 땅에는 계단을 하나 더 넣을 자리가 없으므로, <b>모든 층은 200㎡ 이내</b>로 짜야 합니다. 이것이 층별 평면의 상한입니다.</p>
+        <figure class="to-fig"><svg viewBox="0 0 320 150" role="img" aria-label="한 층 200㎡를 넘으면 비상계단이 하나 더 필요합니다"><rect class="pl" x="22" y="32" width="110" height="84"/><rect class="st" x="104" y="32" width="28" height="40"/><text class="s" x="118" y="56">계단</text><text class="t" x="77" y="20">≤ 200㎡ → 계단 1개 ✓</text><text class="ok" x="77" y="134">이 땅의 모든 층</text><rect class="pl bad" x="178" y="32" width="124" height="84"/><rect class="st" x="274" y="32" width="28" height="40"/><rect class="st add" x="178" y="76" width="28" height="40"/><text class="s" x="192" y="100">계단</text><text class="t" x="240" y="20">200㎡ 초과 → 계단 2개</text><text class="no" x="240" y="134">둘째 계단 놓을 자리 없음</text></svg><figcaption>한 층 200㎡를 넘으면 비상계단이 하나 더 필요합니다</figcaption></figure>
         <div class="to-row"><span class="lb gain">얻는 것</span><span>직통계단 1개소 — 코어가 작아져 본당·교육실의 유효면적을 지킴</span></div>
         <div class="to-row"><span class="lb cost">감수하는 것</span><span>층당 200㎡ 상한 — 대예배실도 코어 포함 60평 안에서, 필요한 면적은 층수로 해결</span></div>
       </div>
       <div class="to-card reveal">
         <div class="th"><span class="no">ISSUE 05</span><b>공사비 — 구조체 먼저, 마감은 다음에</b></div>
         <p class="pick">최근 건축비가 크게 올랐습니다. 우리는 <b>나중에 바꾸기 어려운 구조체</b>(구조·방수·단열)에 먼저 가치를 두고, 리모델링으로 개선할 수 있는 마감은 다음 순서에 두었습니다.</p>
+        <figure class="to-fig"><svg viewBox="0 0 320 150" role="img" aria-label="예산은 구조체 → 방수·단열 → 마감 순서로 씁니다"><text class="t" x="160" y="16">나중에 바꾸기 어려운 것부터</text><rect class="lay a" x="40" y="96" width="240" height="22"/><text class="s w" x="160" y="111">구조체 — 기둥·보·슬래브</text><rect class="lay b" x="40" y="72" width="240" height="22"/><text class="s w" x="160" y="87">방수 · 단열</text><rect class="lay c" x="40" y="48" width="240" height="22"/><text class="s" x="160" y="63">마감 — 입당 후 단계적으로 개선</text><text class="ok" x="40" y="138" style="text-anchor:start">먼저 · 단단하게</text><text class="no" x="280" y="138" style="text-anchor:end">나중 · 고칠 수 있게</text></svg><figcaption>예산은 구조체 → 방수·단열 → 마감 순서로 씁니다</figcaption></figure>
         <div class="to-row"><span class="lb gain">얻는 것</span><span>예산 20억 내외 안에서의 장기 건전성 — 건축 헌금에 매달리지 않는 교회</span></div>
         <div class="to-row"><span class="lb cost">감수하는 것</span><span>입당 시점의 화려함 — 마감은 입당 후 단계적으로 개선합니다. 옥상도 설비·법정 조경이 우선입니다</span></div>
       </div>
       <div class="to-card reveal">
         <div class="th"><span class="no">ISSUE 06</span><b>지하 — 가급적 지양하는 방향</b></div>
         <p class="pick">지하는 방수·습기 문제로 <b>건전성을 지키기 가장 어려운 공간</b>이고, 용적률에는 안 잡히지만 주차 대수를 산정하는 면적에는 포함되어 지상 가용 면적을 깎아 먹습니다. 다만 <b>필요한 경우에는 고려할 수 있습니다.</b></p>
+        <figure class="to-fig"><svg viewBox="0 0 320 150" role="img" aria-label="지하는 방수 하자 위험이 크고, 주차 산정 면적에도 들어갑니다"><line class="gl" x1="20" y1="70" x2="300" y2="70"/><text class="s" x="290" y="64" style="text-anchor:end">지면</text><rect class="fl" x="110" y="54" width="100" height="16"/><rect class="fl" x="110" y="38" width="100" height="16"/><rect class="fl" x="110" y="22" width="100" height="16"/><rect class="base" x="110" y="74" width="100" height="40"/><text class="s" x="160" y="98">지하층</text><path class="drop" d="M52 98 q4 6 0 9 q-4 -3 0 -9z"/><path class="drop" d="M78 112 q4 6 0 9 q-4 -3 0 -9z"/><path class="drop" d="M232 104 q4 6 0 9 q-4 -3 0 -9z"/><path class="drop" d="M258 92 q4 6 0 9 q-4 -3 0 -9z"/><path class="drop" d="M150 120 q4 6 0 9 q-4 -3 0 -9z"/><text class="no" x="160" y="138">물 · 습기 — 하자 위험</text><text class="t" x="160" y="14">지하 면적도 주차 산정에 포함</text></svg><figcaption>지하는 방수 하자 위험이 크고, 주차 산정 면적에도 들어갑니다</figcaption></figure>
         <div class="to-row"><span class="lb gain">얻는 것</span><span>방수 하자 위험 최소화 · 지상 연면적 확보</span></div>
         <div class="to-row"><span class="lb cost">감수하는 것</span><span>지하 공간의 활용 — 필요한 경우 지수판 등 방수 대책과 함께 고려 가능</span></div>
       </div>
@@ -1752,7 +1797,7 @@ document.querySelectorAll('.crit-row').forEach(el=>io.observe(el));
 })();
 
 /* ===== MAP 05 : 평면(2D) → 높낮이(3D) ===== */
-(function(){
+window.__elOld=function(){
   var st=document.querySelector('.el-stage'); if(!st) return;
   var flat=st.querySelector('svg:not(.el3d)'),ov=st.querySelector('svg.el3d'),btns=st.querySelectorAll('.el-toggle button');
   var reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
@@ -1864,7 +1909,145 @@ document.querySelectorAll('.crit-row').forEach(el=>io.observe(el));
     else if(!en.isIntersecting){clearTimeout(tm);cancelAnimationFrame(raf);manual=false;t=0;u=0;render(0,0);mark(0)}
   })},{threshold:[0,.55]}).observe(st);
   render(0,0);
-})();
+};
+
+/* ===== MAP 05 : 마우스로 돌려보는 지형 3D (three.js) — ① 2D → ② 3D 지형 → ③ 바닥 기초 · 160 cm 사람 ===== */
+document.addEventListener('DOMContentLoaded',function(){
+  var st=document.querySelector('.el-stage'); if(!st) return;
+  function glOK(){try{var c=document.createElement('canvas');return !!(window.WebGLRenderingContext&&(c.getContext('webgl')||c.getContext('experimental-webgl')))}catch(e){return false}}
+  if(!window.THREE||!THREE.OrbitControls||!glOK()){window.__elOld&&window.__elOld();return}
+  var T=THREE, flat=st.querySelector('svg:not(.el3d)'), btns=st.querySelectorAll('.el-toggle button');
+  var reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+  /* 대지 (도면 좌표: x 동, y 남, m) · 모서리 계획고 EL (P1 추정) · 1F 바닥 = 서측 차량 출입구 도로 높이 */
+  var SITE=[[0,0],[20.608,0],[20.684,16.125],[16.863,17.017],[8.229,17.426],[3.403,17.31],[-0.088,13.732]];
+  var EL=[22.69,21.66,20.76,20.95,21.29,21.44,22.14], FL=22.35, Z0=20.0, BASE=20.2, n=7;
+  var ROADS=[2,3,4,5,6];                                   /* 경계 i→i+1 이 도로 */
+  var cx=0,cy=0; SITE.forEach(function(p){cx+=p[0]/n;cy+=p[1]/n});
+  var PL=(function(){var a=[[0,0,0],[0,0,0],[0,0,0]],b=[0,0,0];SITE.forEach(function(p,i){var r=[p[0],p[1],1];for(var m=0;m<3;m++){for(var k=0;k<3;k++)a[m][k]+=r[m]*r[k];b[m]+=r[m]*EL[i]}});
+    for(var c=0;c<3;c++)for(var r2=c+1;r2<3;r2++){var f=a[r2][c]/a[c][c];for(var k2=c;k2<3;k2++)a[r2][k2]-=f*a[c][k2];b[r2]-=f*b[c]}
+    var x=[0,0,0];for(var i2=2;i2>=0;i2--){var sm=b[i2];for(var j2=i2+1;j2<3;j2++)sm-=a[i2][j2]*x[j2];x[i2]=sm/a[i2][i2]}return x})();
+  var ELC=PL[0]*cx+PL[1]*cy+PL[2];
+  function Y(el){return el-Z0}
+  function V(x,y,el){return new T.Vector3(x,Y(el),y)}
+  function col(v){var k=Math.max(0,Math.min(1,(v-20.76)/(22.69-20.76))),lo=[61,123,209],hi=[209,96,61];
+    return new T.Color().setRGB.apply(new T.Color(),lo.map(function(c,i){return (255+(c+(hi[i]-c)*k-255)*.5)/255}))}
+  /* 캔버스 */
+  var box=document.createElement('div'); box.className='el-gl'; st.appendChild(box);
+  var ui=document.createElement('div'); ui.className='el-ui';
+  ui.innerHTML='<button type="button" data-a="in" title="확대">＋</button><button type="button" data-a="out" title="축소">－</button><button type="button" data-a="home" title="처음 각도">⟲</button><span>드래그해서 돌려보기</span>';
+  st.appendChild(ui);
+  var W=st.clientWidth||900,H=st.clientHeight||800;
+  var R=new T.WebGLRenderer({antialias:true}); R.setPixelRatio(Math.min(2,window.devicePixelRatio||1)); R.setSize(W,H,false);
+  R.setClearColor(0xffffff,1); R.shadowMap.enabled=true; R.shadowMap.type=T.PCFSoftShadowMap; box.appendChild(R.domElement);
+  var scene=new T.Scene(), world=new T.Group(); world.rotation.y=-15.479*Math.PI/180; scene.add(world);   /* 도면 북 → 진북 */
+  function geo(pos,idx,cols){var g=new T.BufferGeometry();g.setAttribute('position',new T.Float32BufferAttribute(pos,3));if(cols)g.setAttribute('color',new T.Float32BufferAttribute(cols,3));g.setIndex(idx);g.computeVertexNormals();return g}
+  function add(g,m,cast){var me=new T.Mesh(g,m);me.castShadow=cast!==false;me.receiveShadow=true;world.add(me);return me}
+  var M_SOIL=new T.MeshLambertMaterial({vertexColors:true,side:T.DoubleSide});
+  var M_SIDE=new T.MeshLambertMaterial({vertexColors:true,side:T.DoubleSide});
+  var M_CONC=new T.MeshLambertMaterial({color:0xbdb7ac,side:T.DoubleSide,transparent:true,opacity:1});
+  var M_SLAB=new T.MeshLambertMaterial({color:0xece9e2,side:T.DoubleSide,transparent:true,opacity:0});
+  var M_ROAD=new T.MeshLambertMaterial({color:0xcfccc5,side:T.DoubleSide}), M_NEI=new T.MeshLambertMaterial({color:0xe7e4dd,side:T.DoubleSide}), M_SK=new T.MeshLambertMaterial({color:0xb9b4aa,side:T.DoubleSide});
+  var EDGE=new T.LineBasicMaterial({color:0x6b665d}), OLD=new T.LineDashedMaterial({color:0xe04300,dashSize:.35,gapSize:.25});
+  /* 바닥 */
+  var gp=new T.Mesh(new T.PlaneGeometry(400,400),new T.MeshLambertMaterial({color:0xf6f5f1})); gp.rotation.x=-Math.PI/2; gp.position.y=Y(BASE)-.02; gp.receiveShadow=true; scene.add(gp);
+  /* 둘레 6 m 띠: 남·서측은 도로(경계 계획고), 북·동측은 이웃 땅(모서리 높이) — 마이터 이음 */
+  var Wd=6, ns=[];
+  for(var i=0;i<n;i++){var a=SITE[i],b=SITE[(i+1)%n],dx=b[0]-a[0],dy=b[1]-a[1],L=Math.hypot(dx,dy),nx=dy/L,ny=-dx/L;
+    if(((a[0]+b[0])/2-cx)*nx+((a[1]+b[1])/2-cy)*ny<0){nx=-nx;ny=-ny} ns.push([nx,ny])}
+  var OUT=SITE.map(function(p,i){var A=ns[(i+n-1)%n],B=ns[i],mx=A[0]+B[0],my=A[1]+B[1],L=Math.hypot(mx,my);mx/=L;my/=L;var k=1/Math.max(.5,mx*B[0]+my*B[1]);return [p[0]+mx*k*Wd,p[1]+my*k*Wd]});
+  for(i=0;i<n;i++){var j=(i+1)%n,pa=SITE[i],pb=SITE[j],oa=OUT[i],ob=OUT[j],ea=EL[i],eb=EL[j],road=ROADS.indexOf(i)>=0;
+    var pos=[pa[0],Y(ea),pa[1], pb[0],Y(eb),pb[1], ob[0],Y(eb),ob[1], oa[0],Y(ea),oa[1]];
+    add(geo(pos,[0,2,1,0,3,2]),road?M_ROAD:M_NEI);
+    add(geo([oa[0],Y(ea),oa[1], ob[0],Y(eb),ob[1], ob[0],Y(BASE),ob[1], oa[0],Y(BASE),oa[1]],[0,1,2,0,2,3]),M_SK);
+  }
+  /* 대지 흙 덩어리: 윗면(부채꼴, 높이 색) + 옆면 — ③에서 P0처럼 바닥보다 높은 곳은 깎임 */
+  var top=[cx,Y(ELC),cy], tc=col(ELC).toArray(), tidx=[];
+  SITE.forEach(function(p,i){top.push(p[0],Y(EL[i]),p[1]); tc=tc.concat(col(EL[i]).toArray())});
+  for(i=0;i<n;i++) tidx.push(0,1+((i+1)%n),1+i);
+  var soil=add(geo(top.slice(),tidx,tc),M_SOIL);
+  var spos=[],sidx=[],scol=[];
+  for(i=0;i<n;i++){j=(i+1)%n;var o=spos.length/3,pa2=SITE[i],pb2=SITE[j];
+    spos.push(pa2[0],Y(EL[i]),pa2[1], pb2[0],Y(EL[j]),pb2[1], pb2[0],Y(BASE),pb2[1], pa2[0],Y(BASE),pa2[1]);
+    var c1=col(EL[i]).multiplyScalar(.86).toArray(),c2=col(EL[j]).multiplyScalar(.86).toArray(); scol=scol.concat(c1,c2,c2,c1); sidx.push(o,o+1,o+2,o,o+2,o+3)}
+  var side=add(geo(spos.slice(),sidx,scol),M_SIDE);
+  /* 기초(콘크리트 옹벽) · 바닥판 */
+  var cpos=new Float32Array(n*4*3), cidx=[]; for(i=0;i<n;i++) cidx.push(i*4,i*4+1,i*4+2,i*4,i*4+2,i*4+3);
+  var cg=new T.BufferGeometry(); cg.setAttribute('position',new T.BufferAttribute(cpos,3)); cg.setIndex(cidx); var conc=add(cg,M_CONC);
+  var slabShape=new T.Shape(); SITE.forEach(function(p,k){k?slabShape.lineTo(p[0],-p[1]):slabShape.moveTo(p[0],-p[1])});
+  var sg=new T.ShapeGeometry(slabShape); sg.rotateX(-Math.PI/2); var slab=add(sg,M_SLAB,false); slab.position.y=Y(FL)+.005;
+  var rimG=new T.BufferGeometry().setFromPoints(SITE.concat([SITE[0]]).map(function(p,k){return V(p[0],p[1],EL[k%n])})); var rim=new T.Line(rimG,EDGE); world.add(rim);
+  var oldG=new T.BufferGeometry().setFromPoints(SITE.concat([SITE[0]]).map(function(p,k){return V(p[0],p[1],EL[k%n]+.01)})); var old=new T.Line(oldG,OLD); old.computeLineDistances(); old.visible=false; world.add(old);
+  /* 글자 표지 (스프라이트) */
+  function label(txt,sub,scale){var c=document.createElement('canvas'),g=c.getContext('2d');c.width=512;c.height=160;
+    g.font='800 54px Pretendard, "Apple SD Gothic Neo", sans-serif';g.textAlign='center';g.lineWidth=10;g.strokeStyle='rgba(255,255,255,.95)';g.fillStyle='#1b1d20';
+    g.strokeText(txt,256,72);g.fillText(txt,256,72);
+    if(sub){g.font='600 36px Pretendard, "Apple SD Gothic Neo", sans-serif';g.fillStyle='#61666d';g.strokeText(sub,256,128);g.fillText(sub,256,128)}
+    var t=new T.CanvasTexture(c);t.minFilter=T.LinearFilter;var sp=new T.Sprite(new T.SpriteMaterial({map:t,transparent:true,depthTest:false}));
+    sp.scale.set(2.3*(scale||1),.72*(scale||1),1);sp.renderOrder=10;world.add(sp);return sp}
+  var LA=[],LB=[];
+  SITE.forEach(function(p,i){var d=FL-EL[i];
+    var a=label((i===1?'≈ ':'EL ')+EL[i].toFixed(2),'P'+i+(i===1?' · 추정':'')); a.position.copy(V(p[0],p[1],EL[i]+.8)); LA.push(a);
+    var b=label(d>=0?'기초 +'+d.toFixed(2)+' m':'절토 −'+(-d).toFixed(2)+' m','P'+i+' · 지반 '+EL[i].toFixed(2)); b.position.copy(V(p[0],p[1],FL+.8)); b.material.opacity=0; LB.push(b)});
+  var lfl=label('1F 바닥판 EL 22.35','= 서측 차량 출입구 높이',1.25); lfl.position.copy(V(cx,cy-3,FL+.9)); lfl.material.opacity=0;
+  /* 160 cm 성인 여성 (남측 인도, P2–P3 사이 경계 바깥 1 m) */
+  var person=new T.Group(), PM=new T.MeshLambertMaterial({color:0x3a3835});
+  function pc(rt,rb,h,y,x){var m=new T.Mesh(new T.CylinderGeometry(rt,rb,h,14),PM);m.position.set(x||0,y,0);m.castShadow=true;person.add(m);return m}
+  pc(.055,.05,.78,.39,-.07); pc(.055,.05,.78,.39,.07);        /* 다리 0~0.78 */
+  pc(.15,.24,.55,.98);                                          /* 치마 0.70~1.25 */
+  pc(.13,.15,.2,1.33);                                          /* 상체 */
+  var hd=new T.Mesh(new T.SphereGeometry(.105,18,14),PM); hd.position.y=1.495; hd.castShadow=true; person.add(hd);   /* 머리 꼭대기 1.60 */
+  var arm1=pc(.035,.03,.58,1.08,-.19), arm2=pc(.035,.03,.58,1.08,.19); arm1.rotation.z=.12; arm2.rotation.z=-.12;
+  var ta=.45, pa3=SITE[2], pb3=SITE[3], px=pa3[0]+(pb3[0]-pa3[0])*ta, py=pa3[1]+(pb3[1]-pa3[1])*ta, pel=EL[2]+(EL[3]-EL[2])*ta, nn=ns[2];
+  person.position.copy(V(px+nn[0]*1.0,py+nn[1]*1.0,pel)); person.rotation.y=Math.atan2(-nn[0],-nn[1]); world.add(person);
+  var lp=label('성인 여성 160 cm','남측 인도 EL '+pel.toFixed(2),.9); lp.position.copy(V(px+nn[0]*2.2,py+nn[1]*2.2,pel+2.1));
+  /* 빛 */
+  scene.add(new T.HemisphereLight(0xffffff,0xd9d5cd,.66));
+  var sun=new T.DirectionalLight(0xffffff,.6); sun.position.set(-14,40,30); sun.castShadow=true; sun.shadow.mapSize.set(2048,2048);
+  var sc=sun.shadow.camera; sc.left=-30;sc.right=30;sc.top=30;sc.bottom=-30;sc.near=1;sc.far=120; sun.shadow.bias=-.0005; scene.add(sun);
+  /* 카메라 · 조작 */
+  var cam=new T.PerspectiveCamera(32,W/H,.3,500), C3=new T.Vector3(); world.updateMatrixWorld(); C3.copy(world.localToWorld(V(cx,cy,21.4)));
+  var TOP=C3.clone().add(new T.Vector3(0,62,.01)), HOME=C3.clone().add(new T.Vector3(-14,15,30));
+  cam.position.copy(TOP); cam.lookAt(C3);
+  var ctl=new T.OrbitControls(cam,R.domElement); ctl.target.copy(C3); ctl.enableDamping=true; ctl.dampingFactor=.09; ctl.enablePan=false; ctl.enableZoom=false;
+  if('enableKeys' in ctl) ctl.enableKeys=false; ctl.maxPolarAngle=Math.PI/2-.03; ctl.rotateSpeed=.7; ctl.update();
+  function zoom(f){var v=cam.position.clone().sub(ctl.target);cam.position.copy(ctl.target.clone().add(v.setLength(Math.min(120,Math.max(6,v.length()*f)))))}
+  ui.querySelector('[data-a=in]').onclick=function(){zoom(.8)}; ui.querySelector('[data-a=out]').onclick=function(){zoom(1.25)};
+  ui.querySelector('[data-a=home]').onclick=function(){flyTo(HOME,900)}; R.domElement.addEventListener('dblclick',function(){flyTo(HOME,900)});
+  /* 상태: e = 2D→3D 전환(캔버스·카메라), u = 기초 올라옴 */
+  var u=0, e=0, anim=[];
+  function setU(v){u=v; var w=u<.5?4*u*u*u:1-Math.pow(-2*u+2,3)/2;
+    var tp=soil.geometry.attributes.position; tp.setY(0,Y(Math.min(ELC,ELC+(FL-ELC)*w*0)+0)); /* 중심은 바닥보다 낮음 */
+    for(var i=0;i<n;i++){var cut=Math.max(0,EL[i]-FL)*w; tp.setY(1+i,Y(EL[i]-cut))} tp.needsUpdate=true; soil.geometry.computeVertexNormals();
+    var sp=side.geometry.attributes.position; for(i=0;i<n;i++){var j=(i+1)%n; sp.setY(i*4,Y(EL[i]-Math.max(0,EL[i]-FL)*w)); sp.setY(i*4+1,Y(EL[j]-Math.max(0,EL[j]-FL)*w))} sp.needsUpdate=true;
+    for(i=0;i<n;i++){j=(i+1)%n; var a=SITE[i],b=SITE[j], ga=Math.min(EL[i],FL), gb=Math.min(EL[j],FL), ta=ga+(FL-ga)*w, tb=gb+(FL-gb)*w, k=i*12;
+      var q=[a[0],Y(ga),a[1], b[0],Y(gb),b[1], b[0],Y(tb),b[1], a[0],Y(ta),a[1]]; for(var m=0;m<12;m++) cpos[k+m]=q[m]}
+    cg.attributes.position.needsUpdate=true; cg.computeVertexNormals(); conc.visible=w>.001;
+    var rp=rimG.attributes.position; for(i=0;i<=n;i++){var ii=i%n, g=Math.min(EL[ii],FL); rp.setY(i,Y(EL[ii]+(FL-EL[ii])*w)+.01)} rp.needsUpdate=true;
+    M_SLAB.opacity=Math.max(0,Math.min(1,(w-.6)/.4)); slab.visible=w>.6; old.visible=w>.02;
+    LA.forEach(function(s){s.material.opacity=Math.max(0,1-w*2)}); LB.forEach(function(s){s.material.opacity=Math.max(0,w*2-1)}); lfl.material.opacity=Math.max(0,w*2-1);
+  }
+  function flyTo(to,dur){var from=cam.position.clone(),t0=performance.now();anim.push(function(now){var k=Math.min(1,(now-t0)/dur),q=k<.5?4*k*k*k:1-Math.pow(-2*k+2,3)/2;cam.position.lerpVectors(from,to,q);cam.lookAt(ctl.target);return k<1})}
+  function tweenU(to,dur){var a=u,t0=performance.now();if(reduce){setU(to);return}anim.push(function(now){var k=Math.min(1,(now-t0)/dur);setU(a+(to-a)*k);return k<1})}
+  function show3d(on){box.style.opacity=on?1:0; box.style.pointerEvents=on?'auto':'none'; ui.style.display=on?'flex':'none'; flat.style.opacity=on?0:1}
+  var mode=0, tm=0, manual=false;
+  function mark(m){btns.forEach(function(b){b.classList.toggle('on',+b.dataset.m===m)})}
+  function go(m){mark(m); var prev=mode; mode=m;
+    if(m===0){show3d(false); tweenU(0,300); cam.position.copy(TOP); cam.lookAt(ctl.target); return}
+    show3d(true); if(prev===0){cam.position.copy(TOP); cam.lookAt(ctl.target); if(reduce) cam.position.copy(HOME); else flyTo(HOME,1800)}
+    tweenU(m===2?1:0,2200)}
+  btns.forEach(function(b){b.addEventListener('click',function(){manual=true;clearTimeout(tm);go(+b.dataset.m);b.blur()})});
+  setU(0); show3d(false);
+  var visible=false, raf=0;
+  function frame(now){raf=0; if(!visible) return; anim=anim.filter(function(f){return f(now)}); ctl.update(); R.render(scene,cam); raf=requestAnimationFrame(frame)}
+  new IntersectionObserver(function(es){es.forEach(function(en){
+    visible=en.isIntersecting; if(visible&&!raf) raf=requestAnimationFrame(frame);
+    if(en.intersectionRatio>=.55){clearTimeout(tm); if(!manual&&mode===0) tm=setTimeout(function(){go(1); tm=setTimeout(function(){if(!manual) go(2)},2600)},1000)}
+    else if(!en.isIntersecting){clearTimeout(tm); manual=false; anim=[]; setU(0); go(0)}
+  })},{threshold:[0,.55]}).observe(st);
+  if('ResizeObserver' in window) new ResizeObserver(function(){var w=st.clientWidth,h=st.clientHeight; if(w&&h){R.setSize(w,h,false); cam.aspect=w/h; cam.updateProjectionMatrix()}}).observe(st);
+  window.__el3d={go:go,setU:setU,cam:cam,HOME:HOME,render:function(){ctl.update();R.render(scene,cam)}};
+});
+
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 <script>
