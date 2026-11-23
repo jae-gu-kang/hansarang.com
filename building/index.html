@@ -790,7 +790,7 @@ figure.drawing .el-stage svg.el3d{position:absolute;inset:0;width:100%;height:10
 .el3d .face{stroke:#e04300;stroke-width:1;stroke-opacity:.45}
 .el3d .rim{fill:none;stroke:#e04300;stroke-width:2.6;stroke-linejoin:round}
 .el3d .pil{stroke:#1b1d20;stroke-width:1.2;stroke-dasharray:3 3;opacity:.55}
-.el3d .v3{fill:#e04300} .el3d .v3c{fill:#6b665d} .el3d .conc{fill:#bdb7ac;stroke:#7d776c;stroke-width:1} .el3d .slab{fill:#ebe8e1} .el3d .rimc{stroke:#6b665d} .el3d .old{fill:none;stroke:#e04300;stroke-width:1.6;stroke-dasharray:5 4} .el3d .drv{stroke:#1b1d20;stroke-width:2.4}
+.el3d .v3{fill:#e04300} .el3d .v3c{fill:#6b665d} .el3d .conc{fill:#bdb7ac;stroke:#7d776c;stroke-width:1} .el3d .slab{fill:#ebe8e1} .el3d .rimc{stroke:#6b665d} .el3d .old{fill:none;stroke:#e04300;stroke-width:1.6;stroke-dasharray:5 4} .el3d .drv{stroke:#1b1d20;stroke-width:2.4} .el3d .road{fill:#cfccc5;stroke:#9a958c;stroke-width:.8} .el3d .rdside{fill:#b3aea4;stroke:#8f8a80;stroke-width:.8} .el3d .rdl{fill:#4a463f;font-weight:700}
 .el3d .l3{font-size:15px;font-weight:750;fill:#1b1d20;text-anchor:middle}
 .el3d .l3s{font-size:11.5px;fill:#61666d;text-anchor:middle}
 .el3d .cap3{font-size:12.5px;fill:#61666d}
@@ -1131,7 +1131,7 @@ body.present .key-hint{display:none}
       </figure>
       <div class="side">
       <p class="map-cap">조성공사 후 부지 주변 도로의 계획 높이(계획고)는 <b>서쪽 모서리 EL 22.7m → 동쪽 모서리 EL 20.8m</b>로, 부지를 따라 <b>약 1.9m — 한 층 높이의 절반 이상</b> 내려갑니다. 1층 바닥을 어느 높이에 맞출지, 경사를 이용해 주차장 진입을 어느 쪽에서 받을지가 설계 초기의 핵심 결정 사항입니다.</p>
-        <p class="fig-note"><b>모서리별 도로 계획고(EL)와 재개발 전 현황 지반고.</b> 색이 붉을수록 높고 푸를수록 낮습니다. P1(동북 모서리)은 도로에 접하지 않아 계획고가 없습니다. <b>① 2D → ② 3D → ③ 바닥 기초</b> 순서로 보여 줍니다(버튼으로 다시 보기). 3D는 높이를 4배 과장했고, P1은 나머지 여섯 점의 경사면으로 추정한 값(약 21.66m)입니다. ③은 1층 바닥을 서측 차량 출입구 높이 EL 22.35에 맞춰 대지 경계까지 평평하게 올렸을 때 모서리마다 기초가 얼마나 올라오는지입니다.</p>
+        <p class="fig-note"><b>모서리별 도로 계획고(EL)와 재개발 전 현황 지반고.</b> 색이 붉을수록 높고 푸를수록 낮습니다. P1(동북 모서리)은 도로에 접하지 않아 계획고가 없습니다. <b>① 2D → ② 3D → ③ 바닥 기초</b> 순서로 보여 줍니다(버튼으로 다시 보기). 높이는 과장 없이 실제 비율로 그렸고, P1은 나머지 여섯 점의 경사면으로 추정한 값(약 21.66m)입니다. ③은 1층 바닥을 서측 차량 출입구 높이 EL 22.35에 맞춰 대지 경계까지 평평하게 올렸을 때 모서리마다 기초가 얼마나 올라오는지를, 남·서측 도로(계획고)와 주변 땅 높이(일곱 모서리의 경사면으로 추정)와 함께 보여 줍니다.</p>
       <div class="note-grid">
         <div class="note-cell"><b>절토·성토는 <em>크지 않음</em></b><p>계획고와 현황 지반의 차이는 −0.45 ~ +0.60m 범위로, 부지 일대가 기존 지형과 큰 단차 없이 조성됩니다.</p></div>
         <div class="note-cell"><b>바닥 기초는 <em>동·남측을 올림</em></b><p>1층 바닥을 서측 차량 출입구 도로 높이(EL 22.35)로 통일하고 대지 경계까지 평평하게 하면, 낮은 동·남측은 기초를 올려야 합니다 — 동남 모서리 P2에서 약 1.6m, 남측 도로변 0.9~1.4m. 그래야 남측 마당에도 차를 댈 수 있고, 남측 인도에서는 외부계단(6~8단)으로 오릅니다. 높은 북서 모서리 P0만 약 0.3m 깎습니다.</p></div>
@@ -1760,7 +1760,7 @@ document.querySelectorAll('.crit-row').forEach(el=>io.observe(el));
   var pts=parse(flat.querySelector('.lotel').getAttribute('points'));
   var ctx=[].map.call(flat.querySelectorAll('.ctx polyline'),function(p){return parse(p.getAttribute('points'))});
   var EL=[22.69,21.66,20.76,20.95,21.29,21.44,22.14];      /* P0~P6 계획고, P1은 경사면 추정 */
-  var PXM=212.8/10,EX=4,Z0=20.0,n=pts.length;              /* 도면 축척 10m=212.8, 높이 4배 과장 */
+  var PXM=212.8/10,EX=1,Z0=20.0,n=pts.length;              /* 도면 축척 10m=212.8, 높이 과장 없음(실제 비율) */
   var cx=0,cy=0; pts.forEach(function(p){cx+=p[0]/n;cy+=p[1]/n});
   var zs=EL.map(function(v){return (v-Z0)*PXM*EX}),zc=zs.reduce(function(a,b){return a+b},0)/n,elc=EL.reduce(function(a,b){return a+b},0)/n;
   /* 2D 도면과 같은 색(투명도 .38을 흰 바탕에 섞은 파스텔), shade<1 이면 벽면용으로 어둡게 */
@@ -1768,6 +1768,18 @@ document.querySelectorAll('.crit-row').forEach(el=>io.observe(el));
     return 'rgb('+lo.map(function(c,i){var m=c+(hi[i]-c)*k;return Math.round((255+(m-255)*a)*(shade||1))}).join(',')+')'}
   function f1(v){return v.toFixed(1)}
   var FL=22.35, zF=(FL-Z0)*PXM*EX;                           /* 1F 바닥 = 서측 차량 출입구 도로 높이 */
+  /* 주변 땅 높이: 일곱 모서리 계획고의 경사면(최소제곱)으로 추정, 범위 제한 */
+  var PL=(function(){var a=[[0,0,0],[0,0,0],[0,0,0]],b=[0,0,0];pts.forEach(function(p,i){var r=[p[0],p[1],1];for(var m=0;m<3;m++){for(var k=0;k<3;k++)a[m][k]+=r[m]*r[k];b[m]+=r[m]*EL[i]}});
+    for(var c=0;c<3;c++){for(var r2=c+1;r2<3;r2++){var f=a[r2][c]/a[c][c];for(var k2=c;k2<3;k2++)a[r2][k2]-=f*a[c][k2];b[r2]-=f*b[c]}}
+    var x=[0,0,0];for(var i2=2;i2>=0;i2--){var sm=b[i2];for(var j2=i2+1;j2<3;j2++)sm-=a[i2][j2]*x[j2];x[i2]=sm/a[i2][i2]}return x})();
+  function elAt(x,y){return Math.max(20.3,Math.min(23.4,PL[0]*x+PL[1]*y+PL[2]))}
+  /* 남·서측 도로: 경계(P2→P3→P4→P5→P6→P0) 바깥 6 m 띠, 경계 계획고 그대로 */
+  var RD=(function(){var ch=[2,3,4,5,6,0],W=6*PXM,ns=[],out=[];
+    for(var i=0;i<ch.length-1;i++){var a=pts[ch[i]],b=pts[ch[i+1]],dx=b[0]-a[0],dy=b[1]-a[1],L=Math.hypot(dx,dy),nx=dy/L,ny=-dx/L;
+      if(((a[0]+b[0])/2-cx)*nx+((a[1]+b[1])/2-cy)*ny<0){nx=-nx;ny=-ny} ns.push([nx,ny])}
+    ch.forEach(function(v,i){var m=i===0?ns[0]:i===ch.length-1?ns[ns.length-1]:null;
+      if(!m){var mx=ns[i-1][0]+ns[i][0],my=ns[i-1][1]+ns[i][1],L=Math.hypot(mx,my);mx/=L;my/=L;var k=1/Math.max(.5,mx*ns[i][0]+my*ns[i][1]);m=[mx*k,my*k]}
+      out.push({i:v,p:pts[v],o:[pts[v][0]+m[0]*W,pts[v][1]+m[1]*W]})});return out})();
   function render(t,u){
     u=u||0; var e=t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2, w=u<.5?4*u*u*u:1-Math.pow(-2*u+2,3)/2;
     var yaw=-24*e*Math.PI/180,pit=56*e*Math.PI/180,sc=1+.06*e,dy=80*e;
@@ -1775,7 +1787,8 @@ document.querySelectorAll('.crit-row').forEach(el=>io.observe(el));
     function P(x,y,z){var X=x-cx,Y=y-cy,X1=X*cY-Y*sY,Y1=X*sY+Y*cY,Z=z*e;
       return [cx+sc*X1,cy+dy+sc*(Y1*cP-Z*sP),Y1*sP+Z*cP]}
     function S(a){return a.map(function(p){return f1(p[0])+','+f1(p[1])}).join(' ')}
-    var h='<g class="g3">'+ctx.map(function(l){return '<polyline points="'+S(l.map(function(p){return P(p[0],p[1],0)}))+'"/>'}).join('')+'</g>';
+    /* 주변 필지·도로 선: ③ 단계에서 주변 땅 높이만큼 함께 올라옴 */
+    var h='<g class="g3">'+ctx.map(function(l){return '<polyline points="'+S(l.map(function(p){return P(p[0],p[1],(elAt(p[0],p[1])-Z0)*PXM*EX*w)}))+'"/>'}).join('')+'</g>';
     var B=pts.map(function(p){return P(p[0],p[1],0)}),T=pts.map(function(p,i){return P(p[0],p[1],zs[i])}),C=P(cx,cy,zc);
     /* ③ 바닥판: 지형 윗면 → EL 22.35 평탄면 (낮은 곳은 기초를 올리고, 높은 P0 쪽은 깎음) */
     var F=pts.map(function(p,i){return P(p[0],p[1],zs[i]+(zF-zs[i])*w)}),CF=P(cx,cy,zc+(zF-zc)*w);
@@ -1789,7 +1802,20 @@ document.querySelectorAll('.crit-row').forEach(el=>io.observe(el));
     });
     for(i=0;i<n;i++) h+='<line class="pil" style="opacity:'+(.55*e*(1-w)).toFixed(2)+'" x1="'+f1(B[i][0])+'" y1="'+f1(B[i][1])+'" x2="'+f1(T[i][0])+'" y2="'+f1(T[i][1])+'"/>';   /* 윗면이 뒤쪽 점선을 가림 */
     for(i=0;i<n;i++){j=(i+1)%n;var c3=col((EL[i]+EL[j]+elc)/3,.38);h+='<polygon fill="'+c3+'" stroke="'+c3+'" stroke-width=".8" style="opacity:'+(1-w).toFixed(2)+'" points="'+S([CF,F[i],F[j]])+'"/>'}
-    if(w>0) h+='<polygon class="slab" style="opacity:'+w.toFixed(2)+'" points="'+S(F)+'"/>';
+    if(w>0){
+      /* 도로 띠(경계 계획고) — 대지 옆면 중 도로보다 낮은 부분을 가림 */
+      var rq=[];
+      for(var r=0;r<RD.length-1;r++){var A=RD[r],Bq=RD[r+1],za=(EL[A.i]-Z0)*PXM*EX,zb=(EL[Bq.i]-Z0)*PXM*EX;
+        rq.push({q:[P(A.p[0],A.p[1],za),P(Bq.p[0],Bq.p[1],zb),P(Bq.o[0],Bq.o[1],zb),P(A.o[0],A.o[1],za)],
+                 s:[P(A.o[0],A.o[1],za),P(Bq.o[0],Bq.o[1],zb),P(Bq.o[0],Bq.o[1],0),P(A.o[0],A.o[1],0)]})}
+      var ro=Math.min(1,w*1.5).toFixed(2);
+      rq.forEach(function(x){h+='<polygon class="rdside" style="opacity:'+ro+'" points="'+S(x.s)+'"/>'});
+      rq.forEach(function(x){h+='<polygon class="road" style="opacity:'+ro+'" points="'+S(x.q)+'"/>'});
+      h+='<polygon class="slab" style="opacity:'+w.toFixed(2)+'" points="'+S(F)+'"/>';
+      /* 도로 위 높이 표기 */
+      if(w>.5){[RD[0],RD[2],RD[4]].forEach(function(A){var m=P((A.p[0]+A.o[0])/2,(A.p[1]+A.o[1])/2,(EL[A.i]-Z0)*PXM*EX);
+        h+='<text class="l3s rdl" style="opacity:'+((w-.5)*2).toFixed(2)+'" x="'+f1(m[0])+'" y="'+f1(m[1]+4)+'">도로 '+EL[A.i].toFixed(2)+'</text>'})}
+    }
     h+='<polygon class="rim'+(w>.5?' rimc':'')+'" points="'+S(F)+'"/>';
     if(w>.02){  /* 원래 지형선(점선) */
       h+='<polygon class="old" style="opacity:'+Math.min(1,w*2).toFixed(2)+'" points="'+S(T)+'"/>';
@@ -1812,7 +1838,7 @@ document.querySelectorAll('.crit-row').forEach(el=>io.observe(el));
     } else h+='<text class="l3" style="opacity:'+(1-w*2).toFixed(2)+'" x="'+f1(C[0])+'" y="'+f1(C[1]+6)+'">서고동저 약 1.9 m</text>';
     var nx=954,ny=88,L=40,tx=nx+sc*sY*L,ty=ny-sc*cY*cP*L;
     h+='<g class="nor"><line x1="'+nx+'" y1="'+ny+'" x2="'+f1(tx)+'" y2="'+f1(ty)+'"/><text x="'+nx+'" y="'+(ny+20)+'">N</text></g>';
-    h+='<text class="cap3" x="40" y="862" style="opacity:'+e.toFixed(2)+'">'+(w>.5?'높이 4배 과장 · 회색 = 콘크리트 기초(올림) · 붉은 점선 = 원래 지형 · 동남 P2에서 최대 1.59 m':'높이 4배 과장 · 기준면 EL 20.0 m · 점선 = 기준면에서 계획고까지')+'</text>';
+    h+='<text class="cap3" x="40" y="862" style="opacity:'+e.toFixed(2)+'">'+(w>.5?'높이 실제 비율(과장 없음) · 회색 = 콘크리트 기초(올림) · 짙은 띠 = 남·서측 도로(계획고) · 주변 선 = 주변 땅 높이(경사면 추정) · 붉은 점선 = 원래 지형':'높이 실제 비율(과장 없음) · 기준면 EL 20.0 m · 점선 = 기준면에서 계획고까지')+'</text>';
     h='<defs><marker id="ah3" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#1b1d20"/></marker></defs>'+h;
     ov.innerHTML=h;
     var o=Math.min(1,t*5); ov.style.opacity=o; flat.style.opacity=1-o;
