@@ -1180,7 +1180,7 @@ body.present .key-hint{display:none}
       </figure>
       <div class="side">
       <p class="map-cap">조성공사 후 부지 주변 도로의 계획 높이(계획고)는 <b>서쪽 모서리 EL 22.7m → 동쪽 모서리 EL 20.8m</b>로, 부지를 따라 <b>약 1.9m — 한 층 높이의 절반 이상</b> 내려갑니다. 1층 바닥을 어느 높이에 맞출지, 경사를 이용해 주차장 진입을 어느 쪽에서 받을지가 설계 초기의 핵심 결정 사항입니다.</p>
-        <p class="fig-note"><b>모서리별 도로 계획고(EL)와 재개발 전 현황 지반고.</b> 색이 붉을수록 높고 푸를수록 낮습니다. P1(동북 모서리)은 도로에 접하지 않아 계획고가 없습니다. <b>① 2D → ② 3D 지형 → ③ 바닥 기초</b> 순서로 보여 주며, 3D는 <b>마우스로 끌어 돌려볼 수 있습니다</b>(＋/－ 확대, ⟲ 처음 각도). 남측 인도에 <b>키 160 cm 성인 여성</b>을 세워 기초 높이를 비교할 수 있게 했습니다. 높이는 과장 없이 실제 비율로 그렸고, P1은 나머지 여섯 점의 경사면으로 추정한 값(약 21.66m)입니다. ③은 1층 바닥을 서측 차량 출입구 높이 EL 22.35에 맞춰 대지 경계까지 평평하게 올렸을 때 모서리마다 기초가 얼마나 올라오는지를, 남·서측 도로(계획고)와 주변 땅 높이(일곱 모서리의 경사면으로 추정)와 함께 보여 줍니다.</p>
+        <p class="fig-note"><b>모서리별 도로 계획고(EL)와 재개발 전 현황 지반고.</b> 색이 붉을수록 높고 푸를수록 낮습니다. P1(동북 모서리)은 도로에 접하지 않아 계획고가 없습니다. <b>① 2D → ② 3D 지형 → ③ 바닥 기초</b> 순서로 보여 주며, 3D는 <b>마우스로 끌어 돌려볼 수 있습니다</b>(＋/－ 확대, ⟲ 처음 각도). 남측 인도에 <b>키 160 cm 성인 여성</b>을 세워 기초 높이를 비교할 수 있게 했습니다. ②는 대지 경계까지만 보여 주며, 파란 점선(가장 높은 P0 높이의 수평선)에서 각 모서리 땅이 얼마나 내려가는지 보입니다. ③에서는 바닥판이 수평으로 올라오고 주변 길·땅이 함께 나타납니다. 높이는 과장 없이 실제 비율로 그렸고, P1은 나머지 여섯 점의 경사면으로 추정한 값(약 21.66m)입니다. ③은 1층 바닥을 서측 차량 출입구 높이 EL 22.35에 맞춰 대지 경계까지 평평하게 올렸을 때 모서리마다 기초가 얼마나 올라오는지를, 남·서측 도로(계획고)와 주변 땅 높이(일곱 모서리의 경사면으로 추정)와 함께 보여 줍니다.</p>
       <div class="note-grid">
         <div class="note-cell"><b>절토·성토는 <em>크지 않음</em></b><p>계획고와 현황 지반의 차이는 −0.45 ~ +0.60m 범위로, 부지 일대가 기존 지형과 큰 단차 없이 조성됩니다.</p></div>
         <div class="note-cell"><b>바닥 기초는 <em>동·남측을 올림</em></b><p>1층 바닥을 서측 차량 출입구 도로 높이(EL 22.35)로 통일하고 대지 경계까지 평평하게 하면, 낮은 동·남측은 기초를 올려야 합니다 — 동남 모서리 P2에서 약 1.6m, 남측 도로변 0.9~1.4m. 그래야 남측 마당에도 차를 댈 수 있고, 남측 인도에서는 외부계단(6~8단)으로 오릅니다. 높은 북서 모서리 P0만 약 0.3m 깎습니다.</p></div>
@@ -1943,7 +1943,7 @@ document.addEventListener('DOMContentLoaded',function(){
   var reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
   /* 대지 (도면 좌표: x 동, y 남, m) · 모서리 계획고 EL (P1 추정) · 1F 바닥 = 서측 차량 출입구 도로 높이 */
   var SITE=[[0,0],[20.608,0],[20.684,16.125],[16.863,17.017],[8.229,17.426],[3.403,17.31],[-0.088,13.732]];
-  var EL=[22.69,21.66,20.76,20.95,21.29,21.44,22.14], FL=22.35, Z0=20.0, BASE=20.2, n=7;
+  var EL=[22.69,21.66,20.76,20.95,21.29,21.44,22.14], FL=22.35, Z0=20.0, BASE=19.9, n=7;
   var ROADS=[2,3,4,5,6];                                   /* 경계 i→i+1 이 도로 */
   var cx=0,cy=0; SITE.forEach(function(p){cx+=p[0]/n;cy+=p[1]/n});
   var PL=(function(){var a=[[0,0,0],[0,0,0],[0,0,0]],b=[0,0,0];SITE.forEach(function(p,i){var r=[p[0],p[1],1];for(var m=0;m<3;m++){for(var k=0;k<3;k++)a[m][k]+=r[m]*r[k];b[m]+=r[m]*EL[i]}});
@@ -1969,7 +1969,8 @@ document.addEventListener('DOMContentLoaded',function(){
   var M_SIDE=new T.MeshLambertMaterial({vertexColors:true,side:T.DoubleSide});
   var M_CONC=new T.MeshLambertMaterial({color:0xbdb7ac,side:T.DoubleSide,transparent:true,opacity:1});
   var M_SLAB=new T.MeshLambertMaterial({color:0xece9e2,side:T.DoubleSide,transparent:true,opacity:0});
-  var M_ROAD=new T.MeshLambertMaterial({color:0xcfccc5,side:T.DoubleSide}), M_NEI=new T.MeshLambertMaterial({color:0xe7e4dd,side:T.DoubleSide}), M_SK=new T.MeshLambertMaterial({color:0xb9b4aa,side:T.DoubleSide});
+  var M_ROAD=new T.MeshLambertMaterial({color:0xcfccc5,side:T.DoubleSide,transparent:true}), M_NEI=new T.MeshLambertMaterial({color:0xe7e4dd,side:T.DoubleSide,transparent:true}), M_SK=new T.MeshLambertMaterial({color:0xb9b4aa,side:T.DoubleSide,transparent:true});
+  var RING=[];   /* ② 지형 단계에서는 대지 경계까지만, ③ 기초 단계에서 주변 길·땅이 나타남 */
   var EDGE=new T.LineBasicMaterial({color:0x6b665d}), OLD=new T.LineDashedMaterial({color:0xe04300,dashSize:.35,gapSize:.25});
   /* 바닥 */
   var gp=new T.Mesh(new T.PlaneGeometry(400,400),new T.MeshLambertMaterial({color:0xf6f5f1})); gp.rotation.x=-Math.PI/2; gp.position.y=Y(BASE)-.02; gp.receiveShadow=true; scene.add(gp);
@@ -1980,8 +1981,8 @@ document.addEventListener('DOMContentLoaded',function(){
   var OUT=SITE.map(function(p,i){var A=ns[(i+n-1)%n],B=ns[i],mx=A[0]+B[0],my=A[1]+B[1],L=Math.hypot(mx,my);mx/=L;my/=L;var k=1/Math.max(.5,mx*B[0]+my*B[1]);return [p[0]+mx*k*Wd,p[1]+my*k*Wd]});
   for(i=0;i<n;i++){var j=(i+1)%n,pa=SITE[i],pb=SITE[j],oa=OUT[i],ob=OUT[j],ea=EL[i],eb=EL[j],road=ROADS.indexOf(i)>=0;
     var pos=[pa[0],Y(ea),pa[1], pb[0],Y(eb),pb[1], ob[0],Y(eb),ob[1], oa[0],Y(ea),oa[1]];
-    add(geo(pos,[0,2,1,0,3,2]),road?M_ROAD:M_NEI);
-    add(geo([oa[0],Y(ea),oa[1], ob[0],Y(eb),ob[1], ob[0],Y(BASE),ob[1], oa[0],Y(BASE),oa[1]],[0,1,2,0,2,3]),M_SK);
+    RING.push(add(geo(pos,[0,2,1,0,3,2]),road?M_ROAD:M_NEI));
+    RING.push(add(geo([oa[0],Y(ea),oa[1], ob[0],Y(eb),ob[1], ob[0],Y(BASE),ob[1], oa[0],Y(BASE),oa[1]],[0,1,2,0,2,3]),M_SK));
   }
   /* 대지 흙 덩어리: 윗면(부채꼴, 높이 색) + 옆면 — ③에서 P0처럼 바닥보다 높은 곳은 깎임 */
   var top=[cx,Y(ELC),cy], tc=col(ELC).toArray(), tidx=[];
@@ -2000,6 +2001,13 @@ document.addEventListener('DOMContentLoaded',function(){
   var sg=new T.ShapeGeometry(slabShape); sg.rotateX(-Math.PI/2); var slab=add(sg,M_SLAB,false); slab.position.y=Y(FL)+.005;
   var rimG=new T.BufferGeometry().setFromPoints(SITE.concat([SITE[0]]).map(function(p,k){return V(p[0],p[1],EL[k%n])})); var rim=new T.Line(rimG,EDGE); world.add(rim);
   var oldG=new T.BufferGeometry().setFromPoints(SITE.concat([SITE[0]]).map(function(p,k){return V(p[0],p[1],EL[k%n]+.01)})); var old=new T.Line(oldG,OLD); old.computeLineDistances(); old.visible=false; world.add(old);
+  /* ② 수평 기준: 가장 높은 P0(EL 22.69) 높이의 수평 점선틀 + 모서리마다 땅까지 내려오는 점선 — 땅이 얼마나 기우는지 */
+  var HZ=22.69, REFM=new T.LineDashedMaterial({color:0x0f89a0,dashSize:.3,gapSize:.2,transparent:true});
+  var ref=new T.Group(); world.add(ref);
+  (function(){var lp=SITE.concat([SITE[0]]).map(function(p){return V(p[0],p[1],HZ)}); var l=new T.Line(new T.BufferGeometry().setFromPoints(lp),REFM); l.computeLineDistances(); ref.add(l);
+    SITE.forEach(function(p,i){if(EL[i]>=HZ-.01) return; var v=new T.Line(new T.BufferGeometry().setFromPoints([V(p[0],p[1],HZ),V(p[0],p[1],EL[i])]),REFM); v.computeLineDistances(); ref.add(v)});
+    var hp=new T.Mesh(new T.ShapeGeometry(slabShape),new T.MeshBasicMaterial({color:0x0f89a0,transparent:true,opacity:.06,side:T.DoubleSide,depthWrite:false}));
+    hp.geometry.rotateX(-Math.PI/2); hp.position.y=Y(HZ); ref.add(hp); ref.userData.plane=hp})();
   /* 글자 표지 (스프라이트) */
   function label(txt,sub,scale){var c=document.createElement('canvas'),g=c.getContext('2d');c.width=512;c.height=160;
     g.font='800 54px Pretendard, "Apple SD Gothic Neo", sans-serif';g.textAlign='center';g.lineWidth=10;g.strokeStyle='rgba(255,255,255,.95)';g.fillStyle='#1b1d20';
@@ -2011,6 +2019,7 @@ document.addEventListener('DOMContentLoaded',function(){
   SITE.forEach(function(p,i){var d=FL-EL[i];
     var a=label((i===1?'≈ ':'EL ')+EL[i].toFixed(2),'P'+i+(i===1?' · 추정':'')); a.position.copy(V(p[0],p[1],EL[i]+.8)); LA.push(a);
     var b=label(d>=0?'기초 +'+d.toFixed(2)+' m':'절토 −'+(-d).toFixed(2)+' m','P'+i+' · 지반 '+EL[i].toFixed(2)); b.position.copy(V(p[0],p[1],FL+.8)); b.material.opacity=0; LB.push(b)});
+  var lhz=label('수평 기준 EL 22.69','동남 P2는 1.93 m 아래',1.1); lhz.position.copy(V(SITE[2][0],SITE[2][1],HZ+.9));
   var lfl=label('1F 바닥판 EL 22.35','= 서측 차량 출입구 높이',1.25); lfl.position.copy(V(cx,cy-3,FL+.9)); lfl.material.opacity=0;
   /* 160 cm 성인 여성 (남측 인도, P2–P3 사이 경계 바깥 1 m) */
   var person=new T.Group(), PM=new T.MeshLambertMaterial({color:0x3a3835});
@@ -2047,6 +2056,9 @@ document.addEventListener('DOMContentLoaded',function(){
     cg.attributes.position.needsUpdate=true; cg.computeVertexNormals(); conc.visible=w>.001;
     var rp=rimG.attributes.position; for(i=0;i<=n;i++){var ii=i%n, g=Math.min(EL[ii],FL); rp.setY(i,Y(EL[ii]+(FL-EL[ii])*w)+.01)} rp.needsUpdate=true;
     M_SLAB.opacity=Math.max(0,Math.min(1,(w-.6)/.4)); slab.visible=w>.6; old.visible=w>.02;
+    var ro=Math.max(0,Math.min(1,w*2.2)); [M_ROAD,M_NEI,M_SK].forEach(function(m){m.opacity=ro}); RING.forEach(function(r){r.visible=ro>.01});
+    person.visible=ro>.01; lp.visible=ro>.01; lp.material.opacity=Math.max(0,w*2-1);
+    var ho=Math.max(0,1-w*2.5); ref.visible=ho>.01; REFM.opacity=ho; ref.userData.plane.material.opacity=.06*ho; lhz.material.opacity=ho; lhz.visible=ho>.01;
     LA.forEach(function(s){s.material.opacity=Math.max(0,1-w*2)}); LB.forEach(function(s){s.material.opacity=Math.max(0,w*2-1)}); lfl.material.opacity=Math.max(0,w*2-1);
   }
   function flyTo(to,dur){var from=cam.position.clone(),t0=performance.now();anim.push(function(now){var k=Math.min(1,(now-t0)/dur),q=k<.5?4*k*k*k:1-Math.pow(-2*k+2,3)/2;cam.position.lerpVectors(from,to,q);cam.lookAt(ctl.target);return k<1})}
