@@ -4,86 +4,41 @@ window.MASS3D={"const": {"H1": 3.6, "FH": 3.6, "ZTOP": 21.6, "ZCORE": 24.6, "LEV
   function glOK(){try{var c=document.createElement('canvas');return !!(window.WebGLRenderingContext&&(c.getContext('webgl')||c.getContext('experimental-webgl')))}catch(e){return false}}
   if(!D||!window.THREE||!THREE.OrbitControls||!glOK()) return;
   var C=D.const, T=THREE;
-  /* 절차적 텍스처 (캔버스) — UV = 미터(ExtrudeGeometry WorldUV) · tile = 한 장이 덮는 m */
-  function rnd(seed){return function(){seed=(seed*16807)%2147483647;return (seed-1)/2147483646}}
-  function tex(px,tile,draw,srgb){
-    var c=document.createElement('canvas'); c.width=c.height=px; var x=c.getContext('2d'); draw(x,px);
-    var t=new T.CanvasTexture(c); t.wrapS=t.wrapT=T.RepeatWrapping; t.repeat.set(1/tile,1/tile); t.anisotropy=4; if(srgb!==false) t.encoding=T.sRGBEncoding; return t;
-  }
-  function shade(h,s,l){return 'hsl('+h+','+s+'%,'+l+'%)'}
-  // 석재 가로결: 얇은 판석(1.5~4 cm)을 가로로 쌓음 · 가끔 깊게 들어간 줄 (2 m 타일)
-  function stone(bump){return function(x,N){
-    var r=rnd(7),k=N/200,y=0; x.fillStyle=bump?'#000':'#a39d91'; x.fillRect(0,0,N,N);
-    while(y<N){var h=Math.max(3,Math.round((1.5+r()*2.6)*k)); if(y+h>N-3) h=N-y; var rowl=r()*4-2, xx=-r()*N;
-      while(xx<N){var w=(18+r()*70)*k, deep=r()<0.02, l=deep?50+r()*5:62+rowl+r()*6, hu=40+r()*6;
-        var col=bump?(deep?'#333':'hsl(0,0%,'+(60+r()*32)+'%)'):shade(hu,deep?5:7+r()*4,l);
-        x.fillStyle=col; [xx,xx+N].forEach(function(o){x.fillRect(o+1,y+1,w-1.5,h-1.6)}); xx+=w}
-      y+=h}
-  }}
-  // 짙은 회색 벽돌 190×57 · 줄눈 10 (2 m 타일)
-  function brick(x,N){
-    var r=rnd(11),k=N/2.0,bw=0.2*k,bh=0.067*k,rows=Math.round(N/bh); bh=N/rows; x.fillStyle='#6e6e6c'; x.fillRect(0,0,N,N);
-    for(var j=0;j<rows;j++){var o=(j%2)*bw/2; for(var i=-1;i<=N/bw;i++){var l=25+r()*6; x.fillStyle=shade(220,4+r()*5,l); x.fillRect(i*bw+o+1,j*bh+1,bw-2.2,bh-2.2)}}
-  }
-  // 화강석 잔다듬: 잔점 + 600 줄눈 (1.2 m 타일)
-  function granite(x,N){
-    var r=rnd(5),k=N/1.2; x.fillStyle='#bdbab3'; x.fillRect(0,0,N,N);
-    for(var i=0;i<N*N/14;i++){var v=r(); x.fillStyle=v<.45?'rgba(120,118,114,.35)':v<.8?'rgba(255,255,255,.45)':'rgba(70,68,66,.35)'; x.fillRect(r()*N,r()*N,1+r()*1.6,1+r()*1.6)}
-    x.strokeStyle='rgba(120,116,110,.55)'; x.lineWidth=1.2; for(i=0;i<2;i++){x.beginPath();x.moveTo(0,i*0.6*k+.5);x.lineTo(N,i*0.6*k+.5);x.moveTo(i*0.6*k+.5,0);x.lineTo(i*0.6*k+.5,N);x.stroke()}
-  }
-  // 매스 밑면 천장 패널 600×1200 (2.4 m 타일)
-  function panel(x,N){
-    var k=N/2.4; x.fillStyle='#cfccc6'; x.fillRect(0,0,N,N); x.strokeStyle='#a9a59e'; x.lineWidth=1.4;
-    for(var i=0;i<4;i++){x.beginPath();x.moveTo(i*0.6*k+.5,0);x.lineTo(i*0.6*k+.5,N);x.stroke()}
-    for(i=0;i<2;i++){x.beginPath();x.moveTo(0,i*1.2*k+.5);x.lineTo(N,i*1.2*k+.5);x.stroke()}
-  }
-  // 아스팔트 · 콘크리트 잔결 (4 m 타일)
-  function grain(base,a){return function(x,N){var r=rnd(3); x.fillStyle=base; x.fillRect(0,0,N,N);
-    for(var i=0;i<N*N/10;i++){x.fillStyle=r()<.5?'rgba(0,0,0,'+a+')':'rgba(255,255,255,'+a+')'; x.fillRect(r()*N,r()*N,1.4,1.4)}}}
-  function std(o){o.roughness=o.roughness==null?0.92:o.roughness; o.metalness=0; return new T.MeshStandardMaterial(o)}
-  var STONE=std({map:tex(1024,2,stone(false)),bumpMap:tex(1024,2,stone(true),false),bumpScale:0.035,polygonOffset:true,polygonOffsetFactor:1,polygonOffsetUnits:1});
-  var SOFFIT=std({map:tex(512,2.4,panel),roughness:0.8});
-  var ENV=[SOFFIT,STONE];                       // ExtrudeGeometry 그룹: 0 = 위·아래 면, 1 = 옆면
-  var BRICK=std({map:tex(1024,2,brick),bumpMap:tex(1024,2,brick,false),bumpScale:0.02});
-  var PAPER=BRICK;                              // 1층 코어 · 기둥 · 낮은 매스 = 짙은 벽돌
-  var GRANITE=std({map:tex(512,1.2,granite),roughness:0.85});
-  var CONC=[GRANITE,BRICK];                     // 기초 판·계단: 윗면 화강석 · 옆면 벽돌
-  var STEP=GRANITE;
-  var LAND=std({map:tex(512,4,grain('#c9c6bf',.05)),side:T.DoubleSide});
-  var ROAD=std({map:tex(512,4,grain('#6d6e70',.09)),side:T.DoubleSide,roughness:0.97});
-  var BOARD=std({color:0x8c8a86});
-  var DRIVE=std({map:tex(512,4,grain('#bdbab3',.06))});
-  var EDGE=new T.LineBasicMaterial({color:0x6f6c67,transparent:true,opacity:0.35});
-  var LEVEL=new T.LineBasicMaterial({color:0x9b968d,transparent:true,opacity:0.45});
+  var PAPER=new T.MeshLambertMaterial({color:0xf8f7f3});
+  var ENV=new T.MeshLambertMaterial({color:0xfbfaf7,polygonOffset:true,polygonOffsetFactor:1,polygonOffsetUnits:1});
+  var BOARD=new T.MeshLambertMaterial({color:0xeeebe4});
+  var LAND=new T.MeshLambertMaterial({color:0xeceae3,side:T.DoubleSide});
+  var ROAD=new T.MeshLambertMaterial({color:0xd6d3cc,side:T.DoubleSide});
+  var CONC=new T.MeshLambertMaterial({color:0xc9c5bd});
+  var DRIVE=new T.MeshLambertMaterial({color:0xe2dfd8});
+  var EDGE=new T.LineBasicMaterial({color:0x9a968f});
+  var LEVEL=new T.LineBasicMaterial({color:0xb3aea6});
   var SETBACK=new T.LineDashedMaterial({color:0xc4a49c,dashSize:0.6,gapSize:0.4});
   function shape(poly){var s=new T.Shape();poly.forEach(function(p,i){i?s.lineTo(p[0],-p[1]):s.moveTo(p[0],-p[1])});s.closePath();return s}
   function prism(poly,z0,z1,mat){
     var g=new T.ExtrudeGeometry(shape(poly),{depth:z1-z0,bevelEnabled:false});
     g.rotateX(-Math.PI/2); g.translate(0,z0,0);
     var grp=new T.Group(), m=new T.Mesh(g,mat); m.castShadow=true; m.receiveShadow=true; grp.add(m);
-    return grp;
+    grp.add(new T.LineSegments(new T.EdgesGeometry(g,15),EDGE)); return grp;
   }
   function loop(poly,y,mat){
     var pts=poly.map(function(p){return new T.Vector3(p[0],y,p[1])}); pts.push(pts[0].clone());
     var l=new T.Line(new T.BufferGeometry().setFromPoints(pts),mat); if(mat.isLineDashedMaterial) l.computeLineDistances(); return l;
   }
   function R(x0,x1,y0,y1){return [[x0,y0],[x1,y0],[x1,y1],[x0,y1]]}
-  var SKY=(function(){var c=document.createElement('canvas');c.width=2;c.height=256;var x=c.getContext('2d'),g=x.createLinearGradient(0,0,0,256);
-    g.addColorStop(0,'#cdd6df');g.addColorStop(0.55,'#e6eaee');g.addColorStop(1,'#f3f3f1');x.fillStyle=g;x.fillRect(0,0,2,256);var t=new T.CanvasTexture(c);t.encoding=T.sRGBEncoding;return t})();
   function build(el){
     var S=D.schemes[el.getAttribute('data-k')]; if(!S) return;
     var W=el.clientWidth||400, H=el.clientHeight||420;
     var renderer=new T.WebGLRenderer({antialias:true});
     renderer.setPixelRatio(Math.min(2,window.devicePixelRatio||1)); renderer.setSize(W,H,false);
-    renderer.outputEncoding=T.sRGBEncoding; renderer.toneMapping=T.ACESFilmicToneMapping; renderer.toneMappingExposure=0.95;
-    renderer.setClearColor(0xe9edf1,1); renderer.shadowMap.enabled=true; renderer.shadowMap.type=T.PCFSoftShadowMap;
+    renderer.setClearColor(0xfbfaf7,1); renderer.shadowMap.enabled=true; renderer.shadowMap.type=T.PCFSoftShadowMap;
     el.appendChild(renderer.domElement);
-    var scene=new T.Scene(); scene.background=SKY; scene.fog=new T.Fog(0xe8ebee,70,190);
+    var scene=new T.Scene();
     // 지형(실제 높이, 1F 바닥 = 0) · 도로 · 기초 콘크리트
     var TR=S.terrain, base=TR.base;
-    var ground=new T.Mesh(new T.PlaneGeometry(400,400),std({color:0xc4c1ba}));
+    var ground=new T.Mesh(new T.PlaneGeometry(200,200),new T.MeshLambertMaterial({color:0xf4f3ef}));
     ground.rotation.x=-Math.PI/2; ground.position.set(10,base-0.03,8); ground.receiveShadow=true; scene.add(ground);
-    function mesh(pos,idx,mat){var g=new T.BufferGeometry(); g.setAttribute('position',new T.Float32BufferAttribute(pos,3)); var uv=[]; for(var u=0;u<pos.length;u+=3) uv.push(pos[u],pos[u+2]); g.setAttribute('uv',new T.Float32BufferAttribute(uv,2)); g.setIndex(idx); g.computeVertexNormals();
+    function mesh(pos,idx,mat){var g=new T.BufferGeometry(); g.setAttribute('position',new T.Float32BufferAttribute(pos,3)); g.setIndex(idx); g.computeVertexNormals();
       var m=new T.Mesh(g,mat); m.receiveShadow=true; m.castShadow=true; return m}
     var tv=[]; for(var i=0;i<TR.v.length;i+=3) tv.push(TR.v[i],TR.v[i+2],TR.v[i+1]);
     var tf=TR.f.slice(); for(i=0;i<tf.length;i+=3){var q=tf[i+1]; tf[i+1]=tf[i+2]; tf[i+2]=q}
@@ -104,10 +59,10 @@ window.MASS3D={"const": {"H1": 3.6, "FH": 3.6, "ZTOP": 21.6, "ZCORE": 24.6, "LEV
     TR.contours.forEach(function(c){var v=c.map(function(p){return new T.Vector3(p[0],p[2]+0.03,p[1])}); scene.add(new T.Line(new T.BufferGeometry().setFromPoints(v),LEVEL))});
     S.slab.forEach(function(pl){scene.add(prism(pl,base,0,CONC))});
     // 남측 인도에서 올라오는 외부계단 (인도참 + 단)
-    var SE=S.stair_ext; if(SE.landing.poly.length>2) scene.add(prism(SE.landing.poly,base,SE.landing.z,STEP));
-    SE.steps.forEach(function(q){scene.add(prism(q.poly,base,q.z,STEP))});
+    var SE=S.stair_ext; if(SE.landing.poly.length>2) scene.add(prism(SE.landing.poly,base,SE.landing.z,CONC));
+    SE.steps.forEach(function(q){scene.add(prism(q.poly,base,q.z,CONC))});
     // 키 160 cm 성인 여성 (남측 인도) — 기초·계단 높이 비교용
-    (function(){var g=new T.Group(),PM=new T.MeshLambertMaterial({color:0x1c1b1a});
+    (function(){var g=new T.Group(),PM=new T.MeshLambertMaterial({color:0x3a3835});
       function pc(rt,rb,h,y,x){var m=new T.Mesh(new T.CylinderGeometry(rt,rb,h,12),PM);m.position.set(x||0,y,0);m.castShadow=true;g.add(m);return m}
       pc(.055,.05,.78,.39,-.07); pc(.055,.05,.78,.39,.07); pc(.15,.24,.55,.98); pc(.13,.15,.2,1.33);
       var hd=new T.Mesh(new T.SphereGeometry(.105,16,12),PM); hd.position.y=1.495; hd.castShadow=true; g.add(hd);
@@ -119,21 +74,21 @@ window.MASS3D={"const": {"H1": 3.6, "FH": 3.6, "ZTOP": 21.6, "ZCORE": 24.6, "LEV
       var tx=new T.CanvasTexture(c), sp=new T.Sprite(new T.SpriteMaterial({map:tx,transparent:true,depthTest:false}));
       sp.scale.set(1.6,.4,1); sp.position.set(pp[0],pp[2]+2.0,pp[1]); sp.renderOrder=10; scene.add(sp)})();
     var B=S.B, a=S.aisle;
-    var dg=new T.PlaneGeometry(B[0]+0.3,a[1]-a[0]); dg.setAttribute('uv',new T.Float32BufferAttribute([0,0,B[0]+0.3,0,0,a[1]-a[0],B[0]+0.3,a[1]-a[0]],2)); var dr=new T.Mesh(dg,DRIVE); dr.rotation.x=-Math.PI/2;
+    var dr=new T.Mesh(new T.PlaneGeometry(B[0]+0.3,a[1]-a[0]),DRIVE); dr.rotation.x=-Math.PI/2;
     dr.position.set((B[0]-0.3)/2,0.02,(a[0]+a[1])/2); dr.receiveShadow=true; scene.add(dr);
     var off=D.off.map(function(p){return [p[0],p[1]]});
     var info=el.querySelector('.m3-info'); if(info) info.textContent='1F 바닥 EL '+S.fl.toFixed(2)+' = 서측 차량 출입구 도로 높이 · 대지 전체를 이 높이로 · 남동 모서리 기초 '+S.plinth_max.toFixed(1)+' m 높임 · '+(S.stair_ext.risers?'남측 외부계단 '+S.stair_ext.risers+'단 × '+(S.stair_ext.rise*100).toFixed(1)+' cm':'외부계단 없음 — 현관(서문)은 서측 도로에서 거의 평지')+' · 남측 인도 사람 키 160 cm';
     S.cols.forEach(function(c){scene.add(prism(R(c[0],c[0]+c[2],c[1],c[1]+c[2]),0,c[3]||C.H1,PAPER))});
     S.low.forEach(function(r){scene.add(prism(R(r[0],r[1],r[2],r[3]),0,r.length>4?r[4]:C.H1,PAPER))});
-    scene.add(prism(S.env,C.H1,C.ZTOP,ENV));
+    scene.add(prism(S.env,C.H1,C.ZTOP,ENV)); C.LEVELS.forEach(function(z){scene.add(loop(S.env,z,LEVEL))});
     S.cores.forEach(function(c){
-      if(c.inside){scene.add(prism(c.poly,0,C.H1,PAPER)); scene.add(prism(c.poly,C.ZTOP,C.ZCORE,ENV))}
-      else{scene.add(prism(c.poly,0,C.H1,PAPER)); scene.add(prism(c.poly,C.H1,C.ZCORE,ENV))}
+      if(c.inside){scene.add(prism(c.poly,0,C.H1,PAPER)); scene.add(prism(c.poly,C.ZTOP,C.ZCORE,PAPER))}
+      else{scene.add(prism(c.poly,0,C.ZCORE,PAPER)); C.LEVELS.concat([C.H1]).forEach(function(z){scene.add(loop(c.poly,z,LEVEL))})}
     });
     var t=-15.479*Math.PI/180;
     scene.add(new T.ArrowHelper(new T.Vector3(Math.sin(t),0,-Math.cos(t)),new T.Vector3(23,0.05,-1),3,0x55524c,0.9,0.6));
-    scene.add(new T.HemisphereLight(0xe8eef4,0x8c877e,0.85));
-    var sun=new T.DirectionalLight(0xfff4e6,1.0), cx=10.3, cz=8.5;
+    scene.add(new T.HemisphereLight(0xffffff,0xd9d5cd,0.62));
+    var sun=new T.DirectionalLight(0xffffff,0.62), cx=10.3, cz=8.5;
     sun.position.set(cx-12,52,cz+32); sun.target.position.set(cx,0,cz); scene.add(sun); scene.add(sun.target);
     sun.castShadow=true; sun.shadow.mapSize.set(2048,2048); sun.shadow.bias=-0.0006;
     var sc=sun.shadow.camera; sc.left=-32; sc.right=32; sc.top=32; sc.bottom=-32; sc.near=1; sc.far=140;
